@@ -1,11 +1,11 @@
 import Image from "next/image";
 
-export default function Hero() {
+export default function Highlight() {
   return (
     <section className="bg-cover bg-center font-monument text-center samsung:mb-10 lg:mb-[15rem] samsung:h-[12rem] md:h-[30rem] text-[#1D1C19]">
       <img src="/img/dangerline.png" alt="danger-line" className="object-fit absolute" />
       <img src="/img/dangerline1.png" alt="danger-line" className="object-fit absolute" />
-      <h1 className="text-stroke relative  text-[3rem] sm:text-[4rem] md:text-[6rem] lg:text-[8rem] xl:text-[12rem] ">
+      <h1 className="text-stroke relative  text-[2.5rem] samsung:text-[3rem] md:text-[5rem] lg:text-[7rem] xl:text-[10rem] ">
         <strong>SRIFOTON</strong>
       </h1>
       <div
@@ -18,12 +18,12 @@ export default function Hero() {
       ></div>
       <h1
         className="relative z-10 text-stroke
-                   text-[3rem] bottom-[8rem] 
-                   samsung:bottom-[7rem]
-                   sm:text-[4rem] sm:bottom-[10rem]
-                   md:text-[6rem] md:bottom-[16rem]
-                   lg:text-[8rem] lg:bottom-[20rem]
-                   xl:text-[12rem] xl:bottom-[22rem]"
+                   text-[2.5rem] bottom-[8rem] 
+                   samsung:text-[3rem] samsung:bottom-[7rem]
+                   sm:bottom-[10rem]
+                   md:text-[5rem] md:bottom-[14rem]
+                   lg:text-[7rem] lg:bottom-[18rem]
+                   xl:text-[10rem] xl:bottom-[20rem]"
       >
         <strong>2024</strong>
       </h1>

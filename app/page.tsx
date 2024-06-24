@@ -1,13 +1,13 @@
 import Countdown from "@/components/Home/Countdown";
 import Nav from "@/components/Home/Nav";
-import Hero from "@/components/Home/Hero";
+import Highlight from "@/components/Home/Highlight";
 
 export default function Home() {
   return (
     <main className="bg-[#1D1C19]">
       <Nav />
-      <Hero />
-      <Countdown />
+      <Highlight />
+      {/* <Countdown /> */}
     </main>
   );
 }

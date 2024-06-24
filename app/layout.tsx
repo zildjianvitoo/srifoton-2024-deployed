@@ -11,6 +11,11 @@ const monument = LocalFont({
   variable: "--font-monument",
 });
 
+const ponnala = LocalFont({
+  src: "../public/fonts/Ponnala Regular.woff2",
+  variable: "--font-ponnala",
+});
+
 export const metadata: Metadata = {
   title: "SRIFOTON",
   description: "",
@@ -23,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${monument.variable} ${inter.variable}`}>
+      <body className={`${monument.variable} ${inter.variable} ${ponnala.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>

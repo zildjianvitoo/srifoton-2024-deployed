@@ -1,12 +1,23 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import LocalFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/Provider/ThemeProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+
+const monument = LocalFont({
+  src: "../public/fonts/MonumentExtended-Regular.woff2",
+  variable: "--font-monument",
+});
+
+const ponnala = LocalFont({
+  src: "../public/fonts/Ponnala Regular.woff2",
+  variable: "--font-ponnala",
+});
 
 export const metadata: Metadata = {
-  title: "SRIFOTON",
+  title: "SRIFOTON 2024",
   description: "",
 };
 
@@ -17,7 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={`${monument.variable} ${inter.variable} ${ponnala.variable}`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

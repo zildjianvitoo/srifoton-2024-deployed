@@ -78,7 +78,7 @@ export default function Nav() {
           <li className="">
             <Link href="/talkshow">Talkshow</Link>
           </li>
-          <li className="me-0 pb-2 pe-0 font-monument">
+          <li className="-2 me-0 pe-0 font-monument">
             <Link href="/login">
               <Button size={"sm"} variant={"srifoton"}>
                 Login

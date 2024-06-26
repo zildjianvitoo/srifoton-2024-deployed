@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -7,7 +8,7 @@ type Props = {};
 export default function Hero({}: Props) {
   return (
     <section id="hero-competition">
-      <div className="flex min-h-screen flex-col items-center lg:flex-row">
+      <div className="flex min-h-[90vh] flex-col items-center gap-16 md:gap-20 lg:flex-row lg:gap-28">
         <div className="flex flex-col gap-7 text-center md:gap-10 lg:gap-14">
           <h1 className="text-stroke relative font-monument text-4xl font-normal md:text-[4.5rem]">
             <strong className="uppercase">COMPETITION</strong>
@@ -24,6 +25,15 @@ export default function Hero({}: Props) {
             </Button>
           </Link>
         </div>
+
+        <figure>
+          <Image
+            src={"/img/gallery1.png"}
+            alt="Hero Competition Image"
+            width={600}
+            height={850}
+          />
+        </figure>
       </div>
     </section>
   );

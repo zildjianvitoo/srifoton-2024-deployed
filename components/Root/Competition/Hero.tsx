@@ -26,7 +26,7 @@ export default function Hero({}: Props) {
           </Link>
         </div>
 
-        <figure>
+        <figure className="w-3/4 lg:w-full">
           <Image
             src={"/img/gallery1.png"}
             alt="Hero Competition Image"

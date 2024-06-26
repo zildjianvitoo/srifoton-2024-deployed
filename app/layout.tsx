@@ -17,7 +17,7 @@ const ponnala = LocalFont({
 });
 
 export const metadata: Metadata = {
-  title: "SRIFOTON",
+  title: "SRIFOTON 2024",
   description: "",
 };
 
@@ -28,8 +28,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${monument.variable} ${inter.variable} ${ponnala.variable}`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      <body
+        className={`${monument.variable} ${inter.variable} ${ponnala.variable}`}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           {children}
         </ThemeProvider>
       </body>

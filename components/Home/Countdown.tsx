@@ -4,10 +4,14 @@ import Jam from "./Jam";
 import { useState, useEffect } from "react";
 
 function kasihNol(value: any) {
-  if (value / 10 <= 1) {
+  if (value < 10) {
     return "0" + value;
   }
   return value;
+}
+
+function TitikDua() {
+  return <span className="text-[1rem] md:text-[2rem] lg:text-[3rem] xl:text-[4rem]">:</span>;
 }
 
 export default function Countdown() {
@@ -40,25 +44,63 @@ export default function Countdown() {
   }, []);
 
   return (
-    <div className="font-monument text-center mb-30 text-[#24221E]">
-      <div className="bg-[#919C9D] w-[50rem] h-[28rem] rotate-[5deg] absolute left-[23rem] z-0"></div>
-      <div className="bg-[#FFF9F1] w-[50rem] h-[28rem] absolute left-[23rem] z-10"></div>
-      <h3 className=" text-[#24221E] border-b-4 border-[#7E8889] inline-block align-top py-8 text-md mb-5 md:text-3xl md:mb-10 lg:text-[2rem] lg:mb-10 xl:mb-[5rem] relative z-10">
-        <strong>OPENING CEREMONY</strong>
-      </h3>
+    <div className="font-monument text-center mb-30 text-[#24221E] w-[17rem] md:w-[35rem] lg:w-[45rem] xl:w-[65rem] mx-auto">
       <div
-        className="mx-auto flex justify-evenly items-center py-2 relative z-20
-                      text-sm w-[13rem] mb-20
-                      md:text-2xl md:w-[23rem] 
-                      lg:text-2xl lg:w-[40rem] lg:mb-20"
+        className="bg-[#868365] rotate-[5deg] absolute z-0
+                    w-[17rem] h-[8rem]
+                    md:w-[35rem] md:h-[17rem] 
+                    lg:w-[45rem] lg:h-[25rem] 
+                    xl:w-[65rem] xl:h-[35rem]"
+      ></div>
+      <div
+        className="bg-[#FFF9F1] relative
+                    w-[17rem] h-[8rem] pt-[.5rem]
+                    md:w-[35rem] md:h-[17rem] md:pt-[2rem]
+                    lg:w-[45rem] lg:h-[25rem] lg:pt-[3rem]
+                    xl:w-[65rem] xl:h-[35rem] xl:pt-[6rem]"
       >
-        <Jam value={kasihNol(days)} desc={"Hari"} />
-        <span className="text-[4rem]">:</span>
-        <Jam value={kasihNol(hours)} desc={"Jam"} />
-        <span className="text-[4rem]">:</span>
-        <Jam value={kasihNol(minutes)} desc={"Menit"} />
-        <span className="text-[4rem]">:</span>
-        <Jam value={kasihNol(seconds)} desc={"Detik"} />
+        <h3
+          className="border-b-2 md:border-b-4 border-[#7E8889] inline-block align-top relative z-10
+                       text-[.6rem] py-2 mb-1
+                       md:text-[1.2rem] md:mb-7 md:py-4
+                       lg:text-[1.5rem] lg:mb-10 lg:py-6
+                       xl:text-[2rem] xl:mb-[3rem] xl:py-4"
+        >
+          <strong>OPENING CEREMONY</strong>
+        </h3>
+        <img
+          src="img/gear.png"
+          alt="gear"
+          className="absolute 
+                     w-[3rem] top-4 left-3
+                     md:w-[6rem] md:top-7 md:left-5
+                     lg:w-[8rem] lg:top-10 lg:left-8
+                     xl:w-[12rem] xl:top-10 xl:left-10"
+        />
+        <img
+          src="img/hourglass.png"
+          alt="gear"
+          className="absolute bottom-0
+                     w-[3rem] left-[14rem]
+                     md:w-[6rem] md:left-[30rem]
+                     lg:w-[8rem] lg:left-[37rem]
+                     xl:w-[12rem] xl:left-[53rem]"
+        />
+        <div
+          className="mx-auto flex justify-evenly items-center py-2 relative z-20
+                      w-[11rem]
+                      md:w-[23rem] 
+                      lg:w-[30rem] 
+                      xl:w-[40rem]"
+        >
+          <Jam value={kasihNol(days)} desc={"Hari"} />
+          <TitikDua />
+          <Jam value={kasihNol(hours)} desc={"Jam"} />
+          <TitikDua />
+          <Jam value={kasihNol(minutes)} desc={"Menit"} />
+          <TitikDua />
+          <Jam value={kasihNol(seconds)} desc={"Detik"} />
+        </div>
       </div>
     </div>
   );

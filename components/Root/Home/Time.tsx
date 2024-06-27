@@ -1,4 +1,4 @@
-export default function Jam({ value, desc }: { value: any; desc: any }) {
+export default function Time({ value, desc }: { value: any; desc: any }) {
   return (
     <div>
       <div

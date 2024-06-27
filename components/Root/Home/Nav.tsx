@@ -14,14 +14,16 @@ import {
 } from "@/components/ui/sheet";
 import Link from "next/link";
 import { Menu } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Nav() {
-  const [states, useStates] = useState(true);
+  const pathname = usePathname();
 
   return (
-    <nav className="sticky top-0 z-50 flex items-center justify-between bg-background px-8 pt-5 text-white md:px-12 lg:px-20 xl:px-[7rem]">
+    <nav className="sticky top-0 z-50 flex items-center justify-between bg-background px-8 py-5 text-white shadow-sm shadow-[#868365] md:px-12 lg:px-20 xl:px-[7rem]">
       <Link href="/" className="flex items-center">
         <span className="md:text-md me-2 border-2 border-[#D9D9D9] px-2 py-[.3rem] text-sm md:me-3 md:px-3 md:py-1 lg:me-5 lg:px-4 lg:py-1 lg:text-lg xl:me-7 xl:px-5 xl:py-2 xl:text-xl">
           Logo
@@ -68,17 +70,35 @@ export default function Nav() {
       </div>
       <div className="hidden text-[#868365] md:block">
         <ul className="lg:text-md flex items-center py-2 font-ponnala xl:text-xl">
-          <li className="border-b-2 border-white text-white">Home</li>
-          <li className="">
+          <li
+            className={cn("mt-2", {
+              "border-b border-white text-white": pathname === "/",
+            })}
+          >
+            <Link href="/">Home</Link>
+          </li>
+          <li
+            className={cn("mt-2", {
+              "border-b border-white text-white": pathname === "/competition",
+            })}
+          >
             <Link href="/competition">Competition</Link>
           </li>
-          <li className="">
+          <li
+            className={cn("mt-2", {
+              "border-b border-white text-white": pathname === "/workshop",
+            })}
+          >
             <Link href="/workshop">Workshop</Link>
           </li>
-          <li className="">
+          <li
+            className={cn("mt-2", {
+              "border-b border-white text-white": pathname === "/talkshow",
+            })}
+          >
             <Link href="/talkshow">Talkshow</Link>
           </li>
-          <li className="-2 me-0 pe-0 font-monument">
+          <li className="me-0 pe-0 font-monument">
             <Link href="/login">
               <Button size={"sm"} variant={"srifoton"}>
                 Login

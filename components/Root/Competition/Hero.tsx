@@ -8,12 +8,12 @@ type Props = {};
 export default function Hero({}: Props) {
   return (
     <section id="hero-competition">
-      <div className="flex min-h-[90vh] flex-col items-center gap-16 md:gap-20 lg:flex-row lg:gap-28">
+      <div className="flex flex-col items-center gap-16 sm:min-h-[90vh] md:gap-20 lg:flex-row lg:gap-28">
         <div className="flex flex-col gap-7 text-center md:gap-10 lg:gap-14">
-          <h1 className="text-stroke relative font-monument text-4xl font-normal md:text-[4.5rem]">
+          <h1 className="text-stroke-5 relative font-monument text-4xl font-normal md:text-[4.5rem]">
             <strong className="uppercase">COMPETITION</strong>
           </h1>
-          <h1 className="text-primary-200 relative font-monument text-2xl font-normal md:text-4xl">
+          <h1 className="relative font-monument text-2xl font-normal text-primary-200 md:text-4xl">
             SRIFOTON 2024
           </h1>
           <Link href="/register">

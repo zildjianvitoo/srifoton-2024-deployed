@@ -13,6 +13,9 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
+    --text-100: 38 10% 23%;
+    --text-200: 40 9% 13%;
+    --text-300: 45 7% 11%;
     --primary: 34 100% 97%;
     --primary-100: 34 100% 97%;
     --primary-200: 36 27% 89%;
@@ -76,7 +79,14 @@
   body {
     @apply bg-background text-foreground;
   }
+
   .text-stroke {
+    -webkit-text-stroke: 1px #ebe5dc;
+    paint-order: stroke fill;
+    color: #1d1c19;
+  }
+
+  .text-stroke-5 {
     -webkit-text-stroke: 5px #ebe5dc;
     paint-order: stroke fill;
     color: #1d1c19;

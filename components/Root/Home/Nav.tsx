@@ -23,12 +23,15 @@ export default function Nav() {
   const pathname = usePathname();
 
   return (
-    <nav className="sticky top-0 z-50 flex items-center justify-between bg-background px-8 py-5 text-white shadow-sm shadow-[#868365] md:px-12 lg:px-20 xl:px-[7rem]">
+    <nav
+      id="navbar"
+      className="sticky top-0 z-50 flex items-center justify-between bg-background px-8 py-5 text-primary shadow-sm shadow-[#868365] md:px-12 lg:px-20 xl:px-[7rem]"
+    >
       <Link href="/" className="flex items-center">
         <span className="md:text-md me-2 border-2 border-[#D9D9D9] px-2 py-[.3rem] text-sm md:me-3 md:px-3 md:py-1 lg:me-5 lg:px-4 lg:py-1 lg:text-lg xl:me-7 xl:px-5 xl:py-2 xl:text-xl">
           Logo
         </span>
-        <h4 className="xxs:text-2xl font-monument text-xl text-white md:text-2xl lg:text-2xl xl:text-3xl">
+        <h4 className="xxs:text-2xl font-monument text-xl text-primary md:text-2xl lg:text-2xl xl:text-3xl">
           SRI
         </h4>
         <h4 className="xxs:text-2xl font-monument text-xl text-[#868365] md:text-2xl lg:text-2xl xl:text-3xl">

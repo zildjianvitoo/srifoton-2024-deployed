@@ -13,17 +13,16 @@ export default function Gallery() {
       className="mt-40 flex flex-col items-center justify-center px-8 text-primary md:px-12 lg:flex-row lg:ps-20 xl:ps-[7rem]"
     >
       <div className="relative mx-auto border-4 border-[#868365] p-6 pt-8 md:p-8 md:pt-12 lg:w-[60%] xl:p-10 xl:pt-16">
-        {/* maaf kak di bagian ini masih bingung carony kek mano */}
-        {/* <figure>
+        <figure>
           <Image
             src="/img/footprints.png"
             alt="footprints"
             width={500}
             height={500}
-            className="absolute left-[28rem] z-0 w-56"
+            className="absolute bottom-[85%] left-[50%] z-0 hidden md:block md:w-36 lg:bottom-[90%] lg:left-[60%] lg:w-36 xl:bottom-[80%] xl:w-56"
           />
-        </figure> */}
-        <div className="font-monument text-sm uppercase md:text-2xl xl:text-3xl">
+        </figure>
+        <div className="relative font-monument text-sm uppercase md:text-2xl lg:text-xl xl:text-2xl">
           <h3 className="inline">What is SRI</h3>
           <h3 className="inline text-[#868365]">FOTON</h3>
           <h3 className="inline">?</h3>
@@ -44,7 +43,7 @@ export default function Gallery() {
           tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo
         </p>
       </div>
-      <div className="lg:ms-20 lg:w-[40%]">
+      <div className="mt-10 lg:ms-20 lg:mt-0 lg:w-[40%]">
         <Carousel
           opts={{
             loop: true,

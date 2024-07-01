@@ -2,6 +2,8 @@ import Countdown from "@/components/Root/Home/Countdown";
 import Hero from "@/components/Root/Home/Hero";
 import Gallery from "@/components/Root/Home/Gallery";
 import Mascot from "@/components/Root/Home/Mascot";
+import Timeline from "@/components/Root/Home/Timeline";
+import Categories from "@/components/Root/Home/Categories";
 
 export default function Home() {
   return (
@@ -10,6 +12,8 @@ export default function Home() {
       <Countdown />
       <Gallery />
       <Mascot />
+      <Timeline />
+      <Categories />
     </main>
   );
 }

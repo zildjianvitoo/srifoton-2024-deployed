@@ -1,5 +1,5 @@
 import Nav from "@/components/Root/Home/Nav";
-import Footer from "@/components/Root/Home/Footer";
+import Footer from "@/components/Root/Footer";
 import React, { ReactNode } from "react";
 
 type Props = {

@@ -51,7 +51,7 @@ export default function Gallery() {
           }}
         >
           <CarouselContent className="-ml-4">
-            <CarouselItem className="basis-1/2">
+            <CarouselItem className="basis-1/3">
               <figure>
                 <Image
                   src={"/img/gallery1.png"}
@@ -62,7 +62,7 @@ export default function Gallery() {
                 />
               </figure>
             </CarouselItem>
-            <CarouselItem className="basis-1/2">
+            <CarouselItem className="basis-1/3">
               <figure>
                 <Image
                   src={"/img/gallery2.png"}
@@ -73,7 +73,7 @@ export default function Gallery() {
                 />
               </figure>
             </CarouselItem>
-            <CarouselItem className="basis-1/2">
+            <CarouselItem className="basis-1/3">
               <figure>
                 <Image
                   src={"/img/gallery1.png"}

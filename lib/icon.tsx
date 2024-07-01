@@ -20,6 +20,7 @@ function Facebook() {
     </svg>
   );
 }
+
 function Instagram() {
   return(
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
@@ -36,6 +37,7 @@ function Instagram() {
     </svg>
   );
 }
+
 function Tiktok() {
   return(
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
@@ -50,6 +52,7 @@ function Tiktok() {
     </svg>
   );
 }
+
 function Whatsapp() {
   return(
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
@@ -57,6 +60,7 @@ function Whatsapp() {
     </svg>
   );
 }
+
 function Email({ className="stroke-2" }) {
   return(
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">

@@ -16,6 +16,7 @@ import Link from "next/link";
 import { Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { routes } from "@/lib/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -72,7 +73,27 @@ export default function Nav() {
         </Sheet>
       </div>
       <div className="hidden text-[#868365] md:block">
+
         <ul className="lg:text-md flex items-center py-2 font-ponnala xl:text-xl">
+          {routes.map((routes) => (
+            <li
+              className={cn("mt-2", {
+                "border-b border-white text-white": pathname === routes.address,
+              })}
+            >
+              <Link href={routes.address}>{routes.linkTo}</Link>
+            </li>
+          ))}
+          <li className="me-0 pe-0 font-monument">
+            <Link href="/login">
+              <Button size={"sm"} variant={"srifoton"}>
+                Login
+              </Button>
+            </Link>
+          </li>
+        </ul>
+
+        {/* <ul className="lg:text-md flex items-center py-2 font-ponnala xl:text-xl">
           <li
             className={cn("mt-2", {
               "border-b border-white text-white": pathname === "/",
@@ -108,7 +129,7 @@ export default function Nav() {
               </Button>
             </Link>
           </li>
-        </ul>
+        </ul> */}
       </div>
     </nav>
   );

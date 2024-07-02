@@ -21,7 +21,7 @@ export default function Countdown() {
     <section id="countdown" className="flex w-full justify-center">
       <CardCrook>
         <div className="m-auto flex flex-col items-center justify-center text-center">
-          <h3 className="text-text-300 align-top text-base sm:text-xl md:text-2xl xl:text-4xl">
+          <h3 className="align-top text-base text-text-300 sm:text-xl md:text-2xl xl:text-4xl">
             OPENING CEREMONY
             <div className="mt-1 rounded-md border-2 border-[#868365] bg-[#868365] md:mt-3 md:h-1 lg:mt-4 xl:mt-5"></div>
           </h3>

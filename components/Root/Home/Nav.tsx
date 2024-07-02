@@ -73,7 +73,6 @@ export default function Nav() {
         </Sheet>
       </div>
       <div className="hidden text-[#868365] md:block">
-
         <ul className="lg:text-md flex items-center py-2 font-ponnala xl:text-xl">
           {routes.map((routes) => (
             <li

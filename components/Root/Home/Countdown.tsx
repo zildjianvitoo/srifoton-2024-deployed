@@ -18,24 +18,26 @@ export default function Countdown() {
   });
 
   return (
-    <section id="countdown" className="flex w-full justify-center">
-      <CardCrook>
-        <div className="m-auto flex flex-col items-center justify-center text-center">
-          <h3 className="text-text-300 align-top text-base sm:text-xl md:text-2xl xl:text-4xl">
-            OPENING CEREMONY
-            <div className="mt-1 rounded-md border-2 border-[#868365] bg-[#868365] md:mt-3 md:h-1 lg:mt-4 xl:mt-5"></div>
-          </h3>
-          <div className="mx-auto mt-5 flex items-center justify-center md:mt-10 lg:mt-16 xl:mt-20">
-            <Time value={days} desc={"Hari"} />
-            <DoubleDot />
-            <Time value={hours} desc={"Jam"} />
-            <DoubleDot />
-            <Time value={minutes} desc={"Menit"} />
-            <DoubleDot />
-            <Time value={seconds} desc={"Detik"} />
+    <section id="countdown">
+      <div className="flex w-full justify-center">
+        <CardCrook>
+          <div className="m-auto flex flex-col items-center justify-center text-center">
+            <h3 className="align-top text-base text-text-300 sm:text-xl md:text-2xl xl:text-4xl">
+              OPENING CEREMONY
+              <div className="mt-1 rounded-md border-2 border-[#868365] bg-[#868365] md:mt-3 md:h-1 lg:mt-4 xl:mt-5"></div>
+            </h3>
+            <div className="mx-auto mt-5 flex items-center justify-center md:mt-10 lg:mt-16 xl:mt-20">
+              <Time value={days} desc={"Hari"} />
+              <DoubleDot />
+              <Time value={hours} desc={"Jam"} />
+              <DoubleDot />
+              <Time value={minutes} desc={"Menit"} />
+              <DoubleDot />
+              <Time value={seconds} desc={"Detik"} />
+            </div>
           </div>
-        </div>
-      </CardCrook>
+        </CardCrook>
+      </div>
     </section>
   );
 }

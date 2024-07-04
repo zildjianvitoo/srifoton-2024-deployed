@@ -47,22 +47,22 @@ export default function Nav() {
           <SheetContent>
             <SheetHeader>
               <ul className="py-2 font-ponnala text-lg">
-                <li className="">
+                <li className="my-5 text-left" key={1}>
                   <SheetClose asChild>
                     <Link href="/">Home</Link>
                   </SheetClose>
                 </li>
-                <li className="">
+                <li className="my-5 text-left" key={2}>
                   <SheetClose asChild>
                     <Link href="/competition">Competition</Link>
                   </SheetClose>
                 </li>
-                <li className="">
+                <li className="my-5 text-left" key={3}>
                   <SheetClose asChild>
                     <Link href="/workshop">Workshop</Link>
                   </SheetClose>
                 </li>
-                <li className="">
+                <li className="my-5 text-left" key={4}>
                   <SheetClose asChild>
                     <Link href="/talkshow">Talkshow</Link>
                   </SheetClose>
@@ -73,7 +73,6 @@ export default function Nav() {
         </Sheet>
       </div>
       <div className="hidden text-[#868365] md:block">
-
         <ul className="lg:text-md flex items-center py-2 font-ponnala xl:text-xl">
           {routes.map((routes) => (
             <li

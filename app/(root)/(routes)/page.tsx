@@ -21,6 +21,9 @@ export default function Home() {
         <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition Test Test</TimelineCard>
         <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
         <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
+        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
+        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
+        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
       </Timeline>
       <Categories />
       <Benefits />

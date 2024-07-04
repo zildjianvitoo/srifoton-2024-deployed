@@ -69,4 +69,20 @@ function Email({ className="stroke-2" }) {
   );
 }
 
-export { X, Facebook, Instagram, Tiktok, Whatsapp, Email };
+function Triangle({className=''}) {
+  const styles = {
+    container: {
+      width: 0,
+	    height: 0,
+	    borderTop: "16px solid transparent",
+	    borderLeft: "32px solid white",
+	    borderBottom: "16px solid transparent",
+    },
+  } as const;
+
+  return(
+    <div style={styles.container}></div>
+  )
+}
+
+export { X, Facebook, Instagram, Tiktok, Whatsapp, Email, Triangle };

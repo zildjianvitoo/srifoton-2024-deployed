@@ -15,10 +15,10 @@ export default function Home() {
       <Countdown />
       <Gallery />
       <Mascot />
-      <Timeline>
-        <TimelineCard span="23 Sept - 20 Augs">Test test</TimelineCard>
+      <Timeline title="event timeline" >
         <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition Test Test</TimelineCard>
+        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
+        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
         <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
         <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
         <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>

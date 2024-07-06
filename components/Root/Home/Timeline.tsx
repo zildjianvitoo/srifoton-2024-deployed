@@ -4,17 +4,23 @@ import CardCrook from "../CardCrook";
 import { Children } from "react";
 import { Triangle } from "@/lib/icon";
 
-type Props = { className?: string; children: ReactNode; span?: string; index?: number };
+type Props = {
+  className?: string;
+  children: ReactNode;
+  span?: string;
+  index?: number;
+  title?: string
+};
 
-function Timeline({ className, children, ...props } : Props) {
+function Timeline({ className, children, title="timeline", ...props } : Props) {
 
   return (
     <section
-      id="event-timeline"
+      id="timeline"
       className="mt-40 px-8 md:px-12 lg:px-20 xl:px-[7rem]"
     >
       <div className="mx-[9.55vw]">
-        <SectionHeader text="event timeline" />
+        <SectionHeader text={title} />
       </div>
       <section className="grid justify-items-center md:flex flex-col h-auto md:h-[512px] lg:h-[700px] border-2 px-16 py-16 md:py-0 justify-center scroll-smooth overflow-x-auto mt-20 custom-scrollbar">
         <div className="flex md:flex-row flex-col items-center relative w-fit">

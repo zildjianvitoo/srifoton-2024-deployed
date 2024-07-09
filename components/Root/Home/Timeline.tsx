@@ -17,7 +17,7 @@ function Timeline({ className, children, title="timeline", ...props } : Props) {
   return (
     <section
       id="timeline"
-      className="mt-40 px-8 md:px-12 lg:px-20 xl:px-[7rem]"
+      className="px-8 md:px-12 lg:px-20 xl:px-[7rem]"
     >
       <div className="mx-[9.55vw]">
         <SectionHeader text={title} />

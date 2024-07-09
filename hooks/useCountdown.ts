@@ -1,3 +1,5 @@
+// hooks/useCountdown.ts
+
 import { useState, useEffect } from "react";
 
 function resetZero(value: any) {
@@ -40,7 +42,7 @@ export default function useCountdown({ targetTime }: Params) {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [targetTime]);
 
   return { days, hours, minutes, seconds };
 }

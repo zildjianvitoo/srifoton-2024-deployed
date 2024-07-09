@@ -15,7 +15,7 @@ export default function IDcard({id, title, name, src1, src2, children}: Props) {
       >
         <div className="flip-card-inner font-monument text-black">
           <div className="flip-card-front flex rounded-[1.5625vw] bg-[#fff9f1] uppercase">
-            <Image src={src2} alt="Avatar" width={276} height={244} className="aspect-[276/244] object-cover !max-w-[22.848%] !right-[3.642%] !top-[7.8%] absolute z-10"/>
+            <Image src={src2} alt="Avatar" width={276} height={244} className="aspect-[276/244] object-cover !w-[22.848%] !right-[3.642%] !top-[7.8%] absolute z-10"/>
             <div className="aspect-[1208/198] w-full absolute top-0 left-0 bg-[#868365] rounded-t-[1.5625vw]"></div>
             <div className="aspect-[1208/20] w-full absolute top-[34.15%] left-0 bg-[#868365]"></div>
             <div className="absolute grid text-white justify-items-center top-[4.39%] left-[3.973%]">
@@ -23,7 +23,7 @@ export default function IDcard({id, title, name, src1, src2, children}: Props) {
               <p className="text-[1.3vw] capitalize">Sriwijaya Informatics Exhibition</p>
             </div>
             <div className="aspect-[1208/385] relative self-end flex w-full pt-[2.5%] pb-[3%] px-[4.139%] gap-9">
-              <Image src={src1} alt="Avatar" width={309} height={309} className="!w-[25.58%] object-cover bottom-0"/>
+              <Image src={src1} alt="Avatar" width={309} height={309} className="aspect-[1/1] !w-[25.58%] object-cover bottom-0"/>
               <div className="grid grid-cols-1 relative w-full max-h-full place-content-start place-items-start">
                 <p className="text-[1.05vw] !mb-[0.82%]">NAME</p>
                 <p className="text-[2vw] !mb-[2.48%]">{name}</p>

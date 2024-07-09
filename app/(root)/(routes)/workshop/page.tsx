@@ -10,7 +10,9 @@ type Props = {};
 const options = [
   { title: "workshop offline ticket", previewTitle: "offline ticket", href: "/register", price:"80.000", per:"person", content:
     <>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur
+    </p>
     <Benefits>
       <p>E-Sertifikat</p>
       <p>Doorprize dan Relasi</p>
@@ -21,7 +23,9 @@ const options = [
   },
   { title: "workshop online ticket", previewTitle: "online ticket", href: "/register", price:"50.000", per:"person", content:
     <>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur
+    <p className="">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur
+    </p>
     <Benefits>
       <p>E-Sertifikat</p>
       <p>Doorprize dan Relasi</p>

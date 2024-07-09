@@ -15,16 +15,10 @@ type Props = {
   children: ReactNode;
   span?: string;
   index?: number;
-<<<<<<< HEAD
   title?: string
 };
 
 function Timeline({ className, children, title="timeline", ...props } : Props) {
-=======
-};
->>>>>>> d1e5bc67eeac2c2d6f5373930b352e4fcc641dd1
-
-function Timeline({ className, children, ...props }: Props) {
   return (
     <section
       id="timeline"

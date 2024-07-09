@@ -8,7 +8,7 @@ import React, { Suspense } from "react";
 type Props = {};
 
 const options = [
-  { title: "workshop offline ticket", previewTitle: "offline ticket", href: "/register", price:"80.000", per:"person", content:
+  { title: "talkshow ticket", previewTitle: "talkshow ticket", href: "/register", price:"40.000", per:"person", content:
     <>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur
@@ -18,18 +18,6 @@ const options = [
       <p>Doorprize dan Relasi</p>
       <p>Free Basic Class Dicoding</p>
       <p>Snack + Free Lunch</p>
-    </Benefits>
-    </>
-  },
-  { title: "workshop online ticket", previewTitle: "online ticket", href: "/register", price:"50.000", per:"person", content:
-    <>
-    <p className="">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur
-    </p>
-    <Benefits>
-      <p>E-Sertifikat</p>
-      <p>Doorprize dan Relasi</p>
-      <p>Free Basic Class Dicoding</p>
     </Benefits>
     </>
   }
@@ -68,17 +56,17 @@ const qna = [
   }
 ]
 
-export default function Workshop({}: Props) {
+export default function Talkshow({}: Props) {
   return (
     <div className="flex flex-col gap-[200px]">
-      <Hero id="hero-workshop" header="workshop" subheader="srifoton 2024" type="overview" src="/img/gallery1.png" href="/register">
+      <Hero id="hero-talkshow" header="talkshow" subheader="srifoton 2024" type="overview" src="/img/gallery1.png" href="/register">
         “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna.”
       </Hero>
       <IDcard title="our speaker" name="nama speaker" src1="/img/gallery1.png" src2="/img/gallery1.png">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo lacus at sodales sodales
       </IDcard>
-      <Flashcards id="workshop-option" contents={options} title="workshop options" />
-      <Timeline title="workshop timeline">
+      <Flashcards id="talkshow-option" contents={options} title="talkshow options" />
+      <Timeline title="talkshow timeline">
         <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
         <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
         <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
@@ -88,7 +76,7 @@ export default function Workshop({}: Props) {
         <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
         <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
       </Timeline>
-      <QNA id="workshop-qna" title="workshop qna" contents={qna} />
+      <QNA id="talkshow-qna" title="talkshow qna" contents={qna} />
     </div>
   );
 }

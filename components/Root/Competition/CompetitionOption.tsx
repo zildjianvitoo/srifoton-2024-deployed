@@ -281,23 +281,37 @@ export default function CompetitionOption({}: Props) {
               </div>
             </CardCrook>
           </TabsContent>
-          <TabsList className="mx-auto w-1/2">
-            <TabsTrigger value="competitive-programming">
+          <TabsList className="lg:text-md mx-auto w-1/2 text-xs text-background">
+            <TabsTrigger
+              value="competitive-programming"
+              className="m-2 mx-auto h-[5rem] w-1/4 content-center bg-[#FFF9F1] text-center uppercase data-[state=active]:w-[50%] data-[state=active]:bg-[#B7B38C] xl:h-1/4 xl:w-2/3"
+            >
               competitive
               <br />
               programming
             </TabsTrigger>
-            <TabsTrigger value="ui/ux-design">
+            <TabsTrigger
+              value="ui/ux-design"
+              className="m-2 mx-auto h-[5rem] w-1/4 content-center bg-[#FFF9F1] text-center uppercase data-[state=active]:w-[50%] data-[state=active]:bg-[#B7B38C] xl:h-1/4 xl:w-2/3"
+            >
               ui/ux
               <br />
               design
             </TabsTrigger>
-            <TabsTrigger value="web-development">
+            <TabsTrigger
+              value="web-development"
+              className="m-2 mx-auto h-[5rem] w-1/4 content-center bg-[#FFF9F1] text-center uppercase data-[state=active]:w-[50%] data-[state=active]:bg-[#B7B38C] xl:h-1/4 xl:w-2/3"
+            >
               web
               <br />
               development
             </TabsTrigger>
-            <TabsTrigger value="e-sport">e-sport</TabsTrigger>
+            <TabsTrigger
+              value="e-sport"
+              className="m-2 mx-auto h-[5rem] w-1/4 content-center bg-[#FFF9F1] text-center uppercase data-[state=active]:w-[50%] data-[state=active]:bg-[#B7B38C] xl:h-1/4 xl:w-2/3"
+            >
+              e-sport
+            </TabsTrigger>
           </TabsList>
         </Tabs>
       </div>

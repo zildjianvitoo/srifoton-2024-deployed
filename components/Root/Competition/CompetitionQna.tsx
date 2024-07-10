@@ -28,7 +28,7 @@ export default function CompetitionQna() {
             <div className="relative w-full">
               <TabsTrigger
                 value="chat-2"
-                className="relative mb-10 w-3/4 rounded-md bg-[#B7B38C] p-5 text-left font-ponnala text-lg data-[state=active]:w-4/5 data-[state=active]:bg-primary-100"
+                className="relative mb-10 w-3/4 rounded-md bg-[#B7B38C] p-5 text-left font-ponnala text-lg data-[state=active]:w-4/5 data-[state=active]:bg-primary-100 data-[state=active]:text-xl"
               >
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
@@ -43,7 +43,7 @@ export default function CompetitionQna() {
             <div className="relative w-full">
               <TabsTrigger
                 value="chat-3"
-                className="relative mb-10 w-3/4 rounded-md bg-[#B7B38C] p-5 text-left font-ponnala text-lg data-[state=active]:w-4/5 data-[state=active]:bg-primary-100"
+                className="relative mb-10 w-3/4 rounded-md bg-[#B7B38C] p-5 text-left font-ponnala text-lg data-[state=active]:w-4/5 data-[state=active]:bg-primary-100 data-[state=active]:text-xl"
               >
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
@@ -58,7 +58,7 @@ export default function CompetitionQna() {
             <div className="relative w-full">
               <TabsTrigger
                 value="chat-4"
-                className="relative mb-10 w-3/4 rounded-md bg-[#B7B38C] p-5 text-left font-ponnala text-lg data-[state=active]:w-4/5 data-[state=active]:bg-primary-100"
+                className="relative mb-10 w-3/4 rounded-md bg-[#B7B38C] p-5 text-left font-ponnala text-lg data-[state=active]:w-4/5 data-[state=active]:bg-primary-100 data-[state=active]:text-xl"
               >
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
@@ -73,7 +73,7 @@ export default function CompetitionQna() {
             <div className="relative w-full">
               <TabsTrigger
                 value="chat-5"
-                className="relative mb-10 w-3/4 rounded-md bg-[#B7B38C] p-5 text-left font-ponnala text-lg data-[state=active]:w-4/5 data-[state=active]:bg-primary-100"
+                className="relative mb-10 w-3/4 rounded-md bg-[#B7B38C] p-5 text-left font-ponnala text-lg data-[state=active]:w-4/5 data-[state=active]:bg-primary-100 data-[state=active]:text-xl"
               >
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et

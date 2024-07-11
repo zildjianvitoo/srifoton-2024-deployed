@@ -14,7 +14,7 @@ import { Triangle } from "@/lib/icon";
 
 type Props = {
   className?: string;
-  children: ReactElement<any, string | JSXElementConstructor<any>>;
+  children: ReactNode;
   span?: string;
   index?: number;
   title?: string
@@ -35,9 +35,9 @@ function Timeline({ className, children, title="timeline", ...props } : Props) {
             {Children.map(children, (child, index) => (
               <li>
                 {
-                  cloneElement(child, {
+                  cloneElement(child as ReactElement, {
                     index: index,
-                  }) /* update: restrict Timeline children to type ReactElement<any, string | JSXElementConstructor<any>> */
+                  })
                 }
               </li>
             ))}

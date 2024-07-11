@@ -2,7 +2,7 @@ import Countdown from "@/components/Root/Home/Countdown";
 import Hero from "@/components/Root/Home/Hero";
 import Gallery from "@/components/Root/Home/Gallery";
 import Mascot from "@/components/Root/Home/Mascot";
-import { Timeline, TimelineCard } from "@/components/Root/Home/Timeline";
+import { Timeline, TimelineCard } from "@/components/Root/Timeline";
 import Categories from "@/components/Root/Home/Categories";
 import Benefits from "@/components/Root/Home/Benefits";
 import Sponsor from "@/components/Root/Home/Sponsor";

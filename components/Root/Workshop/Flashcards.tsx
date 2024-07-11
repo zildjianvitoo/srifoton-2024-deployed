@@ -28,6 +28,7 @@ type FlashcardProps = {
 
 type BenefitsProps = {
   children: ReactNode,
+  id?: string,
   className?: string
 };
 
@@ -36,11 +37,11 @@ function Flashcards({id, title, children}: FlashcardsProps) {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return(
-    <section id={id} className="grid justify-items-center relative gap-[86px] w-3/4 md:w-full">
+    <section id={id} className="grid justify-items-center relative gap-[86px] w-full">
       <div className="w-3/4 h-fit">
         <SectionHeader text={title} />
       </div>
-      <section className="flex flex-col md:flex-row md:gap-[102px] gap-0 w-full justify-between">
+      <section className="flex flex-col md:flex-row gap-0 md:gap-[102px] w-full justify-between">
         <div className="flex align-center relative w-fit h-fit my-14 mx-6">
           {Children.map(children, (content, index) => {
             const isHighlighted = index === selectedIndex;
@@ -50,13 +51,13 @@ function Flashcards({id, title, children}: FlashcardsProps) {
           })}
         </div>
         <div className="flex justify-center items-center h-full min-w-[15.1%] overflow-y-auto overflow-x-hidden">
-          <div className="flex md:grid justify-items-center items-center gap-[50px]">
+          <div className="flex md:grid min-w-fit justify-items-center items-center gap-[50px]">
             {Children.map(children as ReactElement, (content, index) =>
               <button
                 onClick={() => setSelectedIndex(index)}
                 className={`${index === selectedIndex ?
-                "aspect-[290/168] w-[72.5%] bg-[#B7B38C] md:text-[0.93vw] text-[1.25vw] px-6" :
-                "aspect-[290/168] w-full bg-primary-100 md:text-[1.25vw] text-[2.25vw] px-[45px]"}
+                "aspect-[290/168] w-3/4 bg-[#B7B38C] md:text-[0.93vw] text-[1.25vw] px-[45px] py-[25px]" :
+                "aspect-[290/168] bg-primary-100 md:text-[1.25vw] text-[2.25vw] px-[45px] py-[60px]"}
                 align-middle items-center font-monument uppercase`}>
                 {content.props.previewTitle}
               </button>
@@ -73,38 +74,39 @@ function Flashcard({id, title, href, price, per, visible=false, content, childre
     <section id={id} className={`${visible ? "block" : "hidden"}`}>
       <CardCrook
         outerClassName="max-w-[1193px]"
-        innerClassName="sm:text-sm lg:text-lg 2xl:text-xl px-[4.7%] pt-[5.3%] pb-[4.4%]">
-        <h1 className="uppercase sm:text-xl lg:text-[30px] 2xl:text-[42px] font-monument leading-[120%] mb-[1.68%]">{title}</h1>
-        <hr className="border-2 rounded-full border-black mb-[4.19%]" />
+        innerClassName="sm:text-sm lg:text-lg 2xl:text-xl px-[110px] py-[90px]">
+        <h1 className="font-monument uppercase sm:text-xl lg:text-[30px] 2xl:text-[42px] sm:leading-[120%] mb-[30px]">{title}</h1>
+        <hr className="border-2 rounded-full border-black mb-[50px]" />
         {content}
         {children}
-        <Link href={href} className="mt-[4.19%] w-[15.84%]">
-          <Button
-            variant={"outline"}
-            className="!aspect-[189/74] w-full h-[11.25%] border-4 text-[1vw] items-center font-monument !py-[2.1%] !px-[5.32%]"
-          >
-            Register
-          </Button>
-        </Link>
-        <div className="absolute flex w-fit font-monument bottom-[5%] lg:bottom-[12.63%] right-[4.25%]">
-          <p className="2xl:text-3xl lg:text-xl text-sm">RP</p>
-          <p className="2xl:text-6xl lg:text-4xl text-2xl">{price}</p>
-          <p className="2xl:text-3xl lg:text-xl text-sm self-end 2xl:mb-2 xl:mb-1 capitalize">{`/${per}`}</p>
+        <div className="flex justify-between mt-[50px]">
+          <Link href={href} className="">
+            <Button
+              variant="outline2"
+              size="default2"
+            >
+              Register
+            </Button>
+          </Link>
+          <div className="flex w-fit font-monument">
+            <p className="2xl:text-3xl lg:text-xl text-sm">RP</p>
+            <p className="2xl:text-6xl lg:text-4xl text-2xl">{price}</p>
+            <p className="2xl:text-3xl lg:text-xl text-sm self-end mb-7 capitalize">{`/${per}`}</p>
+          </div>
         </div>
       </CardCrook>
     </section>
   )
 }
 
-function Benefits({children, className} : BenefitsProps) {
+function Benefits({id="0", children, className} : BenefitsProps) {
 
   return(
     <ul className={`${className} gap-4 flex flex-col mt-5`}>
-
       {Children.map(children, (child, index) =>
-        <li key={`benefit${index}`} className="flex inline-flex gap-3 lg:gap-5 items-start">
-          <SquareCheckBig size={typeof window !== "undefined" && window.innerWidth >= 1024 ? 24 : 16} strokeWidth={3}/>
-          {child}
+        <li key={`benefit${id + index}`} className="flex inline-flex gap-5 items-center h-fit">
+          <SquareCheckBig size={24} strokeWidth={3}/>
+          <span className="pt-3 leading-[1%]">{child}</span>
         </li>
       )}
     </ul>

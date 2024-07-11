@@ -3,7 +3,7 @@ import IDcard from "@/components/Root/Workshop/IDcard";
 import { Flashcard, Flashcards, Benefits } from "@/components/Root/Workshop/Flashcards";
 import WorkshopOption from "@/components/Root/Workshop/WorkshopOption";
 import { QNA, SpeechBubble } from "@/components/Root/Workshop/QNA";
-import { Timeline, TimelineCard } from "@/components/Root/Home/Timeline";
+import { Timeline, TimelineCard } from "@/components/Root/Timeline";
 import React, { Suspense } from "react";
 
 type Props = {};

@@ -7,8 +7,8 @@ import React, {
   useContext,
   useState,
 } from "react";
-import SectionHeader from "../SectionHeader";
-import CardCrook from "../CardCrook";
+import SectionHeader from "./SectionHeader";
+import CardCrook from "./CardCrook";
 import { Children } from "react";
 import { Triangle } from "@/lib/icon";
 

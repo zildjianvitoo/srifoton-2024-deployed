@@ -115,7 +115,7 @@ export default function CompetitionOption({}: Props) {
                         Register
                       </Button>
                     </Link>
-                    <Link href={"/register"}>
+                    <Link href={"/competition/competitive-programming"}>
                       <Button
                         variant={"outline"}
                         className="border-[3px] text-sm lg:text-base lg:leading-none"
@@ -165,7 +165,7 @@ export default function CompetitionOption({}: Props) {
                         Register
                       </Button>
                     </Link>
-                    <Link href={"/register"}>
+                    <Link href={"/competition/ui-ux"}>
                       <Button
                         variant={"outline"}
                         className="border-[3px] text-sm lg:text-base lg:leading-none"
@@ -215,7 +215,7 @@ export default function CompetitionOption({}: Props) {
                         Register
                       </Button>
                     </Link>
-                    <Link href={"/register"}>
+                    <Link href={"/competition/web-development"}>
                       <Button
                         variant={"outline"}
                         className="border-[3px] text-sm lg:text-base lg:leading-none"
@@ -265,7 +265,7 @@ export default function CompetitionOption({}: Props) {
                         Register
                       </Button>
                     </Link>
-                    <Link href={"/register"}>
+                    <Link href={"/competition/e-sport"}>
                       <Button
                         variant={"outline"}
                         className="border-[3px] text-sm lg:text-base lg:leading-none"

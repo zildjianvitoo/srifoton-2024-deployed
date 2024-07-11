@@ -10,7 +10,7 @@ export default function MainLayout({ children }: Props) {
   return (
     <div className="bg-background">
       <Nav />
-      <main className="mt-12 lg:mt-0">{children}</main>
+      <main className="flex flex-col mt-12 lg:mt-[75px] mx-[7.3vw] gap-24 lg:gap-[200px]">{children}</main>
       <Footer />
     </div>
   );

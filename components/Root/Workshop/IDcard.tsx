@@ -8,11 +8,9 @@ type Props = {id?: string, title: string, name: string, src1: string, src2: stri
 export default function IDcard({id, title, name, src1, src2, children}: Props) {
 
   return(
-    <section className="flex flex-col justify-center w-[63%] mx-auto gap-[3.44vw]">
+    <section id={id} className="flex flex-col justify-center mx-[11.25vw] gap-[3.44vw]">
       <SectionHeader text={title} />
-      <section
-        id={id} className="flip-card aspect-[1208/615]"
-      >
+      <section className="flip-card aspect-[1208/615]">
         <div className="flip-card-inner font-monument text-black">
           <div className="flip-card-front flex rounded-[1.5625vw] bg-[#fff9f1] uppercase">
             <Image src={src2} alt="Avatar" width={276} height={244} className="aspect-[276/244] object-cover !w-[22.848%] !right-[3.642%] !top-[7.8%] absolute z-10"/>

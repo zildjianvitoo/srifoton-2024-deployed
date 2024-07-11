@@ -1,4 +1,6 @@
 import React, {
+  JSXElementConstructor,
+  ReactElement,
   ReactNode,
   cloneElement,
   createContext,
@@ -12,7 +14,7 @@ import { Triangle } from "@/lib/icon";
 
 type Props = {
   className?: string;
-  children: ReactNode;
+  children: ReactElement<any, string | JSXElementConstructor<any>>;
   span?: string;
   index?: number;
   title?: string
@@ -35,7 +37,7 @@ function Timeline({ className, children, title="timeline", ...props } : Props) {
                 {
                   cloneElement(child, {
                     index: index,
-                  }) /* gtw gimana bisa begini, tapi jalan */
+                  }) /* update: restrict Timeline children to type ReactElement<any, string | JSXElementConstructor<any>> */
                 }
               </li>
             ))}

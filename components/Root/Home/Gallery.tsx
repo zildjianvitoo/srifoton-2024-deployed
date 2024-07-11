@@ -42,7 +42,7 @@ export default function Gallery() {
               loop: true,
             }}
           >
-            <CarouselContent className="-ml-4">
+            <CarouselContent> {/*className="-ml-4"*/}
               <CarouselItem className="basis-1/3">
                 <figure>
                   <Image

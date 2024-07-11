@@ -71,7 +71,7 @@ function SpeechBubble({id, question, highlighted = false} : SpeechBubbleProps) {
 
   var [ contentState, svgState ] = highlighted ?
     ["w-[686px] h-[123px] bg-[#D9D9D9] text-2xl", {width:"48", height:"22", fill:"#d9d9d9"}] :
-    ["w-[591px] h-[100px] bg-amber-900 text-xl", {width:"41", height:"18.8", fill:"#78350F"}];
+    ["w-[591px] h-[100px] bg-[#b7b38c] text-xl", {width:"41", height:"18.8", fill:"hsl(54.42, 22.99%, 63.33%)"}];
 
   return(
     <>

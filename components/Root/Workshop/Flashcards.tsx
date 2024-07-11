@@ -3,7 +3,7 @@
 import SectionHeader from "../SectionHeader";
 import CardCrook from "./CardCrook";
 import Image from "next/image";
-import React, { ReactNode, Children, isValidElement, useState } from "react";
+import React, { ReactNode, Children, isValidElement, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { SquareCheckBig } from "lucide-react";
@@ -48,12 +48,12 @@ function Flashcards({id, title, contents,
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return(
-    <section id={id} className="grid justify-items-center relative gap-[86px] w-[75vw] md:w-[90vw] mx-auto">
+    <section id={id} className="grid justify-items-center relative gap-[86px] w-3/4 md:w-full">
       <div className="w-3/4 h-fit">
         <SectionHeader text={title} />
       </div>
-      <section className="flex flex-col md:flex-row md:gap-[102px] gap-0 w-full justify-center">
-        <div className="flex align-center relative w-fit h-fit my-14">
+      <section className="flex flex-col md:flex-row md:gap-[102px] gap-0 w-full justify-between">
+        <div className="flex align-center relative w-fit h-fit my-14 mx-6">
           {contents.map((content, index) => {
             const isHighlighted = index === selectedIndex;
             return renderFlashcards(content, isHighlighted);
@@ -64,7 +64,10 @@ function Flashcards({id, title, contents,
             {contents.map((content, index) =>
               <button
                 onClick={() => setSelectedIndex(index)}
-                className={`${index === selectedIndex ? "aspect-[210/128] w-[72.41%] bg-[#B7B38C] md:text-[0.93vw] text-[1.25vw] px-6" : "aspect-[290/168] w-full bg-primary-100 md:text-[1.25vw] text-[2.25vw] px-[45px]"} align-middle items-center font-monument uppercase`}>
+                className={`${index === selectedIndex ?
+                "aspect-[290/168] w-[72.5%] bg-[#B7B38C] md:text-[0.93vw] text-[1.25vw] px-6" :
+                "aspect-[290/168] w-full bg-primary-100 md:text-[1.25vw] text-[2.25vw] px-[45px]"}
+                align-middle items-center font-monument uppercase`}>
                 {content.previewTitle}
               </button>
             )}
@@ -104,12 +107,13 @@ function Flashcard({id, title, href, price, per, visible=false, content, childre
 }
 
 function Benefits({children, className} : BenefitsProps) {
+
   return(
     <ul className={`${className} gap-4 flex flex-col mt-5`}>
 
       {Children.map(children, (child, index) =>
         <li key={`benefit${index}`} className="flex inline-flex gap-3 lg:gap-5 items-start">
-          <SquareCheckBig size={window.innerWidth >= 1024 ? 24 : 16} strokeWidth={3}/>
+          <SquareCheckBig size={typeof window !== "undefined" && window.innerWidth >= 1024 ? 24 : 16} strokeWidth={3}/>
           {child}
         </li>
       )}

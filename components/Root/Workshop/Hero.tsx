@@ -7,19 +7,19 @@ type Props = {id: string, header: string, subheader: string, type?: "dashboard" 
 
 export default function Hero({id, header, subheader, type, src, href, children}: Props) {
   return (
-    <section id={id} className="flex justify-center px-8 md:px-12 lg:px-20 xl:px-[7rem]">
-      <div className="flex flex-col items-center gap-16 sm:min-h-[90vh] md:gap-20 lg:flex-row lg:gap-28">
-        <div className="flex flex-col gap-7 text-center md:gap-10 lg:gap-14">
-          <h1 className="text-stroke-5 relative font-monument text-4xl font-normal md:text-[4.5rem]">
+    <section id={id} className="flex">
+      <div className="flex flex-col w-full items-center gap-16 sm:min-h-[90vh] md:min-h-fit md:gap-20 lg:flex-row lg:gap-28 2xl:gap-[165px]">
+        <div className="flex flex-col gap-7 text-center md:gap-10 lg:gap-[60px]">
+          <h1 className="text-stroke-5 leading-[120%] relative font-monument text-4xl md:text-[4.5rem] 2xl:text-[90px] font-normal">
             <strong className="uppercase">{header}</strong>
           </h1>
-          <h1 className="relative font-monument text-2xl font-normal text-primary-200 md:text-4xl">
+          <h1 className="uppercase relative font-monument text-2xl md:text-4xl 2xl:text-[50px] font-normal text-primary-200 !leading-[120%]">
             {subheader}
           </h1>
-          <p className="font-ponnala font-normal text-primary-200">
+          <p className="font-ponnala font-normal xl:text-2xl text-primary-200">
             {children}
           </p>
-          <Link href={href}>
+          <Link href={href} className="w-fit mx-auto">
             <Button
               variant={"srifoton"}
               className="font-monument text-sm md:text-base lg:text-lg"
@@ -35,6 +35,7 @@ export default function Hero({id, header, subheader, type, src, href, children}:
             alt={`${id}-image`}
             width={600}
             height={850}
+            className="w-full"
           />
         </figure>
       </div>

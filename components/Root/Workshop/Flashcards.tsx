@@ -3,7 +3,7 @@
 import SectionHeader from "../SectionHeader";
 import CardCrook from "./CardCrook";
 import Image from "next/image";
-import React, { ReactNode, Children, isValidElement, useState, useRef } from "react";
+import React, { ReactNode, Children, isValidElement, useState, useRef, cloneElement, ReactElement } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { SquareCheckBig } from "lucide-react";
@@ -11,8 +11,7 @@ import { SquareCheckBig } from "lucide-react";
 type FlashcardsProps = {
   id?: string,
   title: string,
-  contents: Array<FlashcardProps>,
-  renderFlashcards?: (content: FlashcardProps, event: boolean) => ReactNode
+  children?: ReactNode
 };
 
 type FlashcardProps = {
@@ -32,18 +31,7 @@ type BenefitsProps = {
   className?: string
 };
 
-function Flashcards({id, title, contents,
-  renderFlashcards = (content, isHighlighted) => (
-    <Flashcard
-      title={content.title}
-      previewTitle={content.previewTitle}
-      href={content.href}
-      price={content.price}
-      per={content.per}
-      content={content.content}
-      visible={isHighlighted}>
-    </Flashcard>
-  )}: FlashcardsProps) {
+function Flashcards({id, title, children}: FlashcardsProps) {
 
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -54,21 +42,23 @@ function Flashcards({id, title, contents,
       </div>
       <section className="flex flex-col md:flex-row md:gap-[102px] gap-0 w-full justify-between">
         <div className="flex align-center relative w-fit h-fit my-14 mx-6">
-          {contents.map((content, index) => {
+          {Children.map(children, (content, index) => {
             const isHighlighted = index === selectedIndex;
-            return renderFlashcards(content, isHighlighted);
+            return cloneElement(content as ReactElement, {
+              visible: isHighlighted,
+            })
           })}
         </div>
         <div className="flex justify-center items-center h-full min-w-[15.1%] overflow-y-auto overflow-x-hidden">
           <div className="flex md:grid justify-items-center items-center gap-[50px]">
-            {contents.map((content, index) =>
+            {Children.map(children as ReactElement, (content, index) =>
               <button
                 onClick={() => setSelectedIndex(index)}
                 className={`${index === selectedIndex ?
                 "aspect-[290/168] w-[72.5%] bg-[#B7B38C] md:text-[0.93vw] text-[1.25vw] px-6" :
                 "aspect-[290/168] w-full bg-primary-100 md:text-[1.25vw] text-[2.25vw] px-[45px]"}
                 align-middle items-center font-monument uppercase`}>
-                {content.previewTitle}
+                {content.props.previewTitle}
               </button>
             )}
           </div>

@@ -1,4 +1,4 @@
-import "./IDcard.css";
+// import "./IDcard.css";
 import SectionHeader from "../SectionHeader";
 import Image from "next/image";
 import React, { ReactNode } from "react";

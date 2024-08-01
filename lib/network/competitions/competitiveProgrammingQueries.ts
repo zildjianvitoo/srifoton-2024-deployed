@@ -34,7 +34,8 @@ export const fetchCompetitiveProgramming = async (): Promise<CompetitiveProgramm
       idcard_3: data.idcard_3,
       proof: data.proof,
       payment_method: data.payment_method,
-      isVerified: data.isVerified
+      isVerified: data.isVerified,
+      date: data.date,
     };
     competitions.push(competition);
   });
@@ -72,7 +73,8 @@ export const getCompetitiveProgrammingByUserId = async (userId: string): Promise
       idcard_3: data.idcard_3,
       proof: data.proof,
       payment_method: data.payment_method,
-      isVerified: data.isVerified
+      isVerified: data.isVerified,
+      date: data.date,
     };
     competitions.push(competition);
   });
@@ -108,7 +110,8 @@ export const getCompetitiveProgrammingById = async (id: string): Promise<Competi
       idcard_3: data.idcard_3,
       proof: data.proof,
       payment_method: data.payment_method,
-      isVerified: data.isVerified
+      isVerified: data.isVerified,
+      date: data.date,
     };
     return competition;
   } else {

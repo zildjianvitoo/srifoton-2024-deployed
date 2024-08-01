@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import LocalFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/Provider/ThemeProvider";
+import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body
         className={`${monument.variable} ${inter.variable} ${ponnala.variable}`}
       >
+        <NextTopLoader color="#fff8f0" initialPosition={0.3} />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

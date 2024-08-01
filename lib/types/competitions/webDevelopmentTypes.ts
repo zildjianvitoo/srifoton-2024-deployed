@@ -1,4 +1,5 @@
 // lib/types/competitions/webDevelopmentTypes.ts
+import { Timestamp } from "firebase/firestore";
 
 export type WebDevelopment = {
     id: string;
@@ -24,5 +25,7 @@ export type WebDevelopment = {
     proof: string;
     payment_method: string;
     isVerified: boolean;
+    submission: string;
+    date: Timestamp;
   };
   

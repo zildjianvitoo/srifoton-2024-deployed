@@ -24,10 +24,18 @@ const routes = [
   { linkTo: "Talkshow", address: "/talkshow" },
 ];
 
+const adminDashboardRoutes = [
+  { linkTo: "Overview", address: "/admin-dashboard" },
+  { linkTo: "Competitive Programming", address: "/admin-dashboard/competitive-programming" },
+  { linkTo: "UI/UX Design", address: "/admin-dashboard/ui-ux-design" },
+  { linkTo: "Web Development", address: "/admin-dashboard/web-development" },
+  { linkTo: "Mobile Legends", address: "/admin-dashboard/mobile-legends"},
+]
+
 const dashboardRoutes = [
   { linkTo: "Account Data", address: "/account-data", icon: <Contact /> },
   { linkTo: "Personal Data", address: "/personal-data", icon: <CircleUser /> },
   { linkTo: "Activities", address: "/activities", icon: <CalendarRange /> },
 ];
 
-export { socials, contacts, routes, dashboardRoutes };
+export { socials, contacts, routes, adminDashboardRoutes, dashboardRoutes };

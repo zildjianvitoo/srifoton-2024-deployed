@@ -33,7 +33,9 @@ export const fetchUiUxDesign = async (): Promise<UiUxDesign[]> => {
       idcard_3: data.idcard_3,
       proof: data.proof,
       payment_method: data.payment_method,
-      isVerified: data.isVerified
+      isVerified: data.isVerified,
+      submission: data.submission,
+      date: data.date,
     };
     competitions.push(competition);
   });
@@ -71,7 +73,9 @@ export const getUiUxDesignByUserId = async (userId: string): Promise<UiUxDesign[
       idcard_3: data.idcard_3,
       proof: data.proof,
       payment_method: data.payment_method,
-      isVerified: data.isVerified
+      isVerified: data.isVerified,
+      submission: data.submission,
+      date: data.date,
     };
     competitions.push(competition);
   });
@@ -107,7 +111,9 @@ export const getMobileLegendById = async (id: string): Promise<UiUxDesign | null
       idcard_3: data.idcard_3,
       proof: data.proof,
       payment_method: data.payment_method,
-      isVerified: data.isVerified
+      isVerified: data.isVerified,
+      submission: data.submission,
+      date: data.date,
     };
     return competition;
   } else {

@@ -12,7 +12,8 @@ const buttonVariants = cva(
         default: "bg-primary text-primary-foreground hover:bg-primary/90 ",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline://added 'border-4' property for variant 'outline'
+        //added 'border-4' property for variant 'outline'
+        outline:
           "border border-text-200 bg-primary-100 border-4 hover:bg-background hover:text-primary-100 font-monument",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
@@ -32,8 +33,9 @@ const buttonVariants = cva(
              xl:py-[.6rem] xl:px-6 xl:text-md`,
         lg: "h-10 px-6",
         icon: "h-10 w-10",
-        default2: "px-[35px] py-[25px] text-sm xl:text-base min-[1920px]:text-xl w-fit",
-        full: "px-[35px] py-[25px] w-full"
+        default2:
+          "px-[35px] py-[25px] text-sm xl:text-base min-[1920px]:text-xl w-fit",
+        full: "px-[35px] py-[25px] w-full",
       },
     },
     defaultVariants: {

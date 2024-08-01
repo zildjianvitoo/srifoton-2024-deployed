@@ -1,4 +1,5 @@
 // lib/types/competitions/competitiveProgrammingTypes.ts
+import { Timestamp } from "firebase/firestore";
 
 export type CompetitiveProgramming = {
     id: string;
@@ -24,5 +25,6 @@ export type CompetitiveProgramming = {
     proof: string;
     payment_method: string;
     isVerified: boolean;
+    date: Timestamp;
   };
   

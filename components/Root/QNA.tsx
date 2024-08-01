@@ -1,8 +1,8 @@
 "use client";
 
 import React, { Children, cloneElement, ReactElement, ReactNode, useState } from "react";
-import SectionHeader from "../SectionHeader";
-import CardCrook from "../CardCrook";
+import SectionHeader from "./SectionHeader";
+import CardCrook from "./CardCrook";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";

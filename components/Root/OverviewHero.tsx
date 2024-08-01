@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { ReactNode } from "react";
 
-type Props = {id: string, header: string, subheader: string, src: string, href: string, children: ReactNode};
+type Props = {id: string, header: string, subheader: string, src: string, href: string, children?: ReactNode};
 
 export default function OverviewHero({id, header, subheader, src, href, children}: Props) {
   return (
@@ -39,11 +39,13 @@ export default function OverviewHero({id, header, subheader, src, href, children
             text-2xl md:text-4xl lg:text-4xl 2xl:text-[50px]">
             {subheader}
           </h1>
-          <p className="
-            font-ponnala font-normal text-primary-200
-            text-lg xl:text-xl 2xl:text-2xl">
-            {children}
-          </p>
+          { children && (
+            <p className="
+              font-ponnala font-normal text-primary-200
+              text-lg xl:text-xl 2xl:text-2xl">
+              {children}
+            </p>
+          )}
           <Link href={href} className="mx-auto">
             <Button
               variant="srifoton2"

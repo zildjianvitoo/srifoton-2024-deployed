@@ -10,9 +10,11 @@ import MediaPartner from "@/components/Root/Home/MediaPartner";
 
 export default function Home() {
   return (
-    <main className="bg-background">
+    <>
       <Hero />
-      <Countdown />
+      <div className="-mt-[100px]">
+        <Countdown />
+      </div>
       <Gallery />
       <Mascot />
       <Timeline title="event timeline" >
@@ -29,6 +31,6 @@ export default function Home() {
       <Benefits />
       <Sponsor />
       <MediaPartner />
-    </main>
+    </>
   );
 }

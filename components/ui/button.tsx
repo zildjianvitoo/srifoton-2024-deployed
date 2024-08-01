@@ -12,8 +12,8 @@ const buttonVariants = cva(
         default: "bg-primary text-primary-foreground hover:bg-primary/90 ",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline:
-          "border border-text-200 bg-primary-100 hover:bg-background hover:text-primary-100 font-monument",
+        outline://added 'border-4' property for variant 'outline'
+          "border border-text-200 bg-primary-100 border-4 hover:bg-background hover:text-primary-100 font-monument",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
@@ -23,7 +23,7 @@ const buttonVariants = cva(
         srifoton2:
           "bg-primary-100 text-text-300 hover:outline hover:outline-primary-100 hover:text-primary-100 hover:bg-background font-monument",
         outline2:
-          "border border-text-200 border-4 bg-primary-100 hover:bg-background hover:text-primary-100 font-monument",
+          "border border-primary-100 text-primary-100 border-4 bg-background hover:bg-primary-100 hover:text-text-300 font-monument",
       },
       size: {
         default: "h-10 px-4 py-2",
@@ -32,7 +32,7 @@ const buttonVariants = cva(
              xl:py-[.6rem] xl:px-6 xl:text-md`,
         lg: "h-10 px-6",
         icon: "h-10 w-10",
-        default2: "px-[35px] py-[25px] text-sm md:text-lg xl:text-xl w-fit",
+        default2: "px-[35px] py-[25px] text-sm xl:text-base min-[1920px]:text-xl w-fit",
         full: "px-[35px] py-[25px] w-full"
       },
     },

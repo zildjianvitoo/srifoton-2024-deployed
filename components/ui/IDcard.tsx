@@ -1,5 +1,5 @@
 // import "./IDcard.css";
-import SectionHeader from "../SectionHeader";
+import SectionHeader from "../Root/SectionHeader";
 import Image from "next/image";
 import React, { ReactNode } from "react";
 

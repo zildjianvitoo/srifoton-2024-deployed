@@ -56,7 +56,7 @@ export default function InfoHero({id, header, subheader, src, href, guideHref, c
           <div className="flex flex-col gap-4 min-[1920px]:gap-8">
             <h1 className="
               text-stroke-5 leading-[120%] relative font-monument font-normal min-[1920px]:text-nowrap
-              text-4xl lg:text-xl xl:text-4xl min-[1920px]:text-[42px]">
+              srifoton-header">
               <strong className="uppercase">{header}</strong>
             </h1>
             <h2 className="
@@ -68,7 +68,7 @@ export default function InfoHero({id, header, subheader, src, href, guideHref, c
           { children && (
             <p className="
               font-ponnala font-normal text-primary-200 text-justify
-              text-sm xl:text-xl min-[1920px]:text-2xl">
+              srifoton-text">
               {children}
             </p>
           )}

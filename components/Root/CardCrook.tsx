@@ -7,7 +7,7 @@ export default function CardCrook({ className, children, ...props }: Props) {
   return (
     <div
       className={cn(
-        "mb-30 text-text-200 relative w-2/3 font-monument md:w-3/5",
+        "mb-30 relative w-2/3 font-monument text-text-200 md:w-3/5",
         className,
       )}
     >

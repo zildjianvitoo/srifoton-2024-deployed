@@ -42,10 +42,10 @@ importers:
         specifier: ^2.1.1
         version: 2.1.1
       embla-carousel-autoplay:
-        specifier: ^8.1.5
-        version: 8.1.6(embla-carousel@8.1.6)
+        specifier: ^8.1.6
+        version: 8.1.6(embla-carousel@8.1.8)
       embla-carousel-react:
-        specifier: ^8.1.5
+        specifier: ^8.1.6
         version: 8.1.6(react@18.3.1)
       firebase:
         specifier: ^10.12.3
@@ -77,6 +77,9 @@ importers:
       simplebar-react:
         specifier: ^3.2.6
         version: 3.2.6(react@18.3.1)
+      srifoton-2024:
+        specifier: 'file:'
+        version: file:(@types/react-dom@18.3.0)(@types/react@18.3.3)(embla-carousel@8.1.8)(tailwindcss@3.4.4)
       tailwind-merge:
         specifier: ^2.3.0
         version: 2.4.0
@@ -96,6 +99,9 @@ importers:
       '@types/react-dom':
         specifier: ^18
         version: 18.3.0
+      embla-carousel:
+        specifier: ^8.1.8
+        version: 8.1.8
       eslint:
         specifier: ^8
         version: 8.57.0
@@ -1097,6 +1103,9 @@ packages:
 
   embla-carousel@8.1.6:
     resolution: {integrity: sha512-9n7FVsbPAs1KD+JmO84DnEDOZMXPBQbLujjMQqvsBRN2CDWwgZ9hRSNapztdPnyJfzOIxowGmj0BUQ8ACYAPkA==}
+
+  embla-carousel@8.1.8:
+    resolution: {integrity: sha512-KuHPA8qcAts6YE6ELtt38XYAb26hnKw8Ga0lSXmrhm1oI97t6oACFkqSsy33dfeZQEhaZB6VwWvaWQJRJVgSgA==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -2137,6 +2146,9 @@ packages:
   source-map-js@1.2.0:
     resolution: {integrity: sha512-itJW8lvSA0TXEphiRoawsCksnlf8SyvmFzIhltqAHluXd88pkCd+cXJVHTDwdCr0IzwptSm035IHQktUu1QUMg==}
     engines: {node: '>=0.10.0'}
+
+  'srifoton-2024@file:':
+    resolution: {directory: '', type: directory}
 
   stop-iteration-iterator@1.0.0:
     resolution: {integrity: sha512-iCGQj+0l0HOdZ2AEeBADlsRC+vsnDsZsbdSiH1yNSjcfKM7fdpCMfqAL/dwF5BLiw/XhRft/Wax6zQbhq2BcjQ==}
@@ -3471,9 +3483,9 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  embla-carousel-autoplay@8.1.6(embla-carousel@8.1.6):
+  embla-carousel-autoplay@8.1.6(embla-carousel@8.1.8):
     dependencies:
-      embla-carousel: 8.1.6
+      embla-carousel: 8.1.8
 
   embla-carousel-react@8.1.6(react@18.3.1):
     dependencies:
@@ -3486,6 +3498,8 @@ snapshots:
       embla-carousel: 8.1.6
 
   embla-carousel@8.1.6: {}
+
+  embla-carousel@8.1.8: {}
 
   emoji-regex@8.0.0: {}
 
@@ -4670,6 +4684,46 @@ snapshots:
   slash@3.0.0: {}
 
   source-map-js@1.2.0: {}
+
+  srifoton-2024@file:(@types/react-dom@18.3.0)(@types/react@18.3.3)(embla-carousel@8.1.8)(tailwindcss@3.4.4):
+    dependencies:
+      '@hookform/resolvers': 3.9.0(react-hook-form@7.52.1(react@18.3.1))
+      '@next/font': 14.2.4(next@14.2.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+      '@radix-ui/react-accordion': 1.2.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-collapsible': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-dialog': 1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-label': 2.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-slot': 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-tabs': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@uidotdev/usehooks': 2.4.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      class-variance-authority: 0.7.0
+      clsx: 2.1.1
+      embla-carousel-autoplay: 8.1.6(embla-carousel@8.1.8)
+      embla-carousel-react: 8.1.6(react@18.3.1)
+      firebase: 10.12.3
+      lucide-react: 0.396.0(react@18.3.1)
+      next: 14.2.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      next-firebase-auth-edge: 1.6.2(next@14.2.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+      next-themes: 0.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      nextjs-toploader: 1.6.12(next@14.2.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      react-hook-form: 7.52.1(react@18.3.1)
+      simplebar-react: 3.2.6(react@18.3.1)
+      tailwind-merge: 2.4.0
+      tailwindcss-animate: 1.0.7(tailwindcss@3.4.4)
+      zod: 3.23.8
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@opentelemetry/api'
+      - '@playwright/test'
+      - '@react-native-async-storage/async-storage'
+      - '@types/react'
+      - '@types/react-dom'
+      - babel-plugin-macros
+      - embla-carousel
+      - sass
+      - tailwindcss
 
   stop-iteration-iterator@1.0.0:
     dependencies:

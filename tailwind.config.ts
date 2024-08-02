@@ -20,6 +20,7 @@ const config = {
         lg: "1024px",
         xl: "1280px",
         "2xl": "1400px",
+        full: "1920px",
       },
     },
     extend: {
@@ -41,7 +42,7 @@ const config = {
         "primary-300": "hsl(var(--primary-300))",
         "black-100": "rgb(var(--black-100))",
         "black-200": "rgb(var(--black-200))",
-        "black-300": "rgb(var(--black-300))",
+        "black-300": "hsl(var(--black-300))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

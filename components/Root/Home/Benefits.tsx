@@ -53,7 +53,7 @@ export default function Benefits() {
           alt="dog-footprints"
           width={1000}
           height={1000}
-          className="absolute right-[25%] top-[96%] w-[80%] md:right-[60%] md:top-[85%] md:w-[40%]"
+          className="absolute left-[-9%] w-[80%] top-[82%] lg:top-[90%] md:w-[40%]"
         />
       </div>
     </section>

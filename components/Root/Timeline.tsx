@@ -47,7 +47,7 @@ function  Timeline({ className, children, title="timeline", ...props } : Props) 
           <div className="block -mr-5 mb-0 rotate-0 scale-50 opacity-100 lg:-mt-2.5 lg:scale-100">
             <Triangle />
           </div>
-          <div className="absolute z-0 inline-block w-2.5 rounded-full bg-white opacity-25 left-0 top-[160px] md:top-[197px] h-1 w-full opacity-100 lg:top-[295px] lg:h-2.5"></div>
+          <div className="absolute z-0 inline-block w-2.5 rounded-full bg-white left-0 top-[160px] md:top-[197px] h-1 w-full opacity-100 lg:top-[295px] lg:h-2.5"></div>
         </div>
       </section>
     </section>

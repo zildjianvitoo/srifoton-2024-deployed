@@ -20,20 +20,19 @@ type Props = {
   title?: string
 };
 
-function Timeline({ className, children, title="timeline", ...props } : Props) {
+function  Timeline({ className, children, title="timeline", ...props } : Props) {
   return (
     <section
       id="timeline"
-      className="px-8 md:px-12 lg:px-20 xl:px-[7rem]"
     >
       <div className="mx-[9.55vw]">
         <SectionHeader text={title} />
       </div>
-      <section className="custom-scrollbar mt-20 grid h-auto flex-col justify-center justify-items-center overflow-x-auto scroll-smooth border-2 px-16 py-16 md:flex md:h-[512px] md:py-0 lg:h-[700px]">
-        <div className="relative flex w-fit flex-col items-center md:flex-row">
-          <ul className="grid list-none flex-col items-start justify-items-center gap-24 md:flex md:inline-flex md:flex-row md:gap-4 lg:gap-0">
+      <section className="custom-scrollbar mt-8 md:mt-20 flex flex-col justify-center overflow-x-auto scroll-smooth border-2 px-16 py-8 md:py-0 h-auto md:h-[512px] lg:h-[700px]">
+        <div className="relative flex flex-row w-fit items-center">
+          <ul className="flex inline-flex flex-row list-none items-start gap-4 lg:gap-0">
             {Children.map(children, (child, index) => (
-              <li>
+              <li className="-mx-[20px]">
                 {
                   cloneElement(child as ReactElement, {
                     index: index,
@@ -45,10 +44,10 @@ function Timeline({ className, children, title="timeline", ...props } : Props) {
               <div className="w-12"></div>
             </li>
           </ul>
-          <div className="-mb-5 block rotate-90 scale-100 opacity-25 md:-mr-5 md:mb-0 md:rotate-0 md:scale-50 md:opacity-100 lg:-mt-2.5 lg:scale-100">
+          <div className="block -mr-5 mb-0 rotate-0 scale-50 opacity-100 lg:-mt-2.5 lg:scale-100">
             <Triangle />
           </div>
-          <div className="absolute left-[157px] z-0 inline-block h-full w-2.5 rounded-full bg-white opacity-25 md:left-0 md:top-[197px] md:h-1 md:w-full md:opacity-100 lg:top-[295px] lg:h-2.5"></div>
+          <div className="absolute z-0 inline-block w-2.5 rounded-full bg-white left-0 top-[160px] md:top-[197px] h-1 w-full opacity-100 lg:top-[295px] lg:h-2.5"></div>
         </div>
       </section>
     </section>
@@ -66,35 +65,32 @@ function TimelineCard({
     <>
       <div className="flex">
         <div
-          className={`z-10 grid w-full grid-cols-1 justify-items-center md:w-[228px] lg:w-[397px] ${index % 2 === 0 ? "" : "pt-0 md:pt-[193px] lg:pt-[289px]"}`}
+          className={`z-10 grid grid-cols-1 justify-items-center w-[200px] md:w-[310px] lg:w-[397px]
+            ${index % 2 === 0 ? "" : "pt-[157px] md:pt-[193px] lg:pt-[289px]"}`}
         >
           {index % 2 === 0 ? (
             <>
-              <p className="mb-2 justify-self-start font-monument text-lg text-white md:text-sm lg:mb-4 lg:text-xl">
+              <p className="mb-2 lg:mb-4 justify-self-start font-monument text-white text-xs md:text-sm lg:text-xl">
                 {span}
               </p>
-              <CardCrook
-                className={`md:text-md aspect-[228/112] h-40 !w-full text-center text-xl md:h-28 lg:h-40 lg:text-2xl ${index % 2 === 0 ? "scale-x-[-1]" : ""}`}
-              >
-                <div
-                  className={`flex h-full items-center justify-center ${index % 2 === 0 ? "scale-x-[-1]" : ""}`}
-                >
+              <CardCrook className="aspect-[397/165] !w-full text-center h-28 lg:h-40 text-sm md:text-lg lg:text-2xl scale-x-[-1]">
+                <div className="flex h-full items-center justify-center scale-x-[-1]">
                   {children}
                 </div>
               </CardCrook>
-              <div className="my-auto hidden h-16 border-l-4 md:block lg:h-24 lg:border-l-[10px]"></div>
-              <div className="-mt-3 hidden h-3 w-3 rounded-full bg-white md:block lg:h-6 lg:w-6"></div>
+              <div className="my-auto h-8 md:h-16 border-l-4 block lg:h-24 lg:border-l-[10px]"></div>
+              <div className="-mt-3 h-3 w-3 rounded-full bg-white block lg:h-6 lg:w-6"></div>
             </>
           ) : (
             <>
-              <div className="-mb-3 hidden h-3 w-3 rounded-full bg-white md:block lg:h-6 lg:w-6"></div>
-              <div className="my-auto hidden h-16 border-l-4 md:block lg:h-24 lg:border-l-[10px]"></div>
-              <CardCrook className="md:ext-md aspect-[228/112] h-40 !w-full text-center text-xl md:h-28 lg:h-40 lg:text-2xl">
-                <div className="flex h-full items-center text-center">
+              <div className="-mb-3 h-3 w-3 rounded-full bg-white block lg:h-6 lg:w-6"></div>
+              <div className="my-auto h-8 md:h-16 border-l-4 block lg:h-24 lg:border-l-[10px]"></div>
+              <CardCrook className="aspect-[228/112] !w-full text-center h-28 lg:h-40 text-sm md:text-lg lg:text-2xl">
+                <div className="flex h-full items-center justify-center">
                   {children}
                 </div>
               </CardCrook>
-              <p className="mt-2 justify-self-start font-monument text-lg text-white md:text-sm lg:mb-4 lg:text-xl">
+              <p className="mt-2 lg:mb-4 justify-self-start font-monument text-white text-xs md:text-sm lg:text-xl">
                 {span}
               </p>
             </>

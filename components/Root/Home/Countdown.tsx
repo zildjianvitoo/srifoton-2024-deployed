@@ -3,6 +3,7 @@
 import Time from "./Time";
 import CardCrook from "../CardCrook";
 import useCountdown from "@/hooks/useCountdown";
+import Image from "next/image";
 
 function DoubleDot() {
   return (
@@ -20,9 +21,27 @@ export default function Countdown() {
   return (
     <section id="countdown">
       <div className="flex w-full justify-center">
-        <CardCrook>
-          <div className="m-auto flex flex-col items-center justify-center text-center">
-            <h3 className="align-top text-base text-text-300 sm:text-xl md:text-2xl xl:text-4xl">
+        <CardCrook className="relative w-full mx-[7.5vw] !w-full md:!w-full">
+          <Image
+          src="/img/gear.png"
+          alt="gear"
+          className="!w-[15%] object-contain absolute top-[8%] left-[2.8%]"
+          quality={100}
+          width={216}
+          height={171}
+          loading="eager"
+          />
+          <Image
+          src="/img/hourglass.png"
+          alt="hourglass"
+          className="!w-[15%] object-contain absolute right-0 bottom-0"
+          quality={100}
+          width={144}
+          height={232}
+          loading="eager"
+          />
+          <div className="mx-auto mt-[10%] mb-[12%] flex flex-col items-center justify-center text-center">
+            <h3 className="align-top text-xs text-text-300 sm:text-xl md:text-2xl xl:text-4xl">
               OPENING CEREMONY
               <div className="mt-1 rounded-md border-2 border-[#868365] bg-[#868365] md:mt-3 md:h-1 lg:mt-4 xl:mt-5"></div>
             </h3>

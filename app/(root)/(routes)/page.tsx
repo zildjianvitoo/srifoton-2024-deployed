@@ -12,16 +12,16 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <div className="-mt-[100px]">
+      <div className="xl:mt-28">
         <Countdown />
       </div>
       <Gallery />
       <Mascot />
       <Timeline title="event timeline" >
-        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
+        <TimelineCard span="23 Sept - 20 Augs">Open</TimelineCard>
+        <TimelineCard span="23 Sept - 20 Augs">Open Registration</TimelineCard>
+        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition for the</TimelineCard>
+        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition for the given Competition</TimelineCard>
         <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
         <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
         <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>

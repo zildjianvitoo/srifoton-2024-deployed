@@ -44,9 +44,10 @@
     --shadow-100: 54.42 22.99% 63.33%;
     --shadow-200: 54.55 14.04% 46.08%;
     --shadow-300: #737158;
-    --black-100: #3f3b34;
-    --black-200: #24221e;
-    --black-300: #1d1c19;
+    --black-100: #3F3B34;
+    --black-200: #24221E;
+    --black-300: 40 8% 11%;
+
   }
 
   .dark {
@@ -94,13 +95,62 @@
     color: #1d1c19;
   }
 
+  .text-stroke-2 {
+    -webkit-text-stroke: 2px #ebe5dc;
+    paint-order: stroke fill;
+    color: #1d1c19;
+  }
+
+  .text-stroke-3 {
+    -webkit-text-stroke: 3.5px #ebe5dc;
+    paint-order: stroke fill;
+    color: #1d1c19;
+  }
+
   .text-stroke-5 {
     -webkit-text-stroke: 5px #ebe5dc;
     paint-order: stroke fill;
     color: #1d1c19;
   }
+
+  .embla {
+    overflow: hidden;
+    transform: rotate(5deg);
+  }
+  .embla__container {
+    display: flex;
+    align-items: center;
+  }
+  .embla__slide {
+    flex: 0 0 60%;
+    min-width: 0;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+  .for_benefit > .embla__slide {
+    flex: 0 0 45%;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  @media screen and (max-width: 1024px) {
+    .embla__slide {
+      flex: 0 0 35%;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    .embla {
+      transform: rotate(0deg);
+    }
+  }
+
   li {
     @apply md:mx-1 md:px-1 lg:mx-2 lg:px-1 xl:mx-3 xl:px-2;
+  }
+
+  .srifoton-header-main {
+    @apply
+    text-[3rem] md:text-[5rem] lg:text-[8rem] 2xl:text-[200px]
+    text-stroke-2 md:text-stroke-3 lg:text-stroke-5;
   }
 
   .srifoton-header {

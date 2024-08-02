@@ -1,4 +1,5 @@
 // lib/types/competitions/uiUxDesignTypes.ts
+import { Timestamp } from "firebase/firestore";
 
 export type UiUxDesign = {
     id: string;
@@ -24,5 +25,7 @@ export type UiUxDesign = {
     proof: string;
     payment_method: string;
     isVerified: boolean;
+    submission: string;
+    date: Timestamp;
   };
   

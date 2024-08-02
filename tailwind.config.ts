@@ -24,6 +24,10 @@ const config = {
     },
     extend: {
       colors: {
+        whtc: "hsl(var(--whtc))",
+        "shadow-100": "hsl(var(--shadow-100))",
+        "shadow-200": "hsl(var(--shadow-200))",
+        "shadow-300": "rgb(var(--shadow-300))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -35,6 +39,9 @@ const config = {
         "primary-100": "hsl(var(--primary-100))",
         "primary-200": "hsl(var(--primary-200))",
         "primary-300": "hsl(var(--primary-300))",
+        "black-100": "rgb(var(--black-100))",
+        "black-200": "rgb(var(--black-200))",
+        "black-300": "rgb(var(--black-300))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

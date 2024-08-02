@@ -1,4 +1,5 @@
 // lib/types/competitions/mobileLegendsTypes.ts
+import { Timestamp } from "firebase/firestore";
 
 export type MobileLegends = {
     id: string;
@@ -34,4 +35,5 @@ export type MobileLegends = {
     proof: string;
     payment_method: string;
     isVerified: boolean;
+    date: Timestamp;
   };

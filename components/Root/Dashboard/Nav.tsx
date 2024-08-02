@@ -1,18 +1,7 @@
 "use client";
 
 import { Inter } from "next/font/google";
-import { Button } from "../../ui/button";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
 import Link from "next/link";
-import { Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { routes } from "@/lib/link";
@@ -26,42 +15,15 @@ export default function Nav() {
   return (
     <nav
       id="navbar"
-      className="absolute right-0 w-4/5 bg-background pt-10 text-[#868365]"
+      className="absolute right-0 w-4/5 bg-background text-[#868365] lg:pt-10"
     >
-      <div className="lg:hidden">
-        <Sheet>
-          <SheetTrigger>
-            <Menu color="#868365" />
-          </SheetTrigger>
-          <SheetContent>
-            <SheetHeader>
-              <ul className="py-2 font-ponnala text-lg">
-                <li className="my-5 text-left" key={1}>
-                  <SheetClose asChild>
-                    <Link href="/">Home</Link>
-                  </SheetClose>
-                </li>
-                <li className="my-5 text-left" key={2}>
-                  <SheetClose asChild>
-                    <Link href="/competition">Competition</Link>
-                  </SheetClose>
-                </li>
-                <li className="my-5 text-left" key={3}>
-                  <SheetClose asChild>
-                    <Link href="/workshop">Workshop</Link>
-                  </SheetClose>
-                </li>
-                <li className="my-5 text-left" key={4}>
-                  <SheetClose asChild>
-                    <Link href="/talkshow">Talkshow</Link>
-                  </SheetClose>
-                </li>
-              </ul>
-            </SheetHeader>
-          </SheetContent>
-        </Sheet>
-      </div>
-      <ul className="me-20 flex items-center justify-end font-ponnala text-[#868365] lg:text-base xl:text-xl">
+      <Link
+        href="/"
+        className="absolute right-[7.2917vw] mt-6 inline-block lg:hidden"
+      >
+        <h3 className="border-b-2 border-[#868365] text-xl">Back to Home</h3>
+      </Link>
+      <ul className="me-20 hidden items-center justify-end font-ponnala text-[#868365] lg:flex lg:text-base xl:text-xl">
         {routes.map((routes) => (
           <li
             className={cn("self-center", {

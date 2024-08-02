@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import LocalFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/Provider/ThemeProvider";
 import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+
+const poppins = Poppins({
+  variable: "--font-poppins",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+});
 
 const monument = LocalFont({
   src: "../public/fonts/MonumentExtended-Regular.woff2",
@@ -30,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${monument.variable} ${inter.variable} ${ponnala.variable}`}
+        className={`${monument.variable} ${inter.variable} ${ponnala.variable} ${poppins.variable} overflow-x-hidden`}
       >
         <NextTopLoader color="#fff8f0" initialPosition={0.3} />
         <ThemeProvider

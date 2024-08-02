@@ -4,7 +4,6 @@ export type User = {
     id: string;
     name: string;
     email: string;
-    email_verified_at: Date;
     password: string;
     college: string;
     semester: string;

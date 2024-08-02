@@ -11,9 +11,7 @@ export default function layout({ children }: Props) {
     <div className="bg-background">
       <Nav />
       <NavSided />
-      <main className="text- mx-[7.3vw] mt-12 flex flex-col gap-24 lg:mt-[75px] lg:gap-[200px]">
-        {children}
-      </main>
+      <main className="mx-[7.2917vw] lg:mx-0">{children}</main>
     </div>
   );
 }

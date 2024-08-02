@@ -41,8 +41,8 @@ function NavSided() {
       </div>
       <div className="lg:hidden">
         <Sheet>
-          <SheetTrigger>
-            <Menu className="size-14" />
+          <SheetTrigger className="mx-[7.2917vw] mt-6">
+            <Menu className="size-8" />
           </SheetTrigger>
           <SheetContent>
             <SheetHeader>

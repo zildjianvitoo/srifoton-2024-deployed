@@ -1,6 +1,8 @@
-// lib/types/seminarTypes.ts
+// lib/types/talkshowTypes.ts
 
-export type Seminar = {
+import { Timestamp } from "firebase/firestore";
+
+export type Talkshow = {
     id: string;
     user_id: string;
     name: string;
@@ -10,5 +12,5 @@ export type Seminar = {
     proof: string;
     payment_method: string;
     isVerified: boolean;
+    date: Timestamp;
   };
-  

@@ -248,9 +248,40 @@
     animation: spin 1s ease-in-out infinite;
   }
 
+  .spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top-color: #000;
+    animation: spin 1s ease-in-out infinite;
+  }
+  
+  .spinner-loading {
+    display: inline-block;
+    width: 64px; 
+    height: 64px; 
+    border: 8px solid #ddd; 
+    border-radius: 50%;
+    border-top-color: #868365; 
+    animation: spin 1s ease-in-out infinite;
+  }
+
+  .spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+  }
+
   @keyframes spin {
     to {
       transform: rotate(360deg);
     }
+  }
+
+  .admin-section {
+    margin-bottom: 1rem;
   }
 }

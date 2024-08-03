@@ -43,7 +43,7 @@ export const fetchMobileLegends = async (): Promise<MobileLegends[]> => {
       idcard_5: data.idcard_5,
       proof: data.proof,
       payment_method: data.payment_method,
-      isVerified: data.isVerified,
+      is_verified: data.is_verified,
       date: data.date,
     };
     competitions.push(competition);
@@ -93,7 +93,7 @@ export const getMobileLegendsByUserId = async (userId: string): Promise<MobileLe
       idcard_5: data.idcard_5,
       proof: data.proof,
       payment_method: data.payment_method,
-      isVerified: data.isVerified,
+      is_verified: data.is_verified,
       date: data.date,
     };
     competitions.push(competition);
@@ -140,7 +140,7 @@ export const getMobileLegendById = async (id: string): Promise<MobileLegends | n
       idcard_5: data.idcard_5,
       proof: data.proof,
       payment_method: data.payment_method,
-      isVerified: data.isVerified,
+      is_verified: data.is_verified,
       date: data.date,
     };
     return competition;

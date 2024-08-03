@@ -28,7 +28,7 @@ export default function Nav() {
       id="navbar"
       className="sticky top-0 z-50 flex items-center justify-between bg-background px-8 py-5 text-primary shadow-sm shadow-[#868365] md:px-12 lg:px-20 xl:px-[7rem]"
     >
-      <Link href="/" className="flex items-center">
+      <Link href="/admin-dashboard" className="flex items-center">
         <span className="md:text-md me-2 border-2 border-[#D9D9D9] px-2 py-[.3rem] text-sm md:me-3 md:px-3 md:py-1 lg:me-5 lg:px-4 lg:py-1 lg:text-lg xl:me-7 xl:px-5 xl:py-2 xl:text-xl">
           Admin Dashboard
         </span>
@@ -49,27 +49,27 @@ export default function Nav() {
               <ul className="py-2 font-ponnala text-lg">
                 <li className="my-5 text-left" key={1}>
                   <SheetClose asChild>
-                    <Link href="/">Overview</Link>
+                    <Link href="/admin-dashboard">Overview</Link>
                   </SheetClose>
                 </li>
                 <li className="my-5 text-left" key={2}>
                   <SheetClose asChild>
-                    <Link href="/competition">Competitive Programming</Link>
+                    <Link href="/admin-dashboard/competition">Competition</Link>
                   </SheetClose>
                 </li>
                 <li className="my-5 text-left" key={3}>
                   <SheetClose asChild>
-                    <Link href="/workshop">UI/UX</Link>
+                    <Link href="/admin-dashboard/talkshow">Talkshow</Link>
                   </SheetClose>
                 </li>
                 <li className="my-5 text-left" key={4}>
                   <SheetClose asChild>
-                    <Link href="/talkshow">Web Development</Link>
+                    <Link href="/admin-dashboard/workshop">Workshop</Link>
                   </SheetClose>
                 </li>
                 <li className="my-5 text-left" key={5}>
                   <SheetClose asChild>
-                    <Link href="/talkshow">Mobile Legends</Link>
+                    <Link href="/admin-dashboard/logout">Logout</Link>
                   </SheetClose>
                 </li>
               </ul>
@@ -80,8 +80,8 @@ export default function Nav() {
       <div className="hidden text-[#868365] md:block">
         <ul className="lg:text-md flex items-center py-2 font-ponnala xl:text-xl">
           {adminDashboardRoutes.map((routes) => (
-            // eslint-disable-next-line react/jsx-key
             <li
+              key={routes.address}
               className={cn("mt-2", {
                 "border-b border-white text-white": pathname === routes.address,
               })}
@@ -90,7 +90,7 @@ export default function Nav() {
             </li>
           ))}
           <li className="me-0 pe-0 font-monument">
-            <Link href="/logout">
+            <Link href="/admin-dashboard/logout">
               <Button size={"sm"} variant={"srifoton"}>
                 Logout
               </Button>

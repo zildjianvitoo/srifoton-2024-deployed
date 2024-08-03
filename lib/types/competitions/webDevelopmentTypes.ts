@@ -24,7 +24,7 @@ export type WebDevelopment = {
     idcard_3: string;
     proof: string;
     payment_method: string;
-    isVerified: boolean;
+    is_verified: boolean;
     submission: string;
     date: Timestamp;
   };

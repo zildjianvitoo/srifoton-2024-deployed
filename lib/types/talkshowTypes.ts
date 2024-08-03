@@ -11,6 +11,6 @@ export type Talkshow = {
     type: string;
     proof: string;
     payment_method: string;
-    isVerified: boolean;
+    is_verified: boolean;
     date: Timestamp;
   };

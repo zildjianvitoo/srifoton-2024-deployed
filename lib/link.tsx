@@ -26,10 +26,9 @@ const routes = [
 
 const adminDashboardRoutes = [
   { linkTo: "Overview", address: "/admin-dashboard" },
-  { linkTo: "Competitive Programming", address: "/admin-dashboard/competitive-programming" },
-  { linkTo: "UI/UX Design", address: "/admin-dashboard/ui-ux-design" },
-  { linkTo: "Web Development", address: "/admin-dashboard/web-development" },
-  { linkTo: "Mobile Legends", address: "/admin-dashboard/mobile-legends"},
+  { linkTo: "Competition", address: "/admin-dashboard/competition" },
+  { linkTo: "Workshop", address: "/admin-dashboard/workshop" },
+  { linkTo: "Talkshow", address: "/admin-dashboard/talkshow" },
 ]
 
 const dashboardRoutes = [

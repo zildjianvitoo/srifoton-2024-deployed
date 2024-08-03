@@ -34,6 +34,6 @@ export type MobileLegends = {
     idcard_5: string;
     proof: string;
     payment_method: string;
-    isVerified: boolean;
+    is_verified: boolean;
     date: Timestamp;
   };

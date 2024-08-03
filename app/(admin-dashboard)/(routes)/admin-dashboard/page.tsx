@@ -1,4 +1,3 @@
-import AdminDashboardGraph from "@/components/Admin-Dashboard/AdminDashboardGraph";
 import CategorizedGraph from "@/components/Admin-Dashboard/CategorizedGraph";
 import React from "react";
 

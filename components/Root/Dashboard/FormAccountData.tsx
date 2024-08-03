@@ -62,7 +62,7 @@ const formSchema = z
     message: "Password didn't match.",
   });
 
-export default function FormDashboard() {
+export default function FormAccountData() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {

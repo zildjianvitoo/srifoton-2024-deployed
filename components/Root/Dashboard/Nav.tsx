@@ -15,30 +15,32 @@ export default function Nav() {
   return (
     <nav
       id="navbar"
-      className="absolute right-0 w-4/5 bg-background text-[#868365] lg:pt-10"
+      className="right-0 z-50 w-4/5 bg-background py-6 text-[#868365] lg:fixed"
     >
       <Link
         href="/"
-        className="absolute right-[7.2917vw] mt-6 inline-block lg:hidden"
+        className="absolute right-[7.2917vw] top-6 inline-block lg:hidden"
       >
         <h3 className="border-b-2 border-[#868365] text-xl">Back to Home</h3>
       </Link>
-      <ul className="me-20 hidden items-center justify-end font-ponnala text-[#868365] lg:flex lg:text-base xl:text-xl">
-        {routes.map((routes) => (
-          <li
-            className={cn("self-center", {
-              "border-white text-white": pathname === routes.address,
-            })}
-          >
-            <Link href={routes.address}>{routes.linkTo}</Link>
+      <div className="hidden text-[#868365] md:block">
+        <ul className="me-20 flex items-center justify-end font-ponnala text-[#868365] lg:text-base xl:text-xl">
+          {routes.map((routes) => (
+            <li
+              className={cn("mt-2 items-center", {
+                "border-white text-white": pathname === routes.address,
+              })}
+            >
+              <Link href={routes.address}>{routes.linkTo}</Link>
+            </li>
+          ))}
+          <li className="">
+            <Link href="/login">
+              <CircleUser className="size-8" />
+            </Link>
           </li>
-        ))}
-        <li className="">
-          <Link href="/login">
-            <CircleUser className="size-8" />
-          </Link>
-        </li>
-      </ul>
+        </ul>
+      </div>
     </nav>
   );
 }

@@ -1,26 +1,44 @@
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 
 const fetchSegmentData = async (collectionName: string) => {
-  const verifiedQuery = query(collection(db, collectionName), where("is_verified", "==", true));
-  const nonVerifiedQuery = query(collection(db, collectionName), where("is_verified", "==", false));
-  
-  const [verifiedSnapshot, nonVerifiedSnapshot] = await Promise.all([getDocs(verifiedQuery), getDocs(nonVerifiedQuery)]);
-  
+  const snapshot = await getDocs(collection(db, collectionName));
+
+  let verifiedCount = 0;
+  let nonVerifiedCount = 0;
+
+  snapshot.forEach(doc => {
+    const data = doc.data();
+    if (data.is_verified) {
+      verifiedCount++;
+    } else {
+      nonVerifiedCount++;
+    }
+  });
+
   return {
-    verified: verifiedSnapshot.size,
-    nonVerified: nonVerifiedSnapshot.size,
+    verified: verifiedCount,
+    nonVerified: nonVerifiedCount,
   };
 };
 
 // Fetch data for all segments
 export const fetchAllSegmentsData = async () => {
-  const competitiveProgrammingData = await fetchSegmentData("competitive_programmings");
-  const uiUxDesignData = await fetchSegmentData("ui_ux_designs");
-  const webDevelopmentData = await fetchSegmentData("web_developments");
-  const mobileLegendsData = await fetchSegmentData("mobile_legends");
-  const talkshowData = await fetchSegmentData("talkshows");
-  const workshopData = await fetchSegmentData("workshops");
+  const [
+    competitiveProgrammingData,
+    uiUxDesignData,
+    webDevelopmentData,
+    mobileLegendsData,
+    talkshowData,
+    workshopData
+  ] = await Promise.all([
+    fetchSegmentData("competitive_programmings"),
+    fetchSegmentData("ui_ux_designs"),
+    fetchSegmentData("web_developments"),
+    fetchSegmentData("mobile_legends"),
+    fetchSegmentData("talkshows"),
+    fetchSegmentData("workshops"),
+  ]);
 
   return {
     competition: {

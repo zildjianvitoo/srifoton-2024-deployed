@@ -1,4 +1,5 @@
 // lib/types/competitions/uiUxDesignTypes.ts
+
 import { Timestamp } from "firebase/firestore";
 
 export type UiUxDesign = {

@@ -1,3 +1,5 @@
+// hooks/useSegmentData.ts
+
 import { useEffect, useState } from "react";
 import { fetchAllSegmentsData } from "@/lib/network/segments/segmentQueries";
 import { SegmentData } from "@/lib/types/segmentDataTypes";

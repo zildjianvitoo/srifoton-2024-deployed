@@ -1,3 +1,5 @@
+// hooks/useUsers.ts
+
 import { useState, useEffect } from "react";
 import { fetchUsers } from "../lib/network/users/userQueries";
 import { User } from "../lib/types/userTypes";

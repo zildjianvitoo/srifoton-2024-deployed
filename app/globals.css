@@ -255,6 +255,7 @@
     transform: rotateY(180deg);
   }
 
+
   .spinner {
     display: inline-block;
     width: 16px;
@@ -265,13 +266,13 @@
     animation: spin 1s ease-in-out infinite;
   }
 
-  .spinner {
+  .spinner-white {
     display: inline-block;
     width: 16px;
     height: 16px;
-    border: 2px solid rgba(0, 0, 0, 0.1);
+    border: 2px solid #ddd;
     border-radius: 50%;
-    border-top-color: #000;
+    border-top-color: #868365;
     animation: spin 1s ease-in-out infinite;
   }
 

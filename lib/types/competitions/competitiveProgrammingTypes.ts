@@ -1,4 +1,5 @@
 // lib/types/competitions/competitiveProgrammingTypes.ts
+
 import { Timestamp } from "firebase/firestore";
 
 export type CompetitiveProgramming = {

@@ -21,7 +21,7 @@ function NavSided() {
 
   return (
     <section id="nav-sided" className="text-[#868365] lg:text-base xl:text-lg">
-      <div className="hidden h-screen w-1/5 bg-[#24221E] px-4 pt-10 text-center lg:block lg:text-base xl:text-lg">
+      <div className="fixed bottom-0 top-0 hidden w-1/5 bg-[#24221E] px-4 pt-6 text-center lg:block lg:text-base xl:text-lg">
         <div className="inline border-2 border-white px-4 py-2 text-white">
           Logo
         </div>
@@ -41,7 +41,7 @@ function NavSided() {
       </div>
       <div className="lg:hidden">
         <Sheet>
-          <SheetTrigger className="mx-[7.2917vw] mt-6">
+          <SheetTrigger className="absolute top-6 mx-[7.2917vw]">
             <Menu className="size-8" />
           </SheetTrigger>
           <SheetContent>

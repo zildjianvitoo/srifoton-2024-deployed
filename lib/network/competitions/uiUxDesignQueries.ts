@@ -33,7 +33,7 @@ export const fetchUiUxDesign = async (): Promise<UiUxDesign[]> => {
       idcard_3: data.idcard_3,
       proof: data.proof,
       payment_method: data.payment_method,
-      isVerified: data.isVerified,
+      is_verified: data.is_verified,
       submission: data.submission,
       date: data.date,
     };
@@ -73,7 +73,7 @@ export const getUiUxDesignByUserId = async (userId: string): Promise<UiUxDesign[
       idcard_3: data.idcard_3,
       proof: data.proof,
       payment_method: data.payment_method,
-      isVerified: data.isVerified,
+      is_verified: data.is_verified,
       submission: data.submission,
       date: data.date,
     };
@@ -111,7 +111,7 @@ export const getMobileLegendById = async (id: string): Promise<UiUxDesign | null
       idcard_3: data.idcard_3,
       proof: data.proof,
       payment_method: data.payment_method,
-      isVerified: data.isVerified,
+      is_verified: data.is_verified,
       submission: data.submission,
       date: data.date,
     };

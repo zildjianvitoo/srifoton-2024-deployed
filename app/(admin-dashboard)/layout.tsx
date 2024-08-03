@@ -1,4 +1,6 @@
+import AddDummyDataButton from "@/components/Admin-Dashboard/AddDummyDataButton";
 import Nav from "@/components/Admin-Dashboard/Nav";
+import Footer from "@/components/Root/Footer";
 import React, { ReactNode } from "react";
 
 type Props = {

@@ -10,7 +10,7 @@ export default function OverviewHero({id, header, subheader, src, href, children
     <section id={id} className="flex mx-auto">
       <div className="
         flex flex-col lg:flex-row justify-center w-full items-center
-        md:min-h-fit
+        sm:min-h-[90vh] md:min-h-fit
         gap-16 md:gap-20 lg:gap-28 2xl:gap-[165px]">
 
         <figure className="
@@ -31,7 +31,7 @@ export default function OverviewHero({id, header, subheader, src, href, children
         ">
           <h1 className="
             text-stroke-5 leading-[120%] relative font-monument font-normal 2xl:w-[795px]
-            text-3xl sm:text-6xl md:text-[4.5rem] lg:text-6xl 2xl:text-[90px]">
+            text-6xl md:text-[4.5rem] lg:text-6xl 2xl:text-[90px]">
             <strong className="uppercase">{header}</strong>
           </h1>
           <h1 className="

@@ -24,7 +24,7 @@ const buttonVariants = cva(
         srifoton2:
           "bg-primary-100 text-text-300 hover:outline hover:outline-primary-100 hover:text-primary-100 hover:bg-background font-monument",
         outline2:
-          "border border-primary-100 text-primary-100 border-2 lg:border-4 bg-background hover:bg-primary-100 hover:text-text-300 font-monument",
+          "border border-primary-100 text-primary-100 border-4 bg-background hover:bg-primary-100 hover:text-text-300 font-monument",
       },
       size: {
         default: "h-10 px-4 py-2",
@@ -34,7 +34,7 @@ const buttonVariants = cva(
         lg: "h-10 px-6",
         icon: "h-10 w-10",
         default2:
-          "px-[35px] py-[25px] text-[10px] sm:text-sm xl:text-base min-[1920px]:text-xl w-fit",
+          "px-[35px] py-[25px] text-sm xl:text-base min-[1920px]:text-xl w-fit",
         full: "px-[35px] py-[25px] w-full",
       },
     },

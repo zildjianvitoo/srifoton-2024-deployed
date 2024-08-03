@@ -1,3 +1,9 @@
-export default function EsportRegist() {
-  return <section id="">page</section>;
+import Registration from "@/components/Root/Registration";
+
+export default function EsportRegistration() {
+  return (
+    <>
+      <Registration branch="e-sport" guideBookLink="" />
+    </>
+  );
 }

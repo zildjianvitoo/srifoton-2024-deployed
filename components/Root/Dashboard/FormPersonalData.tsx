@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/form";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Input } from "@/components/ui/input";
+import FormInput from "@/components/FormInput";
 import { PasswordField } from "./PasswordField";
 
 const phoneRegex = new RegExp(
@@ -52,76 +53,39 @@ export default function FormPersonalData() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="mt-10 space-y-6 px-8 text-[#868365]"
+        className="mt-10 space-y-6 text-black md:px-8"
       >
-        <FormField
+        <FormInput
           control={form.control}
           name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="font-monument text-black">
-                Username
-              </FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="Nobita"
-                  {...field}
-                  className="rounded-none border-[#868365] bg-transparent py-0 text-sm placeholder:text-[#868365]"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          placeholder="Nobita"
+          label="Username"
         />
-        <FormField
+        <FormInput
           control={form.control}
           name="institution"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="font-monument text-black">
-                Institution
-              </FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="Universitas Sriwijaya"
-                  {...field}
-                  className="rounded-none border-[#868365] bg-transparent py-0 text-sm placeholder:text-[#868365]"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          placeholder="Universitas Sriwijaya"
+          label="Institution"
         />
         <PasswordField
           title="Student ID"
           name="id"
           placeholder="090233765456"
         />
-        <FormField
+        <FormInput
           control={form.control}
           name="phone"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="font-monument text-black">
-                Phone Number
-              </FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="08976553287"
-                  {...field}
-                  className="rounded-none border-[#868365] bg-transparent py-0 text-sm placeholder:text-[#868365]"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          placeholder="08976553287"
+          label="Phone Number"
         />
         <FormField
           control={form.control}
           name="gender"
           render={({ field }) => (
             <FormItem className="space-y-3">
-              <FormLabel className="text-black">Gender</FormLabel>
+              <FormLabel className="font-monument text-lg text-black lg:text-xl">
+                Gender
+              </FormLabel>
               <FormControl>
                 <RadioGroup
                   onValueChange={field.onChange}
@@ -135,7 +99,9 @@ export default function FormPersonalData() {
                         className="border-2 border-[#868365]"
                       />
                     </FormControl>
-                    <FormLabel className="font-normal">Male</FormLabel>
+                    <FormLabel className="font-monument text-lg lg:text-xl">
+                      Male
+                    </FormLabel>
                   </FormItem>
                   <FormItem className="flex items-center space-x-3 space-y-0">
                     <FormControl>
@@ -144,7 +110,9 @@ export default function FormPersonalData() {
                         className="border-2 border-[#868365]"
                       />
                     </FormControl>
-                    <FormLabel className="font-normal">Female</FormLabel>
+                    <FormLabel className="font-monument text-lg lg:text-xl">
+                      Female
+                    </FormLabel>
                   </FormItem>
                 </RadioGroup>
               </FormControl>
@@ -152,24 +120,11 @@ export default function FormPersonalData() {
             </FormItem>
           )}
         />
-        <FormField
+        <FormInput
           control={form.control}
           name="instagram"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="font-monument text-black">
-                Instagram
-              </FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="nobita_"
-                  {...field}
-                  className="rounded-none border-[#868365] bg-transparent py-0 text-sm placeholder:text-[#868365]"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          placeholder="nobita_"
+          label="Instagram"
         />
         <Button type="submit" className="w-full bg-black text-white">
           Save

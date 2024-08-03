@@ -23,7 +23,7 @@ export default function Nav() {
       >
         <h3 className="border-b-2 border-[#868365] text-xl">Back to Home</h3>
       </Link>
-      <div className="hidden text-[#868365] md:block">
+      <div className="hidden text-[#868365] lg:block">
         <ul className="me-20 flex items-center justify-end font-ponnala text-[#868365] lg:text-base xl:text-xl">
           {routes.map((routes) => (
             <li

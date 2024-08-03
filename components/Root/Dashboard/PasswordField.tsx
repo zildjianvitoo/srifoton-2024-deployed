@@ -34,7 +34,9 @@ export function PasswordField({
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel className="font-monument text-black">{title}</FormLabel>
+          <FormLabel className="font-monument text-lg lg:text-xl">
+            {title}
+          </FormLabel>
           <FormControl>
             <Box className="relative">
               <Input

@@ -13,6 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import FormInput from "@/components/FormInput";
 import { PasswordField } from "./PasswordField";
 
 const formSchema = z
@@ -62,7 +63,7 @@ const formSchema = z
     message: "Password didn't match.",
   });
 
-export default function FormDashboard() {
+export default function FormAccountData() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -80,24 +81,13 @@ export default function FormDashboard() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="mt-10 space-y-4 px-8 text-[#868365]"
+        className="mt-10 space-y-4 text-black md:px-8"
       >
-        <FormField
+        <FormInput
           control={form.control}
           name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="font-monument text-black">Email</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="nobita@gmail.com"
-                  {...field}
-                  className="rounded-none border-[#868365] bg-transparent py-0 text-sm placeholder:text-[#868365]"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          placeholder="nobita@gmail.com"
+          label="Email"
         />
         <PasswordField
           title="Password"

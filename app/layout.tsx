@@ -4,6 +4,7 @@ import LocalFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/Provider/ThemeProvider";
 import NextTopLoader from "nextjs-toploader";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -19,7 +20,7 @@ const monument = LocalFont({
 });
 
 const ponnala = LocalFont({
-  src: "../public/fonts/Ponnala Regular.woff2",
+  src: "../public/fonts/Ponnala-Regular.ttf",
   variable: "--font-ponnala",
 });
 
@@ -47,6 +48,7 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
+        <Toaster theme="light" position="top-right" richColors />
       </body>
     </html>
   );

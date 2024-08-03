@@ -1,15 +1,12 @@
 "use client";
 
-import { useState } from "react";
 import { Inter } from "next/font/google";
 import { Button } from "../../ui/button";
 import {
   Sheet,
   SheetClose,
   SheetContent,
-  SheetDescription,
   SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import Link from "next/link";
@@ -76,6 +73,7 @@ export default function Nav() {
         <ul className="lg:text-md flex items-center py-2 font-ponnala xl:text-xl">
           {routes.map((routes) => (
             <li
+              key={routes.address}
               className={cn("mt-2", {
                 "border-b border-white text-white": pathname === routes.address,
               })}

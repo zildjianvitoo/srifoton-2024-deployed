@@ -14,9 +14,10 @@ import { Input } from "./ui/input";
 type SchemaType = z.infer<typeof competitionRegistrationScehma>;
 
 type Props = {
-  control: Control<z.infer<typeof competitionRegistrationScehma>>;
+  control: Control<any>;
   name: keyof SchemaType;
   placeholder: string;
+  label: string;
   type?: string;
 };
 
@@ -24,6 +25,7 @@ export default function FormInput({
   control,
   name,
   placeholder,
+  label,
   type = "text",
 }: Props) {
   return (
@@ -33,7 +35,7 @@ export default function FormInput({
       render={({ field }) => (
         <FormItem>
           <FormLabel className="font-monument text-lg lg:text-xl">
-            Team Name
+            {label}
           </FormLabel>
           <FormControl>
             <Input type={type} placeholder={placeholder} {...field} />

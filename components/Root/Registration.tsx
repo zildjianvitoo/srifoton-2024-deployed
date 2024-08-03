@@ -129,17 +129,20 @@ export default function Registration({ branch, className }: RegProps) {
                     control={form.control}
                     name="teamname"
                     placeholder="Contoh: Tim Nobita"
+                    label="Team Name"
                   />
                   <FormInput
                     control={form.control}
                     name="email"
                     placeholder="Contoh: ronaldogoat@gmail.com"
                     type="email"
+                    label="Email"
                   />
                   <FormInput
                     control={form.control}
                     name="university"
                     placeholder="Contoh: Universitas Sriwijaya"
+                    label="Institution"
                   />
                   <FormField
                     control={form.control}
@@ -147,7 +150,7 @@ export default function Registration({ branch, className }: RegProps) {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="font-monument text-lg lg:text-xl">
-                          Institution
+                          Payment Method
                         </FormLabel>
                         <Select
                           onValueChange={field.onChange}

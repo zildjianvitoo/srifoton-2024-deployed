@@ -108,6 +108,82 @@ export const competitionRegistrationScehma = z.object({
     })
     .optional(),
 });
+  guideBookLink: string;
+};
+
+const MAX_FILE_SIZE = 500000;
+const ACCEPTED_IMAGE_TYPES = [
+  "image/jpeg",
+  "image/jpg",
+  "image/png",
+  "image/webp",
+];
+export const competitionRegistrationScehma = z.object({
+  teamname: z.string().min(1).max(50),
+  email: z.string().min(1).max(50),
+  university: z.string().min(1).max(50),
+  paymentMethod: z.string().min(1).max(50),
+  paymentProof: z
+    .any()
+    .refine((file) => file?.size <= MAX_FILE_SIZE, `Ukuran maksimum file 5MB.`)
+    .refine(
+      (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
+      "Hanya file berekstensi .jpg, .jpeg, .png and .webp yang diterima.",
+    ),
+
+  member1: z.object({
+    name: z.string().min(1).max(50),
+    studentId: z.string().min(1).max(50),
+    phoneNumber: z.string().min(1).max(50),
+    instagram: z.string().min(1).max(50),
+    studentCard: z
+      .any()
+      .refine(
+        (file) => file?.size <= MAX_FILE_SIZE,
+        `Ukuran maksimum file 5MB.`,
+      )
+      .refine(
+        (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
+        "Hanya file berekstensi .jpg, .jpeg, .png and .webp yang diterima.",
+      ),
+  }),
+  member2: z
+    .object({
+      name: z.string().min(1).max(50),
+      studentId: z.string().min(1).max(50),
+      phoneNumber: z.string().min(1).max(50),
+      instagram: z.string().min(1).max(50),
+      studentCard: z
+        .any()
+        .refine(
+          (file) => file?.size <= MAX_FILE_SIZE,
+          `Ukuran maksimum file 5MB.`,
+        )
+        .refine(
+          (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
+          "Hanya file berekstensi .jpg, .jpeg, .png and .webp yang diterima.",
+        ),
+    })
+    .optional(),
+  member3: z
+    .object({
+      name: z.string().min(1).max(50),
+      studentId: z.string().min(1).max(50),
+      phoneNumber: z.string().min(1).max(50),
+      instagram: z.string().min(1).max(50),
+      studentCard: z
+        .any()
+        .refine(
+          (file) => file?.size <= MAX_FILE_SIZE,
+          `Ukuran maksimum file 5MB.`,
+        )
+        .refine(
+          (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
+          "Hanya file berekstensi .jpg, .jpeg, .png and .webp yang diterima.",
+        ),
+    })
+    .optional(),
+});
 
 export default function Registration({ branch, guideBookLink }: RegProps) {
   const validBranch = branch.replace("/", "").replace(" ", "-");

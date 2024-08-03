@@ -9,7 +9,7 @@ export default function page() {
         <img
           src="./img/stamp.png"
           alt="stamp"
-          className="absolute right-4 top-4 size-20 md:right-12 md:top-4 lg:right-6 lg:top-2 lg:size-32"
+          className="absolute right-4 top-4 hidden size-20 md:right-12 md:top-4 lg:right-6 lg:top-2 lg:block lg:size-32"
         />
         <h3 className="text-center text-xl">Account Data</h3>
         <FormAccountData />

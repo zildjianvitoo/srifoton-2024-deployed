@@ -7,15 +7,12 @@ import {
   FormMessage,
 } from "./ui/form";
 import { Control } from "react-hook-form";
-import { competitionRegistrationScehma } from "@/lib/formSchema/competitionRegistration";
 import * as z from "zod";
 import { Input } from "./ui/input";
 
-type SchemaType = z.infer<typeof competitionRegistrationScehma>;
-
 type Props = {
   control: Control<any>;
-  name: keyof SchemaType;
+  name: string;
   placeholder: string;
   label: string;
   type?: string;

@@ -1,9 +1,9 @@
 import Registration from "@/components/Root/Registration";
 
-export default function CPDaftar() {
+export default function CPtRegistration() {
   return (
     <>
-      <Registration branch="competitive programming" />
+      <Registration branch="competitive programming" guideBookLink="" />
     </>
   );
 }

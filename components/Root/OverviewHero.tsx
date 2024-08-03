@@ -31,7 +31,7 @@ export default function OverviewHero({id, header, subheader, src, href, children
         ">
           <h1 className="
             text-stroke-5 leading-[120%] relative font-monument font-normal 2xl:w-[795px]
-            text-6xl md:text-[4.5rem] lg:text-6xl 2xl:text-[90px]">
+            text-3xl md:text-[4.5rem] lg:text-6xl 2xl:text-[90px]">
             <strong className="uppercase">{header}</strong>
           </h1>
           <h1 className="

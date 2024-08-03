@@ -12,7 +12,7 @@ export default function MediaPartner() {
           alt="dangerline"
           width={1000}
           height={1000}
-          className="absolute w-[14.5vw] right-0 mt-[5vw]"
+          className="absolute w-[25vw] xl:w-[14.5vw] right-0 mt-[5vw]"
         />
       </figure>
       <div className="flex flex-col w-full mt-20 2xl:mt-[10vw]">

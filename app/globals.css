@@ -161,13 +161,6 @@
     .embla {
       transform: rotate(0deg);
     }
-    .for_flashcard {
-      display: flex;
-      flex-direction: column;
-    }
-    .for_flashcard > .embla__slide {
-      flex: 0 0 50%;
-    }
   }
 
   li {
@@ -199,6 +192,10 @@
 
   /* Hide scrollbar for IE, Edge and Firefox */
   .no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
     -ms-overflow-style: none;
     /* IE and Edge */
     scrollbar-width: none;

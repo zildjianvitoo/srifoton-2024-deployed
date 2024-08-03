@@ -147,7 +147,7 @@
     .for_flashcard > .slide_is_selected {
       flex: 0 0 25%
     }
-  } */
+  } testing*/
   @media screen and (max-width: 1024px) {
     .embla__slide {
       flex: 0 0 35%;

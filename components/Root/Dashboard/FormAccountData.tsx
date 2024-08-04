@@ -15,6 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import FormInput from "@/components/FormInput";
 import { PasswordField } from "./PasswordField";
+import "@/lib/utils/zodCustomError";
 
 const formSchema = z
   .object({

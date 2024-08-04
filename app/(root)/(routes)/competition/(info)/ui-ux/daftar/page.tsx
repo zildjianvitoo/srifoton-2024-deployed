@@ -1,9 +1,9 @@
-import Registration from "@/components/Root/Registration";
+import CompetitionRegistration from "@/components/Root/Competition/CompetitionRegistration";
 
 export default function UIUXtRegistration() {
   return (
     <>
-      <Registration branch="ui/ux design" guideBookLink="" />
+      <CompetitionRegistration branch="ui/ux design" guideBookLink="" />
     </>
   );
 }

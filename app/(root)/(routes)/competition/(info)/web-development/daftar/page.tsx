@@ -1,9 +1,9 @@
-import Registration from "@/components/Root/Registration";
+import CompetitionRegistration from "@/components/Root/Competition/CompetitionRegistration";
 
 export default function WebDevtRegistration() {
   return (
     <>
-      <Registration branch="web development" guideBookLink="" />
+      <CompetitionRegistration branch="web development" guideBookLink="" />
     </>
   );
 }

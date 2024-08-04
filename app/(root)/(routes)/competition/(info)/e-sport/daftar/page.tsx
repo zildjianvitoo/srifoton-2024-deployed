@@ -1,9 +1,9 @@
-import Registration from "@/components/Root/Registration";
+import CompetitionRegistration from "@/components/Root/Competition/CompetitionRegistration";
 
 export default function EsportRegistration() {
   return (
     <>
-      <Registration branch="e-sport" guideBookLink="" />
+      <CompetitionRegistration branch="e-sport" guideBookLink="" />
     </>
   );
 }

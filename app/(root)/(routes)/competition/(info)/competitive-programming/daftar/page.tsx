@@ -1,9 +1,12 @@
-import Registration from "@/components/Root/Registration";
+import CompetitionRegistration from "@/components/Root/Competition/CompetitionRegistration";
 
-export default function CPtRegistration() {
+export default function CPRegistration() {
   return (
     <>
-      <Registration branch="competitive programming" guideBookLink="" />
+      <CompetitionRegistration
+        branch="competitive programming"
+        guideBookLink=""
+      />
     </>
   );
 }

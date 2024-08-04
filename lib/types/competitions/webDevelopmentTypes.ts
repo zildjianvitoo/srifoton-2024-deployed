@@ -1,4 +1,5 @@
 // lib/types/competitions/webDevelopmentTypes.ts
+
 import { Timestamp } from "firebase/firestore";
 
 export type WebDevelopment = {

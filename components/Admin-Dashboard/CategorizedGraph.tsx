@@ -1,3 +1,5 @@
+// components/Admin-Dashboard/CategorizedGraph.tsx
+
 "use client";
 
 import React, { useEffect } from "react";

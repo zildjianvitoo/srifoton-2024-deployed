@@ -1,4 +1,5 @@
 // lib/types/competitions/mobileLegendsTypes.ts
+
 import { Timestamp } from "firebase/firestore";
 
 export type MobileLegends = {

@@ -84,6 +84,7 @@ export default function TalkshowForm({}: Props) {
         is_verified,
         type: "offline",
       });
+      toast.success("Berhasil daftar Talkshow");
     } catch (error) {
       toast.error("Terjadi Kesalahan di sisi server");
       console.log(error);

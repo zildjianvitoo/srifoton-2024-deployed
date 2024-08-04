@@ -83,6 +83,7 @@ export default function WorkshopForm({}: Props) {
         is_verified,
         type: "offline",
       });
+      toast.success("Berhasil daftar Workshop");
     } catch (error) {
       toast.error("Terjadi Kesalahan di sisi server");
       console.log(error);

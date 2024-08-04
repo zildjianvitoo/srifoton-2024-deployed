@@ -34,6 +34,7 @@ import { ref, uploadBytes } from "firebase/storage";
 import { storage } from "@/lib/firebase";
 import { ulid } from "ulid";
 import { addNewWorkshop } from "@/lib/network/workshops/workshopQueries";
+import SuccessRegister from "../SuccessRegister";
 
 export const workshopRegistrationSchema = z.object({
   name: z.string().min(1).max(50),
@@ -88,84 +89,97 @@ export default function WorkshopForm({}: Props) {
     }
   };
 
+  if (form.formState.isSubmitSuccessful) {
+    return <SuccessRegister branch={"workshop"} validBranch={"workshop"} />;
+  }
+
   return (
-    <CardCrook>
-      <div className="flex w-full flex-col gap-6 px-6 py-12 md:gap-8 md:px-10 md:py-16 lg:gap-12 lg:px-20 lg:py-24">
-        <div className="flex w-full flex-col items-center justify-center">
-          <h3 className="text-center font-monument text-xl md:text-2xl">
-            Participant Information
-          </h3>
-          <hr className="mt-6 w-3/4 border-t-[3px] border-black-100 lg:w-1/3" />
-        </div>
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col"
-          >
-            <div className="mt-8 flex flex-col gap-8 md:gap-10 lg:mt-10 lg:flex-row lg:gap-12">
-              <div className="flex w-full flex-col gap-4 md:gap-5 lg:basis-1/2 lg:gap-6">
-                <FormInput
-                  control={form.control}
-                  name="name"
-                  placeholder="Contoh: Zildjian Vito"
-                  label="Name"
-                />
-                <FormInput
-                  control={form.control}
-                  name="email"
-                  placeholder="Contoh: ronaldogoat@gmail.com"
-                  type="email"
-                  label="Email"
-                />
-                <FormInput
-                  control={form.control}
-                  name="college"
-                  placeholder="Contoh: Universitas Sriwijaya"
-                  label="Institution"
-                />
-                <FormField
-                  control={form.control}
-                  name="payment_method"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="font-monument text-lg lg:text-xl">
-                        Payment Method
-                      </FormLabel>
-                      <Select
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                      >
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Pilih Opsi" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="dana">Dana</SelectItem>
-                          <SelectItem value="shopeepay">Shopeepay</SelectItem>
-                          <SelectItem value="sea-bank">
-                            Transfer Bank (Sea Bank)
-                          </SelectItem>
-                          <SelectItem value="mandiri">
-                            Transfer Bank (Mandiri)
-                          </SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormFile
-                  control={form.control}
-                  name={"proof"}
-                  label={"Payment Proof"}
-                />
-              </div>
-              <PaymentInformation />
-            </div>
-          </form>
-        </Form>
+    <div className={"flex flex-col gap-14 lg:gap-20"}>
+      <div className="relative mx-auto flex w-fit flex-col gap-6 text-center text-whtc">
+        <h1 className="srifoton-header font-monument uppercase">WORKSHOP</h1>
+        <p className="srifoton-text mx-auto">
+          Hai, silahkan isi secara detail informasi kamu
+        </p>
       </div>
-    </CardCrook>
+
+      <CardCrook>
+        <div className="flex w-full flex-col gap-6 px-6 py-12 md:gap-8 md:px-10 md:py-16 lg:gap-12 lg:px-20 lg:py-24">
+          <div className="flex w-full flex-col items-center justify-center">
+            <h3 className="text-center font-monument text-xl md:text-2xl">
+              Participant Information
+            </h3>
+            <hr className="mt-6 w-3/4 border-t-[3px] border-black-100 lg:w-1/3" />
+          </div>
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="flex flex-col"
+            >
+              <div className="mt-8 flex flex-col gap-8 md:gap-10 lg:mt-10 lg:flex-row lg:gap-12">
+                <div className="flex w-full flex-col gap-4 md:gap-5 lg:basis-1/2 lg:gap-6">
+                  <FormInput
+                    control={form.control}
+                    name="name"
+                    placeholder="Contoh: Zildjian Vito"
+                    label="Name"
+                  />
+                  <FormInput
+                    control={form.control}
+                    name="email"
+                    placeholder="Contoh: ronaldogoat@gmail.com"
+                    type="email"
+                    label="Email"
+                  />
+                  <FormInput
+                    control={form.control}
+                    name="college"
+                    placeholder="Contoh: Universitas Sriwijaya"
+                    label="Institution"
+                  />
+                  <FormField
+                    control={form.control}
+                    name="payment_method"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-monument text-lg lg:text-xl">
+                          Payment Method
+                        </FormLabel>
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Pilih Opsi" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="dana">Dana</SelectItem>
+                            <SelectItem value="shopeepay">Shopeepay</SelectItem>
+                            <SelectItem value="sea-bank">
+                              Transfer Bank (Sea Bank)
+                            </SelectItem>
+                            <SelectItem value="mandiri">
+                              Transfer Bank (Mandiri)
+                            </SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormFile
+                    control={form.control}
+                    name={"proof"}
+                    label={"Payment Proof"}
+                  />
+                </div>
+                <PaymentInformation />
+              </div>
+            </form>
+          </Form>
+        </div>
+      </CardCrook>
+    </div>
   );
 }

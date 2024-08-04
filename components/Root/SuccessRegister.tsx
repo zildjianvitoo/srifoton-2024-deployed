@@ -6,7 +6,7 @@ import { Button } from "../ui/button";
 type Props = {
   branch: string;
   validBranch: string;
-  guideBookLink: string;
+  guideBookLink?: string;
 };
 
 export default function SuccessRegister({
@@ -35,18 +35,36 @@ export default function SuccessRegister({
         <p className="text-lg">
           Tekan tombol di bawah <br /> untuk mengetahui info lebih lanjut.
         </p>
-        <div className="flex gap-4 lg:gap-6">
-          <Link href={`/competition/${validBranch}`}>
+        {validBranch !== "workshop" && validBranch !== "talkshow" && (
+          <div className="flex gap-4 lg:gap-6">
+            <Link href={`/competition/${validBranch}`}>
+              <Button className="h-12 font-monument text-background">
+                Competition Info
+              </Button>
+            </Link>
+
+            <a href={guideBookLink}>
+              <Button variant={"outline2"} className="h-12 font-monument">
+                Guidebook
+              </Button>
+            </a>
+          </div>
+        )}
+
+        {validBranch === "workshop" && (
+          <Link href={"/workshop"}>
             <Button className="h-12 font-monument text-background">
-              Competition Info
+              Workshop Info
             </Button>
           </Link>
-          <a href={guideBookLink}>
-            <Button variant={"outline2"} className="h-12 font-monument">
-              Guidebook
+        )}
+        {validBranch === "talkshow" && (
+          <Link href={"/talkshow"}>
+            <Button className="h-12 font-monument text-background">
+              Talkshow Info
             </Button>
-          </a>
-        </div>
+          </Link>
+        )}
       </div>
     </div>
   );

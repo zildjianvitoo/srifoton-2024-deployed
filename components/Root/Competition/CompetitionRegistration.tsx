@@ -1,6 +1,6 @@
 "use client";
 
-import CardCrook from "./CardCrook.v2";
+import CardCrook from "../CardCrook.v2";
 import {
   Form,
   FormControl,
@@ -12,19 +12,19 @@ import {
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../ui/select";
-import PaymentInformation from "./PaymentInformation";
+} from "../../ui/select";
+import PaymentInformation from "../PaymentInformation";
 
 import { DevTool } from "@hookform/devtools";
-import FormInput from "../FormInput";
-import FormFile from "../FormFile";
+import FormInput from "../../FormInput";
+import FormFile from "../../FormFile";
 import "@/lib/utils/zodCustomError";
 import { addNewCompetitiveProgramming } from "@/lib/network/competitions/competitiveProgrammingQueries";
 import { ref, uploadBytes } from "firebase/storage";
@@ -33,7 +33,7 @@ import { ulid } from "ulid";
 import { addNewUiUxDesign } from "@/lib/network/competitions/uiUxDesignQueries";
 import { addNewWebDevelopment } from "@/lib/network/competitions/webDevelopmentQueries";
 import { addNewMobileLegends } from "@/lib/network/competitions/mobileLegendsQueries";
-import SuccessRegister from "./SuccessRegister";
+import SuccessRegister from "../SuccessRegister";
 import { toast } from "sonner";
 
 type RegProps = {
@@ -267,7 +267,7 @@ export default function CompetitionRegistration({
           is_verified,
         });
       }
-
+      toast.success("Berhasil mendaftar kompetisi");
       window.scrollTo(0, 0);
     } catch (error) {
       toast.error("Terjadi Kesalahan di sisi server");

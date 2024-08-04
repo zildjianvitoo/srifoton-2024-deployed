@@ -20,13 +20,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
-import CompetitionPaymentInformation from "./Competition/CompetitionPaymentInformation";
+import PaymentInformation from "./PaymentInformation";
 
 import { DevTool } from "@hookform/devtools";
 import FormInput from "../FormInput";
 import FormFile from "../FormFile";
-import Image from "next/image";
-import Link from "next/link";
 import "@/lib/utils/zodCustomError";
 import { addNewCompetitiveProgramming } from "@/lib/network/competitions/competitiveProgrammingQueries";
 import { ref, uploadBytes } from "firebase/storage";
@@ -35,6 +33,8 @@ import { ulid } from "ulid";
 import { addNewUiUxDesign } from "@/lib/network/competitions/uiUxDesignQueries";
 import { addNewWebDevelopment } from "@/lib/network/competitions/webDevelopmentQueries";
 import { addNewMobileLegends } from "@/lib/network/competitions/mobileLegendsQueries";
+import SuccessRegister from "./SuccessRegister";
+import { toast } from "sonner";
 
 type RegProps = {
   branch: string;
@@ -49,7 +49,7 @@ const ACCEPTED_IMAGE_TYPES = [
   "image/webp",
 ];
 
-export const competitionRegistrationScehma = z.object({
+const competitionRegistrationScehma = z.object({
   team_name: z.string().min(1).max(50),
   email: z.string().min(1).max(50),
   college: z.string().min(1).max(50),
@@ -270,46 +270,18 @@ export default function CompetitionRegistration({
 
       window.scrollTo(0, 0);
     } catch (error) {
+      toast.error("Terjadi Kesalahan di sisi server");
       console.log(error);
     }
   };
 
   if (form.formState.isSubmitSuccessful) {
     return (
-      <div className={"flex flex-col gap-14 lg:gap-20"}>
-        <div className="relative mx-auto flex w-full flex-col items-center justify-center gap-6 text-center text-whtc">
-          <h1 className="srifoton-header font-monument uppercase">{branch}</h1>
-          <p className="srifoton-text mx-auto w-[70%]">
-            Selamat, Pendaftaran kamu berhasil
-          </p>
-          <figure className="relative">
-            <Image
-              src={"/img/gallery4.png"}
-              alt="Logo SRIFOTON"
-              width={450}
-              height={360}
-            />
-          </figure>
-          <p className="mt-4 text-lg">
-            Terima kasih sudah mendaftar di kompetisi SRIFOTON 2024!
-          </p>
-          <p className="text-lg">
-            Tekan tombol di bawah <br /> untuk mengetahui info lebih lanjut.
-          </p>
-          <div className="flex gap-4 lg:gap-6">
-            <Link href={`/competition/${validBranch}`}>
-              <Button className="h-12 font-monument text-background">
-                Competition Info
-              </Button>
-            </Link>
-            <a href={guideBookLink}>
-              <Button variant={"outline2"} className="h-12 font-monument">
-                Guidebook
-              </Button>
-            </a>
-          </div>
-        </div>
-      </div>
+      <SuccessRegister
+        branch={branch}
+        validBranch={validBranch}
+        guideBookLink={guideBookLink}
+      />
     );
   }
 
@@ -377,8 +349,11 @@ export default function CompetitionRegistration({
                           <SelectContent>
                             <SelectItem value="dana">Dana</SelectItem>
                             <SelectItem value="shopeepay">Shopeepay</SelectItem>
-                            <SelectItem value="m@support.com">
-                              m@support.com
+                            <SelectItem value="sea-bank">
+                              Transfer Bank (Sea Bank)
+                            </SelectItem>
+                            <SelectItem value="mandiri">
+                              Transfer Bank (Mandiri)
                             </SelectItem>
                           </SelectContent>
                         </Select>
@@ -392,7 +367,7 @@ export default function CompetitionRegistration({
                     label={"Payment Proof"}
                   />
                 </div>
-                <CompetitionPaymentInformation />
+                <PaymentInformation />
               </div>
               <div className="mt-20 flex w-full flex-col items-center justify-center md:mt-28 lg:mt-36">
                 <h3 className="text-center font-monument text-xl md:text-2xl">
@@ -469,40 +444,6 @@ export default function CompetitionRegistration({
                     />
                   </div>
                 </div>
-                {/* <div className="mr-auto mt-8 flex w-full flex-col justify-start gap-4 md:mt-12 lg:mt-16 lg:w-1/2 lg:gap-6">
-                  <h4 className="text-center font-monument text-lg md:text-xl">
-                    Member 3
-                  </h4>
-                  <FormInput
-                    control={form.control}
-                    label={"Name"}
-                    name={"name_3"}
-                    placeholder={"Contoh: Nobita"}
-                  />
-                  <FormInput
-                    control={form.control}
-                    label={"Student ID"}
-                    name={"nim_3"}
-                    placeholder={"Contoh: 09021382227140"}
-                  />
-                  <FormInput
-                    control={form.control}
-                    label={"Phone Number"}
-                    name={"phone_number_3"}
-                    placeholder={"Contoh: 081234567890"}
-                  />
-                  <FormInput
-                    control={form.control}
-                    label={"Instagram"}
-                    name={"instagram_3"}
-                    placeholder={"Contoh: 09021382227140"}
-                  />
-                  <FormFile
-                    control={form.control}
-                    name={"idcard_3"}
-                    label={"Student Card"}
-                  />
-                </div> */}
                 <div className="mt-8 flex w-full flex-col gap-8 lg:mt-12 lg:flex-row lg:gap-12">
                   <div className="flex flex-col gap-4 lg:basis-1/2 lg:gap-6">
                     <h4 className="text-center font-monument text-lg md:text-xl">

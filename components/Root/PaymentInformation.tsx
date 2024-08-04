@@ -3,9 +3,9 @@ import React from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { toast } from "sonner";
 
-export default function CompetitionPaymentInformation() {
+export default function PaymentInformation() {
   return (
-    <div className="font-poppins flex flex-col lg:basis-1/2">
+    <div className="flex flex-col font-poppins lg:basis-1/2">
       <h3 className="font-monument text-xl">Payment Information</h3>
       <hr className="mt-3 w-full border-t-[3px] border-black-100" />
       <div className="mt-4 flex flex-col">

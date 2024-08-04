@@ -1,6 +1,6 @@
 import CompetitionRegistration from "@/components/Root/Registration";
 
-export default function CPtRegistration() {
+export default function CPRegistration() {
   return (
     <>
       <CompetitionRegistration

@@ -33,14 +33,16 @@ import { toast } from "sonner";
 import { ref, uploadBytes } from "firebase/storage";
 import { storage } from "@/lib/firebase";
 import { ulid } from "ulid";
-import { addNewWorkshop } from "@/lib/network/workshops/workshopQueries";
 import { addNewTalkshow } from "@/lib/network/talkshows/talkshowQueries";
 import SuccessRegister from "../SuccessRegister";
+import { Button } from "@/components/ui/button";
+import "@/lib/utils/zodCustomError";
 
 export const talkshowRegistrationSchema = z.object({
   name: z.string().min(1).max(50),
   email: z.string().min(1).max(50),
   college: z.string().min(1).max(50),
+  type: z.string().min(1).max(50),
   payment_method: z.string().min(1).max(50),
   proof: z
     .any()
@@ -60,6 +62,7 @@ export default function TalkshowForm({}: Props) {
       name: "",
       email: "",
       college: "",
+      type: "",
       payment_method: "",
       proof: undefined,
     },
@@ -73,7 +76,7 @@ export default function TalkshowForm({}: Props) {
 
     try {
       const { ref: refProof } = await uploadBytes(
-        ref(storage, `workshop/${ulid()}`),
+        ref(storage, `talkshow/${ulid()}`),
         formValues.proof,
       );
       formValues.proof = refProof.fullPath as string;
@@ -82,8 +85,8 @@ export default function TalkshowForm({}: Props) {
         user_id,
         date,
         is_verified,
-        type: "offline",
       });
+      window.scrollTo(0, 0);
       toast.success("Berhasil daftar Talkshow");
     } catch (error) {
       toast.error("Terjadi Kesalahan di sisi server");
@@ -98,7 +101,7 @@ export default function TalkshowForm({}: Props) {
   return (
     <div className={"flex flex-col gap-14 lg:gap-20"}>
       <div className="relative mx-auto flex w-fit flex-col gap-6 text-center text-whtc">
-        <h1 className="srifoton-header font-monument uppercase">WORKSHOP</h1>
+        <h1 className="srifoton-header font-monument uppercase">Talkshow</h1>
         <p className="srifoton-text mx-auto">
           Hai, silahkan isi secara detail informasi kamu
         </p>
@@ -140,6 +143,32 @@ export default function TalkshowForm({}: Props) {
                   />
                   <FormField
                     control={form.control}
+                    name="type"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-monument text-lg lg:text-xl">
+                          Talkshow Type
+                        </FormLabel>
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Pilih Opsi" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="offline">Offline</SelectItem>
+                            <SelectItem value="online">Online</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
                     name="payment_method"
                     render={({ field }) => (
                       <FormItem>
@@ -178,6 +207,13 @@ export default function TalkshowForm({}: Props) {
                 </div>
                 <PaymentInformation />
               </div>
+              <Button
+                type="submit"
+                className="mt-6 h-12 w-full bg-background/90 font-monument text-lg hover:bg-background disabled:opacity-60 lg:mt-10"
+                disabled={form.formState.isSubmitting}
+              >
+                Submit
+              </Button>
             </form>
           </Form>
         </div>

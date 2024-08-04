@@ -35,11 +35,14 @@ import { storage } from "@/lib/firebase";
 import { ulid } from "ulid";
 import { addNewWorkshop } from "@/lib/network/workshops/workshopQueries";
 import SuccessRegister from "../SuccessRegister";
+import "@/lib/utils/zodCustomError";
+import { Button } from "@/components/ui/button";
 
 export const workshopRegistrationSchema = z.object({
   name: z.string().min(1).max(50),
   email: z.string().min(1).max(50),
   college: z.string().min(1).max(50),
+  type: z.string().min(1).max(50),
   payment_method: z.string().min(1).max(50),
   proof: z
     .any()
@@ -59,6 +62,7 @@ export default function WorkshopForm({}: Props) {
       name: "",
       email: "",
       college: "",
+      type: "",
       payment_method: "",
       proof: undefined,
     },
@@ -81,8 +85,8 @@ export default function WorkshopForm({}: Props) {
         user_id,
         date,
         is_verified,
-        type: "offline",
       });
+      window.scrollTo(0, 0);
       toast.success("Berhasil daftar Workshop");
     } catch (error) {
       toast.error("Terjadi Kesalahan di sisi server");
@@ -139,6 +143,32 @@ export default function WorkshopForm({}: Props) {
                   />
                   <FormField
                     control={form.control}
+                    name="type"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-monument text-lg lg:text-xl">
+                          Workshop Type
+                        </FormLabel>
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Pilih Opsi" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="offline">Offline</SelectItem>
+                            <SelectItem value="online">Online</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
                     name="payment_method"
                     render={({ field }) => (
                       <FormItem>
@@ -177,6 +207,13 @@ export default function WorkshopForm({}: Props) {
                 </div>
                 <PaymentInformation />
               </div>
+              <Button
+                type="submit"
+                className="mt-6 h-12 w-full bg-background/90 font-monument text-lg hover:bg-background disabled:opacity-60 lg:mt-10"
+                disabled={form.formState.isSubmitting}
+              >
+                Submit
+              </Button>
             </form>
           </Form>
         </div>

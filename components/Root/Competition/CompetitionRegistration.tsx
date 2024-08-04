@@ -25,7 +25,6 @@ import PaymentInformation from "../PaymentInformation";
 import { DevTool } from "@hookform/devtools";
 import FormInput from "../../FormInput";
 import FormFile from "../../FormFile";
-import "@/lib/utils/zodCustomError";
 import { addNewCompetitiveProgramming } from "@/lib/network/competitions/competitiveProgrammingQueries";
 import { ref, uploadBytes } from "firebase/storage";
 import { storage } from "@/lib/firebase";
@@ -35,6 +34,7 @@ import { addNewWebDevelopment } from "@/lib/network/competitions/webDevelopmentQ
 import { addNewMobileLegends } from "@/lib/network/competitions/mobileLegendsQueries";
 import SuccessRegister from "../SuccessRegister";
 import { toast } from "sonner";
+import "@/lib/utils/zodCustomError";
 
 type RegProps = {
   branch: string;
@@ -560,7 +560,8 @@ export default function CompetitionRegistration({
               </div>
               <Button
                 type="submit"
-                className="mt-6 h-12 w-full bg-background/90 font-monument text-lg hover:bg-background lg:mt-10"
+                className="mt-6 h-12 w-full bg-background/90 font-monument text-lg hover:bg-background disabled:opacity-60 lg:mt-10"
+                disabled={form.formState.isSubmitting}
               >
                 Submit
               </Button>

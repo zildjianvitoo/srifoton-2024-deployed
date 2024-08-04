@@ -126,7 +126,10 @@ export const competitionRegistrationScehma = z.object({
     .optional(),
 });
 
-export default function Registration({ branch, guideBookLink }: RegProps) {
+export default function CompetitionRegistration({
+  branch,
+  guideBookLink,
+}: RegProps) {
   const validBranch = branch.replace("/", "").replace(" ", "-");
 
   const form = useForm<z.infer<typeof competitionRegistrationScehma>>({

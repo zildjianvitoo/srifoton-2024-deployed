@@ -12,7 +12,7 @@ export type CompetitiveProgramming = {
   nim_1: string;
   phone_number_1: string;
   instagram_1: string;
-  idcard_1: string;
+  idcard_1?: string;
   name_2?: string;
   nim_2?: string;
   phone_number_2?: string;
@@ -23,7 +23,7 @@ export type CompetitiveProgramming = {
   phone_number_3?: string;
   instagram_3?: string;
   idcard_3?: string;
-  proof: string;
+  proof?: string;
   payment_method: string;
   is_verified: boolean;
   date: Date;

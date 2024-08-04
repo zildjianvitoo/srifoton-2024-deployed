@@ -1,6 +1,5 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import CardCrook from "./CardCrook.v2";
 import {
   Form,
@@ -30,8 +29,12 @@ import Image from "next/image";
 import Link from "next/link";
 import "@/lib/utils/zodCustomError";
 import { addNewCompetitiveProgramming } from "@/lib/network/competitions/competitiveProgrammingQueries";
-import { ref } from "firebase/storage";
+import { ref, uploadBytes } from "firebase/storage";
 import { storage } from "@/lib/firebase";
+import { ulid } from "ulid";
+import { addNewUiUxDesign } from "@/lib/network/competitions/uiUxDesignQueries";
+import { addNewWebDevelopment } from "@/lib/network/competitions/webDevelopmentQueries";
+import { addNewMobileLegends } from "@/lib/network/competitions/mobileLegendsQueries";
 
 type RegProps = {
   branch: string;
@@ -74,7 +77,7 @@ export const competitionRegistrationScehma = z.object({
   name_2: z.string().min(1).max(50).optional(),
   nim_2: z.string().min(1).max(50).optional(),
   phone_number_2: z.string().min(1).max(50).optional(),
-  instagram_2: z.string().min(1).max(50),
+  instagram_2: z.string().min(1).max(50).optional(),
   idcard_2: z
     .any()
     .refine((file) => file?.size <= MAX_FILE_SIZE, `Ukuran maksimum file 5MB.`)
@@ -84,17 +87,43 @@ export const competitionRegistrationScehma = z.object({
     )
     .optional(),
 
-  name_3: z.string().min(1).max(50),
-  nim_3: z.string().min(1).max(50),
-  phone_number_3: z.string().min(1).max(50),
-  instagram_3: z.string().min(1).max(50),
+  name_3: z.string().min(1).max(50).optional(),
+  nim_3: z.string().min(1).max(50).optional(),
+  phone_number_3: z.string().min(1).max(50).optional(),
+  instagram_3: z.string().min(1).max(50).optional(),
   idcard_3: z
     .any()
     .refine((file) => file?.size <= MAX_FILE_SIZE, `Ukuran maksimum file 5MB.`)
     .refine(
       (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
       "Hanya file berekstensi .jpg, .jpeg, .png and .webp yang diterima.",
-    ),
+    )
+    .optional(),
+
+  name_4: z.string().min(1).max(50).optional(),
+  nim_4: z.string().min(1).max(50).optional(),
+  phone_number_4: z.string().min(1).max(50).optional(),
+  instagram_4: z.string().min(1).max(50).optional(),
+  idcard_4: z
+    .any()
+    .refine((file) => file?.size <= MAX_FILE_SIZE, `Ukuran maksimum file 5MB.`)
+    .refine(
+      (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
+      "Hanya file berekstensi .jpg, .jpeg, .png and .webp yang diterima.",
+    )
+    .optional(),
+  name_5: z.string().min(1).max(50).optional(),
+  nim_5: z.string().min(1).max(50).optional(),
+  phone_number_5: z.string().min(1).max(50).optional(),
+  instagram_5: z.string().min(1).max(50).optional(),
+  idcard_5: z
+    .any()
+    .refine((file) => file?.size <= MAX_FILE_SIZE, `Ukuran maksimum file 5MB.`)
+    .refine(
+      (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
+      "Hanya file berekstensi .jpg, .jpeg, .png and .webp yang diterima.",
+    )
+    .optional(),
 });
 
 export default function Registration({ branch, guideBookLink }: RegProps) {
@@ -126,26 +155,119 @@ export default function Registration({ branch, guideBookLink }: RegProps) {
       phone_number_3: "",
       instagram_3: "",
       idcard_3: undefined,
+
+      name_4: "",
+      nim_4: "",
+      phone_number_4: "",
+      instagram_4: "",
+      idcard_4: undefined,
+
+      name_5: "",
+      nim_5: "",
+      phone_number_5: "",
+      instagram_5: "",
+      idcard_5: undefined,
     },
   });
 
   const onSubmit = async (
-    FormValues: z.infer<typeof competitionRegistrationScehma>,
+    formValues: z.infer<typeof competitionRegistrationScehma>,
   ) => {
-    try {
-      const storageRef = ref(storage);
+    const user_id = "kocak";
+    const date = new Date();
+    const is_verified = false;
 
-      const proofRef = ref(storage, `competitions/`);
-      // await addNewCompetitiveProgramming({
-      //   ...FormValues,
-      //   user_id: "kocak",
-      //   date: new Date(),
-      //   is_verified: true,
-      // });
+    try {
+      const [
+        { ref: refProof },
+        { ref: refIdCard1 },
+        { ref: refIdCard2 },
+        { ref: refIdCard3 },
+        { ref: refIdCard4 },
+        { ref: refIdCard5 },
+      ] = await Promise.all([
+        uploadBytes(
+          ref(
+            storage,
+            `competitions/${validBranch}/${formValues.team_name}/${ulid()}`,
+          ),
+          formValues.proof,
+        ),
+        uploadBytes(
+          ref(
+            storage,
+            `competitions/${validBranch}/${formValues.team_name}/${ulid()}`,
+          ),
+          formValues.idcard_1,
+        ),
+        uploadBytes(
+          ref(
+            storage,
+            `competitions/${validBranch}/${formValues.team_name}/${ulid()}`,
+          ),
+          formValues.idcard_2,
+        ),
+        uploadBytes(
+          ref(
+            storage,
+            `competitions/${validBranch}/${formValues.team_name}/${ulid()}`,
+          ),
+          formValues.idcard_3,
+        ),
+        uploadBytes(
+          ref(
+            storage,
+            `competitions/${validBranch}/${formValues.team_name}/${ulid()}`,
+          ),
+          formValues.idcard_4,
+        ),
+        uploadBytes(
+          ref(
+            storage,
+            `competitions/${validBranch}/${formValues.team_name}/${ulid()}`,
+          ),
+          formValues.idcard_5,
+        ),
+      ]);
+      formValues.proof = refProof.fullPath as string;
+      formValues.idcard_1 = refIdCard1.fullPath as string;
+      formValues.idcard_2 = refIdCard2.fullPath as string;
+      formValues.idcard_3 = refIdCard3.fullPath as string;
+      formValues.idcard_4 = refIdCard4.fullPath as string;
+      formValues.idcard_5 = refIdCard5.fullPath as string;
+      if (validBranch === "competitive-programming") {
+        await addNewCompetitiveProgramming({
+          ...formValues,
+          user_id,
+          date,
+          is_verified,
+        });
+      } else if (validBranch === "uiux-design") {
+        await addNewUiUxDesign({
+          ...formValues,
+          user_id,
+          date,
+          is_verified,
+        });
+      } else if (validBranch === "web-development") {
+        await addNewWebDevelopment({
+          ...formValues,
+          user_id,
+          date,
+          is_verified,
+        });
+      } else if (validBranch === "e-sport") {
+        await addNewMobileLegends({
+          ...formValues,
+          user_id,
+          date,
+          is_verified,
+        });
+      }
+
+      window.scrollTo(0, 0);
     } catch (error) {
       console.log(error);
-    }
-    if (branch === "competitive programming") {
     }
   };
 
@@ -344,7 +466,7 @@ export default function Registration({ branch, guideBookLink }: RegProps) {
                     />
                   </div>
                 </div>
-                <div className="mr-auto mt-8 flex w-full flex-col justify-start gap-4 md:mt-12 lg:mt-16 lg:w-1/2 lg:gap-6">
+                {/* <div className="mr-auto mt-8 flex w-full flex-col justify-start gap-4 md:mt-12 lg:mt-16 lg:w-1/2 lg:gap-6">
                   <h4 className="text-center font-monument text-lg md:text-xl">
                     Member 3
                   </h4>
@@ -377,7 +499,120 @@ export default function Registration({ branch, guideBookLink }: RegProps) {
                     name={"idcard_3"}
                     label={"Student Card"}
                   />
+                </div> */}
+                <div className="mt-8 flex w-full flex-col gap-8 lg:mt-12 lg:flex-row lg:gap-12">
+                  <div className="flex flex-col gap-4 lg:basis-1/2 lg:gap-6">
+                    <h4 className="text-center font-monument text-lg md:text-xl">
+                      Member 3
+                    </h4>
+                    <FormInput
+                      control={form.control}
+                      label={"Name"}
+                      name={"name_3"}
+                      placeholder={"Contoh: Nobita"}
+                    />
+                    <FormInput
+                      control={form.control}
+                      label={"Student ID"}
+                      name={"nim_3"}
+                      placeholder={"Contoh: 09021382227140"}
+                    />
+                    <FormInput
+                      control={form.control}
+                      label={"Phone Number"}
+                      name={"phone_number_3"}
+                      placeholder={"Contoh: 081234567890"}
+                    />
+                    <FormInput
+                      control={form.control}
+                      label={"Instagram"}
+                      name={"instagram_3"}
+                      placeholder={"Contoh: 09021382227140"}
+                    />
+                    <FormFile
+                      control={form.control}
+                      name={"idcard_3"}
+                      label={"Student Card"}
+                    />
+                  </div>
+                  {validBranch === "e-sport" ? (
+                    <div className="flex flex-col gap-4 lg:basis-1/2 lg:gap-6">
+                      <h4 className="text-center font-monument text-lg md:text-xl">
+                        Member 4
+                      </h4>
+                      <FormInput
+                        control={form.control}
+                        label={"Name"}
+                        name={"name_4"}
+                        placeholder={"Contoh: Nobita"}
+                      />
+                      <FormInput
+                        control={form.control}
+                        label={"Student ID"}
+                        name={"nim_4"}
+                        placeholder={"Contoh: 09021382227140"}
+                      />
+                      <FormInput
+                        control={form.control}
+                        label={"Phone Number"}
+                        name={"phone_number_4"}
+                        placeholder={"Contoh: 081234567890"}
+                      />
+                      <FormInput
+                        control={form.control}
+                        label={"Instagram"}
+                        name={"instagram_4"}
+                        placeholder={"Contoh: 09021382227140"}
+                      />
+                      <FormFile
+                        control={form.control}
+                        name={"idcard_4"}
+                        label={"Student Card"}
+                      />
+                    </div>
+                  ) : (
+                    <div className="m-auto">Logo Srifoton</div>
+                  )}
                 </div>
+                {validBranch === "e-sport" && (
+                  <div className="mt-8 flex w-full flex-col gap-8 lg:mt-12 lg:flex-row lg:gap-12">
+                    <div className="mr-auto mt-8 flex flex-col gap-4 lg:mt-12 lg:w-[48%] lg:gap-6">
+                      <h4 className="text-center font-monument text-lg md:text-xl">
+                        Member 5
+                      </h4>
+                      <FormInput
+                        control={form.control}
+                        label={"Name"}
+                        name={"name_5"}
+                        placeholder={"Contoh: Nobita"}
+                      />
+                      <FormInput
+                        control={form.control}
+                        label={"Student ID"}
+                        name={"nim_5"}
+                        placeholder={"Contoh: 09021382227140"}
+                      />
+                      <FormInput
+                        control={form.control}
+                        label={"Phone Number"}
+                        name={"phone_number_5"}
+                        placeholder={"Contoh: 081234567890"}
+                      />
+                      <FormInput
+                        control={form.control}
+                        label={"Instagram"}
+                        name={"instagram_5"}
+                        placeholder={"Contoh: 09021382227140"}
+                      />
+                      <FormFile
+                        control={form.control}
+                        name={"idcard_5"}
+                        label={"Student Card"}
+                      />
+                    </div>
+                    <div className="m-auto">Logo Srifoton</div>
+                  </div>
+                )}
               </div>
               <Button
                 type="submit"

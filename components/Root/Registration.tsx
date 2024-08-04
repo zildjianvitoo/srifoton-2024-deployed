@@ -29,6 +29,9 @@ import FormFile from "../FormFile";
 import Image from "next/image";
 import Link from "next/link";
 import "@/lib/utils/zodCustomError";
+import { addNewCompetitiveProgramming } from "@/lib/network/competitions/competitiveProgrammingQueries";
+import { ref } from "firebase/storage";
+import { storage } from "@/lib/firebase";
 
 type RegProps = {
   branch: string;
@@ -44,11 +47,11 @@ const ACCEPTED_IMAGE_TYPES = [
 ];
 
 export const competitionRegistrationScehma = z.object({
-  teamname: z.string().min(1).max(50),
+  team_name: z.string().min(1).max(50),
   email: z.string().min(1).max(50),
-  university: z.string().min(1).max(50),
-  paymentMethod: z.string().min(1).max(50),
-  paymentProof: z
+  college: z.string().min(1).max(50),
+  payment_method: z.string().min(1).max(50),
+  proof: z
     .any()
     .refine((file) => file?.size <= MAX_FILE_SIZE, `Ukuran maksimum file 5MB .`)
     .refine(
@@ -56,58 +59,42 @@ export const competitionRegistrationScehma = z.object({
       "Hanya file berekstensi .jpg, .jpeg, .png and .webp yang diterima.",
     ),
 
-  member1: z.object({
-    name: z.string().min(1).max(50),
-    studentId: z.string().min(1).max(50),
-    phoneNumber: z.string().min(1).max(50),
-    instagram: z.string().min(1).max(50),
-    studentCard: z
-      .any()
-      .refine(
-        (file) => file?.size <= MAX_FILE_SIZE,
-        `Ukuran maksimum file 5MB.`,
-      )
-      .refine(
-        (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
-        "Hanya file berekstensi .jpg, .jpeg, .png and .webp yang diterima.",
-      ),
-  }),
-  member2: z
-    .object({
-      name: z.string().min(1).max(50),
-      studentId: z.string().min(1).max(50),
-      phoneNumber: z.string().min(1).max(50),
-      instagram: z.string().min(1).max(50),
-      studentCard: z
-        .any()
-        .refine(
-          (file) => file?.size <= MAX_FILE_SIZE,
-          `Ukuran maksimum file 5MB.`,
-        )
-        .refine(
-          (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
-          "Hanya file berekstensi .jpg, .jpeg, .png and .webp yang diterima.",
-        ),
-    })
+  name_1: z.string().min(1).max(50),
+  nim_1: z.string().min(1).max(50),
+  phone_number_1: z.string().min(1).max(50),
+  instagram_1: z.string().min(1).max(50),
+  idcard_1: z
+    .any()
+    .refine((file) => file?.size <= MAX_FILE_SIZE, `Ukuran maksimum file 5MB.`)
+    .refine(
+      (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
+      "Hanya file berekstensi .jpg, .jpeg, .png and .webp yang diterima.",
+    ),
+
+  name_2: z.string().min(1).max(50).optional(),
+  nim_2: z.string().min(1).max(50).optional(),
+  phone_number_2: z.string().min(1).max(50).optional(),
+  instagram_2: z.string().min(1).max(50),
+  idcard_2: z
+    .any()
+    .refine((file) => file?.size <= MAX_FILE_SIZE, `Ukuran maksimum file 5MB.`)
+    .refine(
+      (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
+      "Hanya file berekstensi .jpg, .jpeg, .png and .webp yang diterima.",
+    )
     .optional(),
-  member3: z
-    .object({
-      name: z.string().min(1).max(50),
-      studentId: z.string().min(1).max(50),
-      phoneNumber: z.string().min(1).max(50),
-      instagram: z.string().min(1).max(50),
-      studentCard: z
-        .any()
-        .refine(
-          (file) => file?.size <= MAX_FILE_SIZE,
-          `Ukuran maksimum file 5MB.`,
-        )
-        .refine(
-          (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
-          "Hanya file berekstensi .jpg, .jpeg, .png and .webp yang diterima.",
-        ),
-    })
-    .optional(),
+
+  name_3: z.string().min(1).max(50),
+  nim_3: z.string().min(1).max(50),
+  phone_number_3: z.string().min(1).max(50),
+  instagram_3: z.string().min(1).max(50),
+  idcard_3: z
+    .any()
+    .refine((file) => file?.size <= MAX_FILE_SIZE, `Ukuran maksimum file 5MB.`)
+    .refine(
+      (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
+      "Hanya file berekstensi .jpg, .jpeg, .png and .webp yang diterima.",
+    ),
 });
 
 export default function Registration({ branch, guideBookLink }: RegProps) {
@@ -116,40 +103,50 @@ export default function Registration({ branch, guideBookLink }: RegProps) {
   const form = useForm<z.infer<typeof competitionRegistrationScehma>>({
     resolver: zodResolver(competitionRegistrationScehma),
     defaultValues: {
-      teamname: "",
+      team_name: "",
       email: "",
-      university: "",
-      paymentMethod: "",
-      paymentProof: undefined,
-      member1: {
-        name: "",
-        studentId: "",
-        phoneNumber: "",
-        instagram: "",
-        studentCard: undefined,
-      },
-      member2: {
-        name: "",
-        studentId: "",
-        phoneNumber: "",
-        instagram: "",
-        studentCard: undefined,
-      },
-      member3: {
-        name: "",
-        studentId: "",
-        phoneNumber: "",
-        instagram: "",
-        studentCard: undefined,
-      },
+      college: "",
+      payment_method: "",
+      proof: undefined,
+
+      name_1: "",
+      nim_1: "",
+      phone_number_1: "",
+      instagram_1: "",
+      idcard_1: undefined,
+
+      name_2: "",
+      nim_2: "",
+      phone_number_2: "",
+      instagram_2: "",
+      idcard_2: undefined,
+
+      name_3: "",
+      nim_3: "",
+      phone_number_3: "",
+      instagram_3: "",
+      idcard_3: undefined,
     },
   });
 
   const onSubmit = async (
     FormValues: z.infer<typeof competitionRegistrationScehma>,
   ) => {
-    alert("ssucccesss");
-    console.log(FormValues);
+    try {
+      const storageRef = ref(storage);
+
+      const proofRef = ref(storage, `competitions/`);
+      // await addNewCompetitiveProgramming({
+      //   ...FormValues,
+      //   user_id: "kocak",
+      //   date: new Date(),
+      //   is_verified: true,
+      // });
+    } catch (error) {
+      console.log(error);
+    }
+    if (branch === "competitive programming") {
+    }
   };
 
   if (form.formState.isSubmitSuccessful) {
@@ -218,7 +215,7 @@ export default function Registration({ branch, guideBookLink }: RegProps) {
                 <div className="flex w-full flex-col gap-4 md:gap-5 lg:basis-1/2 lg:gap-6">
                   <FormInput
                     control={form.control}
-                    name="teamname"
+                    name="team_name"
                     placeholder="Contoh: Tim Nobita"
                     label="Team Name"
                   />
@@ -231,13 +228,13 @@ export default function Registration({ branch, guideBookLink }: RegProps) {
                   />
                   <FormInput
                     control={form.control}
-                    name="university"
+                    name="college"
                     placeholder="Contoh: Universitas Sriwijaya"
                     label="Institution"
                   />
                   <FormField
                     control={form.control}
-                    name="paymentMethod"
+                    name="payment_method"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="font-monument text-lg lg:text-xl">
@@ -266,7 +263,7 @@ export default function Registration({ branch, guideBookLink }: RegProps) {
                   />
                   <FormFile
                     control={form.control}
-                    name={"paymentProof"}
+                    name={"proof"}
                     label={"Payment Proof"}
                   />
                 </div>
@@ -285,30 +282,30 @@ export default function Registration({ branch, guideBookLink }: RegProps) {
                     <FormInput
                       control={form.control}
                       label={"Name"}
-                      name={"member1.name"}
+                      name={"name_1"}
                       placeholder={"Contoh: Nobita"}
                     />
                     <FormInput
                       control={form.control}
                       label={"Student ID"}
-                      name={"member1.studentId"}
+                      name={"nim_1"}
                       placeholder={"Contoh: 09021382227140"}
                     />
                     <FormInput
                       control={form.control}
                       label={"Phone Number"}
-                      name={"member1.phoneNumber"}
+                      name={"phone_number_1"}
                       placeholder={"Contoh: 081234567890"}
                     />
                     <FormInput
                       control={form.control}
                       label={"Instagram"}
-                      name={"member1.instagram"}
+                      name={"instagram_1"}
                       placeholder={"Contoh: 09021382227140"}
                     />
                     <FormFile
                       control={form.control}
-                      name={"member1.studentCard"}
+                      name={"idcard_1"}
                       label={"Student Card"}
                     />
                   </div>
@@ -319,30 +316,30 @@ export default function Registration({ branch, guideBookLink }: RegProps) {
                     <FormInput
                       control={form.control}
                       label={"Name"}
-                      name={"member2.name"}
+                      name={"name_2"}
                       placeholder={"Contoh: Nobita"}
                     />
                     <FormInput
                       control={form.control}
                       label={"Student ID"}
-                      name={"member2.studentId"}
+                      name={"nim_2"}
                       placeholder={"Contoh: 09021382227140"}
                     />
                     <FormInput
                       control={form.control}
                       label={"Phone Number"}
-                      name={"member2.phoneNumber"}
+                      name={"phone_number_2"}
                       placeholder={"Contoh: 081234567890"}
                     />
                     <FormInput
                       control={form.control}
                       label={"Instagram"}
-                      name={"member2.instagram"}
+                      name={"instagram_2"}
                       placeholder={"Contoh: 09021382227140"}
                     />
                     <FormFile
                       control={form.control}
-                      name={"member2.studentCard"}
+                      name={"idcard_2"}
                       label={"Student Card"}
                     />
                   </div>
@@ -354,30 +351,30 @@ export default function Registration({ branch, guideBookLink }: RegProps) {
                   <FormInput
                     control={form.control}
                     label={"Name"}
-                    name={"member3.name"}
+                    name={"name_3"}
                     placeholder={"Contoh: Nobita"}
                   />
                   <FormInput
                     control={form.control}
                     label={"Student ID"}
-                    name={"member3.studentId"}
+                    name={"nim_3"}
                     placeholder={"Contoh: 09021382227140"}
                   />
                   <FormInput
                     control={form.control}
                     label={"Phone Number"}
-                    name={"member3.phoneNumber"}
+                    name={"phone_number_3"}
                     placeholder={"Contoh: 081234567890"}
                   />
                   <FormInput
                     control={form.control}
                     label={"Instagram"}
-                    name={"member3.instagram"}
+                    name={"instagram_3"}
                     placeholder={"Contoh: 09021382227140"}
                   />
                   <FormFile
                     control={form.control}
-                    name={"member3.studentCard"}
+                    name={"idcard_3"}
                     label={"Student Card"}
                   />
                 </div>

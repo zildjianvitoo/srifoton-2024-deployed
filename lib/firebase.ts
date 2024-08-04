@@ -3,6 +3,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { clientConfig } from "./config";
+import { getStorage } from "firebase/storage";
 // import { getAnalytics } from "firebase/analytics";
 
 // const firebaseConfig = {
@@ -18,5 +19,5 @@ import { clientConfig } from "./config";
 const app = initializeApp(clientConfig);
 // const analytics = getAnalytics(app);
 const db = getFirestore(app);
-
-export { db };
+const storage = getStorage();
+export { db, storage };

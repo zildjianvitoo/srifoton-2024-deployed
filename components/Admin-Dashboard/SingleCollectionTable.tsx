@@ -10,17 +10,17 @@ import useTalkshow from '@/hooks/useTalkshow';
 import useWorkshop from '@/hooks/useWorkshop';
 
 interface SingleEntry {
-  id: string;
+  id?: string;
   type: string;  
   name: string;
-  proof: string;
+  proof?: string;
   is_verified: boolean;
   payment_method: string;
   date: Timestamp;
 }
 
 interface SingleCollectionTableProps {
-  collectionType: 'talkshow' | 'workshop';
+  collectionType: 'talkshows' | 'workshops';
 }
 
 const SingleCollectionTable: React.FC<SingleCollectionTableProps> = ({ collectionType }) => {
@@ -52,10 +52,10 @@ const SingleCollectionTable: React.FC<SingleCollectionTableProps> = ({ collectio
 
     if (!loaded) {
       switch (collectionType) {
-        case 'talkshow':
+        case 'talkshows':
           if (!tsLoading) data = talkshows.map(transformEntry);
           break;
-        case 'workshop':
+        case 'workshops':
           if (!wsLoading) data = workshops.map(transformEntry);
           break;
         default:
@@ -87,14 +87,14 @@ const SingleCollectionTable: React.FC<SingleCollectionTableProps> = ({ collectio
   const paginatedEntries = filteredEntries.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   useEffect(() => {
-    setCurrentPage(1); // Reset to first page when changing tab
+    setCurrentPage(1); 
   }, [collectionType]);
 
   return (
     <div>
       <input
         type="text"
-        placeholder="Search by team name"
+        placeholder="Search by Name"
         value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
       />
@@ -121,8 +121,8 @@ const SingleCollectionTable: React.FC<SingleCollectionTableProps> = ({ collectio
                   <td>{entry.date.toDate().toLocaleString()}</td>
                   <td>
                     {entry.is_verified ? 'Verified' : (
-                      <button onClick={() => handleVerify(entry.id)} disabled={verifying === entry.id}>
-                        {verifying === entry.id ? 'Verifying...' : 'Verify'}
+                      <button onClick={() => handleVerify(entry.id as string)} disabled={verifying === entry.id}>
+                        {verifying === entry.id ? <div className="spinner-loading"></div> : 'Verify'}
                       </button>
                     )}
                   </td>

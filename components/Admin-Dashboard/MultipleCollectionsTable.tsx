@@ -12,14 +12,14 @@ import useWebDevelopment from '@/hooks/useWebDevelopment';
 import useMobileLegends from '@/hooks/useMobileLegends';
 
 interface CompetitionEntry {
-    id: string;
+    id?: string;
     team_name: string;
     name_1: string;
-    proof: string;
+    proof?: string;
     submission?: string; 
     is_verified: boolean;
     payment_method: string;
-    date: Timestamp;
+    date: Date;
 }
 
 const competitionCollections = [
@@ -122,7 +122,7 @@ const MultipleCollectionsTable: React.FC = () => {
             </div>
             <input
                 type="text"
-                placeholder="Search by team name"
+                placeholder="Search by Team Name"
                 value={searchTerm}
                 onChange={e => setSearchTerm(e.target.value)}
             />
@@ -150,10 +150,10 @@ const MultipleCollectionsTable: React.FC = () => {
                                     <td>{entry.name_1}</td>
                                     <td><a href={entry.proof}>{entry.payment_method}</a></td>
                                     {entry.submission && <td><a href={entry.submission}>Submission</a></td>}
-                                    <td>{entry.date.toDate().toLocaleString()}</td>
+                                    <td>{entry.date.toLocaleString()}</td>
                                     <td>
                                         {entry.is_verified ? 'Verified' : (
-                                            <button onClick={() => handleVerify(entry.id)} disabled={verifying === entry.id}>
+                                            <button onClick={() => handleVerify(entry.id as string)} disabled={verifying === entry.id}>
                                                 {verifying === entry.id ? <div className="spinner-loading"></div> : 'Verify'}
                                             </button>
                                         )}

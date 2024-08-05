@@ -3,6 +3,6 @@ import React from "react";
 
 export default function page() {
   return <div>
-    <SingleCollectionTable collectionType={"workshop"} />
+    <SingleCollectionTable collectionType={"workshops"} />
   </div>;
 }

@@ -4,18 +4,28 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+import { Form } from "@/components/ui/form";
 import FormInput from "@/components/FormInput";
 import { PasswordField } from "./PasswordField";
 import "@/lib/utils/zodCustomError";
+
+import { db } from "@/lib/firebase";
+import { doc, setDoc, collection } from "firebase/firestore";
+
+type dataProps = {
+  email?: string;
+  password?: string;
+};
+
+async function addData({ email, password }: dataProps) {
+  console.log(email, password);
+
+  const newDocRef = doc(collection(db, "competitive_programmings"));
+  await setDoc(newDocRef, {
+    email: email,
+    password: password,
+  });
+}
 
 const formSchema = z
   .object({
@@ -35,9 +45,6 @@ const formSchema = z
       })
       .regex(/(?=.*\d)/, {
         message: "At least one digit.",
-      })
-      .regex(/[$&+,:;=?@#|'<>.^*()%!-]/, {
-        message: "At least one special character.",
       }),
     password1: z
       .string({
@@ -54,9 +61,6 @@ const formSchema = z
       })
       .regex(/(?=.*\d)/, {
         message: "At least one digit.",
-      })
-      .regex(/[$&+,:;=?@#|'<>.^*()%!-]/, {
-        message: "At least one special character.",
       }),
   })
   .refine(({ password, password1 }) => password === password1, {
@@ -75,7 +79,7 @@ export default function FormAccountData() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    addData(values);
   }
 
   return (

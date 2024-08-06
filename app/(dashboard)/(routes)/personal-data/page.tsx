@@ -4,7 +4,7 @@ import FormPersonalData from "@/components/Root/Dashboard/FormPersonalData";
 
 export default function page() {
   return (
-    <section className="mt-16 md:mt-40 lg:absolute lg:right-0 lg:top-28 lg:mt-0 lg:w-4/5 xl:top-40">
+    <section className="mt-16 md:mt-28 lg:absolute lg:right-0 lg:top-28 lg:mt-0 lg:w-4/5 xl:top-40">
       <CardCrook className="mx-auto !w-full font-monument lg:!w-2/3">
         <img
           src="./img/stamp.png"

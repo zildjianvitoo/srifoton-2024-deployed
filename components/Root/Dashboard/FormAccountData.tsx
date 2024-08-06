@@ -20,7 +20,7 @@ type dataProps = {
 async function addData({ email, password }: dataProps) {
   console.log(email, password);
 
-  const newDocRef = doc(collection(db, "competitive_programmings"));
+  const newDocRef = doc(collection(db, "users"));
   await setDoc(newDocRef, {
     email: email,
     password: password,

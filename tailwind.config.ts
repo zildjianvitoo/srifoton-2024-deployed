@@ -25,7 +25,8 @@ const config = {
     },
     extend: {
       colors: {
-        whtc: "hsl(var(--whtc))",
+        "whtc-100": "hsl(var(--whtc-100))",
+        "whtc-200": "hsl(var(--whtc-200))",
         "shadow-100": "hsl(var(--shadow-100))",
         "shadow-200": "hsl(var(--shadow-200))",
         "shadow-300": "rgb(var(--shadow-300))",
@@ -93,9 +94,9 @@ const config = {
       },
       fontFamily: {
         monument: "var(--font-monument)",
-        inter: "var(--font-inter)",
+        inter: ["Inter"],
         ponnala: "var(--font-ponnala)",
-        poppins: "var(--font-poppins)",
+        poppins: ["Poppins"],
       },
     },
   },

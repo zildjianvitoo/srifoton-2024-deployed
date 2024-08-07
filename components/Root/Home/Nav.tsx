@@ -14,6 +14,7 @@ import { Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { routes } from "@/lib/link";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,13 +23,13 @@ export default function Nav() {
 
   return (
     <nav
-      id="navbar"
-      className="sticky top-0 z-50 flex items-center justify-between bg-background px-8 py-5 text-primary shadow-sm shadow-[#868365] md:px-12 lg:px-20 xl:px-[7rem]"
+      id="navbar"  //shadow-sm shadow-[#868365]
+      className="sticky top-0 z-50 flex items-center justify-between bg-background px-8 py-5 text-primary md:px-12 lg:px-20 xl:px-[7rem]"
     >
       <Link href="/" className="flex items-center">
-        <span className="md:text-md me-2 border-2 border-[#D9D9D9] px-2 py-[.3rem] text-sm md:me-3 md:px-3 md:py-1 lg:me-5 lg:px-4 lg:py-1 lg:text-lg xl:me-7 xl:px-5 xl:py-2 xl:text-xl">
-          Logo
-        </span>
+        <div className="aspect-[90/56] w-[50px] md:w-[70px] xl:w-[90px] me-2 md:me-3 lg:me-5 xl:me-7">
+          <Image src="/img/logo.png" alt="logo" width={90} height={56} className="w-full"></Image>
+        </div>
         <h4 className="xxs:text-2xl font-monument text-xl text-primary md:text-2xl lg:text-2xl xl:text-3xl">
           SRI
         </h4>
@@ -75,7 +76,7 @@ export default function Nav() {
             <li
               key={routes.address}
               className={cn("mt-2", {
-                "border-b border-white text-white": pathname === routes.address,
+                "border-b-2 border-whtc-200 text-whtc-200": pathname === routes.address,
               })}
             >
               <Link href={routes.address}>{routes.linkTo}</Link>

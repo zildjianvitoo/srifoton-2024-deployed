@@ -1,3 +1,5 @@
+"use client";
+
 import OverviewHero from "@/components/Root/OverviewHero";
 import IDcard from "@/components/ui/IDcard";
 import SectionHeader from "@/components/Root/SectionHeader";
@@ -11,41 +13,68 @@ import { Flashcard, Flashcards, Benefits } from "@/components/Root/Flashcards";
 import { QNA, SpeechBubble } from "@/components/Root/QNA";
 import { Timeline, TimelineCard } from "@/components/Root/Timeline";
 import React, { Suspense } from "react";
+import { useRef } from 'react';
 
 type Props = {};
 
 export default function Workshop({}: Props) {
+  const workshopRef = useRef<HTMLDivElement>(null);
+
   return (
     <>
-      <OverviewHero id="hero-workshop" header="workshop" subheader="srifoton 2024" src="/img/gallery1.png" href="/register">
+      <OverviewHero id="hero-workshop" header="workshop" subheader="srifoton 2024" src="/img/gallery1.png" onClick={() => workshopRef.current?.scrollIntoView({behavior: "smooth"})}>
         “Kickstart your web development journey”
       </OverviewHero>
       <IDcard title="our speaker" name="nama speaker" src1="/img/gallery1.png" src2="/img/gallery1.png">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo lacus at sodales sodales
       </IDcard>
-      <Flashcards id="workshop-option" title="workshop options" >
-        <Flashcard title= "workshop offline ticket" previewTitle= "offline ticket" href= "/register" price="80.000" per="person">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur
-          </p>
-          <Benefits>
-            <p>E-Sertifikat</p>
-            <p>Doorprize dan Relasi</p>
-            <p>Free Basic Class Dicoding</p>
-            <p>Snack + Free Lunch</p>
-          </Benefits>
-        </Flashcard>
-        <Flashcard title= "workshop online ticket" previewTitle= "online ticket" href= "/register" price="50.000" per="person">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur
-          </p>
-          <Benefits>
-            <p>E-Sertifikat</p>
-            <p>Doorprize dan Relasi</p>
-            <p>Free Basic Class Dicoding</p>
-          </Benefits>
-        </Flashcard>
-      </Flashcards>
+      <div ref={workshopRef}>
+        <Flashcards id="workshop-option" title="workshop options" >
+          <Flashcard title= "workshop offline ticket" previewTitle= "offline ticket" href= "workshop/daftar" price="80.000" per="person">
+            <p>
+              Workshop SRIFOTON bertema "Kickstart Your Web Development Journey" menyajikan materi pemrograman dan sesi live coding untuk pengembangan situs web dasar, dipandu oleh instruktur berkompeten.
+            </p>
+            <Benefits>
+              <p>E-Sertifikat</p>
+              <p>Menambah relasi</p>
+              <p>Pengalaman pembuatan proyek</p>
+              <p>Snack</p>
+            </Benefits>
+          </Flashcard>
+          <Flashcard title= "workshop online ticket" previewTitle= "online ticket" href= "workshop/daftar" price="50.000" per="person">
+            <p>
+              Workshop SRIFOTON bertema "Kickstart Your Web Development Journey" menyajikan materi pemrograman dan sesi live coding untuk pengembangan situs web dasar, dipandu oleh instruktur berkompeten.
+            </p>
+            <Benefits>
+              <p>E-Sertifikat</p>
+              <p>Menambah relasi</p>
+              <p>Pengalaman pembuatan proyek</p>
+            </Benefits>
+          </Flashcard>
+          <Flashcard title= {<>workshop online + <br /> talkshow</>} previewTitle= "combo package 1" href= "workshop/daftar" price="80.000" per="person">
+            <p>
+              SRIFOTON menawarkan workshop "Kickstart Your Web Development Journey" dan talkshow "Effective Ways to Build and Maintain a Personal Brand in the Digital Era," yang membahas keterampilan web dasar dan personal branding. Dipandu oleh ahli, paket ini meningkatkan keterampilan digital dan profesional.
+            </p>
+            <Benefits>
+              <p>E-Sertifikat</p>
+              <p>Menambah relasi</p>
+              <p>Pengalaman pembuatan proyek</p>
+              <p>Snack + Lunch</p>
+            </Benefits>
+          </Flashcard>
+          <Flashcard title= {<>workshop offline + <br /> talkshow</>} previewTitle= "combo package 2" href= "workshop/daftar" price="80.000" per="person">
+            <p>
+              Workshop SRIFOTON bertema "Kickstart Your Web Development Journey" menyajikan materi pemrograman dan sesi live coding untuk pengembangan situs web dasar, dipandu oleh instruktur berkompeten.
+            </p>
+            <Benefits>
+              <p>E-Sertifikat</p>
+              <p>Menambah relasi</p>
+              <p>Pengalaman pembuatan proyek</p>
+              <p>Snack</p>
+            </Benefits>
+          </Flashcard>
+        </Flashcards>
+      </div>
       <Timeline title="workshop timeline">
         <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
         <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>

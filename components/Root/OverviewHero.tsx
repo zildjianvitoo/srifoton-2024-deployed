@@ -3,14 +3,20 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { ReactNode } from "react";
 
-type Props = {id: string, header: string, subheader: string, src: string, href: string, children?: ReactNode};
+type Props = {id: string,
+  header: string,
+  subheader: string,
+  src: string,
+  children?: ReactNode,
+  onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
+};
 
-export default function OverviewHero({id, header, subheader, src, href, children}: Props) {
+export default function OverviewHero({id, header, subheader, src, onClick, children}: Props) {
   return (
     <section id={id} className="flex mx-auto">
       <div className="
         flex flex-col lg:flex-row justify-center w-full items-center
-        sm:min-h-[90vh] md:min-h-fit
+        md:min-h-fit
         gap-16 md:gap-20 lg:gap-28 2xl:gap-[165px]">
 
         <figure className="
@@ -46,14 +52,15 @@ export default function OverviewHero({id, header, subheader, src, href, children
               {children}
             </p>
           )}
-          <Link href={href} className="mx-auto">
+          <div className="mx-auto">
             <Button
               variant="srifoton2"
               size="default2"
+              onClick={onClick}
             >
               Register Now
             </Button>
-          </Link>
+          </div>
         </div>
 
         <figure className="hidden w-3/4 lg:w-full min-[1920px]:w-[680px] min-[1920px]:min-w-[680px] lg:flex">

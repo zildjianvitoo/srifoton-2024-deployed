@@ -1,25 +1,26 @@
 import React from "react";
 import Image from "next/image";
-import CardCrook from "../CardCrook";
+import CardCrook from "../CardCrook.v2";
 import SectionHeader from "../SectionHeader";
 
 export default function MediaPartner() {
   return (
     <section id="media-partner">
-      <figure>
+      <figure className="">
         <Image
-          src={"/img/footprints2.png"}
-          alt="dangerline"
+          src={"/img/footprints3.png"}
+          alt="footprints"
           width={1000}
           height={1000}
-          className="absolute w-[14.5vw] right-0 mt-[5vw]"
+          className="absolute w-[30vw] md:w-[20vw] lg:w-[20vw] right-0 mt-[5vw]"
+          // style={{transform: "rotate(35deg)"}}
         />
       </figure>
-      <div className="flex flex-col w-full mt-20 2xl:mt-[10vw]">
+      <div className="flex flex-col w-full mt-16 md:mt-20 2xl:mt-[10vw]">
         <div className="w-[70%] mx-auto mb-[3vw]">
           <SectionHeader text="media partner" />
         </div>
-        <CardCrook className="mt-20 !w-full">
+        <CardCrook outerClassName="mt-20 !w-full">
           <p>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
             quasi quod cumque eius a ea commodi sint, quis temporibus alias

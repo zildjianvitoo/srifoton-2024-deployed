@@ -12,7 +12,7 @@ export default function UIUXInfo({}: Props) {
   return (
     <>
       <InfoHero
-        id="hero-ui-ux" header="ui/ux design" subheader="srifoton 2024" src="/img/gallery1.png" href="/register" guideHref="/"
+        id="hero-ui-ux" header="ui/ux design" subheader="srifoton 2024" src="/img/gallery1.png" href="ui-ux/daftar" guideHref="#"
         card1title="Keterampilan Desain" card1content="Mengasah keterampilan desain, prinsip, estetika, fungsionalitas."
         card2title="Inovasi dan Kreativitas" card2content="Mengembangkan pola pikir yang inovatif dan kreatif">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu.
@@ -27,61 +27,27 @@ export default function UIUXInfo({}: Props) {
         <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
         <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
       </Timeline>
-      <section className="flex flex-col lg:hidden gap-[30px]">
-        <div className="px-11">
-          <SectionHeader text="COMPETITION QNA"/>
-        </div>
-        <Accordion type="single" collapsible className="text-white text-sm font-normal">
-          <AccordionItem value="accord-1">
-            <AccordionTrigger>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?</AccordionTrigger>
-            <AccordionContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 11111
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="accord-2">
-            <AccordionTrigger>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?</AccordionTrigger>
-            <AccordionContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 22222
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="accord-3">
-            <AccordionTrigger>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?</AccordionTrigger>
-            <AccordionContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 33333
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="accord-4">
-            <AccordionTrigger>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?</AccordionTrigger>
-            <AccordionContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 44444
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="accord-5">
-            <AccordionTrigger>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?</AccordionTrigger>
-            <AccordionContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 55555
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-      </section>
-      <QNA id="cp-qna" title="competition qna">
-        <SpeechBubble question="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 11111
+      <QNA id="competition-qna" title="competition qna">
+        <SpeechBubble id="speech1" question="Apakah karya yang akan diperlombakan boleh menggunakan karya yang sudah pernah diikutsertakan dalam kompetisi lain?">
+        Tidak diperbolehkan. Apabila ketahuan melakukan hal tersebut, maka panitia SRIFOTON berhak memberikan sanksi terhadap peserta yang bersangkutan
         </SpeechBubble>
-        <SpeechBubble question="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 22222
+        <SpeechBubble id="speech2" question="Jika saya telah mengikuti salah satu cabang lomba SRIFOTON 2024, Apakah saya boleh juga mengikuti cabang lomba yang lain?">
+        Boleh, Peserta dapat mengikuti semua cabang lomba tetapi hanya bisa menjadi ketua tim untuk satu cabang lomba saja (misal: menjadi ketua tim untuk lomba UI/UX Design saja)
         </SpeechBubble>
-        <SpeechBubble question="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 33333
+        <SpeechBubble id="speech3" question="Bolehkah satu tim terdiri atas anggota yang berbeda universitas atau perguruan tinggi?">
+        Tidak boleh. Setiap tim harus beranggotakan mahasiswa yang berasal dari satu universitas atau perguruan tinggi yang sama
         </SpeechBubble>
-        <SpeechBubble question="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 44444
+        <SpeechBubble id="speech4" question="Jika tim saya dinyatakan lolos ke tahap final tetapi kami tidak dapat hadir pada acara presentasi final maka konsekuensi apa yang akan didapat?">
+        Tim tersebut akan dinyatakan mengundurkan diri dari tahap presentasi final
         </SpeechBubble>
-        <SpeechBubble question="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 55555
+        <SpeechBubble id="speech5" question="Berapakah minimal dan jumlah maksimal anggota dalam satu tim?">
+        Peserta dapat mendaftar pada kompetisi ini secara individu ataupun dengan membentuk tim selama anggota tim tidak lebih dari 3 orang
         </SpeechBubble>
       </QNA>
-      <ContactPerson />
+      <ContactPerson
+        contactPerson1="kian fikram ayyubi" WA1="0878-9781-4879" Line1="fikramayyubi30"
+        contactPerson2="Nazwa Abelia Nabira" WA2="0853-8181-3122" Line2="nxabell"
+      />
     </>
   );
 }

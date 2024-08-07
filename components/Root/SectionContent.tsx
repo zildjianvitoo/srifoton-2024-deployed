@@ -1,13 +1,15 @@
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
-type Props = { className?: string; children: ReactNode; header: string };
+type Props = { className?: string; children: ReactNode; header: string; href: string };
 
 export default function SectionContent({
   className,
   children,
   header,
+  href,
   ...props
 }: Props) {
   return (
@@ -21,9 +23,11 @@ export default function SectionContent({
         {header}
       </h3>
       <p className="lg:text-md font-ponnala text-sm xl:text-lg text-justify">{children}</p>
-      <Button className="mt-8 md:mt-[50px] font-monument" size={"sm"} variant={"srifoton"}>
-        Register Now
-      </Button>
+      <Link href={href}>
+        <Button className="mt-8 md:mt-[50px] font-monument" size={"sm"} variant={"srifoton"}>
+          Register Now
+        </Button>
+      </Link>
     </div>
   );
 }

@@ -15,6 +15,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import Image from "next/image";
 
 function NavSided() {
   const pathname = usePathname();
@@ -22,9 +23,13 @@ function NavSided() {
   return (
     <section id="nav-sided" className="text-[#868365] lg:text-base xl:text-lg">
       <div className="fixed bottom-0 top-0 hidden w-1/5 bg-[#24221E] px-4 pt-6 text-center lg:block lg:text-base xl:text-lg">
-        <div className="inline border-2 border-white px-4 py-2 text-white">
-          Logo
-        </div>
+        <Image
+          src={"/img/logo.png"}
+          width={100}
+          height={100}
+          alt="logo-srifoton"
+          className="mx-auto"
+        />
         <ul className="mt-10 flex flex-col gap-10 xl:text-xl">
           {dashboardRoutes.map((routes) => (
             <li

@@ -5,31 +5,11 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
-import FormInput from "@/components/FormInput";
-import { PasswordField } from "./PasswordField";
+import { PasswordField } from "../Root/Dashboard/PasswordField";
 import "@/lib/utils/zodCustomError";
-
-import { db } from "@/lib/firebase";
-import { doc, setDoc, collection } from "firebase/firestore";
-
-type dataProps = {
-  email?: string;
-  password?: string;
-};
-
-async function addData({ email, password }: dataProps) {
-  console.log(email, password);
-
-  // const newDocRef = doc(collection(db, "users"));
-  // await setDoc(newDocRef, {
-  //   email: email,
-  //   password: password,
-  // });
-}
 
 const formSchema = z
   .object({
-    email: z.string().email(),
     password: z
       .string({
         required_error: "Password can not be empty.",
@@ -68,18 +48,17 @@ const formSchema = z
     message: "Password didn't match.",
   });
 
-export default function FormAccountData() {
+export default function FormResetPassword() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
       password: "",
       password1: "",
     },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    addData(values);
+    console.log(values);
   }
 
   return (
@@ -88,25 +67,21 @@ export default function FormAccountData() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="mt-10 space-y-4 text-black md:px-8"
       >
-        <FormInput
-          control={form.control}
-          name="email"
-          placeholder="nobita@gmail.com"
-          label="Email"
-        />
-        <PasswordField
-          title="Password"
-          name="password"
-          placeholder="XXXXXXXXX"
-        />
         <PasswordField
           title="New Password"
-          name="password1"
+          name="password"
           placeholder="Masukkan kata sandi baru"
         />
-
-        <Button type="submit" className="w-full bg-black text-sm text-white">
-          Save
+        <PasswordField
+          title="Confirm Password"
+          name="password1"
+          placeholder="Konfirmasi kata sandi"
+        />
+        <Button
+          type="submit"
+          className="w-full bg-background text-sm text-white"
+        >
+          Reset Password
         </Button>
       </form>
     </Form>

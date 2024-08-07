@@ -8,16 +8,6 @@ import { Form } from "@/components/ui/form";
 import { PasswordField } from "../Root/Dashboard/PasswordField";
 import "@/lib/utils/zodCustomError";
 
-type dataProps = {
-  name?: string;
-  email?: string;
-  password?: string;
-};
-
-async function addData({ name, email, password }: dataProps) {
-  console.log(name, email, password);
-}
-
 const formSchema = z
   .object({
     password: z
@@ -68,7 +58,7 @@ export default function FormResetPassword() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    addData(values);
+    console.log(values);
   }
 
   return (

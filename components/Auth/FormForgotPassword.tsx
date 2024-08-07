@@ -6,20 +6,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import FormInput from "@/components/FormInput";
-import { PasswordField } from "../Root/Dashboard/PasswordField";
 import "@/lib/utils/zodCustomError";
-import Image from "next/image";
-import Link from "next/link";
-import { Checkbox } from "../ui/checkbox";
-
-type dataProps = {
-  email?: string;
-  password?: string;
-};
-
-async function addData({ email, password }: dataProps) {
-  console.log(email, password);
-}
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -34,7 +21,7 @@ export default function FormForgotPassword() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    addData(values);
+    console.log(values);
   }
 
   return (

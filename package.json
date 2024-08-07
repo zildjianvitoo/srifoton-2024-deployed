@@ -41,6 +41,7 @@
     "simplebar-react": "^3.2.6",
     "sonner": "^1.5.0",
     "srifoton-2024": "file:",
+    "styled-components": "^6.1.12",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "ulid": "^2.3.0",

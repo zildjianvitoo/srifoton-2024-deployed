@@ -41,11 +41,11 @@ export default function Countdown() {
           loading="eager"
           />
           <div className="mx-auto mt-[10%] mb-[12%] flex flex-col items-center justify-center text-center">
-            <h3 className="align-top text-xs text-text-300 sm:text-xl md:text-2xl xl:text-4xl">
+            <h3 className="align-top text-text-300 w-[90%] text-xs sm:text-xl lg:text-3xl xl:text-[45px]">
               OPENING CEREMONY
               <div className="mt-1 rounded-md border-2 border-[#868365] bg-[#868365] md:mt-3 md:h-1 lg:mt-4 xl:mt-5"></div>
             </h3>
-            <div className="mx-auto mt-5 flex items-center justify-center md:mt-10 lg:mt-16 xl:mt-20">
+            <div className="mx-auto mt-5 flex items-center justify-center md:mt-10 lg:mt-16 xl:mt-20 lg:gap-4">
               <Time value={days} desc={"Hari"} />
               <DoubleDot />
               <Time value={hours} desc={"Jam"} />

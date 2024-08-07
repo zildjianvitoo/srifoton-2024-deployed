@@ -12,7 +12,7 @@ export default function ESportInfo({}: Props) {
   return (
     <>
       <InfoHero
-        id="hero-e-sport" header="e-sport" subheader="srifoton 2024" src="/img/gallery1.png" href="/register" guideHref="/"
+        id="hero-e-sport" header="e-sport" subheader="srifoton 2024" src="/img/gallery1.png" href="e-sport/daftar" guideHref="#"
         card1title="Kerjasama Tim" card1content="Meningkatkan kemampuan komunikasi dan kolaborasi"
         card2title="Pengalaman Kompetitif" card2content="Memberikan pengalaman menghadapi tekanan dan tantangan">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu.
@@ -27,61 +27,27 @@ export default function ESportInfo({}: Props) {
         <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
         <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
       </Timeline>
-      <section className="flex flex-col lg:hidden gap-[30px]">
-        <div className="px-11">
-          <SectionHeader text="COMPETITION QNA"/>
-        </div>
-        <Accordion type="single" collapsible className="text-white text-sm font-normal">
-          <AccordionItem value="accord-1">
-            <AccordionTrigger>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?</AccordionTrigger>
-            <AccordionContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 11111
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="accord-2">
-            <AccordionTrigger>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?</AccordionTrigger>
-            <AccordionContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 22222
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="accord-3">
-            <AccordionTrigger>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?</AccordionTrigger>
-            <AccordionContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 33333
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="accord-4">
-            <AccordionTrigger>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?</AccordionTrigger>
-            <AccordionContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 44444
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="accord-5">
-            <AccordionTrigger>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?</AccordionTrigger>
-            <AccordionContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 55555
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-      </section>
-      <QNA id="cp-qna" title="competition qna">
-        <SpeechBubble question="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 11111
+      <QNA id="competition-qna" title="competition qna">
+        <SpeechBubble id="speech1" question="Apakah anggota tim boleh berasal dari universitas/sekolah yang berbeda?">
+        Diperbolehkan bagi tim berisi anggota yang berasal dari universitas/sekolah yang berbeda untuk bergabung selagi memenuhi syarat dan ketentuan
         </SpeechBubble>
-        <SpeechBubble question="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 22222
+        <SpeechBubble id="speech2" question="Apakah ketua harus memasukkan data dirinya kembali setelah melakukan pendaftaran akun?">
+        Ketua tidak perlu memasukkan data dirinya lagi, cukup anggota tim yang belum di input saja
         </SpeechBubble>
-        <SpeechBubble question="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 33333
+        <SpeechBubble id="speech3" question="Apa yang harus dilakukan jika anggota tim kami ingin mengganti akun atau nickname yang terdaftar?">
+        Pergantian akun atau nickname yang terdaftar tidak diperbolehkan. Jika terdapat perbedaan antara akun atau nickname yang digunakan saat permainan dengan yang terdaftar, tim tersebut akan didiskualifikasi
         </SpeechBubble>
-        <SpeechBubble question="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 44444
+        <SpeechBubble id="speech4" question="Apakah ada batasan waktu untuk keterlambatan ke pertandingan?">
+        Tim harus siap 15 menit sebelum jadwal pertandingan dengan batas keterlambatan maksimal 15 menit. Terdapat peringatan bertingkat, yaitu 5 menit peringatan awal dan 10 menit peringatan terakhir. Jika melebihi batas keterlambatan, tim dapat didiskualifikasi
         </SpeechBubble>
-        <SpeechBubble question="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 55555
+        <SpeechBubble id="speech5" question="Apa yang harus dilakukan jika kami menemukan tim lawan melakukan kecurangan?">
+        Jika merasa tim lawan melakukan kecurangan, perwakilan tim pelapor harus memberikan screenshot atau rekaman permainan sebagai bukti dan melaporkannya kepada panitia setelah permainan selesai. Panitia akan melakukan investigasi dan menindaklanjuti laporan tersebut
         </SpeechBubble>
       </QNA>
-      <ContactPerson />
+      <ContactPerson
+        contactPerson1="Muhammad Alif Berri Rossi" WA1="0812-7325-8332" Line1="zenleo10"
+        contactPerson2="M. Rajab Fadhly Hartawibawa" WA2="0812-2956-4138" Line2="muhammadrajabfadh"
+      />
     </>
   );
 }

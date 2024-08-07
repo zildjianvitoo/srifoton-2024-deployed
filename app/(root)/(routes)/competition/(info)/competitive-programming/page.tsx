@@ -13,7 +13,7 @@ export default function CompetitiveProgrammingInfo({}: Props) {
   return (
     <>
       <InfoHero
-        id="hero-cp" header="competitive programming" subheader="srifoton 2024" src="/img/gallery1.png" href="/register" guideHref="/"
+        id="hero-cp" header="competitive programming" subheader="srifoton 2024" src="/img/gallery1.png" href="competitive-programming/daftar" guideHref="#"
         card1title="Algoritma dan Struktur Data" card1content="Memperdalam pengetahuan teknis dan keterampilan pemrograman"
         card2title="Problem Solving" card2content="Melatih kemampuan untuk memecahkan masalah secara efektif dan efisien">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu.
@@ -28,61 +28,24 @@ export default function CompetitiveProgrammingInfo({}: Props) {
         <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
         <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
       </Timeline>
-      <section className="flex flex-col lg:hidden gap-[30px]">
-        <div className="px-11">
-          <SectionHeader text="COMPETITION QNA"/>
-        </div>
-        <Accordion type="single" collapsible className="text-white text-sm font-normal">
-          <AccordionItem value="accord-1">
-            <AccordionTrigger>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?</AccordionTrigger>
-            <AccordionContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 11111
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="accord-2">
-            <AccordionTrigger>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?</AccordionTrigger>
-            <AccordionContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 22222
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="accord-3">
-            <AccordionTrigger>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?</AccordionTrigger>
-            <AccordionContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 33333
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="accord-4">
-            <AccordionTrigger>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?</AccordionTrigger>
-            <AccordionContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 44444
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="accord-5">
-            <AccordionTrigger>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?</AccordionTrigger>
-            <AccordionContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 55555
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-      </section>
-      <QNA id="cp-qna" title="competition qna">
-        <SpeechBubble question="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 11111
+      <QNA id="competition-qna" title="competition qna">
+        <SpeechBubble id="speech1" question="Bagaimana cara mendaftarkan tim pada kompetisi Competitive Programming SRIFOTON 2024?">
+        Peserta dalam mendaftarkan tim melalui website SRIFOTON
         </SpeechBubble>
-        <SpeechBubble question="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 22222
+        <SpeechBubble id="speech2" question="Berapa jumlah minimal dan maksimal anggota dalam satu tim?">
+        Peserta dapat mendaftar pada kompetisi ini secara individu ataupun dengan membentuk tim selama anggota tim tidak lebih dari 2 orang
         </SpeechBubble>
-        <SpeechBubble question="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 33333
+        <SpeechBubble id="speech3" question="Apa konsekuensi yang akan diperoleh jika tim melanggar syarat dan ketentuan kompetisi?">
+        Jika tim melanggar syarat dan ketentuan dari kompetisi maka tim akan diskualifikasi
         </SpeechBubble>
-        <SpeechBubble question="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 44444
+        <SpeechBubble id="speech4" question="Apakah akun Hackerrank akan disediakan oleh panitia?">
+        Tidak, Peserta akan mempersiapkan akun Hackerank masing-masing, kemudian di data pada form
         </SpeechBubble>
-        <SpeechBubble question="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in?">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. 55555
+        <SpeechBubble id="speech5" question="Bolehkah dalam satu tim mendaftar jika berasal dari jenjang pendidikan berbeda dan dari jurusan yang berbeda?">
+        Diperbolehkan. Asalkan setiap tim beranggotakan mahasiswa yang berasal dari satu universitas atau perguruan tinggi yang sama.
         </SpeechBubble>
       </QNA>
-      <ContactPerson />
+      <ContactPerson contactPerson1="rakha abhirama" WA1="0882-8638-5975" Line1="rakha1604"/>
     </>
   );
 }

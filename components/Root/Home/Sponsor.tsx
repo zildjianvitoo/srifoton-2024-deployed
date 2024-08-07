@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import CardCrook from "../CardCrook";
+import CardCrook from "../CardCrook.v2";
 import SectionHeader from "../SectionHeader";
 
 export default function Sponsor() {
@@ -10,14 +10,14 @@ export default function Sponsor() {
         <div className="w-[70%] mx-auto mb-[3vw]">
           <SectionHeader text="sponsor" />
         </div>
-        <CardCrook className="mt-20 !w-full">
+        <CardCrook outerClassName="mt-20 !w-full">
           <figure>
             <Image
               src={"/img/magnifying-glass.png"}
               alt="dangerline"
               width={1000}
               height={1000}
-              className="absolute w-[8%] left-0 top-[-60px]"
+              className="absolute left-0 w-[17%] md:w-[12%] xl:w-[8%] top-[-5vw] xl:top-[-60px]"
             />
           </figure>
           <p>

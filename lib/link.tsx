@@ -1,20 +1,26 @@
 import * as icon from "@/lib/icon";
+import { FaWhatsapp } from "react-icons/fa";
+import { HiOutlineMail } from "react-icons/hi";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaFacebook } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { FaTiktok } from "react-icons/fa";
 import { Contact, CircleUser, CalendarRange } from "lucide-react";
 
 const socials = [
-  { linkTo: "X", address: "#", icon: icon.X },
-  { linkTo: "Facebook", address: "#", icon: icon.Facebook },
-  { linkTo: "Instagram", address: "#", icon: icon.Instagram },
-  { linkTo: "Tiktok", address: "#", icon: icon.Tiktok },
+  { linkTo: "X", address: "#", icon: <FaXTwitter /> },
+  { linkTo: "Facebook", address: "#", icon: <FaFacebook /> },
+  { linkTo: "Instagram", address: "#", icon: <FaInstagram /> },
+  { linkTo: "Tiktok", address: "#", icon: <FaTiktok /> },
 ];
 
 const contacts = [
   {
     linkTo: "Whatsapp",
-    contact: ["+62 xxxxxxxx", "+62 xxxxxxxx"],
-    icon: icon.Whatsapp,
+    contact: ["+62 882-6911-6903 (Diva Sarasvati Azzahra)", "+62 878-6178-1143 (Dimas Putra Mufazzal)"],
+    icon: <FaWhatsapp />,
   },
-  { linkTo: "Email", contact: ["srifoton.unsri@gmail.com"], icon: icon.Email },
+  { linkTo: "Email", contact: ["srifoton.unsri@gmail.com"], icon: <HiOutlineMail /> },
 ];
 
 const routes = [

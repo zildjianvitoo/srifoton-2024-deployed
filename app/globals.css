@@ -40,7 +40,8 @@
 
     --radius: 0.5rem;
 
-    --whtc: 34.29 100% 97.25%;
+    --whtc-100: 34.29 100% 97.25%;
+    --whtc-200: 36 27% 89%;
     --shadow-100: 54.42 22.99% 63.33%;
     --shadow-200: 54.55 14.04% 46.08%;
     --shadow-300: #737158;
@@ -143,14 +144,7 @@
   .for_flashcard > .slide_is_selected {
     flex: 0 0 35%;
   }
-  /* @media screen and (min-width: 768px) {
-    .for_flashcard > .embla__slide {
-      flex: 0 0 35%;
-    }
-    .for_flashcard > .slide_is_selected {
-      flex: 0 0 25%
-    }
-  } */
+
   @media screen and (max-width: 1024px) {
     .embla__slide {
       flex: 0 0 35%;
@@ -163,6 +157,10 @@
     }
   }
 
+  /* .qna_animate:hover {
+    transition: transform 0.6s ease-in-out;
+  } */
+
   li {
     @apply md:mx-1 md:px-1 lg:mx-2 lg:px-1 xl:mx-3 xl:px-2;
   }
@@ -173,6 +171,10 @@
 
   .srifoton-header {
     @apply text-2xl md:text-3xl xl:text-4xl min-[1920px]:text-[42px];
+  }
+
+  .srifoton-subheader {
+    @apply text-xl md:text-2xl xl:text-3xl min-[1920px]:text-[35px];
   }
 
   .srifoton-text {

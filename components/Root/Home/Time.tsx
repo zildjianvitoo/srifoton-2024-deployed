@@ -11,7 +11,7 @@ export default function Time({ value, desc }: { value: any; desc: any }) {
       >
         {value}
       </div>
-      <p className="text-center text-[.5rem] sm:text-sm lg:text-xl xl:text-3xl">{desc}</p>
+      <p className="text-center text-[.5rem] sm:text-sm lg:text-xl xl:text-[35px]">{desc}</p>
     </div>
   );
 }

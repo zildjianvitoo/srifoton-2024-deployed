@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function page() {
   return (
     <section
-      id="registration"
+      id="login"
       className="flex flex-col justify-end space-x-8 space-y-10 lg:flex-row"
     >
       <div className="left-[6.2917vw] flex flex-col space-y-8 text-center text-white lg:fixed">

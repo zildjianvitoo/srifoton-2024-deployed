@@ -196,11 +196,15 @@ const CompetitionCollectionsTable: React.FC = () => {
                                         <td className="p-2 text-center text-primary">
                                             {entry.is_verified ? 'Verified' : (
                                                 <Button
-                                                    onClick={() => handleVerify(entry.id!)}
+                                                    onClick={() => {
+                                                        if (window.confirm(`Are you sure to verify ${entry.team_name}?`)) {
+                                                            handleVerify(entry.id as string);
+                                                        }
+                                                    }}
                                                     disabled={verifying === entry.id}
                                                     className="p-2 bg-secondary text-secondary-foreground rounded"
                                                 >
-                                                    {verifying === entry.id ? 'Verifying...' : 'Verify'}
+                                                    {verifying === entry.id ? <div className="spinner"></div> : 'Verify'}
                                                 </Button>
                                             )}
                                         </td>

@@ -6,29 +6,24 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import FormInput from "@/components/FormInput";
-import { PasswordField } from "./PasswordField";
+import { PasswordField } from "../Root/Dashboard/PasswordField";
 import "@/lib/utils/zodCustomError";
-
-import { db } from "@/lib/firebase";
-import { doc, setDoc, collection } from "firebase/firestore";
+import Image from "next/image";
+import Link from "next/link";
 
 type dataProps = {
+  name?: string;
   email?: string;
   password?: string;
 };
 
-async function addData({ email, password }: dataProps) {
+async function addData({ name, email, password }: dataProps) {
   console.log(email, password);
-
-  // const newDocRef = doc(collection(db, "users"));
-  // await setDoc(newDocRef, {
-  //   email: email,
-  //   password: password,
-  // });
 }
 
 const formSchema = z
   .object({
+    name: z.string().min(1).max(50),
     email: z.string().email(),
     password: z
       .string({
@@ -68,7 +63,7 @@ const formSchema = z
     message: "Password didn't match.",
   });
 
-export default function FormAccountData() {
+export default function FormRegistration() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -90,24 +85,57 @@ export default function FormAccountData() {
       >
         <FormInput
           control={form.control}
+          name="name"
+          placeholder="Contoh: Nobita"
+          label="Name"
+        />
+        <FormInput
+          control={form.control}
           name="email"
-          placeholder="nobita@gmail.com"
+          placeholder="Contoh: nobita@gmail.com"
           label="Email"
         />
         <PasswordField
           title="Password"
           name="password"
-          placeholder="XXXXXXXXX"
+          placeholder="Masukkan kata sandi"
         />
         <PasswordField
           title="New Password"
           name="password1"
-          placeholder="Masukkan kata sandi baru"
+          placeholder="Konfirmasi kata sandi"
         />
-
-        <Button type="submit" className="w-full bg-black text-sm text-white">
-          Save
-        </Button>
+        <div className="flex flex-col space-y-2">
+          <Button
+            type="submit"
+            className="w-full bg-background text-sm text-white"
+          >
+            Create Account
+          </Button>
+          <p className="text-center text-xs md:text-sm">
+            Or use your google account
+          </p>
+          <Button
+            type="submit"
+            className="w-full text-sm text-background"
+            variant={"outline"}
+          >
+            <Image
+              src={"/img/google-icon.png"}
+              width={50}
+              height={50}
+              alt="google-icon"
+              className="me-2 size-4 md:me-4 md:size-6"
+            ></Image>
+            Sign in with Google
+          </Button>
+          <p className="text-center text-xs md:text-sm">
+            Already have have an account?{" "}
+            <Link href={"/login"} className="text-[#737158]">
+              Log In
+            </Link>
+          </p>
+        </div>
       </form>
     </Form>
   );

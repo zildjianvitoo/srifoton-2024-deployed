@@ -70,7 +70,7 @@ export default function FormPersonalData() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    formHandleSubmit(values);
+    // formHandleSubmit(values);
   }
 
   return (
@@ -150,7 +150,7 @@ export default function FormPersonalData() {
           placeholder="nobita_"
           label="Instagram"
         />
-        <Button type="submit" className="w-full bg-black text-white">
+        <Button type="submit" className="w-full bg-black text-sm text-white">
           Save
         </Button>
       </form>

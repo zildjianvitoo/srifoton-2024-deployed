@@ -1,5 +1,3 @@
-// components/Admin-Dashboard/SingleCollectionTable.tsx
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -7,8 +5,8 @@ import { doc, updateDoc } from "firebase/firestore";
 import { Timestamp } from "firebase/firestore";
 import { db } from '@/lib/firebase';
 import useTalkshow from '@/hooks/useTalkshow';
-import useWorkshop from '@/hooks/useWorkshop';
 import { Button } from '../ui/button';
+import ExportCSVButton from './ExportCSVButton';
 
 interface SingleEntry {
   id?: string;
@@ -20,22 +18,17 @@ interface SingleEntry {
   date: Timestamp;
 }
 
-interface SingleCollectionTableProps {
-  collectionType: 'talkshows' | 'workshops';
-}
-
-const SingleCollectionTable: React.FC<SingleCollectionTableProps> = ({ collectionType }) => {
+const TalkshowCollectionTable: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [currentData, setCurrentData] = useState<any[]>([]);
   const [verifying, setVerifying] = useState<string | null>(null);
   const [items, setItems] = useState<SingleEntry[]>([]);
   const [loaded, setLoaded] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 
   const itemsPerPage = 10;
-
   const { talkshows, loading: tsLoading } = useTalkshow();
-  const { workshops, loading: wsLoading } = useWorkshop();
 
   const transformEntry = (entry: any): SingleEntry => ({
     id: entry.id,
@@ -51,29 +44,21 @@ const SingleCollectionTable: React.FC<SingleCollectionTableProps> = ({ collectio
     setLoading(true);
     let data: SingleEntry[] = [];
 
-    if (!loaded) {
-      switch (collectionType) {
-        case 'talkshows':
-          if (!tsLoading) data = talkshows.map(transformEntry);
-          break;
-        case 'workshops':
-          if (!wsLoading) data = workshops.map(transformEntry);
-          break;
-        default:
-          break;
-      }
-
+    if (!loaded && !tsLoading) {
+      data = talkshows.map(transformEntry);
       if (data.length > 0) {
+        setCurrentData(data);
         setItems(data);
         setLoaded(true);
       }
     }
+
     setLoading(false);
-  }, [collectionType, loaded, tsLoading, wsLoading, talkshows, workshops]);
+  }, [loaded, tsLoading, talkshows]);
 
   const handleVerify = async (id: string) => {
     setVerifying(id);
-    const entryDoc = doc(db, collectionType, id);
+    const entryDoc = doc(db, 'talkshows', id);
     await updateDoc(entryDoc, { is_verified: true });
     setItems(prevItems =>
       prevItems.map(item =>
@@ -89,12 +74,11 @@ const SingleCollectionTable: React.FC<SingleCollectionTableProps> = ({ collectio
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [collectionType]);
+  }, []);
 
   return (
     <div className="p-4 text-primary">
-      <h3 className="admin-section border-b-2 border-gray-300 z-30 text-primary bg-background px-4 font-monument text-xl uppercase lg:text-2xl xl:px-6 xl:text
-        -3xl">{collectionType === 'talkshows' ? 'Talkshows' : 'Workshops'}</h3>
+      <h3 className="admin-section border-b-2 border-gray-300 z-30 text-primary bg-background px-4 font-monument text-xl uppercase lg:text-2xl xl:px-6 xl:text-3xl">Talkshows</h3>
       <input
         type="text"
         placeholder="Search by Name"
@@ -148,24 +132,30 @@ const SingleCollectionTable: React.FC<SingleCollectionTableProps> = ({ collectio
               </tbody>
             </table>
           </div>
-          <div className="flex justify-between items-center">
-            <Button
-              disabled={currentPage === 1}
-              onClick={() => setCurrentPage(currentPage - 1)}
-              className="p-2 bg-muted text-muted-foreground rounded disabled:opacity-50"
-            >
-              Prev
-            </Button>
-            <span>
-              Showing {((currentPage - 1) * itemsPerPage) + 1} - {Math.min(currentPage * itemsPerPage, filteredEntries.length)} of {filteredEntries.length} entries
-            </span>
-            <Button
-              disabled={currentPage === totalPages}
-              onClick={() => setCurrentPage(currentPage + 1)}
-              className="p-2 bg-muted text-muted-foreground rounded disabled:opacity-50"
-            >
-              Next
-            </Button>
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="space-x-4 mb-4 md:mb-1">
+              <ExportCSVButton data={currentData} collectionName="Talkshow" />
+            </div>
+            <div className="space-x-2">
+              <Button
+                onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
+                disabled={currentPage === 1}
+                className="p-2 bg-muted text-muted-foreground rounded disabled:opacity-50"
+              >
+                Previous
+              </Button>
+              <span>
+                Showing {((currentPage - 1) * itemsPerPage) + 1} - {Math.min(currentPage * itemsPerPage, filteredEntries.length)} of {filteredEntries.length} entries
+              </span>
+              <span>({currentPage} / {totalPages})</span>
+              <Button
+                onClick={() => setCurrentPage(Math.min(currentPage + 1, totalPages))}
+                disabled={currentPage === totalPages}
+                className="p-2 bg-muted text-muted-foreground rounded disabled:opacity-50"
+              >
+                Next
+              </Button>
+            </div>
           </div>
         </>
       )}
@@ -173,4 +163,4 @@ const SingleCollectionTable: React.FC<SingleCollectionTableProps> = ({ collectio
   );
 };
 
-export default SingleCollectionTable;
+export default TalkshowCollectionTable;

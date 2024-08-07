@@ -1,8 +1,8 @@
-import MultipleCollectionsTable from "@/components/Admin-Dashboard/MultipleCollectionsTable";
+import CompetitionCollectionsTable from "@/components/Admin-Dashboard/CompetitionCollectionsTable";
 import React from "react";
 
 export default function page() {
   return <div>
-    <MultipleCollectionsTable />
+    <CompetitionCollectionsTable />
   </div>;
 }

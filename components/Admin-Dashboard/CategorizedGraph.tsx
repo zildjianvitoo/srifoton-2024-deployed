@@ -72,7 +72,7 @@ const CategorizedGraph = () => {
         <section id="categorized-graph" className="flex flex-col gap-8">
             <div className="w-full">
                 <h3 className="admin-section border-b-2 border-gray-300 z-30 text-primary bg-background px-4 font-monument text-xl uppercase lg:text-2xl xl:px-6 xl:text
-        -3xl">Competition</h3>
+        -3xl">Competitions</h3>
                 <div className="w-full h-[400px]">
                     <AdminDashboardGraph data={competitionData} title="Competition" />
                 </div>

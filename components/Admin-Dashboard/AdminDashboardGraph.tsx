@@ -48,14 +48,11 @@ const AdminDashboardGraph: React.FC<AdminDashboardGraphProps> = ({ data }) => {
                     <Bar dataKey="nonVerified" stackId="a" fill="#8884d8" name="Not Verified">
                         <LabelList
                             dataKey="total"
-                            offset={60}
+                            
                             position="top"
                             fill="white"
                         />
                     </Bar>
-
-
-
                 </BarChart>
             </ResponsiveContainer>
         </div>

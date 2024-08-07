@@ -27,7 +27,9 @@
     "clsx": "^2.1.1",
     "embla-carousel-autoplay": "^8.1.6",
     "embla-carousel-react": "^8.1.6",
+    "file-saver": "^2.0.5",
     "firebase": "^10.12.3",
+    "jszip": "^3.10.1",
     "lucide-react": "^0.396.0",
     "next": "^14.2.3",
     "next-firebase-auth-edge": "^1.6.2",
@@ -49,6 +51,7 @@
   },
   "devDependencies": {
     "@hookform/devtools": "^4.3.1",
+    "@types/file-saver": "^2.0.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-copy-to-clipboard": "^5.0.7",

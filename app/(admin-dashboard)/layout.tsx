@@ -8,10 +8,12 @@ type Props = {
 };
 
 export default function layout({ children }: Props) {
-  return <div className="bg-background">
-  <Nav />
-  <main className="text- mx-[7.3vw] mt-12 flex flex-col gap-24 lg:mt-[75px] lg:gap-[200px]">
-    {children}
-  </main>
-</div>
+  return (
+    <div className="bg-background">
+      <Nav />
+      <main className="mt-6 flex flex-col gap-[60px] px-[4vw] md:gap-[75px] lg:mt-[37.5px] lg:gap-[100px] lg:px-[6.2917vw]">
+        {children}
+      </main>
+    </div>
+  );
 }

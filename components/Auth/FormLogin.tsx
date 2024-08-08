@@ -11,6 +11,7 @@ import "@/lib/utils/zodCustomError";
 import Image from "next/image";
 import Link from "next/link";
 import { Checkbox } from "../ui/checkbox";
+import { signInWithGoogle } from "@/lib/network/users/userQueries";
 
 type dataProps = {
   email?: string;
@@ -22,7 +23,6 @@ async function addData({ email, password }: dataProps) {
 }
 
 const formSchema = z.object({
-  name: z.string().min(1).max(50),
   email: z.string().email(),
   password: z
     .string({
@@ -52,15 +52,20 @@ export default function FormLogin() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values);
     addData(values);
   }
 
+  function handleLoginWithGoogle() {
+    signInWithGoogle();
+  }
+
   return (
-    <>
+    <div className="mt-10 md:px-8">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="mt-10 space-y-4 text-black md:px-8"
+          className="space-y-4 text-black"
         >
           <FormInput
             control={form.control}
@@ -90,7 +95,7 @@ export default function FormLogin() {
           <div className="flex flex-col space-y-2">
             <Button
               type="submit"
-              className="h-12 w-full bg-background/90 font-monument text-lg text-white hover:bg-background disabled:opacity-60"
+              className="w-full bg-background text-sm text-white"
             >
               Login
             </Button>
@@ -99,21 +104,22 @@ export default function FormLogin() {
             </p>
           </div>
         </form>
+        <Button
+          type="submit"
+          className="mt-2 w-full text-sm text-background"
+          variant={"outline"}
+          onClick={handleLoginWithGoogle}
+        >
+          <Image
+            src={"/img/google-icon.png"}
+            width={50}
+            height={50}
+            alt="google-icon"
+            className="me-2 size-4 md:me-4 md:size-6"
+          ></Image>
+          Sign in with Google
+        </Button>
       </Form>
-      <Button
-        type="submit"
-        className="mt-2 h-12 bg-transparent font-monument text-lg text-background/90 hover:bg-background disabled:opacity-60 md:mx-8"
-        variant={"outline"}
-      >
-        <Image
-          src={"/img/google-icon.png"}
-          width={50}
-          height={50}
-          alt="google-icon"
-          className="me-2 size-4 md:me-4 md:size-6"
-        ></Image>
-        Sign in with Google
-      </Button>
-    </>
+    </div>
   );
 }

@@ -5,7 +5,7 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
-import { PasswordField } from "../Root/Dashboard/PasswordField";
+import { PasswordField } from "../Dashboard/PasswordField";
 import "@/lib/utils/zodCustomError";
 import SuccessResetPassword from "./SuccessResetPassword";
 

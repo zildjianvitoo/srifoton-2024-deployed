@@ -6,11 +6,14 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import FormInput from "@/components/FormInput";
-import { PasswordField } from "../Root/Dashboard/PasswordField";
+import { PasswordField } from "../Dashboard/PasswordField";
 import "@/lib/utils/zodCustomError";
 import Image from "next/image";
 import Link from "next/link";
-import { registerUser, signInWithGoogle } from "@/lib/network/users/userQueries";
+import {
+  registerUser,
+  signInWithGoogle,
+} from "@/lib/network/users/userQueries";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -80,15 +83,19 @@ export default function FormRegistration() {
     setLoading(true);
     setSuccess(false);
     try {
-      const userCreated = await registerUser({
-        id: '',
-        name: values.name,
-        college: '',
-        semester: '',
-        phone_number: '',
-        gender: '',
-        instagram: '',
-      }, values.email, values.password);
+      const userCreated = await registerUser(
+        {
+          id: "",
+          name: values.name,
+          college: "",
+          semester: "",
+          phone_number: "",
+          gender: "",
+          instagram: "",
+        },
+        values.email,
+        values.password,
+      );
       if (userCreated) {
         setSuccess(true);
         toast.success("Akun berhasil dibuat! Silakan cek email Anda.");
@@ -154,7 +161,13 @@ export default function FormRegistration() {
             className="w-full bg-background text-sm text-white"
             disabled={loading}
           >
-            {loading ? <div className="spinner"></div> : success ? "Created, Check Email!" : "Create Account"}
+            {loading ? (
+              <div className="spinner"></div>
+            ) : success ? (
+              "Created, Check Email!"
+            ) : (
+              "Create Account"
+            )}
           </Button>
           <p className="text-center text-xs md:text-sm">
             Or use your google account

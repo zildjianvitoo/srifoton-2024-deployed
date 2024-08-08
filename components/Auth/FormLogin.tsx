@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import FormInput from "@/components/FormInput";
-import { PasswordField } from "../Root/Dashboard/PasswordField";
+import { PasswordField } from "../Dashboard/PasswordField";
 import "@/lib/utils/zodCustomError";
 import Image from "next/image";
 import Link from "next/link";

@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
-import NavSided from "@/components/Root/Dashboard/NavSided";
-import Nav from "@/components/Root/Dashboard/Nav";
+import NavSided from "@/components/Dashboard/NavSided";
+import Nav from "@/components/Dashboard/Nav";
 
 type Props = {
   children: ReactNode;

@@ -1,6 +1,6 @@
 import React from "react";
 import CardCrook from "@/components/Root/CardCrook.dasboard";
-import FormAccountData from "@/components/Root/Dashboard/FormAccountData";
+import FormAccountData from "@/components/Dashboard/FormAccountData";
 
 export default function page() {
   return (

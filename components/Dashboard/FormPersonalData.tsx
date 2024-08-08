@@ -150,7 +150,10 @@ export default function FormPersonalData() {
           placeholder="nobita_"
           label="Instagram"
         />
-        <Button type="submit" className="w-full bg-black text-sm text-white">
+        <Button
+          type="submit"
+          className="mt-6 h-12 w-full bg-background/90 font-monument text-lg text-white hover:bg-background disabled:opacity-60 lg:mt-10"
+        >
           Save
         </Button>
       </form>

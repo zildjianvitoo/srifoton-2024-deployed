@@ -1,3 +1,5 @@
+// components/Admin-Dashboard/TalkshowCollectionTable.tsx
+
 "use client";
 
 import React, { useState, useEffect } from 'react';

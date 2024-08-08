@@ -91,7 +91,7 @@ export default function FormLogin() {
             type="submit"
             className="w-full bg-background text-sm text-white"
           >
-            Create Account
+            Login
           </Button>
           <p className="text-center text-xs md:text-sm">
             Or use your google account
@@ -110,12 +110,6 @@ export default function FormLogin() {
             ></Image>
             Sign in with Google
           </Button>
-          <p className="text-center text-xs md:text-sm">
-            Already have have an account?{" "}
-            <Link href={"/registration"} className="text-[#737158]">
-              Create Account
-            </Link>
-          </p>
         </div>
       </form>
     </Form>

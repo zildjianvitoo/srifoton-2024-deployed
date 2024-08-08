@@ -1,16 +1,41 @@
 // lib/network/users/userQueries.ts
 
 import { collection, doc, getDocs, setDoc, updateDoc, getDoc } from "firebase/firestore";
-import { db } from "../../firebase";
+import { auth, db, googleProvider } from "../../firebase";
 import { User } from "../../types/userTypes";
+import { createUserWithEmailAndPassword, sendEmailVerification, signInWithPopup } from "firebase/auth";
 
-export const registerUser = async (user: User): Promise<void> => {
+export const registerUser = async (user: User, email: string, password: string): Promise<boolean> => {
   try {
-    const userRef = doc(db, 'users', user.id);
-    await setDoc(userRef, user);
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    await sendEmailVerification(userCredential.user);
+    const userRef = doc(db, 'users', userCredential.user.uid);
+    await setDoc(userRef, {
+      id: userCredential.user.uid,
+      name: user.name
+    });
     console.log('User registered successfully');
+    return true;
   } catch (error) {
     console.error('Error registering user: ', error);
+    return false;
+  }
+};
+
+export const signInWithGoogle = async (): Promise<boolean> => {
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    const user = result.user;
+    const userRef = doc(db, 'users', user.uid);
+    await setDoc(userRef, {
+      id: user.uid,
+      name: user.displayName,
+    });
+    console.log('User signed in with Google successfully');
+    return true;
+  } catch (error) {
+    console.error('Error signing in with Google: ', error);
+    return false;
   }
 };
 

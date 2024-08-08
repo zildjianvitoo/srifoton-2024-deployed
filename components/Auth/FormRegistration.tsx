@@ -10,16 +10,15 @@ import { PasswordField } from "../Root/Dashboard/PasswordField";
 import "@/lib/utils/zodCustomError";
 import Image from "next/image";
 import Link from "next/link";
+import { registerUser, signInWithGoogle } from "@/lib/network/users/userQueries";
+import { useState } from "react";
+import { toast } from "sonner";
 
 type dataProps = {
   name?: string;
   email?: string;
   password?: string;
 };
-
-async function addData({ name, email, password }: dataProps) {
-  console.log(name, email, password);
-}
 
 const formSchema = z
   .object({
@@ -74,8 +73,46 @@ export default function FormRegistration() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    addData(values);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setLoading(true);
+    setSuccess(false);
+    try {
+      const userCreated = await registerUser({
+        id: '',
+        name: values.name
+      }, values.email, values.password);
+      if (userCreated) {
+        setSuccess(true);
+        toast.success("Akun berhasil dibuat! Silakan cek email Anda.");
+      } else {
+        toast.error("Gagal membuat akun. Silakan coba lagi.");
+      }
+    } catch (error) {
+      console.error("Error registering user: ", error);
+      toast.error("Terjadi kesalahan saat membuat akun.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function handleGoogleSignIn() {
+    setLoading(true);
+    try {
+      const accountSignedIn = await signInWithGoogle();
+      if (accountSignedIn) {
+        toast.success("Berhasil masuk dengan akun Google!");
+      } else {
+        toast.error("Gagal masuk dengan akun Google. Silakan coba lagi.");
+      }
+    } catch (error) {
+      console.error("Error signing in with Google: ", error);
+      toast.error("Terjadi kesalahan saat masuk dengan Google.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -102,7 +139,7 @@ export default function FormRegistration() {
           placeholder="Masukkan kata sandi"
         />
         <PasswordField
-          title="New Password"
+          title="Confirm Password"
           name="password1"
           placeholder="Konfirmasi kata sandi"
         />
@@ -110,16 +147,19 @@ export default function FormRegistration() {
           <Button
             type="submit"
             className="w-full bg-background text-sm text-white"
+            disabled={loading}
           >
-            Create Account
+            {loading ? <div className="spinner"></div> : success ? "Created, Check Email!" : "Create Account"}
           </Button>
           <p className="text-center text-xs md:text-sm">
             Or use your google account
           </p>
           <Button
-            type="submit"
+            type="button"
             className="w-full text-sm text-background"
             variant={"outline"}
+            onClick={handleGoogleSignIn}
+            disabled={loading}
           >
             <Image
               src={"/img/google-icon.png"}
@@ -131,7 +171,7 @@ export default function FormRegistration() {
             Sign in with Google
           </Button>
           <p className="text-center text-xs md:text-sm">
-            Already have have an account?{" "}
+            Already have an account?{" "}
             <Link href={"/login"} className="text-[#737158]">
               Log In
             </Link>

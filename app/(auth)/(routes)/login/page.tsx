@@ -11,10 +11,10 @@ export default function page() {
     >
       <div className="left-[6.2917vw] flex flex-col space-y-8 text-center text-white lg:fixed">
         <h3 className="font-monument text-xl xl:text-2xl">
-          Create Your Account
+          Login Your Account
         </h3>
         <p className="font-ponnala text-lg xl:text-xl">
-          Hai, silahkan buat akunmu terlebih dahulu <br /> di bawah sini!
+          Hai, silakan masuk ke akunmu terlebih dahulu <br /> di bawah sini!
         </p>
         <Image
           src={"/img/maskot.png"}

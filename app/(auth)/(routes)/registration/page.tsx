@@ -15,7 +15,7 @@ export default function page() {
           Create Your Account
         </h3>
         <p className="font-ponnala text-lg xl:text-xl">
-          Hai, silahkan buat akunmu terlebih dahulu <br /> di bawah sini!
+          Hai, silakan buat akunmu terlebih dahulu <br /> di bawah sini!
         </p>
         <Image
           src={"/img/maskot.png"}

@@ -65,5 +65,5 @@ export async function removeSession(isAdmin: boolean) {
         cookies().delete(ADMIN_COOKIE_NAME);
     }
 
-    redirect(isAdmin ? "/admin-dashboard/login" : "/login");
+    redirect(isAdmin ? "/admin-login" : "/login");
 }

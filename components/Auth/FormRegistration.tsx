@@ -82,7 +82,12 @@ export default function FormRegistration() {
     try {
       const userCreated = await registerUser({
         id: '',
-        name: values.name
+        name: values.name,
+        college: '',
+        semester: '',
+        phone_number: '',
+        gender: '',
+        instagram: '',
       }, values.email, values.password);
       if (userCreated) {
         setSuccess(true);

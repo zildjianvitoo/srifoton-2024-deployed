@@ -3,8 +3,8 @@
 import { type NextRequest, NextResponse } from "next/server";
 import cookieSignature from "cookie-signature";
 
-const publicRoutes = ["/login", "/registration", "/forgot-password", "/admin-dashboard/login", "/competition", "/workshop", "/talkshow"];
-const allowedRedirectionPaths = ["/login", "/admin-dashboard", "/admin-dashboard/login"];
+const publicRoutes = ["/login", "/registration", "/forgot-password", "/admin-login", "/competition", "/workshop", "/talkshow"];
+const allowedRedirectionPaths = ["/login", "/admin-dashboard", "/admin-login"];
 
 const USER_SESSION_NAME = process.env.USER_SESSION_NAME!;
 const AUTH_COOKIE_NAME = process.env.AUTH_COOKIE_NAME!;
@@ -51,7 +51,7 @@ export default function middleware(request: NextRequest) {
   }
 
   // Redirect to admin dashboard if admin session is set and admin is on the login page
-  if (adminSession && request.nextUrl.pathname === "/admin-dashboard/login") {
+  if (adminSession && request.nextUrl.pathname === "/admin-login") {
     const absoluteURL = new URL("/admin-dashboard", request.nextUrl.origin);
     if (isValidRedirectionPath(absoluteURL.pathname)) {
       return NextResponse.redirect(absoluteURL.toString());
@@ -59,8 +59,8 @@ export default function middleware(request: NextRequest) {
   }
 
   // Add custom validation for admin and user tokens if needed
-  if (request.nextUrl.pathname.startsWith("/admin-dashboard") && request.nextUrl.pathname !== "/admin-dashboard/login" && !adminToken) {
-    const absoluteURL = new URL("/admin-dashboard/login", request.nextUrl.origin);
+  if (request.nextUrl.pathname.startsWith("/admin-dashboard") && request.nextUrl.pathname !== "/admin-login" && !adminToken) {
+    const absoluteURL = new URL("/admin-login", request.nextUrl.origin);
     if (isValidRedirectionPath(absoluteURL.pathname)) {
       return NextResponse.redirect(absoluteURL.toString());
     }

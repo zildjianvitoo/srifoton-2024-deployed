@@ -5,10 +5,10 @@ export type User = {
     name: string;
     // email: string;
     // password: string;
-    // college: string;
-    // semester: string;
-    // phone_number: string;
-    // gender: string;
-    // instagram: string;
+    college: string;
+    semester: string;
+    phone_number: string;
+    gender: string;
+    instagram: string;
   };
   

@@ -63,7 +63,7 @@ export default function OverviewHero({id, header, subheader, src, onClick, child
           </div>
         </div>
 
-        <figure className="hidden w-3/4 lg:w-full min-[1920px]:w-[680px] min-[1920px]:min-w-[680px] lg:flex">
+        <figure className="hidden w-3/4 lg:w-full lg:max-w-[440px] min-[1920px]:w-[680px] min-[1920px]:min-w-[680px] lg:flex">
           <Image
             src={src}
             alt={`${id}-image`}

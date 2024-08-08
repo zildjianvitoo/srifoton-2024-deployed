@@ -9,6 +9,7 @@ import SectionHeader from "./SectionHeader";
 import { FaWhatsapp } from "react-icons/fa";
 import { RiLineLine } from "react-icons/ri";
 import { Poppins } from "next/font/google";
+import useWindowDimensions from "@/hooks/useWindowDimensions";
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['500']});
 
@@ -28,11 +29,12 @@ export default function ContactPerson({id, className, contactPerson1, contactPer
   const [onHover1, setHoverState1] = useState(false);
   const [colorState2, setColorState2] = useState("white");
   const [onHover2, setHoverState2] = useState(false);
-  const [logoSize, setLogoSize] = useState("2vw")
+  const [logoSize, setLogoSize] = useState("2vw");
+  const {width} = useWindowDimensions();
 
   useEffect(() => {onHover1 ? setColorState1("black") : setColorState1("white")}, [onHover1]);
   useEffect(() => {onHover2 ? setColorState2("black") : setColorState2("white")}, [onHover2]);
-  useEffect(() => {window.innerWidth >= 640 ? setLogoSize("2vw") : window.innerWidth >= 440 ? setLogoSize("20px") : setLogoSize("5vw")}, [logoSize]);
+  useEffect(() => {width >= 640 ? setLogoSize("2vw") : width >= 440 ? setLogoSize("20px") : setLogoSize("5vw")}, []);
 
   return(
     <section className="grid justify-items-center gap-20 w-full mx-auto">

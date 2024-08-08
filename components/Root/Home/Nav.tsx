@@ -30,11 +30,8 @@ export default function Nav() {
         <div className="aspect-[90/56] w-[50px] md:w-[70px] xl:w-[90px] me-2 md:me-3 lg:me-5 xl:me-7">
           <Image src="/img/logo.png" alt="logo" width={90} height={56} className="w-full"></Image>
         </div>
-        <h4 className="xxs:text-2xl font-monument text-xl text-primary md:text-2xl lg:text-2xl xl:text-3xl">
-          SRI
-        </h4>
-        <h4 className="xxs:text-2xl font-monument text-xl text-[#868365] md:text-2xl lg:text-2xl xl:text-3xl">
-          FOTON
+        <h4 className="xxs:text-2xl font-monument text-xl text-whtc-100 md:text-2xl lg:text-2xl xl:text-3xl">
+          SRIFOTON
         </h4>
       </Link>
       <div className="md:hidden">

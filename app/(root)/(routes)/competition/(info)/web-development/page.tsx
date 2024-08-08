@@ -12,7 +12,7 @@ export default function WebDevelopmentInfo({}: Props) {
   return (
     <>
       <InfoHero
-        id="hero-webdev" header="web development" subheader="srifoton 2024" src="/img/gallery1.png" href="web-development/daftar" guideHref="#"
+        id="hero-webdev" header="web development" subheader="srifoton 2024" src="/img/web-dev.png" href="web-development/daftar" guideHref="#"
         card1title="Pengembangan Soft Skills" card1content="Meningkatkan keterampilan dalam berbagai teknologi web"
         card2title="Keterampilan Teknis" card2content="mengembangkan soft skills seperti manajemen waktu, komunikasi, dan presentasi.">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu.

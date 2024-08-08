@@ -34,7 +34,7 @@ const buttonVariants = cva(
         lg: "h-10 px-6",
         icon: "h-10 w-10",
         default2:
-          "px-[35px] py-[25px] text-sm xl:text-base min-[1920px]:text-xl w-fit",
+          "px-[20px] lg:px-[35px] py-[15px] lg:py-[25px] text-sm xl:text-base min-[1920px]:text-xl w-fit",
         full: "px-[35px] py-[25px] w-full",
       },
     },

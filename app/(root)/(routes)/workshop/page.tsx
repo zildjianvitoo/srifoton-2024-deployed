@@ -26,7 +26,7 @@ export default function Workshop({}: Props) {
         id="hero-workshop"
         header="workshop"
         subheader="srifoton 2024"
-        src="/img/gallery1.png"
+        src="/img/workshop-logo-2.png"
         onClick={() =>
           workshopRef.current?.scrollIntoView({ behavior: "smooth" })
         }

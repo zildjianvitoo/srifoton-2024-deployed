@@ -12,7 +12,7 @@ export default function UIUXInfo({}: Props) {
   return (
     <>
       <InfoHero
-        id="hero-ui-ux" header="ui/ux design" subheader="srifoton 2024" src="/img/gallery1.png" href="ui-ux/daftar" guideHref="#"
+        id="hero-ui-ux" header="ui/ux design" subheader="srifoton 2024" src="/img/ui-ux.png" href="ui-ux/daftar" guideHref="#"
         card1title="Keterampilan Desain" card1content="Mengasah keterampilan desain, prinsip, estetika, fungsionalitas."
         card2title="Inovasi dan Kreativitas" card2content="Mengembangkan pola pikir yang inovatif dan kreatif">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu.

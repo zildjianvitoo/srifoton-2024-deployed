@@ -12,7 +12,7 @@ export default function ESportInfo({}: Props) {
   return (
     <>
       <InfoHero
-        id="hero-e-sport" header="e-sport" subheader="srifoton 2024" src="/img/gallery1.png" href="e-sport/daftar" guideHref="#"
+        id="hero-e-sport" header="e-sport" subheader="srifoton 2024" src="/img/e-sport.png" href="e-sport/daftar" guideHref="#"
         card1title="Kerjasama Tim" card1content="Meningkatkan kemampuan komunikasi dan kolaborasi"
         card2title="Pengalaman Kompetitif" card2content="Memberikan pengalaman menghadapi tekanan dan tantangan">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu.

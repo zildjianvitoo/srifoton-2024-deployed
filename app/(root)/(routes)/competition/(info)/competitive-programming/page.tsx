@@ -13,7 +13,7 @@ export default function CompetitiveProgrammingInfo({}: Props) {
   return (
     <>
       <InfoHero
-        id="hero-cp" header="competitive programming" subheader="srifoton 2024" src="/img/gallery1.png" href="competitive-programming/daftar" guideHref="#"
+        id="hero-cp" header="competitive programming" subheader="srifoton 2024" src="/img/comp-programming.png" href="competitive-programming/daftar" guideHref="#"
         card1title="Algoritma dan Struktur Data" card1content="Memperdalam pengetahuan teknis dan keterampilan pemrograman"
         card2title="Problem Solving" card2content="Melatih kemampuan untuk memecahkan masalah secara efektif dan efisien">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu.

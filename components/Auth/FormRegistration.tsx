@@ -128,7 +128,7 @@ export default function FormRegistration() {
         <div className="flex flex-col space-y-2">
           <Button
             type="submit"
-            className="w-full bg-background text-sm text-white"
+            className="h-12 w-full bg-background/90 font-monument text-lg text-white hover:bg-background disabled:opacity-60"
             disabled={loading}
           >
             {loading ? (
@@ -144,7 +144,7 @@ export default function FormRegistration() {
           </p>
           <Button
             type="button"
-            className="w-full text-sm text-background"
+            className="h-12 w-full bg-transparent font-monument text-lg text-transparent/90 hover:bg-background disabled:opacity-60"
             variant={"outline"}
             onClick={handleGoogleSignIn}
             disabled={loading}

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import FormInput from "@/components/FormInput";
 import "@/lib/utils/zodCustomError";
+import Link from "next/link";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -38,11 +39,10 @@ export default function FormForgotPassword() {
         />
         <div className="flex flex-row space-x-2">
           <Button
-            type="submit"
-            className="mt-2 h-12 w-full bg-transparent font-monument text-lg text-transparent/90 hover:bg-background disabled:opacity-60"
+            className="h-12 w-full bg-transparent font-monument text-lg text-transparent/90 hover:bg-background disabled:opacity-60"
             variant={"outline"}
           >
-            Cancel
+            <Link href={"/login"}>Cancel</Link>
           </Button>
           <Button
             type="submit"

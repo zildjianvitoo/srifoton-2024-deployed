@@ -11,6 +11,7 @@ import "@/lib/utils/zodCustomError";
 import Image from "next/image";
 import Link from "next/link";
 import { Checkbox } from "../ui/checkbox";
+import { signInWithGoogle } from "@/lib/network/users/userQueries";
 
 type dataProps = {
   email?: string;
@@ -22,7 +23,6 @@ async function addData({ email, password }: dataProps) {
 }
 
 const formSchema = z.object({
-  name: z.string().min(1).max(50),
   email: z.string().email(),
   password: z
     .string({
@@ -52,66 +52,74 @@ export default function FormLogin() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values);
     addData(values);
   }
 
+  function handleLoginWithGoogle() {
+    signInWithGoogle();
+  }
+
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="mt-10 space-y-4 text-black md:px-8"
-      >
-        <FormInput
-          control={form.control}
-          name="email"
-          placeholder="Contoh: nobita@gmail.com"
-          label="Email"
-        />
-        <PasswordField
-          title="Password"
-          name="password"
-          placeholder="Masukkan kata sandi"
-        />
-        <div className="flex justify-between">
-          <div className="flex items-center space-x-2">
-            <Checkbox id="terms" className="border-black bg-black" />
-            <label
-              htmlFor="terms"
-              className="text-xs font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            >
-              Keep me signed in
-            </label>
+    <div className="mt-10 md:px-8">
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-4 text-black"
+        >
+          <FormInput
+            control={form.control}
+            name="email"
+            placeholder="Contoh: nobita@gmail.com"
+            label="Email"
+          />
+          <PasswordField
+            title="Password"
+            name="password"
+            placeholder="Masukkan kata sandi"
+          />
+          <div className="flex justify-between">
+            <div className="flex items-center space-x-2">
+              <Checkbox id="terms" className="border-black bg-black" />
+              <label
+                htmlFor="terms"
+                className="text-xs font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                Keep me signed in
+              </label>
+            </div>
+            <Link href={"/forgot-password"} className="text-xs text-[#737158]">
+              Forgot Password?
+            </Link>
           </div>
-          <Link href={"/forgot-password"} className="text-xs text-[#737158]">
-            Forgot Password?
-          </Link>
-        </div>
-        <div className="flex flex-col space-y-2">
-          <Button
-            type="submit"
-            className="w-full bg-background text-sm text-white"
-          >
-            Login
-          </Button>
-          <p className="text-center text-xs md:text-sm">
-            Or use your google account
-          </p>
-          <Button
-            type="submit"
-            className="w-full text-sm text-background"
-            variant={"outline"}
-          >
-            <Image
-              src={"/img/google-icon.png"}
-              width={50}
-              height={50}
-              alt="google-icon"
-              className="me-2 size-4 md:me-4 md:size-6"
-            ></Image>
-            Sign in with Google
-          </Button>
-        </div>
-      </form>
-    </Form>
+          <div className="flex flex-col space-y-2">
+            <Button
+              type="submit"
+              className="w-full bg-background text-sm text-white"
+            >
+              Login
+            </Button>
+            <p className="text-center text-xs md:text-sm">
+              Or use your google account
+            </p>
+          </div>
+        </form>
+        <Button
+          type="submit"
+          className="mt-2 w-full text-sm text-background"
+          variant={"outline"}
+          onClick={handleLoginWithGoogle}
+        >
+          <Image
+            src={"/img/google-icon.png"}
+            width={50}
+            height={50}
+            alt="google-icon"
+            className="me-2 size-4 md:me-4 md:size-6"
+          ></Image>
+          Sign in with Google
+        </Button>
+      </Form>
+    </div>
   );
 }

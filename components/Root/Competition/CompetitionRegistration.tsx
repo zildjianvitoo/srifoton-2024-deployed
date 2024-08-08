@@ -287,9 +287,11 @@ export default function CompetitionRegistration({
 
   return (
     <div className={"flex flex-col gap-14 lg:gap-20"}>
-      <div className="relative mx-auto flex w-fit flex-col gap-6 text-center text-whtc">
-        <h1 className="srifoton-header font-monument uppercase">{branch}</h1>
-        <p className="srifoton-text mx-auto w-[70%]">
+      <div className="text-whtc relative mx-auto flex w-fit flex-col gap-6 text-center">
+        <h1 className="srifoton-header font-monument uppercase text-primary-200">
+          {branch}
+        </h1>
+        <p className="srifoton-text mx-auto w-[70%] text-primary-200">
           Hai, silahkan isi secara detail informasi untuk tim dan setiap anggota
           tim kamu!
         </p>

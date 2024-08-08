@@ -2,7 +2,7 @@
 
 import React from "react";
 import CardCrook from "@/components/Root/CardCrook.dasboard";
-import FlashCard from "@/components/Root/Dashboard/FlashCard";
+import FlashCard from "@/components/Dashboard/FlashCard";
 
 export default function page() {
   return (

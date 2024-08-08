@@ -9,7 +9,7 @@ export default function page() {
     <section className="mt-16 md:mt-40 lg:absolute lg:right-0 lg:top-28 lg:mt-0 lg:w-4/5 xl:top-40">
       <CardCrook className="mx-auto !w-full font-monument lg:!w-2/3">
         <img
-          src="./img/stamp.png"
+          src="/img/stamp.png"
           alt="stamp"
           className="absolute right-4 top-10 hidden size-20 font-monument md:right-12 md:top-4 md:block lg:right-6 lg:top-2 lg:size-32"
         />

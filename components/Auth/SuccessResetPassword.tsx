@@ -21,7 +21,7 @@ export default function SuccessResetPassword() {
         </p>
         <Button
           type="submit"
-          className="mt-6 w-full bg-background text-sm text-white"
+          className="mt-6 h-12 w-full bg-background/90 font-monument text-lg text-white hover:bg-background disabled:opacity-60 lg:mt-10"
         >
           <Link href={"/login"}>Log In</Link>
         </Button>

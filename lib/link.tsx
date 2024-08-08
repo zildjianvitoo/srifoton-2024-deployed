@@ -17,10 +17,17 @@ const socials = [
 const contacts = [
   {
     linkTo: "Whatsapp",
-    contact: ["+62 882-6911-6903 (Diva Sarasvati Azzahra)", "+62 878-6178-1143 (Dimas Putra Mufazzal)"],
+    contact: [
+      "+62 882-6911-6903 (Diva Sarasvati Azzahra)",
+      "+62 878-6178-1143 (Dimas Putra Mufazzal)",
+    ],
     icon: <FaWhatsapp />,
   },
-  { linkTo: "Email", contact: ["srifoton.unsri@gmail.com"], icon: <HiOutlineMail /> },
+  {
+    linkTo: "Email",
+    contact: ["srifoton.unsri@gmail.com"],
+    icon: <HiOutlineMail />,
+  },
 ];
 
 const routes = [
@@ -35,12 +42,24 @@ const adminDashboardRoutes = [
   { linkTo: "Competition", address: "/admin-dashboard/competition" },
   { linkTo: "Workshop", address: "/admin-dashboard/workshop" },
   { linkTo: "Talkshow", address: "/admin-dashboard/talkshow" },
-]
+];
 
 const dashboardRoutes = [
-  { linkTo: "Account Data", address: "/account-data", icon: <Contact /> },
-  { linkTo: "Personal Data", address: "/personal-data", icon: <CircleUser /> },
-  { linkTo: "Activities", address: "/activities", icon: <CalendarRange /> },
+  {
+    linkTo: "Account Data",
+    address: "/dashboard/account-data",
+    icon: <Contact />,
+  },
+  {
+    linkTo: "Personal Data",
+    address: "/dashboard/personal-data",
+    icon: <CircleUser />,
+  },
+  {
+    linkTo: "Activities",
+    address: "/dashboard/activities",
+    icon: <CalendarRange />,
+  },
 ];
 
 export { socials, contacts, routes, adminDashboardRoutes, dashboardRoutes };

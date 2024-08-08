@@ -95,7 +95,7 @@ export default function FormLogin() {
           <div className="flex flex-col space-y-2">
             <Button
               type="submit"
-              className="w-full bg-background text-sm text-white"
+              className="h-12 w-full bg-background/90 font-monument text-lg text-white hover:bg-background disabled:opacity-60"
             >
               Login
             </Button>
@@ -106,7 +106,7 @@ export default function FormLogin() {
         </form>
         <Button
           type="submit"
-          className="mt-2 w-full text-sm text-background"
+          className="mt-2 h-12 w-full bg-transparent font-monument text-lg text-transparent/90 hover:bg-background disabled:opacity-60"
           variant={"outline"}
           onClick={handleLoginWithGoogle}
         >

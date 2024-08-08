@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { PasswordField } from "../Root/Dashboard/PasswordField";
 import "@/lib/utils/zodCustomError";
+import SuccessResetPassword from "./SuccessResetPassword";
 
 const formSchema = z
   .object({
@@ -56,6 +57,10 @@ export default function FormResetPassword() {
       password1: "",
     },
   });
+
+  if (form.formState.isSubmitSuccessful) {
+    return <SuccessResetPassword />;
+  }
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);

@@ -14,18 +14,39 @@ const socials = [
   { linkTo: "Tiktok", address: "#", icon: <FaTiktok /> },
 ];
 
-const contacts = [
+type Contact = {
+  name: string;
+  phoneNumber?: string;
+  email?: string;
+  url: string;
+};
+
+const contacts: { linkTo: string; contacts: Contact[]; icon: JSX.Element }[] = [
   {
     linkTo: "Whatsapp",
-    contact: [
-      "+62 882-6911-6903 (Diva Sarasvati Azzahra)",
-      "+62 878-6178-1143 (Dimas Putra Mufazzal)",
+    contacts: [
+      {
+        name: "Diva Sarasvati Azzahra",
+        phoneNumber: "+62 822-6911-6903",
+        url: "https://wa.me/6282269116903?text=Halo,%20saya%20ingin%20bertanya%20mengenai%20Srifoton%202024",
+      },
+      {
+        name: "Dimas Putra Mufazzal",
+        phoneNumber: "+62 878-6178-1143",
+        url: "https://wa.me/6287861781143?text=Halo,%20saya%20ingin%20bertanya%20mengenai%20Srifoton%202024",
+      },
     ],
     icon: <FaWhatsapp />,
   },
   {
     linkTo: "Email",
-    contact: ["srifoton.unsri@gmail.com"],
+    contacts: [
+      {
+        name: "Srifoton",
+        email: "srifoton.unsri@gmail.com",
+        url: "https://mail.google.com/mail/u/0/#search/srifoton.unsri%40gmail.com?compose=DmwnWrRmTNnttBKtFNGgTrkqtpcSJqnCMQVrznpzczsxMgWsxSsxFbhDGCpDlxcNrNRWFnQMfrFL",
+      },
+    ],
     icon: <HiOutlineMail />,
   },
 ];

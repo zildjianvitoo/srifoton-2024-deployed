@@ -1,80 +1,92 @@
-import * as React from 'react';
-import Link from 'next/link';
+import * as React from "react";
+import Link from "next/link";
 import LocalFont from "next/font/local";
-import { socials, contacts, routes } from '@/lib/link';
+import { socials, contacts, routes } from "@/lib/link";
 
 export default function Footer() {
-
-  return(
+  return (
     <>
-      <footer className='flex-col space-y-57 text-white px-[7.29vw] py-8 space-y-[74px] bg-[#24221E] mt-[200px]'>
-
-        <div className="flex lg:flex-row flex-col xl:justify-between lg:gap-x-[5vw] sm:gap-x-[10.6vw] gap-y-12">
-
-          <div className='flex flex-col sm:flex-row gap-x-[5vw] 2xl:gap-x-[6.18vw] gap-y-12'>
-            <img src="/img/logo.png" alt="Logo" className='aspect-[320/200] max-w-[320px] object-contain mx-auto w-1/4 sm:w-1/2 sm:min-w-[212px]'/>
-            <div className='text-wrap xl:w-[17vw] space-y-6'>
-              <p className='font-monument xl:text-2xl lg:text-lg'>
-                Address
-              </p>
-              <p className='font-ponnala !leading-6 xl:text-xl lg:text-sm'>
-                Jl. Raya Palembang - Prabumulih No. Km. <span className="font-poppins">32</span>, Indralaya Indah, Kec. Indralaya, Kabupaten Ogan Ilir, Sumatera Selatan <span className="font-poppins">30862</span>
+      <footer className="space-y-57 mt-[200px] flex-col space-y-[74px] bg-[#24221E] px-[7.29vw] py-8 text-white">
+        <div className="flex flex-col gap-y-12 sm:gap-x-[10.6vw] lg:flex-row lg:gap-x-[5vw] xl:justify-between">
+          <div className="flex flex-col gap-x-[5vw] gap-y-12 sm:flex-row 2xl:gap-x-[6.18vw]">
+            <img
+              src="/img/logo.png"
+              alt="Logo"
+              className="mx-auto aspect-[320/200] w-1/4 max-w-[320px] object-contain sm:w-1/2 sm:min-w-[212px]"
+            />
+            <div className="space-y-6 text-wrap xl:w-[17vw]">
+              <p className="font-monument lg:text-lg xl:text-2xl">Address</p>
+              <p className="font-ponnala !leading-6 lg:text-sm xl:text-xl">
+                Jl. Raya Palembang - Prabumulih No. Km.{" "}
+                <span className="font-poppins">32</span>, Indralaya Indah, Kec.
+                Indralaya, Kabupaten Ogan Ilir, Sumatera Selatan{" "}
+                <span className="font-poppins">30862</span>
               </p>
             </div>
           </div>
 
-          <div className='flex flex-col sm:flex-row gap-x-[5vw] 2xl:gap-x-[6.18vw] gap-y-12'>
-            <div className='w-fit space-y-6'>
-              <p className='font-monument xl:text-2xl lg:text-lg'>
-                Contacts
-              </p>
-                {contacts.map((contacts, index) => (
-                  <ul className='list-none xl:text-xl lg:text-sm font-ponnala'>
-                    <li key={`${contacts.linkTo}${index}`} className='flex space-x-3 m-0 p-0'>
-                      {contacts.icon}
-                      <p className='mt-0.5'>{contacts.linkTo}</p>
+          <div className="flex flex-col gap-x-[5vw] gap-y-12 sm:flex-row 2xl:gap-x-[6.18vw]">
+            <div className="w-fit space-y-6">
+              <p className="font-monument lg:text-lg xl:text-2xl">Contacts</p>
+              {contacts.map((contact, index) => (
+                <ul
+                  key={`${contact.linkTo}${index}`}
+                  className="list-none font-ponnala lg:text-sm xl:text-xl"
+                >
+                  <li className="m-0 flex space-x-3 p-0">
+                    {contact.icon}
+                    <p className="mt-0.5">{contact.linkTo}</p>
+                  </li>
+                  {contact.contacts.map((person, index) => (
+                    <li key={index} className="m-0 p-0 font-poppins">
+                      <a
+                        href={person.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {person.phoneNumber || person.email} ({person.name})
+                      </a>
                     </li>
-                    {contacts.contact.map((address, index) => (
-                      <li key={index} className={`m-0 p-0 font-poppins`}>
-                        {address}
-                      </li>
-                    ))}
-                  </ul>
-                ))}
+                  ))}
+                </ul>
+              ))}
             </div>
-            <div className='w-fit space-y-6'>
-              <p className='font-monument xl:text-2xl lg:text-lg'>
+            <div className="w-fit space-y-6">
+              <p className="font-monument lg:text-lg xl:text-2xl">
                 Navigations
               </p>
-              <ul className='space-y-3.5 xl:text-xl lg:text-sm font-ponnala'>
+              <ul className="space-y-3.5 font-ponnala lg:text-sm xl:text-xl">
                 {routes.map((routes, index) => (
-                  <li key={`${routes.linkTo}${index}`} className='flex gap-2 m-0 p-0'>
+                  <li
+                    key={`${routes.linkTo}${index}`}
+                    className="m-0 flex gap-2 p-0"
+                  >
                     <Link href={routes.address}>{routes.linkTo}</Link>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
-
         </div>
 
         <hr />
 
         <div className="flex justify-between">
-          <div className={`font-ponnala text-white text-[13px]`}>
-            <p>© SRIFOTON <span className="font-poppins">2024</span></p>
+          <div className={`font-ponnala text-[13px] text-white`}>
+            <p>
+              © SRIFOTON <span className="font-poppins">2024</span>
+            </p>
           </div>
           <div className="">
-            <ul className="list-none inline-flex items-center gap-4 lg:gap-0">
+            <ul className="inline-flex list-none items-center gap-4 lg:gap-0">
               {socials.map((socials) => (
-                <li key={socials.linkTo} className='p-0'>
+                <li key={socials.linkTo} className="p-0">
                   <Link href={socials.address}>{socials.icon}</Link>
                 </li>
               ))}
             </ul>
           </div>
         </div>
-
       </footer>
     </>
   );

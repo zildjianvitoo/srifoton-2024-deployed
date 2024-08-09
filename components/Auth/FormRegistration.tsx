@@ -141,7 +141,9 @@ export default function FormRegistration() {
           </p>
           <Button
             type="button"
+
             className="h-12 w-full bg-transparent font-monument text-xs text-transparent/90 hover:bg-background disabled:opacity-60 md:text-lg"
+
             variant={"outline"}
             onClick={handleGoogleSignIn}
             disabled={loading}

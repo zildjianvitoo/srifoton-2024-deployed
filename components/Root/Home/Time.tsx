@@ -2,14 +2,16 @@ export default function Time({ value, desc }: { value: any; desc: any }) {
   return (
     <div>
       <div
-        className="text-center 
-                          text-2xl mt-1 mb-4
-                          md:text-[3rem] md:mt-4 md:mb-10
-                          lg:text-[4rem] lg:mt-7 lg:mb-16"
+        className="text-center
+                   text-md
+                   sm:text-lg
+                   md:text-2xl md:mb-1
+                   lg:text-4xl lg:mb-3
+                   xl:text-6xl xl:mb-4"
       >
         {value}
       </div>
-      <p className="text-center">{desc}</p>
+      <p className="text-center text-[.5rem] sm:text-sm lg:text-xl xl:text-[35px]">{desc}</p>
     </div>
   );
 }

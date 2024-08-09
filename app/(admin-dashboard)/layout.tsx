@@ -1,3 +1,6 @@
+import AddDummyDataButton from "@/components/Admin-Dashboard/AddDummyDataButton";
+import Nav from "@/components/Admin-Dashboard/Nav";
+import Footer from "@/components/Root/Footer";
 import React, { ReactNode } from "react";
 
 type Props = {
@@ -5,5 +8,9 @@ type Props = {
 };
 
 export default function layout({ children }: Props) {
-  return <main>{children}</main>;
+  return (
+    <div className="bg-background">
+      {children}
+    </div>
+  );
 }

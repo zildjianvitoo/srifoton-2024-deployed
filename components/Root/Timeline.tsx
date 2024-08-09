@@ -1,16 +1,8 @@
-import React, {
-  JSXElementConstructor,
-  ReactElement,
-  ReactNode,
-  cloneElement,
-  createContext,
-  useContext,
-  useState,
-} from "react";
+import React, { ReactElement, ReactNode, cloneElement } from "react";
 import SectionHeader from "./SectionHeader";
 import CardCrook from "./CardCrook";
 import { Children } from "react";
-import { Triangle } from "@/lib/icon";
+import { Triangle } from "lucide-react";
 
 type Props = {
   className?: string;

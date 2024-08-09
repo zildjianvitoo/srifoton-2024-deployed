@@ -1,4 +1,3 @@
-import * as icon from "@/lib/icon";
 import { FaWhatsapp } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import { FaXTwitter } from "react-icons/fa6";

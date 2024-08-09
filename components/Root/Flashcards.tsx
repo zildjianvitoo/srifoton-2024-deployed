@@ -2,23 +2,17 @@
 
 import SectionHeader from "./SectionHeader";
 import CardCrook from "./CardCrook.v2";
-import Image from "next/image";
 import React, {
   ReactNode,
   Children,
-  isValidElement,
   useState,
-  useRef,
   cloneElement,
   ReactElement,
-  RefObject,
-  LegacyRef,
 } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { SquareCheckBig } from "lucide-react";
-import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from "embla-carousel-autoplay";
+import useEmblaCarousel from "embla-carousel-react";
 import { cn } from "@/lib/utils";
 
 type FlashcardsProps = {
@@ -46,7 +40,7 @@ type BenefitsProps = {
   className?: string;
 };
 
-function Flashcards({ id, title, children}: FlashcardsProps) {
+function Flashcards({ id, title, children }: FlashcardsProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -55,11 +49,11 @@ function Flashcards({ id, title, children}: FlashcardsProps) {
       id={id}
       className="relative grid justify-items-center gap-14 lg:gap-[86px]"
     >
-      <div className="h-fit sm:w-3/4 !text-wrap">
+      <div className="h-fit !text-wrap sm:w-3/4">
         <SectionHeader text={title} />
       </div>
       <section className="flex w-full flex-col justify-between gap-5 lg:flex-row lg:gap-[102px]">
-        <div className="relative lg:mx-6 lg:my-14 flex h-fit self-center w-full">
+        <div className="relative flex h-fit w-full self-center lg:mx-6 lg:my-14">
           {Children.map(children, (content, index) => {
             const isHighlighted = index === selectedIndex;
             return cloneElement(content as ReactElement, {
@@ -68,31 +62,40 @@ function Flashcards({ id, title, children}: FlashcardsProps) {
           })}
         </div>
         <div className="order-first flex h-full min-w-[15.1%] items-center justify-center lg:order-none">
-          <div className="relative flex py-2 border-x-2 md:border-x-0 lg:py-0 max-w-full w-full flex-row items-center justify-center gap-6 lg:max-w-[290px] lg:flex-col lg:gap-[50px]">
-            <div className="hidden md:flex lg:flex-col gap-5 mb-4 lg:mb-0">
+          <div className="relative flex w-full max-w-full flex-row items-center justify-center gap-6 border-x-2 py-2 md:border-x-0 lg:max-w-[290px] lg:flex-col lg:gap-[50px] lg:py-0">
+            <div className="mb-4 hidden gap-5 md:flex lg:mb-0 lg:flex-col">
               {Children.map(children as ReactElement, (content, index) => (
                 <button
                   onClick={() => setSelectedIndex(index)}
                   className={`${
                     index === selectedIndex
-                      ? "aspect-[290/168] w-1/2 lg:w-3/4 bg-[#B7B38C] px-[10px] text-[1.5vw] md:text-[0.93vw] 2xl:px-[17px]"
-                      : "aspect-[290/168] w-3/4 lg:w-full bg-primary-100 px-[10px] text-[2.5vw] md:text-[1.25vw] 2xl:px-[25px]"
+                      ? "aspect-[290/168] w-1/2 bg-[#B7B38C] px-[10px] text-[1.5vw] md:text-[0.93vw] lg:w-3/4 2xl:px-[17px]"
+                      : "aspect-[290/168] w-3/4 bg-primary-100 px-[10px] text-[2.5vw] md:text-[1.25vw] lg:w-full 2xl:px-[25px]"
                   } self-center align-middle font-monument uppercase`}
                 >
                   {content.props.previewTitle}
                 </button>
               ))}
             </div>
-            <div className="embla h-full for_flashcard_embla md:hidden" ref={emblaRef} style={{transform: "rotate(0deg)"}}>
+            <div
+              className="embla for_flashcard_embla h-full md:hidden"
+              ref={emblaRef}
+              style={{ transform: "rotate(0deg)" }}
+            >
               <div className="embla__container for_flashcard h-full">
                 {Children.map(children as ReactElement, (content, index) => (
-                  <div className={cn("embla__slide flex justify-center", index === selectedIndex ? "slide_is_selected" : "")}>
+                  <div
+                    className={cn(
+                      "embla__slide flex justify-center",
+                      index === selectedIndex ? "slide_is_selected" : "",
+                    )}
+                  >
                     <button
                       onClick={() => setSelectedIndex(index)}
                       className={`${
                         index === selectedIndex
                           ? "aspect-[290/168] w-3/4 bg-[#B7B38C] px-[10px] text-[1.5vw] md:text-[0.93vw] 2xl:px-[17px]"
-                          : "aspect-[290/168] w-3/4 lg:w-full bg-primary-100 px-[10px] text-[2.5vw] md:text-[1.25vw] 2xl:px-[25px]"
+                          : "aspect-[290/168] w-3/4 bg-primary-100 px-[10px] text-[2.5vw] md:text-[1.25vw] lg:w-full 2xl:px-[25px]"
                       } self-center align-middle font-monument uppercase`}
                     >
                       {content.props.previewTitle}
@@ -129,7 +132,7 @@ function Flashcard({
           text-justify"
       >
         <div className="flex flex-col">
-          <h1 className="mb-5 font-monument uppercase text-lg sm:text-xl !leading-[120%] md:mb-[30px] lg:text-[30px] 2xl:text-[42px]">
+          <h1 className="mb-5 font-monument text-lg uppercase !leading-[120%] sm:text-xl md:mb-[30px] lg:text-[30px] 2xl:text-[42px]">
             {title}
           </h1>
           <hr className="mb-8 rounded-full border-2 border-black lg:mb-[50px]" />
@@ -142,9 +145,7 @@ function Flashcard({
                   <Button
                     variant="outline"
                     size="default2"
-                    className="
-                    w-full !px-2 !py-1 min-[1200px]:w-fit lg:!px-5 lg:!py-3 min-[1920px]:!px-[35px] min-[1920px]:!py-[25px]
-                    !border-2 lg:border-4"
+                    className="w-full !border-2 !px-2 !py-1 lg:border-4 lg:!px-5 lg:!py-3 min-[1200px]:w-fit min-[1920px]:!px-[35px] min-[1920px]:!py-[25px]"
                   >
                     Register
                   </Button>
@@ -155,8 +156,7 @@ function Flashcard({
                   <Button
                     variant="outline"
                     size="default2"
-                    className="!px-2 !py-1 lg:!px-5 lg:!py-3 min-[1920px]:!px-[35px] min-[1920px]:!py-[25px]
-                    !border-2 lg:border-4"
+                    className="!border-2 !px-2 !py-1 lg:border-4 lg:!px-5 lg:!py-3 min-[1920px]:!px-[35px] min-[1920px]:!py-[25px]"
                   >
                     More Info
                   </Button>

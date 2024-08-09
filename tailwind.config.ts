@@ -96,7 +96,7 @@ const config = {
         monument: "var(--font-monument)",
         inter: ["Inter"],
         ponnala: "var(--font-ponnala)",
-        poppins: ["Poppins"],
+        poppins: "var(--font-poppins)",
       },
     },
   },

@@ -95,7 +95,7 @@ export default function FormLogin() {
           <div className="flex flex-col space-y-2">
             <Button
               type="submit"
-              className="h-12 w-full bg-background/90 font-monument text-lg text-white hover:bg-background disabled:opacity-60"
+              className="h-12 w-full bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-lg"
             >
               Login
             </Button>
@@ -106,7 +106,7 @@ export default function FormLogin() {
         </form>
         <Button
           type="submit"
-          className="mt-2 h-12 w-full bg-transparent font-monument text-lg text-transparent/90 hover:bg-background disabled:opacity-60"
+          className="mt-2 h-12 w-full bg-transparent font-monument text-xs text-transparent/90 hover:bg-background disabled:opacity-60 md:text-lg"
           variant={"outline"}
           onClick={handleLoginWithGoogle}
         >
@@ -119,6 +119,12 @@ export default function FormLogin() {
           ></Image>
           Sign in with Google
         </Button>
+        <p className="mt-2 text-center text-xs md:text-sm">
+          Don't have an account?{" "}
+          <Link href={"/registration"} className="text-[#737158]">
+            Create an account
+          </Link>
+        </p>
       </Form>
     </div>
   );

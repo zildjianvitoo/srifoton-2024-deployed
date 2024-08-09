@@ -35,6 +35,7 @@ import { addNewMobileLegends } from "@/lib/network/competitions/mobileLegendsQue
 import SuccessRegister from "../SuccessRegister";
 import { toast } from "sonner";
 import "@/lib/utils/zodCustomError";
+import useToastErrorNoUser from "@/hooks/useToastErrorNoUser";
 
 type RegProps = {
   branch: string;
@@ -130,6 +131,8 @@ export default function CompetitionRegistration({
   branch,
   guideBookLink,
 }: RegProps) {
+  useToastErrorNoUser();
+
   const validBranch = branch.replace("/", "").replace(" ", "-");
 
   const form = useForm<z.infer<typeof competitionRegistrationScehma>>({

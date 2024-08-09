@@ -6,13 +6,6 @@ import { use, useEffect } from "react";
 import { toast } from "sonner";
 
 export default function CPRegistration() {
-
-  useEffect(() => {
-    // if (auth.currentUser === null) {
-      toast.error("Anda harus login terlebih dahulu untuk bisa mendaftar!");
-  // }
-  }, []);
-
   return (
     <>
       <CompetitionRegistration

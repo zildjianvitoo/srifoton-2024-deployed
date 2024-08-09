@@ -1,12 +1,12 @@
+"use client"
+
 import CompetitionRegistration from "@/components/Root/Competition/CompetitionRegistration";
 import { auth } from "@/lib/firebase";
+import { useEffect } from "react";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function EsportRegistration() {
-  if (auth.currentUser === null) {
-    toast.error("Anda harus login terlebih dahulu untuk bisa mendaftar!");
-  }
-
   return (
     <>
       <CompetitionRegistration branch="e-sport" guideBookLink="" />

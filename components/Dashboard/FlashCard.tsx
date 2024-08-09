@@ -5,7 +5,14 @@ import Messages from "./Messages";
 import { FaWhatsapp } from "react-icons/fa";
 import { storage, auth, db } from "@/lib/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
 import { toast } from "sonner";
 
 type Props = {
@@ -16,7 +23,13 @@ type Props = {
   project: boolean;
 };
 
-export default function FlashCard({ title, name, date, message, project }: Props) {
+export default function FlashCard({
+  title,
+  name,
+  date,
+  message,
+  project,
+}: Props) {
   const [file, setFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
   const [submissionUrl, setSubmissionUrl] = useState<string | null>(null);
@@ -36,7 +49,10 @@ export default function FlashCard({ title, name, date, message, project }: Props
       }
 
       if (collectionName) {
-        const q = query(collection(db, collectionName), where("user_id", "==", user.uid));
+        const q = query(
+          collection(db, collectionName),
+          where("user_id", "==", user.uid),
+        );
         const querySnapshot = await getDocs(q);
         if (!querySnapshot.empty) {
           const submissionData = querySnapshot.docs[0].data().submission;
@@ -86,23 +102,32 @@ export default function FlashCard({ title, name, date, message, project }: Props
       }
 
       const generateRandomString = (length: number) => {
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        let result = '';
+        const characters =
+          "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        let result = "";
         const charactersLength = characters.length;
         for (let i = 0; i < length; i++) {
-          result += characters.charAt(Math.floor(Math.random() * charactersLength));
+          result += characters.charAt(
+            Math.floor(Math.random() * charactersLength),
+          );
         }
         return result;
       };
 
       const randomFileName = `${generateRandomString(10) + user.uid}.zip`;
-      const storageRef = ref(storage, `competitions/${collectionDir}/${name}/${randomFileName}`);
+      const storageRef = ref(
+        storage,
+        `competitions/${collectionDir}/${name}/${randomFileName}`,
+      );
 
       await uploadBytes(storageRef, file);
       const downloadURL = await getDownloadURL(storageRef);
 
       if (collectionName) {
-        const q = query(collection(db, collectionName), where("user_id", "==", user.uid));
+        const q = query(
+          collection(db, collectionName),
+          where("user_id", "==", user.uid),
+        );
         const querySnapshot = await getDocs(q);
         if (!querySnapshot.empty) {
           const docRef = querySnapshot.docs[0].ref;
@@ -115,7 +140,6 @@ export default function FlashCard({ title, name, date, message, project }: Props
       } else {
         toast.error("Unknown competition type.");
       }
-
     } catch (error) {
       toast.error("Gagal mengumpulkan.");
     } finally {
@@ -125,9 +149,9 @@ export default function FlashCard({ title, name, date, message, project }: Props
   };
 
   return (
-    <div className="relative flex flex-col space-y-6 border-2 border-black px-4 py-4">
+    <div className="relative flex flex-col space-y-6 overflow-x-hidden border-2 border-black px-4 py-4">
       <h4 className="text-lg text-[#868365]">{title}</h4>
-      <h3 className="text-xl uppercase">{name}</h3>
+      <h3 className="text-xs uppercase md:text-xl">{name}</h3>
       <div className="flex items-center space-x-4 text-xs">
         <CalendarDays className="size-4" />
         <p className="content-center">{date}</p>
@@ -143,7 +167,7 @@ export default function FlashCard({ title, name, date, message, project }: Props
                   onChange={handleFileChange}
                   accept=".zip"
                   ref={fileInputRef}
-                  style={{ display: 'none' }}
+                  style={{ display: "none" }}
                 />
                 <Button
                   className="flex h-12 space-x-2 border-4 border-background bg-transparent font-monument text-xs text-background hover:bg-background/90 hover:text-white md:text-lg"
@@ -151,11 +175,11 @@ export default function FlashCard({ title, name, date, message, project }: Props
                   disabled={uploading}
                 >
                   <NotebookText />
-                  {file ? (
-                    file.name.length > 10 ? `${file.name.substring(0, 10)}...` : file.name
-                  ) : (
-                    "Choose File"
-                  )}
+                  {file
+                    ? file.name.length > 10
+                      ? `${file.name.substring(0, 10)}...`
+                      : file.name
+                    : "Choose File"}
                 </Button>
                 {file && (
                   <Button
@@ -164,24 +188,28 @@ export default function FlashCard({ title, name, date, message, project }: Props
                     disabled={uploading}
                   >
                     <NotebookText />
-                    {uploading ? <div className="spinner"></div> : "Submit Work"}
+                    {uploading ? (
+                      <div className="spinner"></div>
+                    ) : (
+                      "Submit Work"
+                    )}
                   </Button>
                 )}
               </>
             ) : (
               <a
-                className="flex h-12 items-center justify-center space-x-2 border-4 border-background bg-transparent font-monument text-xs text-background hover:bg-background/90 hover:text-white md:text-lg"
+                className="flex h-12 items-center justify-center gap-x-2 border-4 border-background bg-transparent px-2 font-monument text-xs text-background hover:bg-background/90 hover:text-white md:text-base"
                 href={submissionUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <NotebookText />
+                <NotebookText className="size-4" />
                 Download Work
               </a>
             )}
           </div>
         )}
-        <Button className="flex h-12 items-center justify-center space-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-lg">
+        <Button className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base">
           <FaWhatsapp />
           <a href={"/dashboard"} target="_blank">
             Join Group

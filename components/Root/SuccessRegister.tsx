@@ -16,7 +16,7 @@ export default function SuccessRegister({
 }: Props) {
   return (
     <div className={"flex flex-col gap-14 lg:gap-20"}>
-      <div className="relative mx-auto flex w-full flex-col items-center justify-center gap-6 text-center text-whtc">
+      <div className="text-whtc relative mx-auto flex w-full flex-col items-center justify-center gap-6 text-center text-primary-200">
         <h1 className="srifoton-header font-monument uppercase">{branch}</h1>
         <p className="srifoton-text mx-auto w-[70%]">
           Selamat, Pendaftaran kamu berhasil

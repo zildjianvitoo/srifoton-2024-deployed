@@ -133,7 +133,6 @@ export default function CompetitionRegistration({
   guideBookLink,
 }: RegProps) {
   useToastErrorNoUser();
-
   const validBranch = branch.replace("/", "").replace(" ", "-");
 
   const form = useForm<z.infer<typeof competitionRegistrationScehma>>({

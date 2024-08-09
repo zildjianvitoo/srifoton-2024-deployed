@@ -1,19 +1,9 @@
 "use client";
 
-import CompetitionOption from "@/components/Root/Competition/CompetitionOption";
-import Hero from "@/components/Root/Competition/Hero";
-import CompetitionQna from "@/components/Root/Competition/CompetitionQna";
 import React from "react";
 import { Flashcards, Flashcard, Benefits } from "@/components/Root/Flashcards";
 import OverviewHero from "@/components/Root/OverviewHero";
 import { QNA, SpeechBubble } from "@/components/Root/QNA";
-import SectionHeader from "@/components/Root/SectionHeader";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { useRef } from "react";
 
 type Props = {};
@@ -70,9 +60,10 @@ export default function Competition({}: Props) {
               dari dua babak: penyisihan, di mana peserta mengirimkan desain
               sesuai format yang ditentukan, dan final, di mana peserta yang
               lolos seleksi juri mempresentasikan desainnya melalui video
-              conference. Tema kompetisi UI/UX Design SRIFOTON 2024 adalah
-              “Digital Innovation for a Sustainable Future,” dengan fokus pada
-              desain di bidang ekonomi, pendidikan, atau lingkungan.
+              conference. Tema kompetisi UI/UX Design SRIFOTON{" "}
+              <span className="font-poppins">2024</span> adalah “Digital
+              Innovation for a Sustainable Future,” dengan fokus pada desain di
+              bidang ekonomi, pendidikan, atau lingkungan.
             </p>
           </Flashcard>
           <Flashcard
@@ -90,9 +81,10 @@ export default function Competition({}: Props) {
               website untuk menyelesaikan masalah. Dengan tema "Future Web:
               Developing Sustainable Digital Solutions," peserta diajak
               mengembangkan solusi digital yang berkontribusi pada salah satu
-              atau lebih dari 17 Tujuan Pembangunan Berkelanjutan (SDG) PBB.
-              Peserta diharapkan menciptakan inovasi web yang membantu mengatasi
-              tantangan global berdasarkan SDG tersebut.
+              atau lebih dari <span className="font-poppins">17</span> Tujuan
+              Pembangunan Berkelanjutan (SDG) PBB. Peserta diharapkan
+              menciptakan inovasi web yang membantu mengatasi tantangan global
+              berdasarkan SDG tersebut.
             </p>
           </Flashcard>
           <Flashcard
@@ -106,13 +98,15 @@ export default function Competition({}: Props) {
             <p>
               Esport Competition adalah kompetisi Mobile Legends dengan tujuan
               utama menghancurkan turret utama lawan untuk menang. Kompetisi ini
-              terdiri dari tiga babak. Pada babak penyisihan, 32 dan 16 besar
-              berlangsung tanpa wasit, dan kapten tim harus mengirimkan
-              screenshot hasil pertandingan. Babak 8 besar diawasi oleh wasit.
-              Pada babak semifinal, pertandingan berlanjut hingga satu tim
-              meraih tiga kemenangan. Di babak final, tim yang lolos bertanding
-              dalam format best-of-five, dan tim pertama yang meraih tiga
-              kemenangan menjadi pemenang.
+              terdiri dari tiga babak. Pada babak penyisihan,{" "}
+              <span className="font-poppins">32</span> dan{" "}
+              <span className="font-poppins">16</span> besar berlangsung tanpa
+              wasit, dan kapten tim harus mengirimkan screenshot hasil
+              pertandingan. Babak <span className="font-poppins">8</span> besar
+              diawasi oleh wasit. Pada babak semifinal, pertandingan berlanjut
+              hingga satu tim meraih tiga kemenangan. Di babak final, tim yang
+              lolos bertanding dalam format best-of-five, dan tim pertama yang
+              meraih tiga kemenangan menjadi pemenang.
             </p>
           </Flashcard>
         </Flashcards>
@@ -129,7 +123,8 @@ export default function Competition({}: Props) {
           question="Berapa jumlah minimal dan maksimal anggota dalam satu tim?"
         >
           Peserta dapat mendaftar pada kompetisi ini secara individu ataupun
-          dengan membentuk tim selama anggota tim tidak lebih dari 2 orang
+          dengan membentuk tim selama anggota tim tidak lebih dari{" "}
+          <span className="font-poppins">2</span> orang
         </SpeechBubble>
         <SpeechBubble
           id="speech3"
@@ -150,7 +145,7 @@ export default function Competition({}: Props) {
           question="Bolehkah dalam satu tim mendaftar jika berasal dari jenjang pendidikan berbeda dan dari jurusan yang berbeda?"
         >
           Diperbolehkan. Asalkan setiap tim beranggotakan mahasiswa yang berasal
-          dari satu universitas atau perguruan tinggi yang sama.
+          dari satu universitas atau perguruan tinggi yang sama
         </SpeechBubble>
       </QNA>
     </>

@@ -23,7 +23,7 @@ type QNAProps = {
 type SpeechBubbleProps = {
   id ?: string,
   question: string,
-  children: string,
+  children: ReactNode,
   highlighted?: boolean,
   src?: string
 }

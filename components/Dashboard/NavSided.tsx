@@ -44,6 +44,11 @@ function NavSided() {
             </li>
           ))}
         </ul>
+        <Button className="absolute bottom-6 left-4 right-4 rounded-md bg-red-500">
+          <Link href="/dashboard/logout" className="text-xl text-white">
+            <strong>Log Out</strong>
+          </Link>
+        </Button>
       </div>
       <div className="lg:hidden">
         <Sheet>

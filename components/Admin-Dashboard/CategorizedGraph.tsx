@@ -10,9 +10,9 @@ import useSegmentData from "@/hooks/useSegmentData";
 const CategorizedGraph = () => {
     const { data, loading, error } = useSegmentData();
 
-    useEffect(() => {
-        console.log(data);
-    }, [data]);
+    // useEffect(() => {
+    //     console.log(data);
+    // }, [data]);
 
     if (loading) return (
         <div className="spinner-container">

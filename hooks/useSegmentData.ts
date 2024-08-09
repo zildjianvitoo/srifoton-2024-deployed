@@ -20,7 +20,7 @@ const useSegmentData = () => {
           setData(segmentData);
         }
       } catch (error) {
-        console.error("Error fetching segment data:", error);
+        // console.error("Error fetching segment data:", error);
         if (isMounted) {
           setError("Failed to load data");
         }

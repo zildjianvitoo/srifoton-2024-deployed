@@ -10,9 +10,8 @@ import { PasswordField } from "./PasswordField";
 import "@/lib/utils/zodCustomError";
 
 import { auth } from "@/lib/firebase";
-
 import { updateUserPassword } from "@/lib/network/users/userQueries";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
 
 type dataProps = {
@@ -31,6 +30,17 @@ export default function FormAccountData() {
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [isGoogleUser, setIsGoogleUser] = useState(false);
+
+  useEffect(() => {
+    // Check if the user logged in using Google
+    if (user) {
+      const isGoogle = user.providerData.some(
+        (provider) => provider.providerId === "google.com"
+      );
+      setIsGoogleUser(isGoogle);
+    }
+  }, [user]);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -53,10 +63,8 @@ export default function FormAccountData() {
     if (success) {
       toast.success("Password berhasil diperbarui!");
       setSuccess(true);
-      console.log("Password updated successfully");
     } else {
       toast.error("Gagal memperbarui password. Silakan coba lagi.");
-      console.error("Failed to update password");
     }
   }
 
@@ -78,25 +86,27 @@ export default function FormAccountData() {
           title="Password"
           name="password"
           placeholder="XXXXXXXXX"
+          disabled={isGoogleUser} 
         />
         <PasswordField
           title="New Password"
           name="password1"
           placeholder="Masukkan kata sandi baru"
+          disabled={isGoogleUser} 
         />
 
         <Button
           type="submit"
           className="mt-6 h-12 w-full bg-background/90 font-monument text-lg text-white hover:bg-background disabled:opacity-60 lg:mt-10"
-          disabled={loading}
+          disabled={loading || isGoogleUser} 
         >
           {loading ? (
             <div className="spinner"></div>
           ) : success ? (
             "Password Updated!"
-          ) : (
-            "Save"
-          )}
+          ) : isGoogleUser ? (
+            "Logged In as Google Account"
+          ) : "Save"}
         </Button>
       </form>
     </Form>

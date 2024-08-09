@@ -72,7 +72,7 @@ export default function Talkshow({}: Props) {
       </Timeline>
       <QNA id="workshop-qna" title="workshop qna">
         <SpeechBubble id="speech1" question="Bagaimana cara mendaftar?">
-          Silahkan klik tombol "Register" pada acara yang ingin Anda ikuti, kemudian ikuti langkah-langkah untuk menyelesaikan proses pendaftaran.
+          Silakan klik tombol "Register" pada acara yang ingin Anda ikuti, kemudian ikuti langkah-langkah untuk menyelesaikan proses pendaftaran.
         </SpeechBubble>
         <SpeechBubble id="speech2" question="Siapa saja yang boleh mendaftar?">
           Acara ini dibuka untuk umum sehingga siapa saja dapat mendaftar.

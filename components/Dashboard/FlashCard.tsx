@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { CalendarDays, NotebookText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Messages from "./Messages";
@@ -19,6 +19,34 @@ type Props = {
 export default function FlashCard({ title, name, date, message, project }: Props) {
   const [file, setFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
+  const [submissionUrl, setSubmissionUrl] = useState<string | null>(null);
+
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    const fetchSubmission = async () => {
+      const user = auth.currentUser;
+      if (!user) return;
+
+      let collectionName;
+      if (title === "UI/UX Design") {
+        collectionName = "ui_ux_designs";
+      } else if (title === "Web Development") {
+        collectionName = "web_developments";
+      }
+
+      if (collectionName) {
+        const q = query(collection(db, collectionName), where("user_id", "==", user.uid));
+        const querySnapshot = await getDocs(q);
+        if (!querySnapshot.empty) {
+          const submissionData = querySnapshot.docs[0].data().submission;
+          setSubmissionUrl(submissionData || null);
+        }
+      }
+    };
+
+    fetchSubmission();
+  }, [title]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
@@ -57,16 +85,29 @@ export default function FlashCard({ title, name, date, message, project }: Props
         collectionDir = "web-development";
       }
 
-      const storageRef = ref(storage, `competitions/${collectionDir}/${name}/${file.name}`);
+      const generateRandomString = (length: number) => {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        const charactersLength = characters.length;
+        for (let i = 0; i < length; i++) {
+          result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+      };
+
+      const randomFileName = `${generateRandomString(10) + user.uid}.zip`;
+      const storageRef = ref(storage, `competitions/${collectionDir}/${name}/${randomFileName}`);
+
       await uploadBytes(storageRef, file);
       const downloadURL = await getDownloadURL(storageRef);
-      
+
       if (collectionName) {
         const q = query(collection(db, collectionName), where("user_id", "==", user.uid));
         const querySnapshot = await getDocs(q);
         if (!querySnapshot.empty) {
           const docRef = querySnapshot.docs[0].ref;
           await updateDoc(docRef, { submission: downloadURL });
+          setSubmissionUrl(downloadURL);
           toast.success("Submission berhasil!");
         } else {
           toast.error("Data tidak ditemukan. Silakan hubungi admin.");
@@ -76,8 +117,7 @@ export default function FlashCard({ title, name, date, message, project }: Props
       }
 
     } catch (error) {
-      console.error("Error uploading file:", error);
-      alert("Submission failed.");
+      toast.error("Gagal mengumpulkan.");
     } finally {
       setUploading(false);
       setFile(null);
@@ -93,23 +133,55 @@ export default function FlashCard({ title, name, date, message, project }: Props
         <p className="content-center">{date}</p>
       </div>
       <Messages message={message} />
-      <div className="bottom-4 right-4 flex justify-end gap-2 md:absolute">
-        {project ? (
+      <div className="bottom-4 right-4 flex flex-wrap justify-end gap-2 md:absolute">
+        {project && (
           <div className="flex flex-col space-y-2">
-            <input type="file" onChange={handleFileChange} accept=".zip" />
-            <Button
-              className="flex h-12 space-x-2 border-4 border-background bg-transparent font-monument text-xs text-background hover:bg-background/90 hover:text-white disabled:opacity-60 md:text-lg"
-              onClick={handleSubmission}
-              disabled={uploading}
-            >
-              <NotebookText />
-              {uploading ? <div className="spinner"></div> : "Submit Work"}
-            </Button>
+            {!submissionUrl ? (
+              <>
+                <input
+                  type="file"
+                  onChange={handleFileChange}
+                  accept=".zip"
+                  ref={fileInputRef}
+                  style={{ display: 'none' }}
+                />
+                <Button
+                  className="flex h-12 space-x-2 border-4 border-background bg-transparent font-monument text-xs text-background hover:bg-background/90 hover:text-white md:text-lg"
+                  onClick={() => fileInputRef.current?.click()}
+                  disabled={uploading}
+                >
+                  <NotebookText />
+                  {file ? (
+                    file.name.length > 10 ? `${file.name.substring(0, 10)}...` : file.name
+                  ) : (
+                    "Choose File"
+                  )}
+                </Button>
+                {file && (
+                  <Button
+                    className="flex h-12 space-x-2 border-4 border-background bg-transparent font-monument text-xs text-background hover:bg-background/90 hover:text-white md:text-lg"
+                    onClick={handleSubmission}
+                    disabled={uploading}
+                  >
+                    <NotebookText />
+                    {uploading ? <div className="spinner"></div> : "Submit Work"}
+                  </Button>
+                )}
+              </>
+            ) : (
+              <a
+                className="flex h-12 items-center justify-center space-x-2 border-4 border-background bg-transparent font-monument text-xs text-background hover:bg-background/90 hover:text-white md:text-lg"
+                href={submissionUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <NotebookText />
+                Download Work
+              </a>
+            )}
           </div>
-        ) : (
-          ""
         )}
-        <Button className="right-4 flex h-12 space-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-lg">
+        <Button className="flex h-12 items-center justify-center space-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-lg">
           <FaWhatsapp />
           <a href={"/dashboard"} target="_blank">
             Join Group

@@ -34,7 +34,7 @@ export const getAdminById = async (id: string): Promise<Admin | null> => {
   if (docSnap.exists()) {
     return { id: docSnap.id, ...docSnap.data() } as Admin;
   } else {
-    console.log("No such document!");
+    // console.log("No such document!");
     return null;
   }
 };
@@ -44,9 +44,9 @@ export const addNewAdmin = async (admin: Admin): Promise<void> => {
   try {
     const newDocRef = doc(collection(db, "admins"));
     await setDoc(newDocRef, admin);
-    console.log('New admin added successfully');
+    // console.log('New admin added successfully');
   } catch (error) {
-    console.error('Error adding new admin: ', error);
+    // console.error('Error adding new admin: ', error);
   }
 };
 
@@ -55,9 +55,9 @@ export const updateAdmin = async (id: string, updatedDetails: Partial<Admin>): P
   try {
     const docRef = doc(db, "admins", id);
     await updateDoc(docRef, updatedDetails);
-    console.log('Admin updated successfully');
+    // console.log('Admin updated successfully');
   } catch (error) {
-    console.error('Error updating admin: ', error);
+    // console.error('Error updating admin: ', error);
   }
 };
 

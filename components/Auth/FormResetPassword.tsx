@@ -63,7 +63,7 @@ export default function FormResetPassword() {
   }
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    // console.log(values);
   }
 
   return (

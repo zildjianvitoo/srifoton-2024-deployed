@@ -30,8 +30,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { ref, uploadBytes } from "firebase/storage";
-import { storage } from "@/lib/firebase";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { auth, storage } from "@/lib/firebase";
 import { ulid } from "ulid";
 import { addNewTalkshow } from "@/lib/network/talkshows/talkshowQueries";
 import SuccessRegister from "../SuccessRegister";
@@ -56,7 +56,7 @@ export const talkshowRegistrationSchema = z.object({
 
 type Props = {};
 
-export default function TalkshowForm({}: Props) {
+export default function TalkshowForm({ }: Props) {
   useToastErrorNoUser();
 
   const form = useForm<z.infer<typeof talkshowRegistrationSchema>>({
@@ -70,10 +70,17 @@ export default function TalkshowForm({}: Props) {
       proof: undefined,
     },
   });
+
   const onSubmit = async (
     formValues: z.infer<typeof talkshowRegistrationSchema>,
   ) => {
-    const user_id = "kocak";
+    const user = auth.currentUser;
+    if (!user) {
+      toast.error("Anda harus login terlebih dahulu!");
+      return;
+    }
+
+    const user_id = user.uid;
     const date = new Date();
     const is_verified = false;
 
@@ -82,7 +89,7 @@ export default function TalkshowForm({}: Props) {
         ref(storage, `talkshow/${ulid()}`),
         formValues.proof,
       );
-      formValues.proof = refProof.fullPath as string;
+      formValues.proof = await getDownloadURL(refProof);
       await addNewTalkshow({
         ...formValues,
         user_id,
@@ -93,7 +100,7 @@ export default function TalkshowForm({}: Props) {
       toast.success("Berhasil daftar Talkshow");
     } catch (error) {
       toast.error("Terjadi Kesalahan di sisi server");
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -103,10 +110,10 @@ export default function TalkshowForm({}: Props) {
 
   return (
     <div className={"flex flex-col gap-14 lg:gap-20"}>
-      <div className="text-whtc relative mx-auto flex w-fit flex-col gap-6 text-center">
-        <h1 className="srifoton-header font-monument uppercase">Talkshow</h1>
-        <p className="srifoton-text mx-auto">
-          Hai, silahkan isi secara detail informasi kamu
+      <div className="text-whtc relative mx-auto flex w-fit flex-col gap-6 text-center text-primary-200">
+        <h1 className="srifoton-header font-monument uppercase text-primary-200">Talkshow</h1>
+        <p className="srifoton-text mx-auto text-primary-200">
+          Hai, silakan isi secara detail informasi kamu
         </p>
       </div>
 
@@ -215,7 +222,10 @@ export default function TalkshowForm({}: Props) {
                 className="mt-6 h-12 w-full bg-background/90 font-monument text-lg hover:bg-background disabled:opacity-60 lg:mt-10"
                 disabled={form.formState.isSubmitting}
               >
-                Submit
+                {form.formState.isSubmitting ? (
+                  <div className="spinner"></div>
+                ) : ("Submit")
+                }
               </Button>
             </form>
           </Form>

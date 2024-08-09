@@ -17,8 +17,8 @@ export default function SuccessRegister({
   return (
     <div className={"flex flex-col gap-14 lg:gap-20"}>
       <div className="relative mx-auto flex w-full flex-col items-center justify-center gap-6 text-center text-whtc">
-        <h1 className="srifoton-header font-monument uppercase">{branch}</h1>
-        <p className="srifoton-text mx-auto w-[70%]">
+        <h1 className="srifoton-header font-monument uppercase text-primary">{branch}</h1>
+        <p className="srifoton-text mx-auto w-[70%] text-primary">
           Selamat, Pendaftaran kamu berhasil
         </p>
         <figure className="relative">
@@ -29,10 +29,10 @@ export default function SuccessRegister({
             height={360}
           />
         </figure>
-        <p className="mt-4 text-lg">
+        <p className="mt-4 text-lg text-primary">
           Terima kasih sudah mendaftar di kompetisi SRIFOTON 2024!
         </p>
-        <p className="text-lg">
+        <p className="text-lg text-primary">
           Tekan tombol di bawah <br /> untuk mengetahui info lebih lanjut.
         </p>
         {validBranch !== "workshop" && validBranch !== "talkshow" && (

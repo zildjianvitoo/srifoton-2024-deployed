@@ -38,6 +38,8 @@ import "@/lib/utils/zodCustomError";
 import useToastErrorNoUser from "@/hooks/useToastErrorNoUser";
 import { useEffect } from "react";
 import { query, where, getDocs, collection } from "firebase/firestore";
+import Image from 'next/image';
+
 
 type RegProps = {
   branch: string;
@@ -196,7 +198,7 @@ export default function CompetitionRegistration({
   const onSubmit = async (
     formValues: z.infer<typeof competitionRegistrationScehma>,
   ) => {
-    console.log("Masuk onSubmit");
+    // console.log("Masuk onSubmit");
 
     const user = auth.currentUser;
     if (user === null) {
@@ -340,11 +342,11 @@ export default function CompetitionRegistration({
         });
       }
 
-      toast.success("Berhasil mendaftar kompetisi");
+      toast.success("Berhasil mendaftar kompetisi " + competitionName + "!");
       window.scrollTo(0, 0);
     } catch (error) {
       toast.error("Terjadi Kesalahan di sisi server");
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -366,7 +368,7 @@ export default function CompetitionRegistration({
           {branch}
         </h1>
         <p className="srifoton-text mx-auto w-[70%] text-primary-200">
-          Hai, silahkan isi secara detail informasi untuk tim dan setiap anggota
+          Hai, silakan isi secara detail informasi untuk tim dan setiap anggota
           tim kamu!
         </p>
       </div>
@@ -555,6 +557,7 @@ export default function CompetitionRegistration({
                       label={"Student Card"}
                     />
                   </div>
+
                   {validBranch === "e-sport" ? (
                     <div className="flex flex-col gap-4 lg:basis-1/2 lg:gap-6">
                       <h4 className="text-center font-monument text-lg md:text-xl">
@@ -591,7 +594,14 @@ export default function CompetitionRegistration({
                       />
                     </div>
                   ) : (
-                    <div className="m-auto">Logo Srifoton</div>
+                    <div className="flex justify-center items-center lg:basis-1/2">
+                      <Image
+                        src={"/img/logo-srifoton.png"}
+                        width={300}
+                        height={300}
+                        alt="logo-srifoton"
+                      />
+                    </div>
                   )}
                 </div>
                 {validBranch === "e-sport" && (
@@ -630,7 +640,14 @@ export default function CompetitionRegistration({
                         label={"Student Card"}
                       />
                     </div>
-                    <div className="m-auto">Logo Srifoton</div>
+                    <div className="flex justify-center items-center lg:basis-1/2">
+                      <Image
+                        src={"/img/logo-srifoton.png"}
+                        width={300}
+                        height={300}
+                        alt="logo-srifoton"
+                      />
+                    </div>
                   </div>
                 )}
               </div>

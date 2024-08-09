@@ -77,13 +77,13 @@ export default function FormPersonalData() {
 
       if (userUpdated) {
         toast.success("Data berhasil diperbarui!");
-        console.log("User details updated successfully");
+        // console.log("User details updated successfully");
       } else {
         toast.error("Gagal memperbarui data!");
       }
     } catch (error) {
       toast.error("Terjadi kesalahan saat memperbarui data!");
-      console.error("Error updating user details:", error);
+      // console.error("Error updating user details:", error);
     }
   }
 

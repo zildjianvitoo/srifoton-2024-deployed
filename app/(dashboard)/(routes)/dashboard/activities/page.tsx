@@ -67,9 +67,9 @@ export default function ActivitiesPage() {
                   key={comp.id}
                   title={comp.type}
                   name={comp.team_name || comp.name_1}
-                  date={new Date(comp.date).toLocaleDateString()}
+                  date={new Date(comp.date.seconds * 1000).toLocaleDateString()}
                   message={comp.is_verified ? "verified" : "waiting"}
-                  project={Boolean(comp.submission)}
+                  project={comp.type === "UI/UX Design" || comp.type === "Web Development"}
                 />
               ))}
           </div>
@@ -83,7 +83,7 @@ export default function ActivitiesPage() {
                   key={talkshow.id}
                   title="Talkshow"
                   name={talkshow.name}
-                  date={new Date(talkshow.date).toLocaleDateString()}
+                  date={new Date(talkshow.date.seconds * 1000).toLocaleDateString()}
                   message={talkshow.is_verified ? "verified" : "waiting"}
                   project={false}
                 />
@@ -99,7 +99,7 @@ export default function ActivitiesPage() {
                   key={workshop.id}
                   title="Workshop"
                   name={workshop.name}
-                  date={new Date(workshop.date).toLocaleDateString()}
+                  date={new Date(workshop.date.seconds * 1000).toLocaleDateString()}
                   message={workshop.is_verified ? "verified" : "waiting"}
                   project={false}
                 />

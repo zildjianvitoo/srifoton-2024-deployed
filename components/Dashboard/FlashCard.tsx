@@ -1,8 +1,8 @@
 import React from "react";
 import { CalendarDays } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import * as icon from "@/lib/icon";
 import Messages from "./Messages";
+import { FaWhatsapp } from "react-icons/fa";
 
 type Props = { title?: string; name: string; date: string; message: string };
 
@@ -17,7 +17,7 @@ export default function FlashCard({ title, name, date, message }: Props) {
       </div>
       <Messages message={message} />
       <Button className="bottom-4 right-4 flex space-x-2 bg-black md:absolute">
-        <icon.Whatsapp />
+        <FaWhatsapp />
         <p>Join Group</p>
       </Button>
     </div>

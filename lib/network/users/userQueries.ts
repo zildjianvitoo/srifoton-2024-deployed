@@ -3,7 +3,8 @@
 import { collection, doc, getDocs, setDoc, updateDoc, getDoc } from "firebase/firestore";
 import { auth, db, googleProvider } from "../../firebase";
 import { User } from "../../types/userTypes";
-import { createUserWithEmailAndPassword, sendEmailVerification, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { createSession } from "@/lib/session";
 
 export const registerUser = async (user: User, email: string, password: string): Promise<boolean> => {
   try {
@@ -31,10 +32,32 @@ export const signInWithGoogle = async (): Promise<boolean> => {
       id: user.uid,
       name: user.displayName,
     });
+
+    const customToken = await user.getIdToken();
+
+    await createSession(user.uid, customToken, false);
+
     console.log('User signed in with Google successfully');
     return true;
   } catch (error) {
     console.error('Error signing in with Google: ', error);
+    return false;
+  }
+};
+
+export const signInWithEmail = async (email: string, password: string): Promise<boolean> => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+
+    const customToken = await user.getIdToken();
+
+    await createSession(user.uid, customToken, false);
+
+    console.log('User signed in and session created successfully:', user.uid);
+    return true;
+  } catch (error) {
+    console.error('Error signing in with email:', error);
     return false;
   }
 };

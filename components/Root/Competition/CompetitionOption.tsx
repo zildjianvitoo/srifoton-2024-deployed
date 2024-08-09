@@ -94,7 +94,7 @@ export default function CompetitionOption({}: Props) {
                   COMPETITIVE PROGRAMMING
                 </h2>
                 <hr className="mt-5 border-[2px] border-text-200 xl:mt-7" />
-                <p className="mt-8 text-justify font-inter text-sm lg:text-base xl:mt-12">
+                <p className="mt-8 text-justify font-poppins text-sm lg:text-base xl:mt-12">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
                   massa mi. Aliquam in hendrerit urna. Pellentesque sit amet
                   sapien fringilla, mattis ligula consectetur, ultrices mauris.
@@ -144,7 +144,7 @@ export default function CompetitionOption({}: Props) {
                   UI/UX DESIGN
                 </h2>
                 <hr className="mt-5 border-[2px] border-text-200 xl:mt-7" />
-                <p className="mt-8 text-justify font-inter text-sm lg:text-base xl:mt-12">
+                <p className="mt-8 text-justify font-poppins text-sm lg:text-base xl:mt-12">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
                   massa mi. Aliquam in hendrerit urna. Pellentesque sit amet
                   sapien fringilla, mattis ligula consectetur, ultrices mauris.
@@ -194,7 +194,7 @@ export default function CompetitionOption({}: Props) {
                   WEB DEVELOPMENT
                 </h2>
                 <hr className="mt-5 border-[2px] border-text-200 xl:mt-7" />
-                <p className="mt-8 text-justify font-inter text-sm lg:text-base xl:mt-12">
+                <p className="mt-8 text-justify font-poppins text-sm lg:text-base xl:mt-12">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
                   massa mi. Aliquam in hendrerit urna. Pellentesque sit amet
                   sapien fringilla, mattis ligula consectetur, ultrices mauris.
@@ -244,7 +244,7 @@ export default function CompetitionOption({}: Props) {
                   E-SPORT
                 </h2>
                 <hr className="mt-5 border-[2px] border-text-200 xl:mt-7" />
-                <p className="mt-8 text-justify font-inter text-sm lg:text-base xl:mt-12">
+                <p className="mt-8 text-justify font-poppins text-sm lg:text-base xl:mt-12">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
                   massa mi. Aliquam in hendrerit urna. Pellentesque sit amet
                   sapien fringilla, mattis ligula consectetur, ultrices mauris.

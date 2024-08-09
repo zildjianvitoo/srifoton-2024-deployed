@@ -10,8 +10,7 @@ import { PasswordField } from "./PasswordField";
 import "@/lib/utils/zodCustomError";
 
 import { auth } from "@/lib/firebase";
-import { db } from "@/lib/firebase";
-import { doc, setDoc, collection } from "firebase/firestore";
+
 import { updateUserPassword } from "@/lib/network/users/userQueries";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -21,30 +20,25 @@ type dataProps = {
   password?: string;
 };
 
-const user = auth.currentUser;
-
-// async function addData({ email, password }: dataProps) {
-//   console.log(email, password);
-
-//   // const newDocRef = doc(collection(db, "users"));
-//   // await setDoc(newDocRef, {
-//   //   email: email,
-//   //   password: password,
-//   // });
-// }
-
-const formSchema = z
-  .object({
-    password: z.string().min(1).max(50),
-    password1: z.string().min(1).max(50),
-  })
+const formSchema = z.object({
+  email: z.string().min(1).max(50),
+  password: z.string().min(1).max(50),
+  password1: z.string().min(1).max(50),
+});
 
 export default function FormAccountData() {
+  const user = auth.currentUser;
+
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    values: {
+      email: user?.email || "",
+      password: "",
+      password1: "",
+    },
     defaultValues: {
       password: "",
       password1: "",

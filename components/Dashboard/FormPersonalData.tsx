@@ -23,6 +23,7 @@ import { doc, setDoc, collection } from "firebase/firestore";
 import { getUserById, updateUser } from "@/lib/network/users/userQueries";
 import { toast } from "sonner";
 import { useEffect } from "react";
+import "@/lib/utils/zodCustomError";
 
 const phoneRegex = new RegExp(
   /^(0|62|\+62)(8[1-35-9]\d{7,10}|2[124]\d{7,8}|619\d{8}|2(?:1(?:14|500)|2\d{3})\d{3}|61\d{5,8}|(?:2(?:[35][1-4]|6[0-8]|7[1-6]|8\d|9[1-8])|3(?:1|[25][1-8]|3[1-68]|4[1-3]|6[1-3568]|7[0-469]|8\d)|4(?:0[1-589]|1[01347-9]|2[0-36-8]|3[0-24-68]|43|5[1-378]|6[1-5]|7[134]|8[1245])|5(?:1[1-35-9]|2[25-8]|3[124-9]|4[1-3589]|5[1-46]|6[1-8])|6(?:[25]\d|3[1-69]|4[1-6])|7(?:02|[125][1-9]|[36]\d|4[1-8]|7[0-36-9])|9(?:0[12]|1[013-8]|2[0-479]|5[125-8]|6[23679]|7[159]|8[01346]))\d{5,8})/,
@@ -32,31 +33,10 @@ const formSchema = z.object({
   name: z.string().min(1).max(50),
   college: z.string().min(1).max(50),
   student_id: z.string().min(1).max(50),
-  phone_number: z.string().regex(phoneRegex, "Invalid Number"),
-  gender: z.enum(["male", "female"], {
-    required_error: "You need to select your gender",
-  }),
+  phone_number: z.string().regex(phoneRegex, "Nomor Salah"),
+  gender: z.enum(["male", "female"]),
   instagram: z.string().min(2),
 });
-
-async function formHandleSubmit({
-  name,
-  college,
-  student_id,
-  phone_number,
-  gender,
-  instagram,
-}: User) {
-  const newDocRef = doc(collection(db, "users"));
-  await setDoc(newDocRef, {
-    name: name,
-    college: college,
-    student_id: student_id,
-    phone_number: phone_number,
-    gender: gender,
-    instagram: instagram,
-  });
-}
 
 export default function FormPersonalData() {
   const user = auth.currentUser;
@@ -111,29 +91,30 @@ export default function FormPersonalData() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="mt-10 space-y-6 text-black md:px-8"
+        className="mt-10 space-y-6 font-poppins text-black md:px-8"
       >
         <FormInput
           control={form.control}
           name="name"
-          placeholder="Nobita"
+          placeholder="Contoh: Nobita"
           label="Name"
         />
         <FormInput
           control={form.control}
           name="college"
-          placeholder="Universitas Sriwijaya"
+          placeholder="Contoh: Universitas Sriwijaya"
           label="Institution"
         />
-        <PasswordField
-          title="Student ID"
+        <FormInput
+          label="Student ID"
           name="student_id"
-          placeholder="090233765456"
+          placeholder="Contoh: 090233765456"
+          control={form.control}
         />
         <FormInput
           control={form.control}
           name="phone_number"
-          placeholder="08976553287"
+          placeholder="Contoh: 08976553287"
           label="Phone Number"
         />
         <FormField
@@ -148,24 +129,24 @@ export default function FormPersonalData() {
                 <RadioGroup
                   onValueChange={field.onChange}
                   defaultValue={field.value}
-                  className="flex space-y-1"
+                  className="flex items-center gap-2"
                 >
-                  <FormItem className="flex items-center space-x-3 space-y-0">
+                  <FormItem className="flex items-center gap-1">
                     <FormControl>
                       <RadioGroupItem
                         value="male"
-                        className="border-2 border-[#868365]"
+                        className="mt-1 border-2 border-[#868365]"
                       />
                     </FormControl>
                     <FormLabel className="font-monument text-lg lg:text-xl">
                       Male
                     </FormLabel>
                   </FormItem>
-                  <FormItem className="flex items-center space-x-3 space-y-0">
+                  <FormItem className="flex items-center gap-1">
                     <FormControl>
                       <RadioGroupItem
                         value="female"
-                        className="border-2 border-[#868365]"
+                        className="mt-1 border-2 border-[#868365]"
                       />
                     </FormControl>
                     <FormLabel className="font-monument text-lg lg:text-xl">
@@ -181,7 +162,7 @@ export default function FormPersonalData() {
         <FormInput
           control={form.control}
           name="instagram"
-          placeholder="nobita_"
+          placeholder="Contoh: nobita_"
           label="Instagram"
         />
         <Button

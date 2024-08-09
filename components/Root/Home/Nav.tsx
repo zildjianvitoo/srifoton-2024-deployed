@@ -23,12 +23,18 @@ export default function Nav() {
 
   return (
     <nav
-      id="navbar"  //shadow-sm shadow-[#868365]
+      id="navbar" //shadow-sm shadow-[#868365]
       className="sticky top-0 z-50 flex items-center justify-between bg-background px-8 py-5 text-primary md:px-12 lg:px-20 xl:px-[7rem]"
     >
       <Link href="/" className="flex items-center">
-        <div className="aspect-[90/56] w-[50px] md:w-[70px] xl:w-[90px] me-2 md:me-3 lg:me-5 xl:me-7">
-          <Image src="/img/logo.png" alt="logo" width={90} height={56} className="w-full"></Image>
+        <div className="me-2 aspect-[90/56] w-[50px] md:me-3 md:w-[70px] lg:me-5 xl:me-7 xl:w-[90px]">
+          <Image
+            src="/img/logo-srifoton.png"
+            alt="logo"
+            width={90}
+            height={56}
+            className="w-full"
+          ></Image>
         </div>
         <h4 className="xxs:text-2xl font-monument text-xl text-whtc-100 md:text-2xl lg:text-2xl xl:text-3xl">
           SRIFOTON
@@ -73,7 +79,8 @@ export default function Nav() {
             <li
               key={routes.address}
               className={cn("mt-2", {
-                "border-b-2 border-whtc-200 text-whtc-200": pathname === routes.address,
+                "border-b-2 border-whtc-200 text-whtc-200":
+                  pathname === routes.address,
               })}
             >
               <Link href={routes.address}>{routes.linkTo}</Link>

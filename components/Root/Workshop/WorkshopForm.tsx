@@ -37,6 +37,7 @@ import { addNewWorkshop } from "@/lib/network/workshops/workshopQueries";
 import SuccessRegister from "../SuccessRegister";
 import "@/lib/utils/zodCustomError";
 import { Button } from "@/components/ui/button";
+import useToastErrorNoUser from "@/hooks/useToastErrorNoUser";
 
 export const workshopRegistrationSchema = z.object({
   name: z.string().min(1).max(50),
@@ -56,6 +57,8 @@ export const workshopRegistrationSchema = z.object({
 type Props = {};
 
 export default function WorkshopForm({}: Props) {
+  useToastErrorNoUser();
+
   const form = useForm<z.infer<typeof workshopRegistrationSchema>>({
     resolver: zodResolver(workshopRegistrationSchema),
     defaultValues: {
@@ -100,7 +103,7 @@ export default function WorkshopForm({}: Props) {
 
   return (
     <div className={"flex flex-col gap-14 lg:gap-20"}>
-      <div className="relative mx-auto flex w-fit flex-col gap-6 text-center text-whtc">
+      <div className="text-whtc relative mx-auto flex w-fit flex-col gap-6 text-center">
         <h1 className="srifoton-header font-monument uppercase">WORKSHOP</h1>
         <p className="srifoton-text mx-auto">
           Hai, silahkan isi secara detail informasi kamu

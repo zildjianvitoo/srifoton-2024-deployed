@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="flex flex-col gap-y-12 sm:gap-x-[10.6vw] lg:flex-row lg:gap-x-[5vw] xl:justify-between">
           <div className="flex flex-col gap-x-[5vw] gap-y-12 sm:flex-row 2xl:gap-x-[6.18vw]">
             <img
-              src="/img/logo.png"
+              src="/img/logo-srifoton.png"
               alt="Logo"
               className="mx-auto aspect-[320/200] w-1/4 max-w-[320px] object-contain sm:w-1/2 sm:min-w-[212px]"
             />

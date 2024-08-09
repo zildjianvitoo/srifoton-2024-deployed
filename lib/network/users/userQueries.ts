@@ -131,7 +131,6 @@ export const getUserById = async (userId: string): Promise<User | null> => {
   }
 };
 
-
 export const fetchUsers = async (): Promise<User[]> => {
   try {
     const querySnapshot = await getDocs(collection(db, "users"));

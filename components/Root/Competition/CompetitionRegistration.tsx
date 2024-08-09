@@ -27,7 +27,7 @@ import FormInput from "../../FormInput";
 import FormFile from "../../FormFile";
 import { addNewCompetitiveProgramming } from "@/lib/network/competitions/competitiveProgrammingQueries";
 import { ref, uploadBytes } from "firebase/storage";
-import { storage } from "@/lib/firebase";
+import { auth, storage } from "@/lib/firebase";
 import { ulid } from "ulid";
 import { addNewUiUxDesign } from "@/lib/network/competitions/uiUxDesignQueries";
 import { addNewWebDevelopment } from "@/lib/network/competitions/webDevelopmentQueries";
@@ -36,6 +36,7 @@ import SuccessRegister from "../SuccessRegister";
 import { toast } from "sonner";
 import "@/lib/utils/zodCustomError";
 import useToastErrorNoUser from "@/hooks/useToastErrorNoUser";
+import { useState } from "react";
 
 type RegProps = {
   branch: string;
@@ -133,6 +134,8 @@ export default function CompetitionRegistration({
 }: RegProps) {
   useToastErrorNoUser();
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const validBranch = branch.replace("/", "").replace(" ", "-");
 
   const form = useForm<z.infer<typeof competitionRegistrationScehma>>({
@@ -179,7 +182,14 @@ export default function CompetitionRegistration({
   const onSubmit = async (
     formValues: z.infer<typeof competitionRegistrationScehma>,
   ) => {
-    const user_id = "kocak";
+    setIsSubmitting(true);
+    const user = auth.currentUser;
+    if (user === null) {
+      toast.error("Anda harus login terlebih dahulu sebelum dapat mendaftar!");
+      return;
+    }
+
+    const user_id = user.uid;
     const date = new Date();
     const is_verified = false;
 
@@ -270,6 +280,7 @@ export default function CompetitionRegistration({
           is_verified,
         });
       }
+      setIsSubmitting(false);
       toast.success("Berhasil mendaftar kompetisi");
       window.scrollTo(0, 0);
     } catch (error) {
@@ -568,7 +579,10 @@ export default function CompetitionRegistration({
                 className="mt-6 h-12 w-full bg-background/90 font-monument text-lg hover:bg-background disabled:opacity-60 lg:mt-10"
                 disabled={form.formState.isSubmitting}
               >
-                Submit
+                {form.formState.isSubmitting ? (
+                  <div className="spinner"></div>
+                ) : ("Submit")
+                }
               </Button>
             </form>
 

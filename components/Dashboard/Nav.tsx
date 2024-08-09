@@ -27,6 +27,7 @@ export default function Nav() {
         <ul className="me-20 flex items-center justify-end font-ponnala text-[#868365] lg:text-base xl:text-xl">
           {routes.map((routes) => (
             <li
+              key={routes.linkTo}
               className={cn("mt-2 items-center", {
                 "border-white text-white": pathname === routes.address,
               })}

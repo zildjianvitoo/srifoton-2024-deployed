@@ -56,9 +56,10 @@ export default function Workshop({}: Props) {
             per="person"
           >
             <p>
-              Workshop SRIFOTON bertema "Kickstart Your Web Development Journey"
-              menyajikan materi pemrograman dan sesi live coding untuk
-              pengembangan situs web dasar, dipandu oleh instruktur berkompeten.
+              Workshop SRIFOTON bertema &quot;Kickstart Your Web Development
+              Journey&quot; menyajikan materi pemrograman dan sesi live coding
+              untuk pengembangan situs web dasar, dipandu oleh instruktur
+              berkompeten.
             </p>
             <Benefits>
               <p>E-Sertifikat</p>
@@ -75,9 +76,10 @@ export default function Workshop({}: Props) {
             per="person"
           >
             <p>
-              Workshop SRIFOTON bertema "Kickstart Your Web Development Journey"
-              menyajikan materi pemrograman dan sesi live coding untuk
-              pengembangan situs web dasar, dipandu oleh instruktur berkompeten.
+              Workshop SRIFOTON bertema &quot;Kickstart Your Web Development
+              Journey&quot; menyajikan materi pemrograman dan sesi live coding
+              untuk pengembangan situs web dasar, dipandu oleh instruktur
+              berkompeten.
             </p>
             <Benefits>
               <p>E-Sertifikat</p>
@@ -97,11 +99,11 @@ export default function Workshop({}: Props) {
             per="person"
           >
             <p>
-              SRIFOTON menawarkan workshop "Kickstart Your Web Development
-              Journey" dan talkshow "Effective Ways to Build and Maintain a
-              Personal Brand in the Digital Era," yang membahas keterampilan web
-              dasar dan personal branding. Dipandu oleh ahli, paket ini
-              meningkatkan keterampilan digital dan profesional.
+              SRIFOTON menawarkan workshop &quot;Kickstart Your Web Development
+              Journey&quot; dan talkshow &quot;Effective Ways to Build and
+              Maintain a Personal Brand in the Digital Era,&quot; yang membahas
+              keterampilan web dasar dan personal branding. Dipandu oleh ahli,
+              paket ini meningkatkan keterampilan digital dan profesional.
             </p>
             <Benefits>
               <p>E-Sertifikat</p>
@@ -122,9 +124,10 @@ export default function Workshop({}: Props) {
             per="person"
           >
             <p>
-              Workshop SRIFOTON bertema "Kickstart Your Web Development Journey"
-              menyajikan materi pemrograman dan sesi live coding untuk
-              pengembangan situs web dasar, dipandu oleh instruktur berkompeten.
+              Workshop SRIFOTON bertema &quot;Kickstart Your Web Development
+              Journey&quot; menyajikan materi pemrograman dan sesi live coding
+              untuk pengembangan situs web dasar, dipandu oleh instruktur
+              berkompeten.
             </p>
             <Benefits>
               <p>E-Sertifikat</p>

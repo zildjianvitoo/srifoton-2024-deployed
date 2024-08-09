@@ -36,13 +36,14 @@ import SuccessRegister from "../SuccessRegister";
 import { toast } from "sonner";
 import "@/lib/utils/zodCustomError";
 import useToastErrorNoUser from "@/hooks/useToastErrorNoUser";
+import Image from "next/image";
 
 type RegProps = {
   branch: string;
   guideBookLink: string;
 };
 
-const MAX_FILE_SIZE = 500000;
+const MAX_FILE_SIZE = 5000000;
 const ACCEPTED_IMAGE_TYPES = [
   "image/jpeg",
   "image/jpg",
@@ -520,7 +521,14 @@ export default function CompetitionRegistration({
                       />
                     </div>
                   ) : (
-                    <div className="m-auto">Logo Srifoton</div>
+                    <div className="m-auto max-md:hidden">
+                      <Image
+                        src={"/img/logo-srifoton.png"}
+                        alt="Logo Srifoton"
+                        width={350}
+                        height={350}
+                      />
+                    </div>
                   )}
                 </div>
                 {validBranch === "e-sport" && (

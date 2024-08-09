@@ -3,18 +3,16 @@
 import { collection, doc, getDocs, setDoc, updateDoc, getDoc } from "firebase/firestore";
 import { auth, db, googleProvider } from "../../firebase";
 import { User } from "../../types/userTypes";
-import { createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { createSession } from "@/lib/session";
+import { createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup, EmailAuthProvider, updatePassword, reauthenticateWithCredential } from "firebase/auth";
+import { createSession, removeSession } from "@/lib/session";
 
 export const registerUser = async (user: User, email: string, password: string): Promise<boolean> => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     await sendEmailVerification(userCredential.user);
     const userRef = doc(db, 'users', userCredential.user.uid);
-    await setDoc(userRef, {
-      id: userCredential.user.uid,
-      name: user.name
-    });
+    user.id = userCredential.user.uid;
+    await setDoc(userRef, { ...user });
     console.log('User registered successfully');
     return true;
   } catch (error) {
@@ -50,6 +48,11 @@ export const signInWithEmail = async (email: string, password: string): Promise<
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
+    if (!user.emailVerified) {
+      console.log('Email not verified');
+      return false;
+    }
+
     const customToken = await user.getIdToken();
 
     await createSession(user.uid, customToken, false);
@@ -58,6 +61,31 @@ export const signInWithEmail = async (email: string, password: string): Promise<
     return true;
   } catch (error) {
     console.error('Error signing in with email:', error);
+    return false;
+  }
+};
+
+export const updateUserPassword = async (currentPassword: string, newPassword: string): Promise<boolean> => {
+  try {
+    const user = auth.currentUser;
+    if (!user) {
+      console.error('No user found');
+      return false;
+    }
+
+    if (!user.email) {
+      console.error('No email found');
+      return false;
+    }
+
+    const credential = EmailAuthProvider.credential(user.email, currentPassword);
+    await reauthenticateWithCredential(user, credential);
+    await updatePassword(user, newPassword);
+
+    console.log('Password updated successfully');
+    return true;
+  } catch (error) {
+    console.error('Error updating password:', error);
     return false;
   }
 };
@@ -71,6 +99,18 @@ export const updateUser = async (userId: string, updatedDetails: Partial<User>):
     console.error('Error updating user details: ', error);
   }
 };
+
+export const logoutUser = async (): Promise<boolean> => {
+  try {
+    await auth.signOut();
+    await removeSession(false);
+    console.log('User logged out successfully');
+    return true;
+  } catch (error) {
+    console.error('Error logging out user: ', error);
+    return false;
+  }
+}
 
 export const getUserById = async (userId: string): Promise<User | null> => {
   try {
@@ -87,6 +127,7 @@ export const getUserById = async (userId: string): Promise<User | null> => {
     return null;
   }
 };
+
 
 export const fetchUsers = async (): Promise<User[]> => {
   try {

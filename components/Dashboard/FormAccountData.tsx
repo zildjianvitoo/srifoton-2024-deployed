@@ -9,47 +9,61 @@ import FormInput from "@/components/FormInput";
 import { PasswordField } from "./PasswordField";
 import "@/lib/utils/zodCustomError";
 
+import { auth } from "@/lib/firebase";
 import { db } from "@/lib/firebase";
 import { doc, setDoc, collection } from "firebase/firestore";
+import { updateUserPassword } from "@/lib/network/users/userQueries";
+import { useState } from "react";
+import { toast } from "sonner";
 
 type dataProps = {
   email?: string;
   password?: string;
 };
 
-async function addData({ email, password }: dataProps) {
-  console.log(email, password);
+const user = auth.currentUser;
 
-  // const newDocRef = doc(collection(db, "users"));
-  // await setDoc(newDocRef, {
-  //   email: email,
-  //   password: password,
-  // });
-}
+// async function addData({ email, password }: dataProps) {
+//   console.log(email, password);
+
+//   // const newDocRef = doc(collection(db, "users"));
+//   // await setDoc(newDocRef, {
+//   //   email: email,
+//   //   password: password,
+//   // });
+// }
 
 const formSchema = z
   .object({
-    email: z.string().email(),
     password: z.string().min(1).max(50),
     password1: z.string().min(1).max(50),
   })
-  .refine(({ password, password1 }) => password === password1, {
-    path: ["password1"],
-    message: "Password didn't match.",
-  });
 
 export default function FormAccountData() {
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
       password: "",
       password1: "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    addData(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setLoading(true);
+    const { password, password1 } = values;
+    const success = await updateUserPassword(password, password1);
+    setLoading(false);
+    if (success) {
+      toast.success("Password berhasil diperbarui!");
+      setSuccess(true);
+      console.log("Password updated successfully");
+    } else {
+      toast.error("Gagal memperbarui password. Silakan coba lagi.");
+      console.error("Failed to update password");
+    }
   }
 
   return (
@@ -60,8 +74,10 @@ export default function FormAccountData() {
       >
         <FormInput
           control={form.control}
+          disabled={true}
           name="email"
-          placeholder="nobita@gmail.com"
+          defaultValue={user?.email ?? ""}
+          placeholder={"nobita@gmail.com"}
           label="Email"
         />
         <PasswordField
@@ -78,8 +94,15 @@ export default function FormAccountData() {
         <Button
           type="submit"
           className="mt-6 h-12 w-full bg-background/90 font-monument text-lg text-white hover:bg-background disabled:opacity-60 lg:mt-10"
+          disabled={loading}
         >
-          Save
+          {loading ? (
+            <div className="spinner"></div>
+          ) : success ? (
+            "Password Updated!"
+          ) : (
+            "Save"
+          )}
         </Button>
       </form>
     </Form>

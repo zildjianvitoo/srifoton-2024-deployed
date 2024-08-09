@@ -16,6 +16,8 @@ type Props = {
   placeholder: string;
   label: string;
   type?: string;
+  disabled?: boolean;
+  defaultValue?: string;
 };
 
 export default function FormInput({
@@ -24,10 +26,14 @@ export default function FormInput({
   placeholder,
   label,
   type = "text",
+  disabled,
+  defaultValue
 }: Props) {
   return (
     <FormField
+      disabled={disabled ?? false}
       control={control}
+      defaultValue={defaultValue ?? ""}
       name={name}
       render={({ field }) => (
         <FormItem>

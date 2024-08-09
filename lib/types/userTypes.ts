@@ -6,7 +6,7 @@ export type User = {
     // email: string;
     // password: string;
     college: string;
-    semester: string;
+    student_id: string;
     phone_number: string;
     gender: string;
     instagram: string;

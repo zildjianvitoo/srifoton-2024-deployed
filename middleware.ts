@@ -79,6 +79,14 @@ export default async function middleware(request: NextRequest) {
     }
   }
 
+  if (!(userSession && userToken) && !(adminSession && adminToken) && !publicRoutes.includes(request.nextUrl.pathname)) {
+    const absoluteURL = new URL("/", request.nextUrl.origin);
+    // console.log("Redirecting to:", absoluteURL.toString());
+    if (isValidRedirectionPath(absoluteURL.pathname)) {
+      return NextResponse.redirect(absoluteURL.toString());
+    }
+  }
+
   // console.log(userSession && userToken && request.nextUrl.pathname === "/login");
 
   if (userSession && userToken && request.nextUrl.pathname === "/login") {

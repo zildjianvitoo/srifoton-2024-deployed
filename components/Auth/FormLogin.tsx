@@ -45,14 +45,12 @@ const formSchema = z.object({
     }),
 });
 
-
-
 export default function FormLogin() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
-      password: "",
+      password: ""
     },
   });
 
@@ -72,7 +70,7 @@ export default function FormLogin() {
         router.push("/dashboard/account-data");
         setSuccess(true);
       } else {
-        toast.error("Gagal masuk dengan email. Silakan coba lagi.");
+        toast.error("Gagal masuk dengan email. Pastikan email sudah diverifikasi dan silakan coba lagi.");
       }
     } catch (error) {
       console.error("Error signing in with email: ", error);
@@ -100,8 +98,6 @@ export default function FormLogin() {
       setLoadingGoogle(false);
     }
   }
-
-
 
   return (
     <div className="mt-10 md:px-8">

@@ -14,7 +14,7 @@ export default function page() {
         <h3 className="font-monument text-xl xl:text-2xl">
           Create Your Account
         </h3>
-        <p className="font-ponnala text-lg xl:text-xl">
+        <p className="text-lg xl:text-xl">
           Hai, silakan buat akunmu terlebih dahulu <br /> di bawah sini!
         </p>
         <Image

@@ -16,9 +16,11 @@ export default function FlashCard({ title, name, date, message }: Props) {
         <p className="content-center">{date}</p>
       </div>
       <Messages message={message} />
-      <Button className="bottom-4 right-4 flex space-x-2 bg-black md:absolute">
+      <Button className="bottom-4 right-4 flex h-12 space-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:absolute md:text-lg">
         <FaWhatsapp />
-        <p>Join Group</p>
+        <a href={"/dashboard"} target="_blank">
+          Join Group
+        </a>
       </Button>
     </div>
   );

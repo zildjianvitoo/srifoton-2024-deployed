@@ -18,8 +18,11 @@ import { PasswordField } from "./PasswordField";
 import "@/lib/utils/zodCustomError";
 import { User } from "@/lib/types/userTypes";
 
-import { db } from "@/lib/firebase";
+import { auth, db } from "@/lib/firebase";
 import { doc, setDoc, collection } from "firebase/firestore";
+import { getUserById, updateUser } from "@/lib/network/users/userQueries";
+import { toast } from "sonner";
+import { useEffect } from "react";
 
 const phoneRegex = new RegExp(
   /^(0|62|\+62)(8[1-35-9]\d{7,10}|2[124]\d{7,8}|619\d{8}|2(?:1(?:14|500)|2\d{3})\d{3}|61\d{5,8}|(?:2(?:[35][1-4]|6[0-8]|7[1-6]|8\d|9[1-8])|3(?:1|[25][1-8]|3[1-68]|4[1-3]|6[1-3568]|7[0-469]|8\d)|4(?:0[1-589]|1[01347-9]|2[0-36-8]|3[0-24-68]|43|5[1-378]|6[1-5]|7[134]|8[1245])|5(?:1[1-35-9]|2[25-8]|3[124-9]|4[1-3589]|5[1-46]|6[1-8])|6(?:[25]\d|3[1-69]|4[1-6])|7(?:02|[125][1-9]|[36]\d|4[1-8]|7[0-36-9])|9(?:0[12]|1[013-8]|2[0-479]|5[125-8]|6[23679]|7[159]|8[01346]))\d{5,8})/,
@@ -28,7 +31,7 @@ const phoneRegex = new RegExp(
 const formSchema = z.object({
   name: z.string().min(1).max(50),
   college: z.string().min(1).max(50),
-  id: z.string().min(1).max(50),
+  student_id: z.string().min(1).max(50),
   phone_number: z.string().regex(phoneRegex, "Invalid Number"),
   gender: z.enum(["male", "female"], {
     required_error: "You need to select your gender",
@@ -39,7 +42,7 @@ const formSchema = z.object({
 async function formHandleSubmit({
   name,
   college,
-  id,
+  student_id,
   phone_number,
   gender,
   instagram,
@@ -48,7 +51,7 @@ async function formHandleSubmit({
   await setDoc(newDocRef, {
     name: name,
     college: college,
-    id: id,
+    student_id: student_id,
     phone_number: phone_number,
     gender: gender,
     instagram: instagram,
@@ -56,21 +59,52 @@ async function formHandleSubmit({
 }
 
 export default function FormPersonalData() {
+  const user = auth.currentUser;
+  const userId = user?.uid ?? "";
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
       college: "",
-      id: "",
+      student_id: "",
       phone_number: "",
       gender: "male",
       instagram: "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    // formHandleSubmit(values);
+  useEffect(() => {
+    async function fetchUserData() {
+      const user = await getUserById(userId);
+      if (user) {
+        form.reset({
+          name: user.name,
+          college: user.college,
+          student_id: user.student_id,
+          phone_number: user.phone_number,
+          gender: user.gender === "female" ? "female" : "male",
+          instagram: user.instagram,
+        });
+      }
+    }
+    fetchUserData();
+  }, [userId, form]);
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      const userUpdated = await updateUser(userId, values);
+
+      if (userUpdated) {
+        toast.success("Data berhasil diperbarui!");
+        console.log("User details updated successfully");
+      } else {
+        toast.error("Gagal memperbarui data!");
+      }
+    } catch (error) {
+      toast.error("Terjadi kesalahan saat memperbarui data!");
+      console.error("Error updating user details:", error);
+    }
   }
 
   return (
@@ -83,7 +117,7 @@ export default function FormPersonalData() {
           control={form.control}
           name="name"
           placeholder="Nobita"
-          label="Username"
+          label="Name"
         />
         <FormInput
           control={form.control}
@@ -93,7 +127,7 @@ export default function FormPersonalData() {
         />
         <PasswordField
           title="Student ID"
-          name="id"
+          name="student_id"
           placeholder="090233765456"
         />
         <FormInput

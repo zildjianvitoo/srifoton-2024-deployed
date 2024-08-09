@@ -13,6 +13,7 @@ export const registerUser = async (user: User, email: string, password: string):
     const userRef = doc(db, 'users', userCredential.user.uid);
     user.id = userCredential.user.uid;
     await setDoc(userRef, { ...user });
+    await auth.signOut();
     console.log('User registered successfully');
     return true;
   } catch (error) {
@@ -90,13 +91,15 @@ export const updateUserPassword = async (currentPassword: string, newPassword: s
   }
 };
 
-export const updateUser = async (userId: string, updatedDetails: Partial<User>): Promise<void> => {
+export const updateUser = async (userId: string, updatedDetails: Partial<User>): Promise<boolean> => {
   try {
     const userRef = doc(db, 'users', userId);
     await updateDoc(userRef, updatedDetails);
     console.log('User details updated successfully');
+    return true;
   } catch (error) {
     console.error('Error updating user details: ', error);
+    return false;
   }
 };
 

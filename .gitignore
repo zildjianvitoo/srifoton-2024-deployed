@@ -42,3 +42,6 @@ next-env.d.ts
 
 # Service Account
 service-account.json
+
+# Misc
+.VSCodeCounter/

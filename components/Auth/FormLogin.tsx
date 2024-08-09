@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { set, z } from "zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
@@ -11,7 +11,10 @@ import "@/lib/utils/zodCustomError";
 import Image from "next/image";
 import Link from "next/link";
 import { Checkbox } from "../ui/checkbox";
-import { signInWithGoogle } from "@/lib/network/users/userQueries";
+import { signInWithEmail, signInWithGoogle } from "@/lib/network/users/userQueries";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 type dataProps = {
   email?: string;
@@ -42,6 +45,8 @@ const formSchema = z.object({
     }),
 });
 
+
+
 export default function FormLogin() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -51,14 +56,52 @@ export default function FormLogin() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    addData(values);
+  const [loading, setLoading] = useState(false);
+  const [loadingGoogle, setLoadingGoogle] = useState(false);
+  const [successGoogle, setSuccessGoogle] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const router = useRouter();
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setLoading(true);
+    try {
+      const accountSignedIn = await signInWithEmail(values.email, values.password);
+      if (accountSignedIn) {
+        toast.success("Berhasil masuk dengan email!");
+        router.push("/dashboard/account-data");
+        setSuccess(true);
+      } else {
+        toast.error("Gagal masuk dengan email. Silakan coba lagi.");
+      }
+    } catch (error) {
+      console.error("Error signing in with email: ", error);
+      toast.error("Terjadi kesalahan saat masuk dengan email.");
+    } finally {
+      setLoading(false);
+    }
   }
 
-  function handleLoginWithGoogle() {
-    signInWithGoogle();
+  async function handleGoogleSignIn() {
+    setLoadingGoogle(true);
+    try {
+      const accountSignedIn = await signInWithGoogle();
+      if (accountSignedIn) {
+        toast.success("Berhasil masuk dengan akun Google!");
+        router.push("/dashboard/account-data");
+        setSuccessGoogle(true);
+      } else {
+        toast.error("Gagal masuk dengan akun Google. Silakan coba lagi.");
+      }
+    } catch (error) {
+      console.error("Error signing in with Google: ", error);
+      toast.error("Terjadi kesalahan saat masuk dengan Google.");
+    } finally {
+      setLoadingGoogle(false);
+    }
   }
+
+
 
   return (
     <div className="mt-10 md:px-8">
@@ -95,9 +138,16 @@ export default function FormLogin() {
           <div className="flex flex-col space-y-2">
             <Button
               type="submit"
-              className="h-12 w-full bg-background/90 font-monument text-lg text-white hover:bg-background disabled:opacity-60"
+              className="h-12 w-full bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-lg"
+              disabled={loading}
             >
-              Login
+              {loading ? (
+                <div className="spinner"></div>
+              ) : success ? (
+                "Logged In!"
+              ) : (
+                "Login"
+              )}
             </Button>
             <p className="text-center text-xs md:text-sm">
               Or use your google account
@@ -106,9 +156,11 @@ export default function FormLogin() {
         </form>
         <Button
           type="submit"
-          className="mt-2 h-12 w-full bg-transparent font-monument text-sm text-transparent/90 hover:bg-background disabled:opacity-60 sm:text-lg"
+
+          className="mt-2 h-12 w-full bg-transparent font-monument text-xs text-transparent/90 hover:bg-background disabled:opacity-60 md:text-lg"
+
           variant={"outline"}
-          onClick={handleLoginWithGoogle}
+          onClick={handleGoogleSignIn}
         >
           <Image
             src={"/img/google-icon.png"}
@@ -117,8 +169,20 @@ export default function FormLogin() {
             alt="google-icon"
             className="me-2 size-4 md:me-4 md:size-6"
           ></Image>
-          Sign in with Google
+          {loadingGoogle ? (
+            <div className="spinner"></div>
+          ) : successGoogle ? (
+            "Signed In with Google!"
+          ) : (
+            "Sign In with Google"
+          )}
         </Button>
+        <p className="mt-2 text-center text-xs md:text-sm">
+          Don&apos;t have an account?{" "}
+          <Link href={"/registration"} className="text-[#737158]">
+            Create an account
+          </Link>
+        </p>
       </Form>
     </div>
   );

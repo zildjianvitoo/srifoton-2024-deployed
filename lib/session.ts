@@ -4,7 +4,7 @@
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import cookieSignature from "cookie-signature";
+import { signCookie, unsignCookie } from "@/lib/cryptoUtils";
 
 const USER_SESSION_NAME = process.env.USER_SESSION_NAME!;
 const AUTH_COOKIE_NAME = process.env.AUTH_COOKIE_NAME!;
@@ -17,11 +17,13 @@ const ADMIN_COOKIE_SIGNATURE_KEY_CURRENT = process.env.ADMIN_COOKIE_SIGNATURE_KE
 const ADMIN_COOKIE_SIGNATURE_KEY_PREVIOUS = process.env.ADMIN_COOKIE_SIGNATURE_KEY_PREVIOUS!;
 
 export async function createSession(uid: string, token: string, isAdmin: boolean) {
-    const signedUid = isAdmin ? cookieSignature.sign(uid, ADMIN_COOKIE_SIGNATURE_KEY_CURRENT) : cookieSignature.sign(uid, AUTH_COOKIE_SIGNATURE_KEY_CURRENT);
+    const signedUid = isAdmin
+        ? await signCookie(uid, ADMIN_COOKIE_SIGNATURE_KEY_CURRENT)
+        : await signCookie(uid, AUTH_COOKIE_SIGNATURE_KEY_CURRENT);
 
     const signedToken = isAdmin
-        ? cookieSignature.sign(token, ADMIN_COOKIE_SIGNATURE_KEY_CURRENT)
-        : cookieSignature.sign(token, AUTH_COOKIE_SIGNATURE_KEY_CURRENT);
+        ? await signCookie(token, ADMIN_COOKIE_SIGNATURE_KEY_CURRENT)
+        : await signCookie(token, AUTH_COOKIE_SIGNATURE_KEY_CURRENT);
 
     if (isAdmin) {
         cookies().set(ADMIN_SESSION_NAME, signedUid, {
@@ -31,7 +33,7 @@ export async function createSession(uid: string, token: string, isAdmin: boolean
             path: "/",
         });
 
-        cookies().set(AUTH_COOKIE_NAME, signedToken, {
+        cookies().set(ADMIN_COOKIE_NAME, signedToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
             maxAge: 60 * 60 * 24, // 1 day
@@ -45,7 +47,7 @@ export async function createSession(uid: string, token: string, isAdmin: boolean
             path: "/",
         });
 
-        cookies().set(ADMIN_COOKIE_NAME, signedToken, {
+        cookies().set(AUTH_COOKIE_NAME, signedToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
             maxAge: 60 * 60 * 24, // 1 day
@@ -53,16 +55,20 @@ export async function createSession(uid: string, token: string, isAdmin: boolean
         });
     }
 
-    redirect(isAdmin ? "/admin-dashboard" : "/account-data");
+    // console.log("Setting USER_SESSION_NAME cookie:", signedUid);
+    // console.log("Setting AUTH_COOKIE_NAME cookie:", signedToken);
+
+
+    redirect(isAdmin ? "/admin-dashboard" : "/dashboard/account-data");
 }
 
 export async function removeSession(isAdmin: boolean) {
     if (isAdmin) {
         cookies().delete(ADMIN_SESSION_NAME);
-        cookies().delete(AUTH_COOKIE_NAME);
+        cookies().delete(ADMIN_COOKIE_NAME);
     } else {
         cookies().delete(USER_SESSION_NAME);
-        cookies().delete(ADMIN_COOKIE_NAME);
+        cookies().delete(AUTH_COOKIE_NAME);
     }
 
     redirect(isAdmin ? "/admin-login" : "/login");

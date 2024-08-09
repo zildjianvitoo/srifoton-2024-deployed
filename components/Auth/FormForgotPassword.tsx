@@ -39,14 +39,14 @@ export default function FormForgotPassword() {
         />
         <div className="flex flex-row space-x-2">
           <Button
-            className="h-12 w-full bg-transparent font-monument text-lg text-transparent/90 hover:bg-background disabled:opacity-60"
+            className="h-12 w-full bg-transparent font-monument text-xs text-transparent/90 hover:bg-background disabled:opacity-60 md:text-lg"
             variant={"outline"}
           >
             <Link href={"/login"}>Cancel</Link>
           </Button>
           <Button
             type="submit"
-            className="h-12 w-full bg-background/90 font-monument text-lg text-white hover:bg-background disabled:opacity-60"
+            className="h-12 w-full bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-lg"
           >
             Verification
           </Button>

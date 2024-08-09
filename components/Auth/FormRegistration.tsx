@@ -12,16 +12,11 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   registerUser,
-  signInWithGoogle,
+  signInWithGoogle
 } from "@/lib/network/users/userQueries";
 import { useState } from "react";
 import { toast } from "sonner";
-
-type dataProps = {
-  name?: string;
-  email?: string;
-  password?: string;
-};
+import { useRouter } from "next/navigation";
 
 const formSchema = z
   .object({
@@ -48,6 +43,7 @@ export default function FormRegistration() {
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const router = useRouter();
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setLoading(true);
@@ -64,11 +60,12 @@ export default function FormRegistration() {
           instagram: "",
         },
         values.email,
-        values.password,
+        values.password
       );
       if (userCreated) {
         setSuccess(true);
         toast.success("Akun berhasil dibuat! Silakan cek email Anda.");
+        router.push("/login"); // Redirect to login page
       } else {
         toast.error("Gagal membuat akun. Silakan coba lagi.");
       }
@@ -128,7 +125,7 @@ export default function FormRegistration() {
         <div className="flex flex-col space-y-2">
           <Button
             type="submit"
-            className="h-12 w-full bg-background/90 font-monument text-lg text-white hover:bg-background disabled:opacity-60"
+            className="h-12 w-full bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-lg"
             disabled={loading}
           >
             {loading ? (
@@ -144,7 +141,9 @@ export default function FormRegistration() {
           </p>
           <Button
             type="button"
-            className="h-12 w-full bg-transparent font-monument text-xs text-transparent/90 hover:bg-background disabled:opacity-60 sm:text-lg"
+
+            className="h-12 w-full bg-transparent font-monument text-xs text-transparent/90 hover:bg-background disabled:opacity-60 md:text-lg"
+
             variant={"outline"}
             onClick={handleGoogleSignIn}
             disabled={loading}

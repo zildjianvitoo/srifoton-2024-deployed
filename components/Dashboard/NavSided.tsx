@@ -16,6 +16,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import Image from "next/image";
+import { Button } from "../ui/button";
 
 function NavSided() {
   const pathname = usePathname();
@@ -51,7 +52,7 @@ function NavSided() {
           </SheetTrigger>
           <SheetContent>
             <SheetHeader>
-              <ul className="py-2 font-ponnala text-lg">
+              <ul className="py-2 text-lg">
                 <li className="my-5 text-left" key={1}>
                   <SheetClose asChild>
                     <Link href="/">Home</Link>
@@ -73,6 +74,31 @@ function NavSided() {
                   </SheetClose>
                 </li>
               </ul>
+              <h3 className="text-xl">Dashboard</h3>
+              <ul className="text-lg">
+                <li className="my-5 text-left" key={1}>
+                  <SheetClose asChild>
+                    <Link href="/dashboard/account-data">Account-Data</Link>
+                  </SheetClose>
+                </li>
+                <li className="my-5 text-left" key={2}>
+                  <SheetClose asChild>
+                    <Link href="/dashboard/personal-data">Personal-Data</Link>
+                  </SheetClose>
+                </li>
+                <li className="my-5 text-left" key={3}>
+                  <SheetClose asChild>
+                    <Link href="/dashboard/activities">Activities</Link>
+                  </SheetClose>
+                </li>
+              </ul>
+              <SheetClose asChild>
+                <Button className="absolute bottom-6 left-[7.2917vw] right-[7.2917vw] rounded-md bg-red-500">
+                  <Link href="/dashboard/logout" className="text-xl text-white">
+                    <strong>Log Out</strong>
+                  </Link>
+                </Button>
+              </SheetClose>
             </SheetHeader>
           </SheetContent>
         </Sheet>

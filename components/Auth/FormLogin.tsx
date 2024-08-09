@@ -106,7 +106,7 @@ export default function FormLogin() {
         </form>
         <Button
           type="submit"
-          className="mt-2 h-12 w-full bg-transparent font-monument text-lg text-transparent/90 hover:bg-background disabled:opacity-60"
+          className="mt-2 h-12 w-full bg-transparent font-monument text-sm text-transparent/90 hover:bg-background disabled:opacity-60 sm:text-lg"
           variant={"outline"}
           onClick={handleLoginWithGoogle}
         >

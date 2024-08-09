@@ -8,7 +8,7 @@ export default function page() {
   return (
     <section
       id="registration"
-      className="flex flex-col justify-end space-x-8 space-y-10 lg:flex-row"
+      className="flex flex-col justify-end space-y-10 pb-16 lg:flex-row lg:space-x-8 lg:space-y-2 lg:p-0"
     >
       <div className="left-[6.2917vw] flex flex-col space-y-8 text-center text-white lg:fixed">
         <h3 className="font-monument text-xl xl:text-2xl">
@@ -22,7 +22,7 @@ export default function page() {
           width={300}
           height={300}
           alt="maskot"
-          className="mx-auto size-96"
+          className="mx-auto hidden size-96 sm:block"
         ></Image>
       </div>
       <CardCrook className="mx-auto !w-full bg-red-500 font-monument lg:!w-1/2">

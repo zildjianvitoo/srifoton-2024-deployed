@@ -22,7 +22,7 @@ export default function page() {
           width={300}
           height={300}
           alt="maskot"
-          className="mx-auto hidden size-96 sm:block"
+          className="mx-auto hidden size-96 lg:block object-contain"
         ></Image>
       </div>
       <CardCrook className="mx-auto !w-full bg-red-500 font-monument lg:!w-1/2">

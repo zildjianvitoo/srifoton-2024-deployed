@@ -22,12 +22,14 @@ export default function page() {
               name="TIM NOBITA"
               date="12/09/2024"
               message="waiting"
+              project={false}
             />
             <FlashCard
-              title="Competitive Programming"
+              title="Web Development"
               name="TIM NOBITA"
               date="12/09/2024"
               message="verified"
+              project={true}
             />
           </div>
           <div className="flex flex-col space-y-8">
@@ -37,6 +39,7 @@ export default function page() {
               name="sandhika galih"
               date="12/09/2024"
               message=""
+              project={false}
             />
           </div>
           <div className="flex flex-col space-y-8">
@@ -46,6 +49,7 @@ export default function page() {
               name="sandhika galih"
               date="12/09/2024"
               message=""
+              project={false}
             />
           </div>
         </div>

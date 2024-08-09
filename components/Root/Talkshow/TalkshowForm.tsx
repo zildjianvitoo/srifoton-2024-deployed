@@ -37,6 +37,7 @@ import { addNewTalkshow } from "@/lib/network/talkshows/talkshowQueries";
 import SuccessRegister from "../SuccessRegister";
 import { Button } from "@/components/ui/button";
 import "@/lib/utils/zodCustomError";
+import useToastErrorNoUser from "@/hooks/useToastErrorNoUser";
 
 export const talkshowRegistrationSchema = z.object({
   name: z.string().min(1).max(50),
@@ -56,6 +57,8 @@ export const talkshowRegistrationSchema = z.object({
 type Props = {};
 
 export default function TalkshowForm({}: Props) {
+  useToastErrorNoUser();
+
   const form = useForm<z.infer<typeof talkshowRegistrationSchema>>({
     resolver: zodResolver(talkshowRegistrationSchema),
     defaultValues: {
@@ -100,7 +103,7 @@ export default function TalkshowForm({}: Props) {
 
   return (
     <div className={"flex flex-col gap-14 lg:gap-20"}>
-      <div className="relative mx-auto flex w-fit flex-col gap-6 text-center text-whtc">
+      <div className="text-whtc relative mx-auto flex w-fit flex-col gap-6 text-center">
         <h1 className="srifoton-header font-monument uppercase">Talkshow</h1>
         <p className="srifoton-text mx-auto">
           Hai, silahkan isi secara detail informasi kamu

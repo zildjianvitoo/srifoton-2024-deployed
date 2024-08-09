@@ -19,7 +19,7 @@ export default function WorkshopOption({}: Props) {
                   WORKSHOP OFFLINE TICKET
                 </h2>
                 <hr className="mt-5 border-[2px] border-text-200 lg:mt-7" />
-                <p className="mt-8 text-justify font-inter text-sm lg:mt-12 lg:text-base">
+                <p className="mt-8 text-justify font-poppins text-sm lg:mt-12 lg:text-base">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
                   massa mi. Aliquam in hendrerit urna. Pellentesque sit amet
                   sapien fringilla, mattis ligula consectetur, ultrices mauris.
@@ -61,7 +61,7 @@ export default function WorkshopOption({}: Props) {
                   WORKSHOP ONLINE TICKET
                 </h2>
                 <hr className="mt-5 border-[2px] border-text-200 lg:mt-7" />
-                <p className="mt-8 text-justify font-inter text-sm lg:mt-12 lg:text-base">
+                <p className="mt-8 text-justify font-poppins text-sm lg:mt-12 lg:text-base">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
                   massa mi. Aliquam in hendrerit urna. Pellentesque sit amet
                   sapien fringilla, mattis ligula consectetur, ultrices mauris.

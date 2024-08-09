@@ -29,6 +29,7 @@ export const metadata: Metadata = {
   icons: {
     apple: "/img/logo-srifoton.png",
     icon: "/img/logo-srifoton.png",
+    shortcut: "/img/logo-srifoton.png",
   },
 };
 

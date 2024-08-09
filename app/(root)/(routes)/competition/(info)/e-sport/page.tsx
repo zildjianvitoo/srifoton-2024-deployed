@@ -3,13 +3,6 @@ import { QNA, SpeechBubble } from "@/components/Root/QNA";
 import { Timeline, TimelineCard } from "@/components/Root/Timeline";
 import React from "react";
 import ContactPerson from "@/components/Root/ContactPerson";
-import SectionHeader from "@/components/Root/SectionHeader";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "@/components/ui/accordion";
 
 type Props = {};
 

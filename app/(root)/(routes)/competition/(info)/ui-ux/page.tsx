@@ -4,7 +4,12 @@ import { Timeline, TimelineCard } from "@/components/Root/Timeline";
 import React from "react";
 import ContactPerson from "@/components/Root/ContactPerson";
 import SectionHeader from "@/components/Root/SectionHeader";
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
 
 type Props = {};
 
@@ -12,41 +17,95 @@ export default function UIUXInfo({}: Props) {
   return (
     <>
       <InfoHero
-        id="hero-ui-ux" header="ui/ux design" subheader="srifoton 2024" src="/img/ui-ux.png" href="ui-ux/daftar" guideHref="#"
-        card1title="Keterampilan Desain" card1content="Mengasah keterampilan desain, prinsip, estetika, fungsionalitas."
-        card2title="Inovasi dan Kreativitas" card2content="Mengembangkan pola pikir yang inovatif dan kreatif">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu.
+        id="hero-ui-ux"
+        header="ui/ux design"
+        subheader="srifoton 2024"
+        src="/img/ui-ux.png"
+        href="ui-ux/daftar"
+        guideHref="https://docs.google.com/document/d/1lK2H4Uk4oLfyTIiwnXfyDLzwlc3_Q3nCuU48bGWjlzs/edit?usp=drivesdk"
+        card1title="Keterampilan Desain"
+        card1content="Mengasah keterampilan desain, prinsip, estetika, fungsionalitas."
+        card2title="Inovasi dan Kreativitas"
+        card2content="Mengembangkan pola pikir yang inovatif dan kreatif"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.
+        Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
+        mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis
+        tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non
+        suscipit magna interdum eu.
       </InfoHero>
       <Timeline title="competition timeline">
-        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
+        <TimelineCard span="23 Sept - 20 Augs">
+          Open Registration Competition
+        </TimelineCard>
+        <TimelineCard span="23 Sept - 20 Augs">
+          Open Registration Competition
+        </TimelineCard>
+        <TimelineCard span="23 Sept - 20 Augs">
+          Open Registration Competition
+        </TimelineCard>
+        <TimelineCard span="23 Sept - 20 Augs">
+          Open Registration Competition
+        </TimelineCard>
+        <TimelineCard span="23 Sept - 20 Augs">
+          Open Registration Competition
+        </TimelineCard>
+        <TimelineCard span="23 Sept - 20 Augs">
+          Open Registration Competition
+        </TimelineCard>
+        <TimelineCard span="23 Sept - 20 Augs">
+          Open Registration Competition
+        </TimelineCard>
+        <TimelineCard span="23 Sept - 20 Augs">
+          Open Registration Competition
+        </TimelineCard>
       </Timeline>
       <QNA id="competition-qna" title="competition qna">
-        <SpeechBubble id="speech1" question="Apakah karya yang akan diperlombakan boleh menggunakan karya yang sudah pernah diikutsertakan dalam kompetisi lain?">
-        Tidak diperbolehkan. Apabila ketahuan melakukan hal tersebut, maka panitia SRIFOTON berhak memberikan sanksi terhadap peserta yang bersangkutan
+        <SpeechBubble
+          id="speech1"
+          question="Apakah karya yang akan diperlombakan boleh menggunakan karya yang sudah pernah diikutsertakan dalam kompetisi lain?"
+        >
+          Tidak diperbolehkan. Apabila ketahuan melakukan hal tersebut, maka
+          panitia SRIFOTON berhak memberikan sanksi terhadap peserta yang
+          bersangkutan
         </SpeechBubble>
-        <SpeechBubble id="speech2" question="Jika saya telah mengikuti salah satu cabang lomba SRIFOTON 2024, Apakah saya boleh juga mengikuti cabang lomba yang lain?">
-        Boleh, Peserta dapat mengikuti semua cabang lomba tetapi hanya bisa menjadi ketua tim untuk satu cabang lomba saja (misal: menjadi ketua tim untuk lomba UI/UX Design saja)
+        <SpeechBubble
+          id="speech2"
+          question="Jika saya telah mengikuti salah satu cabang lomba SRIFOTON 2024, Apakah saya boleh juga mengikuti cabang lomba yang lain?"
+        >
+          Boleh, Peserta dapat mengikuti semua cabang lomba tetapi hanya bisa
+          menjadi ketua tim untuk satu cabang lomba saja (misal: menjadi ketua
+          tim untuk lomba UI/UX Design saja)
         </SpeechBubble>
-        <SpeechBubble id="speech3" question="Bolehkah satu tim terdiri atas anggota yang berbeda universitas atau perguruan tinggi?">
-        Tidak boleh. Setiap tim harus beranggotakan mahasiswa yang berasal dari satu universitas atau perguruan tinggi yang sama
+        <SpeechBubble
+          id="speech3"
+          question="Bolehkah satu tim terdiri atas anggota yang berbeda universitas atau perguruan tinggi?"
+        >
+          Tidak boleh. Setiap tim harus beranggotakan mahasiswa yang berasal
+          dari satu universitas atau perguruan tinggi yang sama
         </SpeechBubble>
-        <SpeechBubble id="speech4" question="Jika tim saya dinyatakan lolos ke tahap final tetapi kami tidak dapat hadir pada acara presentasi final maka konsekuensi apa yang akan didapat?">
-        Tim tersebut akan dinyatakan mengundurkan diri dari tahap presentasi final
+        <SpeechBubble
+          id="speech4"
+          question="Jika tim saya dinyatakan lolos ke tahap final tetapi kami tidak dapat hadir pada acara presentasi final maka konsekuensi apa yang akan didapat?"
+        >
+          Tim tersebut akan dinyatakan mengundurkan diri dari tahap presentasi
+          final
         </SpeechBubble>
-        <SpeechBubble id="speech5" question="Berapakah minimal dan jumlah maksimal anggota dalam satu tim?">
-        Peserta dapat mendaftar pada kompetisi ini secara individu ataupun dengan membentuk tim selama anggota tim tidak lebih dari 3 orang
+        <SpeechBubble
+          id="speech5"
+          question="Berapakah minimal dan jumlah maksimal anggota dalam satu tim?"
+        >
+          Peserta dapat mendaftar pada kompetisi ini secara individu ataupun
+          dengan membentuk tim selama anggota tim tidak lebih dari 3 orang
         </SpeechBubble>
       </QNA>
       <ContactPerson
-        contactPerson1="kian fikram ayyubi" WA1="0878-9781-4879" Line1="fikramayyubi30"
-        contactPerson2="Nazwa Abelia Nabira" WA2="0853-8181-3122" Line2="nxabell"
+        contactPerson1="kian fikram ayyubi"
+        WA1="0878-9781-4879"
+        Line1="fikramayyubi30"
+        contactPerson2="Nazwa Abelia Nabira"
+        WA2="0853-8181-3122"
+        Line2="nxabell"
       />
     </>
   );

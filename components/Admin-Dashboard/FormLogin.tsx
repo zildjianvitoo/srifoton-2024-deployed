@@ -119,9 +119,6 @@ export default function FormLogin() {
                 "Login"
               )}
             </Button>
-            <p className="text-center text-xs md:text-sm">
-              Or use your google account
-            </p>
           </div>
         </form>
       </Form>

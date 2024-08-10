@@ -7,14 +7,17 @@ import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import FormInput from "@/components/FormInput";
 import { PasswordField } from "../Dashboard/PasswordField";
-import "@/lib/utils/zodCustomError";
 import Image from "next/image";
 import Link from "next/link";
 import { Checkbox } from "../ui/checkbox";
-import { signInWithEmail, signInWithGoogle } from "@/lib/network/users/userQueries";
+import {
+  signInWithEmail,
+  signInWithGoogle,
+} from "@/lib/network/users/userQueries";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import "@/lib/utils/zodCustomError";
 
 type dataProps = {
   email?: string;
@@ -28,21 +31,11 @@ async function addData({ email, password }: dataProps) {
 const formSchema = z.object({
   email: z.string().email(),
   password: z
-    .string({
-      required_error: "Password can not be empty.",
-    })
-    .regex(/^.{8,20}$/, {
-      message: "Minimum 8 and maximum 20 characters.",
-    })
-    .regex(/(?=.*[A-Z])/, {
-      message: "At least one uppercase character.",
-    })
-    .regex(/(?=.*[a-z])/, {
-      message: "At least one lowercase character.",
-    })
-    .regex(/(?=.*\d)/, {
-      message: "At least one digit.",
-    }),
+    .string()
+    .regex(/^.{8,20}$/)
+    .regex(/(?=.*[A-Z])/)
+    .regex(/(?=.*[a-z])/)
+    .regex(/(?=.*\d)/),
 });
 
 export default function FormLogin() {
@@ -50,7 +43,7 @@ export default function FormLogin() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
-      password: ""
+      password: "",
     },
   });
 
@@ -64,13 +57,18 @@ export default function FormLogin() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setLoading(true);
     try {
-      const accountSignedIn = await signInWithEmail(values.email, values.password);
+      const accountSignedIn = await signInWithEmail(
+        values.email,
+        values.password,
+      );
       if (accountSignedIn) {
         toast.success("Berhasil masuk dengan email!");
         router.push("/dashboard/account-data");
         setSuccess(true);
       } else {
-        toast.error("Gagal masuk dengan email. Pastikan email sudah diverifikasi dan silakan coba lagi.");
+        toast.error(
+          "Gagal masuk dengan email. Pastikan email sudah diverifikasi dan silakan coba lagi.",
+        );
       }
     } catch (error) {
       // console.error("Error signing in with email: ", error);
@@ -152,9 +150,7 @@ export default function FormLogin() {
         </form>
         <Button
           type="submit"
-
           className="mt-2 h-12 w-full bg-transparent font-monument text-xs text-transparent/90 hover:bg-background disabled:opacity-60 md:text-lg"
-
           variant={"outline"}
           onClick={handleGoogleSignIn}
         >

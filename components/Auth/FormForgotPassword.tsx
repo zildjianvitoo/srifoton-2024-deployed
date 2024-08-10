@@ -6,11 +6,11 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import FormInput from "@/components/FormInput";
-import "@/lib/utils/zodCustomError";
 import Link from "next/link";
 import { forgotPassword } from "@/lib/network/users/userQueries";
 import { toast } from "sonner";
 import { useState } from "react";
+import "@/lib/utils/zodCustomError";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -56,13 +56,15 @@ export default function FormForgotPassword() {
           label="Email"
         />
         <div className="flex flex-row space-x-2">
-          <Button
-            type="button"
-            className="h-12 w-full bg-transparent font-monument text-xs text-transparent/90 hover:bg-background disabled:opacity-60 md:text-lg"
-            variant={"outline"}
-          >
-            <Link href={"/login"}>Back</Link>
-          </Button>
+          <Link href={"/login"}>
+            <Button
+              type="button"
+              className="h-12 w-full bg-transparent font-monument text-xs text-transparent/90 hover:bg-background disabled:opacity-60 md:text-lg"
+              variant={"outline"}
+            >
+              Back
+            </Button>
+          </Link>
           <Button
             type="submit"
             className="h-12 w-full bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-lg"

@@ -159,7 +159,7 @@ export default function FlashCard({
       <Messages message={message} />
       <div className="bottom-4 right-4 flex flex-wrap justify-end gap-2 md:absolute">
         {project && (
-          <div className="flex flex-col space-y-2">
+          <div className="flex flex-col">
             {!submissionUrl ? (
               <>
                 <input
@@ -170,11 +170,11 @@ export default function FlashCard({
                   style={{ display: "none" }}
                 />
                 <Button
-                  className="flex h-12 space-x-2 border-4 border-background bg-transparent font-monument text-xs text-background hover:bg-background/90 hover:text-white md:text-lg"
+                  className="flex h-12 items-center justify-center gap-x-2 border-4 border-background bg-transparent px-2 font-monument text-xs text-background hover:bg-background/90 hover:text-white md:text-base"
                   onClick={() => fileInputRef.current?.click()}
                   disabled={uploading}
                 >
-                  <NotebookText />
+                  <NotebookText className="size-4" />
                   {file
                     ? file.name.length > 10
                       ? `${file.name.substring(0, 10)}...`
@@ -183,11 +183,11 @@ export default function FlashCard({
                 </Button>
                 {file && (
                   <Button
-                    className="flex h-12 space-x-2 border-4 border-background bg-transparent font-monument text-xs text-background hover:bg-background/90 hover:text-white md:text-lg"
+                    className="flex h-12 items-center justify-center gap-x-2 border-4 border-background bg-transparent px-2 font-monument text-xs text-background hover:bg-background/90 hover:text-white md:text-base"
                     onClick={handleSubmission}
                     disabled={uploading}
                   >
-                    <NotebookText />
+                    <NotebookText className="size-4" />
                     {uploading ? (
                       <div className="spinner"></div>
                     ) : (

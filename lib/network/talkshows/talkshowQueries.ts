@@ -34,7 +34,7 @@ export const getTalkshowById = async (id: string): Promise<Talkshow | null> => {
   if (docSnap.exists()) {
     return { id: docSnap.id, ...docSnap.data() } as Talkshow;
   } else {
-    console.log("No such document!");
+    // console.log("No such document!");
     return null;
   }
 };
@@ -44,9 +44,9 @@ export const addNewTalkshow = async (talkshow: Talkshow): Promise<void> => {
   try {
     const newDocRef = doc(collection(db, "talkshows"));
     await setDoc(newDocRef, talkshow);
-    console.log('New talkshow added successfully');
+    // console.log('New talkshow added successfully');
   } catch (error) {
-    console.error('Error adding new talkshow: ', error);
+    // console.error('Error adding new talkshow: ', error);
   }
 };
 
@@ -55,8 +55,8 @@ export const updateTalkshow = async (id: string, updatedDetails: Partial<Talksho
   try {
     const docRef = doc(db, "talkshows", id);
     await updateDoc(docRef, updatedDetails);
-    console.log('Talkshow updated successfully');
+    // console.log('Talkshow updated successfully');
   } catch (error) {
-    console.error('Error updating talkshow: ', error);
+    // console.error('Error updating talkshow: ', error);
   }
 };

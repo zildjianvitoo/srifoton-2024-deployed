@@ -115,7 +115,7 @@ export const getCompetitiveProgrammingById = async (id: string): Promise<Competi
     };
     return competition;
   } else {
-    console.log("No such document!");
+    // console.log("No such document!");
     return null;
   }
 };
@@ -125,9 +125,9 @@ export const addNewCompetitiveProgramming = async (competition: CompetitiveProgr
   try {
     const newDocRef = doc(collection(db, "competitive_programmings"));
     await setDoc(newDocRef, competition);
-    console.log('New competition added successfully');
+    // console.log('New competition added successfully');
   } catch (error) {
-    console.error('Error adding new competition: ', error);
+    // console.error('Error adding new competition: ', error);
   }
 };
 
@@ -136,8 +136,8 @@ export const updateCompetitiveProgramming = async (id: string, updatedDetails: P
   try {
     const docRef = doc(db, "competitive_programmings", id);
     await updateDoc(docRef, updatedDetails);
-    console.log('Competition updated successfully');
+    // console.log('Competition updated successfully');
   } catch (error) {
-    console.error('Error updating competition: ', error);
+    // console.error('Error updating competition: ', error);
   }
 };

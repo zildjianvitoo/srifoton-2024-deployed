@@ -18,7 +18,7 @@ type dataProps = {
 };
 
 async function addData({ email, password }: dataProps) {
-  console.log(email, password);
+  // console.log(email, password);
 }
 
 const formSchema = z.object({

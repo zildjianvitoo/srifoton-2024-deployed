@@ -3,6 +3,7 @@ import SectionContent from "../SectionContent";
 import Image from "next/image";
 
 export default function Categories() {
+export default function Categories() {
   return (
     <section id="categories">
       <figure className="">

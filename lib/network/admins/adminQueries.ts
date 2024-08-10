@@ -1,8 +1,9 @@
 // lib/network/admins/adminQueries.ts
 
 import { collection, doc, getDoc, getDocs, setDoc, updateDoc, query, where } from "firebase/firestore";
-import { db } from "../../firebase";
+import { auth, db } from "../../firebase";
 import { Admin } from "../../types/adminTypes";
+import { removeSession } from "@/lib/session";
 
 // Fetch all admins
 export const fetchAdmins = async (): Promise<Admin[]> => {
@@ -34,7 +35,7 @@ export const getAdminById = async (id: string): Promise<Admin | null> => {
   if (docSnap.exists()) {
     return { id: docSnap.id, ...docSnap.data() } as Admin;
   } else {
-    console.log("No such document!");
+    // console.log("No such document!");
     return null;
   }
 };
@@ -44,9 +45,9 @@ export const addNewAdmin = async (admin: Admin): Promise<void> => {
   try {
     const newDocRef = doc(collection(db, "admins"));
     await setDoc(newDocRef, admin);
-    console.log('New admin added successfully');
+    // console.log('New admin added successfully');
   } catch (error) {
-    console.error('Error adding new admin: ', error);
+    // console.error('Error adding new admin: ', error);
   }
 };
 
@@ -55,9 +56,21 @@ export const updateAdmin = async (id: string, updatedDetails: Partial<Admin>): P
   try {
     const docRef = doc(db, "admins", id);
     await updateDoc(docRef, updatedDetails);
-    console.log('Admin updated successfully');
+    // console.log('Admin updated successfully');
   } catch (error) {
-    console.error('Error updating admin: ', error);
+    // console.error('Error updating admin: ', error);
   }
 };
 
+// Logout Admin
+export const logoutAdmin = async (): Promise<boolean> => {
+  try {
+    await auth.signOut();
+    await removeSession(true);
+    // console.log('User logged out successfully');
+    return true;
+  } catch (error) {
+    // console.error('Error logging out user: ', error);
+    return false;
+  }
+}

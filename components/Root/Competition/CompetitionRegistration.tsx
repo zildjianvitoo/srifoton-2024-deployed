@@ -26,8 +26,8 @@ import { DevTool } from "@hookform/devtools";
 import FormInput from "../../FormInput";
 import FormFile from "../../FormFile";
 import { addNewCompetitiveProgramming } from "@/lib/network/competitions/competitiveProgrammingQueries";
-import { ref, uploadBytes } from "firebase/storage";
-import { storage } from "@/lib/firebase";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { auth, db, storage } from "@/lib/firebase";
 import { ulid } from "ulid";
 import { addNewUiUxDesign } from "@/lib/network/competitions/uiUxDesignQueries";
 import { addNewWebDevelopment } from "@/lib/network/competitions/webDevelopmentQueries";
@@ -36,6 +36,8 @@ import SuccessRegister from "../SuccessRegister";
 import { toast } from "sonner";
 import "@/lib/utils/zodCustomError";
 import useToastErrorNoUser from "@/hooks/useToastErrorNoUser";
+import { useEffect, useState } from "react";
+import { query, where, getDocs, collection } from "firebase/firestore";
 import Image from "next/image";
 
 type RegProps = {
@@ -44,6 +46,7 @@ type RegProps = {
 };
 
 const MAX_FILE_SIZE = 5000000;
+
 const ACCEPTED_IMAGE_TYPES = [
   "image/jpeg",
   "image/jpg",
@@ -135,6 +138,23 @@ export default function CompetitionRegistration({
   useToastErrorNoUser();
   const validBranch = branch.replace("/", "").replace(" ", "-");
 
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  useEffect(() => {
+    if (validBranch !== "e-sport") {
+      form.unregister("nim_4");
+      form.unregister("name_4");
+      form.unregister("idcard_4");
+      form.unregister("instagram_4");
+      form.unregister("phone_number_4");
+      form.unregister("nim_5");
+      form.unregister("name_5");
+      form.unregister("idcard_5");
+      form.unregister("instagram_5");
+      form.unregister("phone_number_5");
+    }
+  }, [validBranch]);
+
   const form = useForm<z.infer<typeof competitionRegistrationScehma>>({
     resolver: zodResolver(competitionRegistrationScehma),
     defaultValues: {
@@ -178,19 +198,55 @@ export default function CompetitionRegistration({
 
   const onSubmit = async (
     formValues: z.infer<typeof competitionRegistrationScehma>,
-  ) => {
-    const user_id = "kocak";
+  ): Promise<boolean> => {
+    // console.log("Masuk onSubmit");
+
+    const user = auth.currentUser;
+    if (user === null) {
+      toast.error("Anda harus login terlebih dahulu sebelum dapat mendaftar!");
+      return false;
+    }
+
+    const user_id = user.uid;
     const date = new Date();
     const is_verified = false;
 
     try {
+      let collectionRef = "";
+      let competitionName = "";
+
+      if (validBranch === "competitive-programming") {
+        collectionRef = "competitive_programmings";
+        competitionName = "Competitive Programming";
+      } else if (validBranch === "uiux-design") {
+        collectionRef = "ui_ux_designs";
+        competitionName = "UI/UX Design";
+      } else if (validBranch === "web-development") {
+        collectionRef = "web_developments";
+        competitionName = "Web Development";
+      } else if (validBranch === "e-sport") {
+        collectionRef = "mobile_legends";
+        competitionName = "E-Sport/Mobile Legends";
+      }
+
+      const q = query(
+        collection(db, collectionRef),
+        where("user_id", "==", user_id),
+      );
+      const existingDocs = await getDocs(q);
+
+      if (!existingDocs.empty) {
+        toast.info(`Anda telah mendaftar kompetisi ${competitionName} ini!`);
+        return false;
+      }
+
       const [
-        { ref: refProof },
-        { ref: refIdCard1 },
-        { ref: refIdCard2 },
-        { ref: refIdCard3 },
-        { ref: refIdCard4 },
-        { ref: refIdCard5 },
+        uploadResultProof,
+        uploadResultIdCard1,
+        uploadResultIdCard2,
+        uploadResultIdCard3,
+        uploadResultIdCard4,
+        uploadResultIdCard5,
       ] = await Promise.all([
         uploadBytes(
           ref(
@@ -235,12 +291,31 @@ export default function CompetitionRegistration({
           formValues.idcard_5,
         ),
       ]);
-      formValues.proof = refProof.fullPath as string;
-      formValues.idcard_1 = refIdCard1.fullPath as string;
-      formValues.idcard_2 = refIdCard2.fullPath as string;
-      formValues.idcard_3 = refIdCard3.fullPath as string;
-      formValues.idcard_4 = refIdCard4.fullPath as string;
-      formValues.idcard_5 = refIdCard5.fullPath as string;
+
+      const [
+        urlProof,
+        urlIdCard1,
+        urlIdCard2,
+        urlIdCard3,
+        urlIdCard4,
+        urlIdCard5,
+      ] = await Promise.all([
+        getDownloadURL(uploadResultProof.ref),
+        getDownloadURL(uploadResultIdCard1.ref),
+        getDownloadURL(uploadResultIdCard2.ref),
+        getDownloadURL(uploadResultIdCard3.ref),
+        getDownloadURL(uploadResultIdCard4.ref),
+        getDownloadURL(uploadResultIdCard5.ref),
+      ]);
+
+      formValues.proof = urlProof;
+      formValues.idcard_1 = urlIdCard1;
+      formValues.idcard_2 = urlIdCard2;
+      formValues.idcard_3 = urlIdCard3;
+      formValues.idcard_4 = urlIdCard4;
+      formValues.idcard_5 = urlIdCard5;
+
+      // Add new document to the relevant collection
       if (validBranch === "competitive-programming") {
         await addNewCompetitiveProgramming({
           ...formValues,
@@ -270,15 +345,20 @@ export default function CompetitionRegistration({
           is_verified,
         });
       }
-      toast.success("Berhasil mendaftar kompetisi");
+
+      toast.success("Berhasil mendaftar kompetisi " + competitionName + "!");
       window.scrollTo(0, 0);
+      setIsSuccess(true);
+      return true;
     } catch (error) {
       toast.error("Terjadi Kesalahan di sisi server");
-      console.log(error);
+      return false;
+      // console.log(error);
     }
   };
 
-  if (form.formState.isSubmitSuccessful) {
+  // if (form.formState.isSubmitSuccessful) {
+  if (form.formState.isSubmitSuccessful && isSuccess) {
     return (
       <SuccessRegister
         branch={branch}
@@ -295,7 +375,7 @@ export default function CompetitionRegistration({
           {branch}
         </h1>
         <p className="srifoton-text mx-auto w-[70%] text-primary-200">
-          Hai, silahkan isi secara detail informasi untuk tim dan setiap anggota
+          Hai, silakan isi secara detail informasi untuk tim dan setiap anggota
           tim kamu!
         </p>
       </div>
@@ -406,7 +486,7 @@ export default function CompetitionRegistration({
                       control={form.control}
                       label={"Instagram"}
                       name={"instagram_1"}
-                      placeholder={"Contoh: 09021382227140"}
+                      placeholder={"Contoh: nobita_"}
                     />
                     <FormFile
                       control={form.control}
@@ -440,7 +520,7 @@ export default function CompetitionRegistration({
                       control={form.control}
                       label={"Instagram"}
                       name={"instagram_2"}
-                      placeholder={"Contoh: 09021382227140"}
+                      placeholder={"Contoh: nobita_"}
                     />
                     <FormFile
                       control={form.control}
@@ -476,7 +556,7 @@ export default function CompetitionRegistration({
                       control={form.control}
                       label={"Instagram"}
                       name={"instagram_3"}
-                      placeholder={"Contoh: 09021382227140"}
+                      placeholder={"Contoh: nobita_"}
                     />
                     <FormFile
                       control={form.control}
@@ -484,6 +564,7 @@ export default function CompetitionRegistration({
                       label={"Student Card"}
                     />
                   </div>
+
                   {validBranch === "e-sport" ? (
                     <div className="flex flex-col gap-4 lg:basis-1/2 lg:gap-6">
                       <h4 className="text-center font-monument text-lg md:text-xl">
@@ -566,7 +647,14 @@ export default function CompetitionRegistration({
                         label={"Student Card"}
                       />
                     </div>
-                    <div className="m-auto">Logo Srifoton</div>
+                    <div className="flex items-center justify-center lg:basis-1/2">
+                      <Image
+                        src={"/img/logo-srifoton.png"}
+                        width={300}
+                        height={300}
+                        alt="logo-srifoton"
+                      />
+                    </div>
                   </div>
                 )}
               </div>
@@ -575,7 +663,11 @@ export default function CompetitionRegistration({
                 className="mt-6 h-12 w-full bg-background/90 font-monument text-lg hover:bg-background disabled:opacity-60 lg:mt-10"
                 disabled={form.formState.isSubmitting}
               >
-                Submit
+                {form.formState.isSubmitting ? (
+                  <div className="spinner"></div>
+                ) : (
+                  "Submit"
+                )}
               </Button>
             </form>
 

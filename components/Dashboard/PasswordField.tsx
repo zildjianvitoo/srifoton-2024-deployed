@@ -17,9 +17,11 @@ type PasswordFieldProps = {
   name?: string;
   placeholder?: string;
   description?: string | JSX.Element;
+  disabled?: boolean;
 };
 
 export function PasswordField({
+  disabled = false,
   title = "",
   name = "",
   placeholder = "",
@@ -30,6 +32,7 @@ export function PasswordField({
 
   return (
     <FormField
+      disabled={disabled}
       control={control}
       name={name}
       render={({ field }) => (

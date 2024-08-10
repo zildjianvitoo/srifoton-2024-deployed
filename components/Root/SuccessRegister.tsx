@@ -29,10 +29,10 @@ export default function SuccessRegister({
             height={360}
           />
         </figure>
-        <p className="mt-4 text-lg">
+        <p className="mt-4 text-lg text-primary">
           Terima kasih sudah mendaftar di kompetisi SRIFOTON 2024!
         </p>
-        <p className="text-lg">
+        <p className="text-lg text-primary">
           Tekan tombol di bawah <br /> untuk mengetahui info lebih lanjut.
         </p>
         {validBranch !== "workshop" && validBranch !== "talkshow" && (

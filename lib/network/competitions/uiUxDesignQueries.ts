@@ -117,7 +117,7 @@ export const getMobileLegendById = async (id: string): Promise<UiUxDesign | null
     };
     return competition;
   } else {
-    console.log("No such document!");
+    // console.log("No such document!");
     return null;
   }
 };
@@ -127,9 +127,9 @@ export const addNewUiUxDesign = async (competition: UiUxDesign): Promise<void> =
   try {
     const newDocRef = doc(collection(db, "ui_ux_designs"));
     await setDoc(newDocRef, competition);
-    console.log('New competition added successfully');
+    // console.log('New competition added successfully');
   } catch (error) {
-    console.error('Error adding new competition: ', error);
+    // console.error('Error adding new competition: ', error);
   }
 };
 
@@ -138,8 +138,8 @@ export const updateUiUxDesign = async (id: string, updatedDetails: Partial<UiUxD
   try {
     const docRef = doc(db, "ui_ux_designs", id);
     await updateDoc(docRef, updatedDetails);
-    console.log('Competition updated successfully');
+    // console.log('Competition updated successfully');
   } catch (error) {
-    console.error('Error updating competition: ', error);
+    // console.error('Error updating competition: ', error);
   }
 };

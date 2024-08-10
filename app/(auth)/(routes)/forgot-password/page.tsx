@@ -12,7 +12,7 @@ export default function page() {
         />
         <h3 className="text-center text-xl lg:mt-16">Forgot Password</h3>
         <p className="mt-6 text-center">
-          Masukkan alamat email yang terkait <br /> dengan akun kamu !
+          Masukkan alamat email yang terkait <br /> dengan akun kamu!
         </p>
         <FormForgotPassword />
       </CardCrook>

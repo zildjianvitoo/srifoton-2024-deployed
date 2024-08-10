@@ -48,8 +48,8 @@ export default async function middleware(request: NextRequest) {
   );
   const adminSession = await verifyCookie(
     request.cookies.get(ADMIN_SESSION_NAME)?.value,
-    AUTH_COOKIE_SIGNATURE_KEY_CURRENT,
-    AUTH_COOKIE_SIGNATURE_KEY_PREVIOUS,
+    ADMIN_COOKIE_SIGNATURE_KEY_CURRENT,
+    ADMIN_COOKIE_SIGNATURE_KEY_PREVIOUS,
   );
   const userToken = await verifyCookie(
     request.cookies.get(AUTH_COOKIE_NAME)?.value,
@@ -58,8 +58,8 @@ export default async function middleware(request: NextRequest) {
   );
   const adminToken = await verifyCookie(
     request.cookies.get(ADMIN_COOKIE_NAME)?.value,
-    AUTH_COOKIE_SIGNATURE_KEY_CURRENT,
-    AUTH_COOKIE_SIGNATURE_KEY_PREVIOUS,
+    ADMIN_COOKIE_SIGNATURE_KEY_CURRENT,
+    ADMIN_COOKIE_SIGNATURE_KEY_PREVIOUS,
   );
 
   // console.log("User session:", userSession);

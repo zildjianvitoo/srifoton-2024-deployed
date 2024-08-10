@@ -3,7 +3,9 @@
 import { collection, doc, getDoc, getDocs, setDoc, updateDoc, query, where } from "firebase/firestore";
 import { auth, db } from "../../firebase";
 import { Admin } from "../../types/adminTypes";
-import { removeSession } from "@/lib/session";
+import { createSession, removeSession } from "@/lib/session";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { create } from "domain";
 
 // Fetch all admins
 export const fetchAdmins = async (): Promise<Admin[]> => {
@@ -61,6 +63,31 @@ export const updateAdmin = async (id: string, updatedDetails: Partial<Admin>): P
     // console.error('Error updating admin: ', error);
   }
 };
+
+export const loginAdmin = async (email: string, password: string): Promise<boolean> => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password,
+    );
+    const user = userCredential.user;
+
+    // if (!user.emailVerified) {
+    //   // console.log('Email not verified');
+    //   return false;
+    // }
+
+    const customToken = await user.getIdToken();
+
+    await createSession(user.uid, customToken, true);
+    // console.log('User logged in successfully');
+    return true;
+  } catch (error) {
+    // console.error('Error logging in user: ', error);
+    return false;
+  }
+}
 
 // Logout Admin
 export const logoutAdmin = async (): Promise<boolean> => {

@@ -46,7 +46,6 @@ type RegProps = {
 };
 
 const MAX_FILE_SIZE = 5000000;
-
 const ACCEPTED_IMAGE_TYPES = [
   "image/jpeg",
   "image/jpg",
@@ -54,88 +53,188 @@ const ACCEPTED_IMAGE_TYPES = [
   "image/webp",
 ];
 
-const competitionRegistrationScehma = z.object({
-  team_name: z.string().min(1).max(50),
-  email: z.string().min(1).max(50),
-  college: z.string().min(1).max(50),
-  payment_method: z.string().min(1).max(50),
+type CompetitionRegistrationData = {
+  team_name: string;
+  email: string;
+  college: string;
+  payment_method: string;
+  proof?: File;
+  name_1: string;
+  nim_1: string;
+  phone_number_1: string;
+  instagram_1: string;
+  idcard_1?: File;
+  name_2?: string;
+  nim_2?: string;
+  phone_number_2?: string;
+  instagram_2?: string;
+  idcard_2?: File;
+  name_3?: string;
+  nim_3?: string;
+  phone_number_3?: string;
+  instagram_3?: string;
+  idcard_3?: File;
+  name_4?: string;
+  nim_4?: string;
+  phone_number_4?: string;
+  instagram_4?: string;
+  idcard_4?: File;
+  name_5?: string;
+  nim_5?: string;
+  phone_number_5?: string;
+  instagram_5?: string;
+  idcard_5?: File;
+};
+
+function optional<T extends z.ZodTypeAny>(schema: T) {
+  return z
+    .union([schema, z.literal("")])
+    .transform((value) => (value === "" ? undefined : value))
+    .optional();
+}
+
+const competitionRegistrationSchema = z.object({
+  team_name: z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter."),
+  email: z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter."),
+  college: z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter."),
+  payment_method: z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter."),
   proof: z
     .any()
     .refine((file) => file?.size <= MAX_FILE_SIZE, `Ukuran maksimum file 5MB .`)
     .refine(
       (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
-      "Hanya file berekstensi .jpg, .jpeg, .png and .webp yang diterima.",
+      "Hanya file berekstensi .jpg, .jpeg, .png dan .webp yang diterima.",
     ),
 
-  name_1: z.string().min(1).max(50),
-  nim_1: z.string().min(1).max(50),
-  phone_number_1: z.string().min(1).max(50),
-  instagram_1: z.string().min(1).max(50),
+  name_1: z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter."),
+  nim_1: z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter."),
+  phone_number_1: z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter."),
+  instagram_1: z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter."),
   idcard_1: z
     .any()
     .refine((file) => file?.size <= MAX_FILE_SIZE, `Ukuran maksimum file 5MB.`)
     .refine(
       (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
-      "Hanya file berekstensi .jpg, .jpeg, .png and .webp yang diterima.",
+      "Hanya file berekstensi .jpg, .jpeg, .png dan .webp yang diterima.",
     ),
 
-  name_2: z.string().min(1).max(50).optional(),
-  nim_2: z.string().min(1).max(50).optional(),
-  phone_number_2: z.string().min(1).max(50).optional(),
-  instagram_2: z.string().min(1).max(50).optional(),
+  name_2: optional(z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter.")),
+  nim_2: optional(z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter.")),
+  phone_number_2: optional(z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter.")),
+  instagram_2: optional(z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter.")),
   idcard_2: z
     .any()
     .refine((file) => file?.size <= MAX_FILE_SIZE, `Ukuran maksimum file 5MB.`)
     .refine(
       (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
-      "Hanya file berekstensi .jpg, .jpeg, .png and .webp yang diterima.",
+      "Hanya file berekstensi .jpg, .jpeg, .png dan .webp yang diterima.",
     )
     .optional(),
 
-  name_3: z.string().min(1).max(50).optional(),
-  nim_3: z.string().min(1).max(50).optional(),
-  phone_number_3: z.string().min(1).max(50).optional(),
-  instagram_3: z.string().min(1).max(50).optional(),
+  name_3: optional(z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter.")),
+  nim_3: optional(z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter.")),
+  phone_number_3: optional(z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter.")),
+  instagram_3: optional(z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter.")),
   idcard_3: z
     .any()
     .refine((file) => file?.size <= MAX_FILE_SIZE, `Ukuran maksimum file 5MB.`)
     .refine(
       (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
-      "Hanya file berekstensi .jpg, .jpeg, .png and .webp yang diterima.",
+      "Hanya file berekstensi .jpg, .jpeg, .png dan .webp yang diterima.",
     )
     .optional(),
 
-  name_4: z.string().min(1).max(50).optional(),
-  nim_4: z.string().min(1).max(50).optional(),
-  phone_number_4: z.string().min(1).max(50).optional(),
-  instagram_4: z.string().min(1).max(50).optional(),
+  name_4: optional(z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter.")),
+  nim_4: optional(z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter.")),
+  phone_number_4: optional(z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter.")),
+  instagram_4: optional(z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter.")),
   idcard_4: z
     .any()
     .refine((file) => file?.size <= MAX_FILE_SIZE, `Ukuran maksimum file 5MB.`)
     .refine(
       (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
-      "Hanya file berekstensi .jpg, .jpeg, .png and .webp yang diterima.",
+      "Hanya file berekstensi .jpg, .jpeg, .png dan .webp yang diterima.",
     )
     .optional(),
-  name_5: z.string().min(1).max(50).optional(),
-  nim_5: z.string().min(1).max(50).optional(),
-  phone_number_5: z.string().min(1).max(50).optional(),
-  instagram_5: z.string().min(1).max(50).optional(),
+
+  name_5: optional(z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter.")),
+  nim_5: optional(z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter.")),
+  phone_number_5: optional(z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter.")),
+  instagram_5: optional(z.string().min(1, "Field tidak boleh kosong.").max(50, "Tidak boleh lebih dari 50 karakter.")),
   idcard_5: z
     .any()
     .refine((file) => file?.size <= MAX_FILE_SIZE, `Ukuran maksimum file 5MB.`)
     .refine(
       (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
-      "Hanya file berekstensi .jpg, .jpeg, .png and .webp yang diterima.",
+      "Hanya file berekstensi .jpg, .jpeg, .png dan .webp yang diterima.",
     )
     .optional(),
-});
+})
+  .refine((data: CompetitionRegistrationData) => {
+    const sets = [2, 3, 4, 5];
+
+    const errors: z.ZodIssue[] = sets.reduce((issues, n) => {
+      const isAnyFilled =
+        !!data[`name_${n}` as keyof CompetitionRegistrationData] ||
+        !!data[`nim_${n}` as keyof CompetitionRegistrationData] ||
+        !!data[`phone_number_${n}` as keyof CompetitionRegistrationData] ||
+        !!data[`instagram_${n}` as keyof CompetitionRegistrationData];
+
+      const isAllFilled =
+        data[`name_${n}` as keyof CompetitionRegistrationData] &&
+        data[`nim_${n}` as keyof CompetitionRegistrationData] &&
+        data[`phone_number_${n}` as keyof CompetitionRegistrationData] &&
+        data[`instagram_${n}` as keyof CompetitionRegistrationData];
+
+      if (isAnyFilled && !isAllFilled) {
+        if (!data[`name_${n}` as keyof CompetitionRegistrationData]) {
+          issues.push({
+            code: z.ZodIssueCode.custom,
+            path: [`name_${n}`],
+            message: "Field ini perlu diisi jika setidaknya salah satu field member ini terisi.",
+          });
+        }
+        if (!data[`nim_${n}` as keyof CompetitionRegistrationData]) {
+          issues.push({
+            code: z.ZodIssueCode.custom,
+            path: [`nim_${n}`],
+            message: "Field ini perlu diisi jika setidaknya salah satu field member ini terisi.",
+          });
+        }
+        if (!data[`phone_number_${n}` as keyof CompetitionRegistrationData]) {
+          issues.push({
+            code: z.ZodIssueCode.custom,
+            path: [`phone_number_${n}`],
+            message: "Field ini perlu diisi jika setidaknya salah satu field member ini terisi.",
+          });
+        }
+        if (!data[`instagram_${n}` as keyof CompetitionRegistrationData]) {
+          issues.push({
+            code: z.ZodIssueCode.custom,
+            path: [`instagram_${n}`],
+            message: "Field ini perlu diisi jika setidaknya salah satu field member ini terisi.",
+          });
+        }
+      }
+
+      return issues;
+    }, [] as z.ZodIssue[]);
+
+    if (errors.length) {
+      throw new z.ZodError(errors);
+    }
+
+    return true;
+  }, {
+    message: "Pastikan data anggota tim diisi dengan lengkap.",
+  });
 
 export default function CompetitionRegistration({
   branch,
   guideBookLink,
 }: RegProps) {
   useToastErrorNoUser();
+
   const validBranch = branch.replace("/", "").replace(" ", "-");
 
   const [isSuccess, setIsSuccess] = useState(false);
@@ -155,8 +254,8 @@ export default function CompetitionRegistration({
     }
   }, [validBranch]);
 
-  const form = useForm<z.infer<typeof competitionRegistrationScehma>>({
-    resolver: zodResolver(competitionRegistrationScehma),
+  const form = useForm<z.infer<typeof competitionRegistrationSchema>>({
+    resolver: zodResolver(competitionRegistrationSchema),
     defaultValues: {
       team_name: "",
       email: "",
@@ -196,8 +295,9 @@ export default function CompetitionRegistration({
     },
   });
 
+
   const onSubmit = async (
-    formValues: z.infer<typeof competitionRegistrationScehma>,
+    formValues: z.infer<typeof competitionRegistrationSchema>,
   ): Promise<boolean> => {
     // console.log("Masuk onSubmit");
 
@@ -601,12 +701,12 @@ export default function CompetitionRegistration({
                       />
                     </div>
                   ) : (
-                    <div className="m-auto max-md:hidden">
+                    <div className="flex items-center justify-center lg:basis-1/2">
                       <Image
                         src={"/img/logo-srifoton.png"}
-                        alt="Logo Srifoton"
-                        width={350}
-                        height={350}
+                        width={300}
+                        height={300}
+                        alt="logo-srifoton"
                       />
                     </div>
                   )}

@@ -55,10 +55,10 @@ const ACCEPTED_IMAGE_TYPES = [
 ];
 
 const competitionRegistrationScehma = z.object({
-  team_name: z.string().min(1).max(50),
-  email: z.string().min(1).max(50),
-  college: z.string().min(1).max(50),
-  payment_method: z.string().min(1).max(50),
+  team_name: z.string().max(50),
+  email: z.string().max(50),
+  college: z.string().max(50),
+  payment_method: z.string().max(50),
   proof: z
     .any()
     .refine((file) => file?.size <= MAX_FILE_SIZE, `Ukuran maksimum file 5MB .`)
@@ -79,10 +79,10 @@ const competitionRegistrationScehma = z.object({
       "Hanya file berekstensi .jpg, .jpeg, .png and .webp yang diterima.",
     ),
 
-  name_2: z.string().min(1).max(50).optional(),
-  nim_2: z.string().min(1).max(50).optional(),
-  phone_number_2: z.string().min(1).max(50).optional(),
-  instagram_2: z.string().min(1).max(50).optional(),
+  name_2: z.string().max(50).optional(),
+  nim_2: z.string().max(50).optional(),
+  phone_number_2: z.string().max(50).optional(),
+  instagram_2: z.string().max(50).optional(),
   idcard_2: z
     .any()
     .refine((file) => file?.size <= MAX_FILE_SIZE, `Ukuran maksimum file 5MB.`)
@@ -92,10 +92,10 @@ const competitionRegistrationScehma = z.object({
     )
     .optional(),
 
-  name_3: z.string().min(1).max(50).optional(),
-  nim_3: z.string().min(1).max(50).optional(),
-  phone_number_3: z.string().min(1).max(50).optional(),
-  instagram_3: z.string().min(1).max(50).optional(),
+  name_3: z.string().max(50).optional(),
+  nim_3: z.string().max(50).optional(),
+  phone_number_3: z.string().max(50).optional(),
+  instagram_3: z.string().max(50).optional(),
   idcard_3: z
     .any()
     .refine((file) => file?.size <= MAX_FILE_SIZE, `Ukuran maksimum file 5MB.`)
@@ -105,10 +105,10 @@ const competitionRegistrationScehma = z.object({
     )
     .optional(),
 
-  name_4: z.string().min(1).max(50).optional(),
-  nim_4: z.string().min(1).max(50).optional(),
-  phone_number_4: z.string().min(1).max(50).optional(),
-  instagram_4: z.string().min(1).max(50).optional(),
+  name_4: z.string().max(50).optional(),
+  nim_4: z.string().max(50).optional(),
+  phone_number_4: z.string().max(50).optional(),
+  instagram_4: z.string().max(50).optional(),
   idcard_4: z
     .any()
     .refine((file) => file?.size <= MAX_FILE_SIZE, `Ukuran maksimum file 5MB.`)
@@ -117,10 +117,10 @@ const competitionRegistrationScehma = z.object({
       "Hanya file berekstensi .jpg, .jpeg, .png and .webp yang diterima.",
     )
     .optional(),
-  name_5: z.string().min(1).max(50).optional(),
-  nim_5: z.string().min(1).max(50).optional(),
-  phone_number_5: z.string().min(1).max(50).optional(),
-  instagram_5: z.string().min(1).max(50).optional(),
+  name_5: z.string().max(50).optional(),
+  nim_5: z.string().max(50).optional(),
+  phone_number_5: z.string().max(50).optional(),
+  instagram_5: z.string().max(50).optional(),
   idcard_5: z
     .any()
     .refine((file) => file?.size <= MAX_FILE_SIZE, `Ukuran maksimum file 5MB.`)

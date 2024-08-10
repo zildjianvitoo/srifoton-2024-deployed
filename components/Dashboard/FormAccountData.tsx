@@ -13,12 +13,6 @@ import { auth } from "@/lib/firebase";
 import { updateUserPassword } from "@/lib/network/users/userQueries";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
-import { redirect } from "next/navigation";
-
-type dataProps = {
-  email?: string;
-  password?: string;
-};
 
 const formSchema = z.object({
   email: z.string().min(1).max(50).optional(),
@@ -28,21 +22,17 @@ const formSchema = z.object({
 
 export default function FormAccountData() {
   const user = auth.currentUser;
-
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [isGoogleUser, setIsGoogleUser] = useState(false);
 
   useEffect(() => {
-    // Check if the user logged in using Google
+    console.log(user);
     if (user) {
       const isGoogle = user.providerData.some(
-        (provider) => provider.providerId === "google.com"
+        (provider) => provider.providerId === "google.com",
       );
       setIsGoogleUser(isGoogle);
-    } else {
-      toast.error("Anda tidak login!");
-      redirect("/dashboard/logout");
     }
   }, [user]);
 
@@ -101,7 +91,7 @@ export default function FormAccountData() {
 
         <Button
           type="submit"
-          className="mt-6 h-12 w-full bg-background/90 font-monument text-lg text-white hover:bg-background disabled:opacity-60 lg:mt-10"
+          className="mt-6 h-12 w-full bg-background/90 font-monument text-base text-white hover:bg-background disabled:opacity-60 md:text-lg lg:mt-10"
           disabled={loading || isGoogleUser}
         >
           {loading ? (
@@ -110,7 +100,9 @@ export default function FormAccountData() {
             "Password Updated!"
           ) : isGoogleUser ? (
             "Logged In as Google Account"
-          ) : "Save"}
+          ) : (
+            "Save"
+          )}
         </Button>
       </form>
     </Form>

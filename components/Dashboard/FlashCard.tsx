@@ -14,7 +14,7 @@ import {
   where,
 } from "firebase/firestore";
 import { toast } from "sonner";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 type Props = {
   title?: string;
@@ -36,14 +36,15 @@ export default function FlashCard({
   const [submissionUrl, setSubmissionUrl] = useState<string | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchSubmission = async () => {
       const user = auth.currentUser;
       if (!user) {
         toast.error("Anda tidak login!");
-        redirect("/dashboard/logout");
-      };
+        router.push("/dashboard/logout");
+      }
 
       let collectionName;
       if (title === "UI/UX Design") {
@@ -55,7 +56,7 @@ export default function FlashCard({
       if (collectionName) {
         const q = query(
           collection(db, collectionName),
-          where("user_id", "==", user.uid),
+          where("user_id", "==", user?.uid),
         );
         const querySnapshot = await getDocs(q);
         if (!querySnapshot.empty) {

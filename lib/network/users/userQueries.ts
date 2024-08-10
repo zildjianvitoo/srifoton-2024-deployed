@@ -1,20 +1,44 @@
 // lib/network/users/userQueries.ts
 
-import { collection, doc, getDocs, setDoc, updateDoc, getDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  setDoc,
+  updateDoc,
+  getDoc,
+} from "firebase/firestore";
 import { auth, db, googleProvider } from "../../firebase";
 import { User } from "../../types/userTypes";
-import { createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup, EmailAuthProvider, updatePassword, reauthenticateWithCredential, sendPasswordResetEmail } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  EmailAuthProvider,
+  updatePassword,
+  reauthenticateWithCredential,
+  sendPasswordResetEmail,
+} from "firebase/auth";
 import { createSession, removeSession } from "@/lib/session";
 
-export const registerUser = async (user: User, email: string, password: string): Promise<boolean> => {
+export const registerUser = async (
+  user: User,
+  email: string,
+  password: string,
+): Promise<boolean> => {
   try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password,
+    );
     await sendEmailVerification(userCredential.user);
-    const userRef = doc(db, 'users', userCredential.user.uid);
+    const userRef = doc(db, "users", userCredential.user.uid);
     user.id = userCredential.user.uid;
     await setDoc(userRef, { ...user });
     await auth.signOut();
-    console.log('User registered successfully');
+    console.log("User registered successfully");
     return true;
   } catch (error) {
     // console.error('Error registering user: ', error);
@@ -26,8 +50,8 @@ export const signInWithGoogle = async (): Promise<boolean> => {
   try {
     const result = await signInWithPopup(auth, googleProvider);
     const user = result.user;
-    const userRef = doc(db, 'users', user.uid);
-    await setDoc(userRef, {
+    const userRef = doc(db, "users", user.uid);
+    await updateDoc(userRef, {
       id: user.uid,
       name: user.displayName,
     });
@@ -36,7 +60,7 @@ export const signInWithGoogle = async (): Promise<boolean> => {
 
     await createSession(user.uid, customToken, false);
 
-    console.log('User signed in with Google successfully');
+    console.log("User signed in with Google successfully");
     return true;
   } catch (error) {
     // console.error('Error signing in with Google: ', error);
@@ -44,9 +68,16 @@ export const signInWithGoogle = async (): Promise<boolean> => {
   }
 };
 
-export const signInWithEmail = async (email: string, password: string): Promise<boolean> => {
+export const signInWithEmail = async (
+  email: string,
+  password: string,
+): Promise<boolean> => {
   try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password,
+    );
     const user = userCredential.user;
 
     if (!user.emailVerified) {
@@ -66,7 +97,10 @@ export const signInWithEmail = async (email: string, password: string): Promise<
   }
 };
 
-export const updateUserPassword = async (currentPassword: string, newPassword: string): Promise<boolean> => {
+export const updateUserPassword = async (
+  currentPassword: string,
+  newPassword: string,
+): Promise<boolean> => {
   try {
     const user = auth.currentUser;
     if (!user) {
@@ -79,7 +113,10 @@ export const updateUserPassword = async (currentPassword: string, newPassword: s
       return false;
     }
 
-    const credential = EmailAuthProvider.credential(user.email, currentPassword);
+    const credential = EmailAuthProvider.credential(
+      user.email,
+      currentPassword,
+    );
     await reauthenticateWithCredential(user, credential);
     await updatePassword(user, newPassword);
 
@@ -91,9 +128,12 @@ export const updateUserPassword = async (currentPassword: string, newPassword: s
   }
 };
 
-export const updateUser = async (userId: string, updatedDetails: Partial<User>): Promise<boolean> => {
+export const updateUser = async (
+  userId: string,
+  updatedDetails: Partial<User>,
+): Promise<boolean> => {
   try {
-    const userRef = doc(db, 'users', userId);
+    const userRef = doc(db, "users", userId);
     await updateDoc(userRef, updatedDetails);
     // console.log('User details updated successfully');
     return true;
@@ -113,11 +153,11 @@ export const logoutUser = async (): Promise<boolean> => {
     // console.error('Error logging out user: ', error);
     return false;
   }
-}
+};
 
 export const getUserById = async (userId: string): Promise<User | null> => {
   try {
-    const userRef = doc(db, 'users', userId);
+    const userRef = doc(db, "users", userId);
     const docSnap = await getDoc(userRef);
     if (docSnap.exists()) {
       return docSnap.data() as User;

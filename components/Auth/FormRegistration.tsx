@@ -12,36 +12,28 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   registerUser,
-  signInWithGoogle
+  signInWithGoogle,
 } from "@/lib/network/users/userQueries";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import "@/lib/utils/zodCustomError";
 
 const formSchema = z
   .object({
     name: z.string().min(1).max(50),
     email: z.string().email(),
-    password: z.string({
-      required_error: "Password can not be empty.",
-    })
-    .regex(/^.{8,20}$/, {
-      message: "Minimum 8 and maximum 20 characters.",
-    })
-    .regex(/(?=.*[A-Z])/, {
-      message: "At least one uppercase character.",
-    })
-    .regex(/(?=.*[a-z])/, {
-      message: "At least one lowercase character.",
-    })
-    .regex(/(?=.*\d)/, {
-      message: "At least one digit.",
-    }),
+    password: z
+      .string()
+      .regex(/^.{8,20}$/)
+      .regex(/(?=.*[A-Z])/)
+      .regex(/(?=.*[a-z])/)
+      .regex(/(?=.*\d)/),
     password1: z.string().min(1).max(20),
   })
   .refine(({ password, password1 }) => password === password1, {
     path: ["password1"],
-    message: "Password didn't match.",
+    message: "Password tidak match.",
   });
 
 export default function FormRegistration() {
@@ -74,7 +66,7 @@ export default function FormRegistration() {
           instagram: "",
         },
         values.email,
-        values.password
+        values.password,
       );
       if (userCreated) {
         setSuccess(true);
@@ -155,9 +147,7 @@ export default function FormRegistration() {
           </p>
           <Button
             type="button"
-
             className="h-12 w-full bg-transparent font-monument text-xs text-transparent/90 hover:bg-background disabled:opacity-60 md:text-lg"
-
             variant={"outline"}
             onClick={handleGoogleSignIn}
             disabled={loading}

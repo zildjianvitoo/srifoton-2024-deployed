@@ -38,6 +38,7 @@ import SuccessRegister from "../SuccessRegister";
 import "@/lib/utils/zodCustomError";
 import { Button } from "@/components/ui/button";
 import useToastErrorNoUser from "@/hooks/useToastErrorNoUser";
+import { useState } from "react";
 
 export const workshopRegistrationSchema = z.object({
   name: z.string().min(1).max(50),
@@ -58,6 +59,8 @@ type Props = {};
 
 export default function WorkshopForm({ }: Props) {
   useToastErrorNoUser();
+
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const form = useForm<z.infer<typeof workshopRegistrationSchema>>({
     resolver: zodResolver(workshopRegistrationSchema),
@@ -98,13 +101,14 @@ export default function WorkshopForm({ }: Props) {
       });
       window.scrollTo(0, 0);
       toast.success("Berhasil daftar Workshop");
+      setIsSuccess(true);
     } catch (error) {
       toast.error("Terjadi Kesalahan di sisi server");
       // console.log(error);
     }
   };
 
-  if (form.formState.isSubmitSuccessful) {
+  if (form.formState.isSubmitSuccessful && isSuccess) {
     return <SuccessRegister branch={"workshop"} validBranch={"workshop"} />;
   }
 

@@ -236,7 +236,7 @@ export default function CompetitionRegistration({
       const existingDocs = await getDocs(q);
 
       if (!existingDocs.empty) {
-        toast.info(`Anda telah mendaftar ${competitionName} ini!`);
+        toast.info(`Anda telah mendaftar kompetisi ${competitionName} ini!`);
         return false;
       }
 
@@ -358,7 +358,7 @@ export default function CompetitionRegistration({
   };
 
   // if (form.formState.isSubmitSuccessful) {
-  if (isSuccess) {
+  if (form.formState.isSubmitSuccessful && isSuccess) {
     return (
       <SuccessRegister
         branch={branch}

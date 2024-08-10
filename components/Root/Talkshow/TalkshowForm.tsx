@@ -38,6 +38,7 @@ import SuccessRegister from "../SuccessRegister";
 import { Button } from "@/components/ui/button";
 import "@/lib/utils/zodCustomError";
 import useToastErrorNoUser from "@/hooks/useToastErrorNoUser";
+import { useState } from "react";
 
 export const talkshowRegistrationSchema = z.object({
   name: z.string().min(1).max(50),
@@ -58,6 +59,8 @@ type Props = {};
 
 export default function TalkshowForm({ }: Props) {
   useToastErrorNoUser();
+
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const form = useForm<z.infer<typeof talkshowRegistrationSchema>>({
     resolver: zodResolver(talkshowRegistrationSchema),
@@ -98,13 +101,14 @@ export default function TalkshowForm({ }: Props) {
       });
       window.scrollTo(0, 0);
       toast.success("Berhasil daftar Talkshow");
+      setIsSuccess(true);
     } catch (error) {
       toast.error("Terjadi Kesalahan di sisi server");
       // console.log(error);
     }
   };
 
-  if (form.formState.isSubmitSuccessful) {
+  if (form.formState.isSubmitSuccessful && isSuccess) {
     return <SuccessRegister branch={"talkshow"} validBranch={"talkshow"} />;
   }
 

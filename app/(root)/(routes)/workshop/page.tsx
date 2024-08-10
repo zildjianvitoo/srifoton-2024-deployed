@@ -42,10 +42,10 @@ export default function Workshop({}: Props) {
       <div ref={workshopRef}>
         <Flashcards id="workshop-option" title="workshop options">
           <Flashcard
-            title="workshop offline ticket"
-            previewTitle="offline ticket"
+            title="workshop ticket"
+            previewTitle="workshop ticket"
             href="workshop/daftar"
-            price="80.000"
+            price="40.000"
             per="person"
           >
             <p>
@@ -62,33 +62,14 @@ export default function Workshop({}: Props) {
             </Benefits>
           </Flashcard>
           <Flashcard
-            title="workshop online ticket"
-            previewTitle="online ticket"
-            href="workshop/daftar"
-            price="50.000"
-            per="person"
-          >
-            <p>
-              Workshop SRIFOTON bertema &quot;Kickstart Your Web Development
-              Journey&quot; menyajikan materi pemrograman dan sesi live coding
-              untuk pengembangan situs web dasar, dipandu oleh instruktur
-              berkompeten.
-            </p>
-            <Benefits>
-              <p>E-Sertifikat</p>
-              <p>Menambah relasi</p>
-              <p>Pengalaman pembuatan proyek</p>
-            </Benefits>
-          </Flashcard>
-          <Flashcard
             title={
               <>
-                workshop online + <br /> talkshow
+                talkshow online + <br /> workshop
               </>
             }
             previewTitle="combo package 1"
             href="workshop/daftar"
-            price="80.000"
+            price="40.000"
             per="person"
           >
             <p>
@@ -108,12 +89,12 @@ export default function Workshop({}: Props) {
           <Flashcard
             title={
               <>
-                workshop offline + <br /> talkshow
+                talkshow offline + <br /> workshop
               </>
             }
             previewTitle="combo package 2"
             href="workshop/daftar"
-            price="80.000"
+            price="40.000"
             per="person"
           >
             <p>

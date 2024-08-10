@@ -613,7 +613,7 @@ export default function CompetitionRegistration({
                 </div>
                 {validBranch === "e-sport" && (
                   <div className="mt-8 flex w-full flex-col gap-8 lg:mt-12 lg:flex-row lg:gap-12">
-                    <div className="mr-auto mt-8 flex flex-col gap-4 lg:mt-12 lg:w-[48%] lg:gap-6">
+                    <div className="mr-auto mt-8 flex w-full flex-col gap-4 lg:mt-12 lg:w-[48%] lg:gap-6">
                       <h4 className="text-center font-monument text-lg md:text-xl">
                         Member 5
                       </h4>

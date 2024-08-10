@@ -26,7 +26,7 @@ export default function Talkshow({}: Props) {
         id="hero-talkshow"
         header="talkshow"
         subheader="srifoton 2024"
-        src="/img/gallery1.png"
+        src="/img/talkshow-logo-2.png"
         onClick={() =>
           workshopRef.current?.scrollIntoView({ behavior: "smooth" })
         }

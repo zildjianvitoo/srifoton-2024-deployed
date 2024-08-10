@@ -57,7 +57,7 @@ export const workshopRegistrationSchema = z.object({
 
 type Props = {};
 
-export default function WorkshopForm({ }: Props) {
+export default function WorkshopForm({}: Props) {
   useToastErrorNoUser();
 
   const [isSuccess, setIsSuccess] = useState(false);
@@ -115,7 +115,9 @@ export default function WorkshopForm({ }: Props) {
   return (
     <div className={"flex flex-col gap-14 lg:gap-20"}>
       <div className="text-whtc relative mx-auto flex w-fit flex-col gap-6 text-center text-primary-200">
-        <h1 className="srifoton-header font-monument uppercase text-primary-200">WORKSHOP</h1>
+        <h1 className="srifoton-header font-monument uppercase text-primary-200">
+          WORKSHOP
+        </h1>
         <p className="srifoton-text mx-auto">
           Hai, silakan isi secara detail informasi kamu
         </p>
@@ -174,7 +176,6 @@ export default function WorkshopForm({ }: Props) {
                           </FormControl>
                           <SelectContent>
                             <SelectItem value="offline">Offline</SelectItem>
-                            <SelectItem value="online">Online</SelectItem>
                           </SelectContent>
                         </Select>
                         <FormMessage />
@@ -228,8 +229,9 @@ export default function WorkshopForm({ }: Props) {
               >
                 {form.formState.isSubmitting ? (
                   <div className="spinner"></div>
-                ) : ("Submit")
-                }
+                ) : (
+                  "Submit"
+                )}
               </Button>
             </form>
           </Form>

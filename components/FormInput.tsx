@@ -33,7 +33,7 @@ export default function FormInput({
     <FormField
       disabled={disabled ?? false}
       control={control}
-      defaultValue={defaultValue ?? ""}
+      defaultValue={defaultValue || ""}
       name={name}
       render={({ field }) => (
         <FormItem>

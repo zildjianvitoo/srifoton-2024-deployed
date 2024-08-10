@@ -14,6 +14,7 @@ import {
   where,
 } from "firebase/firestore";
 import { toast } from "sonner";
+import { redirect } from "next/navigation";
 
 type Props = {
   title?: string;
@@ -39,7 +40,10 @@ export default function FlashCard({
   useEffect(() => {
     const fetchSubmission = async () => {
       const user = auth.currentUser;
-      if (!user) return;
+      if (!user) {
+        toast.error("Anda tidak login!");
+        redirect("/dashboard/logout");
+      };
 
       let collectionName;
       if (title === "UI/UX Design") {
@@ -159,7 +163,7 @@ export default function FlashCard({
       <Messages message={message} />
       <div className="bottom-4 right-4 flex flex-wrap justify-end gap-2 md:absolute">
         {project && (
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-2">
             {!submissionUrl ? (
               <>
                 <input

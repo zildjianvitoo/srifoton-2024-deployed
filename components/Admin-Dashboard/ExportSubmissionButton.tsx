@@ -23,7 +23,7 @@ const ExportSubmissionButton: React.FC<ExportSubmissionButtonProps> = ({ data, c
         setLoading(true);
         const zip = new JSZip();
         for (const entry of data) {
-            if (entry.submission) {
+            if (entry.submission && entry.submission !== "No Submission") {
                 const response = await fetch(entry.submission);
                 const blob = await response.blob();
                 zip.file(`${entry.team_name}-${entry.id}-SRIFOTON2024.zip`, blob);

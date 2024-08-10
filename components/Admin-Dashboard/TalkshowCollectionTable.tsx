@@ -62,13 +62,33 @@ const TalkshowCollectionTable: React.FC = () => {
     setVerifying(id);
     const entryDoc = doc(db, 'talkshows', id);
     await updateDoc(entryDoc, { is_verified: true });
+
     setItems(prevItems =>
       prevItems.map(item =>
         item.id === id ? { ...item, is_verified: true } : item
       )
     );
+
+    setCurrentData(prevItems =>
+      prevItems.map(item =>
+        item.id === id ? { ...item, is_verified: true } : item
+      )
+    );
+
     setVerifying(null);
   };
+
+  useEffect(() => {
+    if (!loaded && !tsLoading) {
+      const data = talkshows.map(transformEntry);
+      if (data.length > 0) {
+        setItems(data);
+        setCurrentData(data);
+        setLoaded(true);
+      }
+    }
+  }, [loaded, tsLoading, talkshows]);
+
 
   const filteredEntries = items.filter((entry: SingleEntry) => entry.name.toLowerCase().includes(searchTerm.toLowerCase()));
   const totalPages = Math.ceil(filteredEntries.length / itemsPerPage);

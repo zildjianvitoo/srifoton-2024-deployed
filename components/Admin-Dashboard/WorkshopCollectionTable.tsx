@@ -42,32 +42,36 @@ const WorkshopCollectionTable: React.FC = () => {
     date: entry.date
   });
 
-  useEffect(() => {
-    setLoading(true);
-    let data: SingleEntry[] = [];
-
-    if (!loaded && !wsLoading) {
-      data = workshops.map(transformEntry);
-      if (data.length > 0) {
-        setCurrentData(data);
-        setItems(data);
-        setLoaded(true);
-      }
-    }
-    setLoading(false);
-  }, [loaded, wsLoading, workshops]);
-
   const handleVerify = async (id: string) => {
     setVerifying(id);
     const entryDoc = doc(db, 'workshops', id);
     await updateDoc(entryDoc, { is_verified: true });
+
     setItems(prevItems =>
       prevItems.map(item =>
         item.id === id ? { ...item, is_verified: true } : item
       )
     );
+
+    setCurrentData(prevItems =>
+      prevItems.map(item =>
+        item.id === id ? { ...item, is_verified: true } : item
+      )
+    );
+
     setVerifying(null);
   };
+
+  useEffect(() => {
+    if (!loaded && !wsLoading) {
+      const data = workshops.map(transformEntry);
+      if (data.length > 0) {
+        setItems(data);
+        setCurrentData(data);
+        setLoaded(true);
+      }
+    }
+  }, [loaded, wsLoading, workshops]);
 
   const filteredEntries = items.filter((entry: SingleEntry) => entry.name.toLowerCase().includes(searchTerm.toLowerCase()));
   const totalPages = Math.ceil(filteredEntries.length / itemsPerPage);

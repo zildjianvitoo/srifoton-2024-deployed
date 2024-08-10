@@ -70,10 +70,16 @@ const CompetitionCollectionsTable: React.FC = () => {
                     if (!cpLoading) data = cpCompetitions;
                     break;
                 case 'ui_ux_designs':
-                    if (!uiuxLoading) data = uiuxCompetitions;
+                    if (!uiuxLoading) data = uiuxCompetitions.map(entry => ({
+                        ...entry,
+                        submission: entry.submission || 'No Submission'
+                    }));
                     break;
                 case 'web_developments':
-                    if (!wdLoading) data = wdCompetitions;
+                    if (!wdLoading) data = wdCompetitions.map(entry => ({
+                        ...entry,
+                        submission: entry.submission || 'No Submission'
+                    }));
                     break;
                 case 'mobile_legends':
                     if (!mlLoading) data = mlCompetitions;
@@ -95,14 +101,22 @@ const CompetitionCollectionsTable: React.FC = () => {
         setVerifying(id);
         const entryDoc = doc(db, currentTab, id);
         await updateDoc(entryDoc, { is_verified: true });
-        setCompetitions(prev => ({
-            ...prev,
-            [currentTab]: prev[currentTab].map(entry =>
+        setCompetitions(prev => {
+            const updatedTabData = prev[currentTab].map(entry =>
                 entry.id === id ? { ...entry, is_verified: true } : entry
-            )
-        }));
+            );
+
+            return {
+                ...prev,
+                [currentTab]: updatedTabData
+            };
+        });
         setVerifying(null);
     };
+
+    useEffect(() => {
+        setCurrentData(competitions[currentTab] || []);
+    }, [competitions, currentTab]);
 
     const currentEntries = competitions[currentTab] || [];
     const filteredEntries = currentEntries.filter((entry: CompetitionEntry) =>

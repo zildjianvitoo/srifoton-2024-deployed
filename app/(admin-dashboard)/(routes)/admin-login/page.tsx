@@ -8,7 +8,7 @@ export default function page() {
   return (
     <section
       id="login"
-      className="flex flex-col justify-end space-x-8 space-y-10 lg:flex-row"
+      className="flex flex-col justify-end space-y-10 pb-16 lg:flex-row lg:space-x-8 lg:space-y-2 lg:p-0"
     >
       <div className="left-[6.2917vw] flex flex-col space-y-8 text-center text-white lg:fixed">
         <h3 className="font-monument text-xl xl:text-2xl">

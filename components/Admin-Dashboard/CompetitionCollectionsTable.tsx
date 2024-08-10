@@ -236,7 +236,7 @@ const CompetitionCollectionsTable: React.FC = () => {
                         </table>
                     </div>
                     <div className={`flex flex-col ${currentTab === 'ui_ux_designs' || currentTab === 'web_developments' ? 'lg:flex-row' : 'md:flex-row'} justify-between items-center`}>
-                        <div className="space-x-4 mb-4 md:mb-1">
+                        <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4 mb-4 md:mb-1">
                             <ExportCSVButton data={currentData} collectionName={currentCollectionType ?? 'Null'} />
                             {(currentTab === 'ui_ux_designs' || currentTab === 'web_developments') && (
                                 <ExportSubmissionButton data={currentData} collectionName={currentCollectionType ?? 'Null'} />
@@ -250,7 +250,7 @@ const CompetitionCollectionsTable: React.FC = () => {
                             >
                                 Previous
                             </Button>
-                            <span>
+                            <span className="hidden sm:inline">
                                 Showing {((currentPage - 1) * itemsPerPage) + 1} - {Math.min(currentPage * itemsPerPage, filteredEntries.length)} of {filteredEntries.length} entries
                             </span>
                             <span>({currentPage} / {totalPages})</span>

@@ -166,7 +166,7 @@ const TalkshowCollectionTable: React.FC = () => {
               >
                 Previous
               </Button>
-              <span>
+              <span className="hidden sm:inline">
                 Showing {((currentPage - 1) * itemsPerPage) + 1} - {Math.min(currentPage * itemsPerPage, filteredEntries.length)} of {filteredEntries.length} entries
               </span>
               <span>({currentPage} / {totalPages})</span>

@@ -15,7 +15,7 @@ export default function Competition({}: Props) {
     <>
       <OverviewHero
         id="hero-competition"
-        header="competiton"
+        header="competition"
         subheader="srifoton 2024"
         src="/img/gallery1.png"
         onClick={() =>

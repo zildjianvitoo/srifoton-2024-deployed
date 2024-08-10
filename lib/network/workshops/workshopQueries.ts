@@ -34,7 +34,7 @@ export const getWorkshopById = async (id: string): Promise<Workshop | null> => {
   if (docSnap.exists()) {
     return { id: docSnap.id, ...docSnap.data() } as Workshop;
   } else {
-    console.log("No such document!");
+    // console.log("No such document!");
     return null;
   }
 };
@@ -44,9 +44,9 @@ export const addNewWorkshop = async (workshop: Workshop): Promise<void> => {
   try {
     const newDocRef = doc(collection(db, "workshops"));
     await setDoc(newDocRef, workshop);
-    console.log('New workshop added successfully');
+    // console.log('New workshop added successfully');
   } catch (error) {
-    console.error('Error adding new workshop: ', error);
+    // console.error('Error adding new workshop: ', error);
   }
 };
 
@@ -55,8 +55,8 @@ export const updateWorkshop = async (id: string, updatedDetails: Partial<Worksho
   try {
     const docRef = doc(db, "workshops", id);
     await updateDoc(docRef, updatedDetails);
-    console.log('Workshop updated successfully');
+    // console.log('Workshop updated successfully');
   } catch (error) {
-    console.error('Error updating workshop: ', error);
+    // console.error('Error updating workshop: ', error);
   }
 };

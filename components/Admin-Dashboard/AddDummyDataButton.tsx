@@ -15,7 +15,7 @@ const AddDummyDataButton: React.FC = () => {
             await addDummyData();
             alert("Dummy data added successfully");
         } catch (error) {
-            console.error("Error adding dummy data:", error);
+            // console.error("Error adding dummy data:", error);
             alert("Failed to add dummy data");
         } finally {
             setLoading(false);
@@ -28,7 +28,7 @@ const AddDummyDataButton: React.FC = () => {
             await deleteAllDummyData();
             alert("Dummy data deleted successfully");
         } catch (error) {
-            console.error("Error deleting dummy data:", error);
+            // console.error("Error deleting dummy data:", error);
             alert("Failed to delete dummy data");
         } finally {
             setLoading(false);

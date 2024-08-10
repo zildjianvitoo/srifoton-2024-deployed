@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Inter } from "next/font/google";
 import { Button } from "../../ui/button";
 import {
@@ -15,15 +16,26 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { routes } from "@/lib/link";
 import Image from "next/image";
+import { auth } from "@/lib/firebase";
+import { User } from "firebase/auth";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Nav() {
   const pathname = usePathname();
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   return (
     <nav
-      id="navbar" //shadow-sm shadow-[#868365]
+      id="navbar"
       className="sticky top-0 z-50 flex items-center justify-between bg-background px-8 py-5 text-primary md:px-12 lg:px-20 xl:px-[7rem]"
     >
       <Link href="/" className="flex items-center">
@@ -34,7 +46,7 @@ export default function Nav() {
             width={90}
             height={56}
             className="w-full"
-          ></Image>
+          />
         </div>
         <h4 className="xxs:text-2xl font-monument text-xl text-whtc-100 md:text-2xl lg:text-2xl xl:text-3xl">
           SRIFOTON
@@ -68,6 +80,11 @@ export default function Nav() {
                     <Link href="/talkshow">Talkshow</Link>
                   </SheetClose>
                 </li>
+                <li className="my-5 text-left" key={5}>
+                  <SheetClose asChild>
+                    <Link href={user ? "/dashboard/account-data" : "/login"}>{user ? "Dashboard" : "Login"}</Link>
+                  </SheetClose>
+                </li>
               </ul>
             </SheetHeader>
           </SheetContent>
@@ -75,63 +92,25 @@ export default function Nav() {
       </div>
       <div className="hidden text-[#868365] md:block">
         <ul className="lg:text-md flex items-center py-2 font-ponnala xl:text-xl">
-          {routes.map((routes) => (
+          {routes.map((route) => (
             <li
-              key={routes.address}
+              key={route.address}
               className={cn("mt-2", {
                 "border-b-2 border-whtc-200 text-whtc-200":
-                  pathname === routes.address,
+                  pathname === route.address,
               })}
             >
-              <Link href={routes.address}>{routes.linkTo}</Link>
+              <Link href={route.address}>{route.linkTo}</Link>
             </li>
           ))}
           <li className="me-0 pe-0 font-monument">
-            <Link href="/login">
+            <Link href={user ? "/dashboard/account-data" : "/login"}>
               <Button size={"sm"} variant={"srifoton"}>
-                Login
+                {user ? "Dashboard" : "Login"}
               </Button>
             </Link>
           </li>
         </ul>
-
-        {/* <ul className="lg:text-md flex items-center py-2 font-ponnala xl:text-xl">
-          <li
-            className={cn("mt-2", {
-              "border-b border-white text-white": pathname === "/",
-            })}
-          >
-            <Link href="/">Home</Link>
-          </li>
-          <li
-            className={cn("mt-2", {
-              "border-b border-white text-white": pathname === "/competition",
-            })}
-          >
-            <Link href="/competition">Competition</Link>
-          </li>
-          <li
-            className={cn("mt-2", {
-              "border-b border-white text-white": pathname === "/workshop",
-            })}
-          >
-            <Link href="/workshop">Workshop</Link>
-          </li>
-          <li
-            className={cn("mt-2", {
-              "border-b border-white text-white": pathname === "/talkshow",
-            })}
-          >
-            <Link href="/talkshow">Talkshow</Link>
-          </li>
-          <li className="me-0 pe-0 font-monument">
-            <Link href="/login">
-              <Button size={"sm"} variant={"srifoton"}>
-                Login
-              </Button>
-            </Link>
-          </li>
-        </ul> */}
       </div>
     </nav>
   );

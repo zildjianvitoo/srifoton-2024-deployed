@@ -22,7 +22,7 @@ type dataProps = {
 };
 
 async function addData({ email, password }: dataProps) {
-  console.log(email, password);
+  // console.log(email, password);
 }
 
 const formSchema = z.object({
@@ -73,7 +73,7 @@ export default function FormLogin() {
         toast.error("Gagal masuk dengan email. Pastikan email sudah diverifikasi dan silakan coba lagi.");
       }
     } catch (error) {
-      console.error("Error signing in with email: ", error);
+      // console.error("Error signing in with email: ", error);
       toast.error("Terjadi kesalahan saat masuk dengan email.");
     } finally {
       setLoading(false);
@@ -92,7 +92,7 @@ export default function FormLogin() {
         toast.error("Gagal masuk dengan akun Google. Silakan coba lagi.");
       }
     } catch (error) {
-      console.error("Error signing in with Google: ", error);
+      // console.error("Error signing in with Google: ", error);
       toast.error("Terjadi kesalahan saat masuk dengan Google.");
     } finally {
       setLoadingGoogle(false);

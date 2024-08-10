@@ -145,7 +145,7 @@ export const getMobileLegendById = async (id: string): Promise<MobileLegends | n
     };
     return competition;
   } else {
-    console.log("No such document!");
+    // console.log("No such document!");
     return null;
   }
 };
@@ -155,9 +155,9 @@ export const addNewMobileLegends = async (competition: MobileLegends): Promise<v
   try {
     const newDocRef = doc(collection(db, "mobile_legends"));
     await setDoc(newDocRef, competition);
-    console.log('New competition added successfully');
+    // console.log('New competition added successfully');
   } catch (error) {
-    console.error('Error adding new competition: ', error);
+    // console.error('Error adding new competition: ', error);
   }
 };
 
@@ -166,8 +166,8 @@ export const updateMobileLegends = async (id: string, updatedDetails: Partial<Mo
   try {
     const docRef = doc(db, "mobile_legends", id);
     await updateDoc(docRef, updatedDetails);
-    console.log('Competition updated successfully');
+    // console.log('Competition updated successfully');
   } catch (error) {
-    console.error('Error updating competition: ', error);
+    // console.error('Error updating competition: ', error);
   }
 };

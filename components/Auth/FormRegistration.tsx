@@ -84,7 +84,7 @@ export default function FormRegistration() {
         toast.error("Gagal membuat akun. Silakan coba lagi.");
       }
     } catch (error) {
-      console.error("Error registering user: ", error);
+      // console.error("Error registering user: ", error);
       toast.error("Terjadi kesalahan saat membuat akun.");
     } finally {
       setLoading(false);
@@ -101,7 +101,7 @@ export default function FormRegistration() {
         toast.error("Gagal masuk dengan akun Google. Silakan coba lagi.");
       }
     } catch (error) {
-      console.error("Error signing in with Google: ", error);
+      // console.error("Error signing in with Google: ", error);
       toast.error("Terjadi kesalahan saat masuk dengan Google.");
     } finally {
       setLoading(false);

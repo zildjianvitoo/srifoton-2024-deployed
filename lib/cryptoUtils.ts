@@ -39,7 +39,7 @@ export async function unsignCookie(value: string, secret: string): Promise<strin
     const signature = value.substring(lastDotIndex + 1);
 
     if (!rawValue || !signature) {
-        console.error("Invalid cookie value:", value);
+        // console.error("Invalid cookie value:", value);
         return null;
     }
 
@@ -54,7 +54,7 @@ export async function unsignCookie(value: string, secret: string): Promise<strin
     const signatureArrayBuffer = base64ToArrayBuffer(signature);
 
     if (!(signatureArrayBuffer instanceof ArrayBuffer)) {
-        console.error("Failed to convert base64 to ArrayBuffer");
+        // console.error("Failed to convert base64 to ArrayBuffer");
         return null;
     }
 

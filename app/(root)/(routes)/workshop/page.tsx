@@ -2,17 +2,10 @@
 
 import OverviewHero from "@/components/Root/OverviewHero";
 import IDcard from "@/components/ui/IDcard";
-import SectionHeader from "@/components/Root/SectionHeader";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Flashcard, Flashcards, Benefits } from "@/components/Root/Flashcards";
 import { QNA, SpeechBubble } from "@/components/Root/QNA";
 import { Timeline, TimelineCard } from "@/components/Root/Timeline";
-import React, { Suspense } from "react";
+import React from "react";
 import { useRef } from "react";
 
 type Props = {};

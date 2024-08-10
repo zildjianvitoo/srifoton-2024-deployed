@@ -18,14 +18,14 @@ export default function Messages({ message }: Props) {
           return (
             <>
               <CircleCheck className="size-4" />
-              <p>selesai</p>
+              <p>Selesai</p>
             </>
           );
         } else {
           return (
             <>
               <CircleCheck className="hidden size-4" />
-              <p className="hidden">selesai</p>
+              <p className="hidden">Selesai</p>
             </>
           );
         }

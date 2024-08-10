@@ -38,8 +38,7 @@ import "@/lib/utils/zodCustomError";
 import useToastErrorNoUser from "@/hooks/useToastErrorNoUser";
 import { useEffect } from "react";
 import { query, where, getDocs, collection } from "firebase/firestore";
-import Image from 'next/image';
-
+import Image from "next/image";
 
 type RegProps = {
   branch: string;
@@ -228,7 +227,10 @@ export default function CompetitionRegistration({
         competitionName = "E-Sport/Mobile Legends";
       }
 
-      const q = query(collection(db, collectionRef), where("user_id", "==", user_id));
+      const q = query(
+        collection(db, collectionRef),
+        where("user_id", "==", user_id),
+      );
       const existingDocs = await getDocs(q);
 
       if (!existingDocs.empty) {
@@ -349,7 +351,6 @@ export default function CompetitionRegistration({
       // console.log(error);
     }
   };
-
 
   if (form.formState.isSubmitSuccessful) {
     return (
@@ -479,7 +480,7 @@ export default function CompetitionRegistration({
                       control={form.control}
                       label={"Instagram"}
                       name={"instagram_1"}
-                      placeholder={"Contoh: 09021382227140"}
+                      placeholder={"Contoh: nobita_"}
                     />
                     <FormFile
                       control={form.control}
@@ -513,7 +514,7 @@ export default function CompetitionRegistration({
                       control={form.control}
                       label={"Instagram"}
                       name={"instagram_2"}
-                      placeholder={"Contoh: 09021382227140"}
+                      placeholder={"Contoh: nobita_"}
                     />
                     <FormFile
                       control={form.control}
@@ -549,7 +550,7 @@ export default function CompetitionRegistration({
                       control={form.control}
                       label={"Instagram"}
                       name={"instagram_3"}
-                      placeholder={"Contoh: 09021382227140"}
+                      placeholder={"Contoh: nobita_"}
                     />
                     <FormFile
                       control={form.control}
@@ -594,7 +595,7 @@ export default function CompetitionRegistration({
                       />
                     </div>
                   ) : (
-                    <div className="flex justify-center items-center lg:basis-1/2">
+                    <div className="flex items-center justify-center lg:basis-1/2">
                       <Image
                         src={"/img/logo-srifoton.png"}
                         width={300}
@@ -640,7 +641,7 @@ export default function CompetitionRegistration({
                         label={"Student Card"}
                       />
                     </div>
-                    <div className="flex justify-center items-center lg:basis-1/2">
+                    <div className="flex items-center justify-center lg:basis-1/2">
                       <Image
                         src={"/img/logo-srifoton.png"}
                         width={300}
@@ -658,8 +659,9 @@ export default function CompetitionRegistration({
               >
                 {form.formState.isSubmitting ? (
                   <div className="spinner"></div>
-                ) : ("Submit")
-                }
+                ) : (
+                  "Submit"
+                )}
               </Button>
             </form>
 

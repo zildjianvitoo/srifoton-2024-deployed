@@ -36,7 +36,7 @@ import SuccessRegister from "../SuccessRegister";
 import { toast } from "sonner";
 import "@/lib/utils/zodCustomError";
 import useToastErrorNoUser from "@/hooks/useToastErrorNoUser";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { query, where, getDocs, collection } from "firebase/firestore";
 import Image from "next/image";
 
@@ -138,6 +138,8 @@ export default function CompetitionRegistration({
 
   const validBranch = branch.replace("/", "").replace(" ", "-");
 
+  const [isSuccess, setIsSuccess] = useState(false);
+
   useEffect(() => {
     if (validBranch !== "e-sport") {
       form.unregister("nim_4");
@@ -196,13 +198,13 @@ export default function CompetitionRegistration({
 
   const onSubmit = async (
     formValues: z.infer<typeof competitionRegistrationScehma>,
-  ) => {
+  ): Promise<boolean> => {
     // console.log("Masuk onSubmit");
 
     const user = auth.currentUser;
     if (user === null) {
       toast.error("Anda harus login terlebih dahulu sebelum dapat mendaftar!");
-      return;
+      return false;
     }
 
     const user_id = user.uid;
@@ -235,7 +237,7 @@ export default function CompetitionRegistration({
 
       if (!existingDocs.empty) {
         toast.info(`Anda telah mendaftar ${competitionName} ini!`);
-        return;
+        return false;
       }
 
       const [
@@ -346,13 +348,17 @@ export default function CompetitionRegistration({
 
       toast.success("Berhasil mendaftar kompetisi " + competitionName + "!");
       window.scrollTo(0, 0);
+      setIsSuccess(true);
+      return true;
     } catch (error) {
       toast.error("Terjadi Kesalahan di sisi server");
+      return false;
       // console.log(error);
     }
   };
 
-  if (form.formState.isSubmitSuccessful) {
+  // if (form.formState.isSubmitSuccessful) {
+  if (isSuccess) {
     return (
       <SuccessRegister
         branch={branch}

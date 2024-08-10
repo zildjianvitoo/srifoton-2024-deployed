@@ -22,7 +22,7 @@ import { auth, db } from "@/lib/firebase";
 import { doc, setDoc, collection } from "firebase/firestore";
 import { getUserById, updateUser } from "@/lib/network/users/userQueries";
 import { toast } from "sonner";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "@/lib/utils/zodCustomError";
 
 const phoneRegex = new RegExp(
@@ -41,6 +41,8 @@ const formSchema = z.object({
 export default function FormPersonalData() {
   const user = auth.currentUser;
   const userId = user?.uid ?? "";
+
+  const [loading, setLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -73,6 +75,7 @@ export default function FormPersonalData() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
+      setLoading(true);
       const userUpdated = await updateUser(userId, values);
 
       if (userUpdated) {
@@ -81,6 +84,7 @@ export default function FormPersonalData() {
       } else {
         toast.error("Gagal memperbarui data!");
       }
+      setLoading(false);
     } catch (error) {
       toast.error("Terjadi kesalahan saat memperbarui data!");
       // console.error("Error updating user details:", error);
@@ -128,7 +132,7 @@ export default function FormPersonalData() {
               <FormControl>
                 <RadioGroup
                   onValueChange={field.onChange}
-                  defaultValue={field.value}
+                  value={field.value}
                   className="flex items-center gap-2"
                 >
                   <FormItem className="flex items-center gap-1">
@@ -169,7 +173,11 @@ export default function FormPersonalData() {
           type="submit"
           className="mt-6 h-12 w-full bg-background/90 font-monument text-lg text-white hover:bg-background disabled:opacity-60 lg:mt-10"
         >
-          Save
+          {loading ? (
+            <div className="spinner"></div>
+          ) : (
+            "Save")
+          }
         </Button>
       </form>
     </Form>

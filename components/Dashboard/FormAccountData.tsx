@@ -20,7 +20,7 @@ type dataProps = {
 };
 
 const formSchema = z.object({
-  email: z.string().min(1).max(50),
+  email: z.string().min(1).max(50).optional(),
   password: z.string().min(1).max(50),
   password1: z.string().min(1).max(50),
 });
@@ -78,7 +78,7 @@ export default function FormAccountData() {
           control={form.control}
           disabled={true}
           name="email"
-          defaultValue={user?.email ?? ""}
+          defaultValue={user?.email || ""}
           placeholder={"nobita@gmail.com"}
           label="Email"
         />

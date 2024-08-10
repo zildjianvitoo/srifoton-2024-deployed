@@ -1,8 +1,9 @@
 // lib/network/admins/adminQueries.ts
 
 import { collection, doc, getDoc, getDocs, setDoc, updateDoc, query, where } from "firebase/firestore";
-import { db } from "../../firebase";
+import { auth, db } from "../../firebase";
 import { Admin } from "../../types/adminTypes";
+import { removeSession } from "@/lib/session";
 
 // Fetch all admins
 export const fetchAdmins = async (): Promise<Admin[]> => {
@@ -61,3 +62,15 @@ export const updateAdmin = async (id: string, updatedDetails: Partial<Admin>): P
   }
 };
 
+// Logout Admin
+export const logoutAdmin = async (): Promise<boolean> => {
+  try {
+    await auth.signOut();
+    await removeSession(true);
+    // console.log('User logged out successfully');
+    return true;
+  } catch (error) {
+    // console.error('Error logging out user: ', error);
+    return false;
+  }
+}

@@ -42,8 +42,9 @@ const contacts: { linkTo: string; contacts: Contact[]; icon: JSX.Element }[] = [
     contacts: [
       {
         name: "Srifoton",
-        email: "srifoton.unsri@gmail.com",
-        url: "https://mail.google.com/mail/u/0/#search/srifoton.unsri%40gmail.com?compose=DmwnWrRmTNnttBKtFNGgTrkqtpcSJqnCMQVrznpzczsxMgWsxSsxFbhDGCpDlxcNrNRWFnQMfrFL",
+        email: "srifoton.unsri23@gmail.com",
+        // url: "https://mail.google.com/mail/u/0/#search/srifoton.unsri%40gmail.com?compose=DmwnWrRmTNnttBKtFNGgTrkqtpcSJqnCMQVrznpzczsxMgWsxSsxFbhDGCpDlxcNrNRWFnQMfrFL",
+        url: "https://mail.google.com/mail/u/0/#search/srifoton.unsri23%40gmail.com?compose=new",
       },
     ],
     icon: <HiOutlineMail />,

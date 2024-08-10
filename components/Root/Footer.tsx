@@ -1,6 +1,5 @@
 import * as React from "react";
 import Link from "next/link";
-import LocalFont from "next/font/local";
 import { socials, contacts, routes } from "@/lib/link";
 
 export default function Footer() {

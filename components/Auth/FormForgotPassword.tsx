@@ -37,7 +37,9 @@ export default function FormForgotPassword() {
       }
       setLoading(false);
     } catch (error) {
-      toast.error("Terjadi kesalahan server saat mengirimkan email reset password.");
+      toast.error(
+        "Terjadi kesalahan server saat mengirimkan email reset password.",
+      );
     }
   }
 
@@ -59,15 +61,13 @@ export default function FormForgotPassword() {
             className="h-12 w-full bg-transparent font-monument text-xs text-transparent/90 hover:bg-background disabled:opacity-60 md:text-lg"
             variant={"outline"}
           >
-            <Link href={"/login"}>Cancel</Link>
+            <Link href={"/login"}>Back</Link>
           </Button>
           <Button
             type="submit"
             className="h-12 w-full bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-lg"
           >
-            {loading ? (
-                <div className="spinner"></div>
-              ) : "Send Reset Email"}
+            {loading ? <div className="spinner"></div> : "Send Reset Email"}
           </Button>
         </div>
       </form>

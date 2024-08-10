@@ -15,7 +15,7 @@ export default function Competition({}: Props) {
     <>
       <OverviewHero
         id="hero-competition"
-        header="competiton"
+        header="competition"
         subheader="srifoton 2024"
         src="/img/gallery1.png"
         onClick={() =>
@@ -23,7 +23,7 @@ export default function Competition({}: Props) {
         }
       ></OverviewHero>
       <div ref={workshopRef}>
-        <Flashcards id="competiton-option" title="competition options">
+        <Flashcards id="competition-option" title="competition options">
           <Flashcard
             title="competitive programming"
             previewTitle="competitive programming"

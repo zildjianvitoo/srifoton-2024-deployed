@@ -13,6 +13,7 @@ import { auth } from "@/lib/firebase";
 import { updateUserPassword } from "@/lib/network/users/userQueries";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
+import { redirect } from "next/navigation";
 
 type dataProps = {
   email?: string;
@@ -39,6 +40,9 @@ export default function FormAccountData() {
         (provider) => provider.providerId === "google.com"
       );
       setIsGoogleUser(isGoogle);
+    } else {
+      toast.error("Anda tidak login!");
+      redirect("/dashboard/logout");
     }
   }, [user]);
 
@@ -86,19 +90,19 @@ export default function FormAccountData() {
           title="Password"
           name="password"
           placeholder="XXXXXXXXX"
-          disabled={isGoogleUser} 
+          disabled={isGoogleUser}
         />
         <PasswordField
           title="New Password"
           name="password1"
           placeholder="Masukkan kata sandi baru"
-          disabled={isGoogleUser} 
+          disabled={isGoogleUser}
         />
 
         <Button
           type="submit"
           className="mt-6 h-12 w-full bg-background/90 font-monument text-lg text-white hover:bg-background disabled:opacity-60 lg:mt-10"
-          disabled={loading || isGoogleUser} 
+          disabled={loading || isGoogleUser}
         >
           {loading ? (
             <div className="spinner"></div>

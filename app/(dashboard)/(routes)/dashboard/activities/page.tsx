@@ -11,6 +11,7 @@ import { getWorkshopsByUserId } from "@/lib/network/workshops/workshopQueries";
 import CardCrook from "@/components/Root/CardCrook.dasboard";
 import { auth } from "@/lib/firebase";
 import { redirect } from "next/navigation";
+import { toast } from "sonner";
 
 export default function ActivitiesPage() {
   const [competitions, setCompetitions] = useState<any[]>([]);
@@ -18,16 +19,16 @@ export default function ActivitiesPage() {
   const [talkshows, setTalkshows] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const user = auth.currentUser;
-
-  if (!user) {
-    redirect("/dashboard/logout");
-  }
-
-  const userId = user.uid;
-
   useEffect(() => {
     async function fetchData() {
+      const user = auth.currentUser;
+
+      if (!user) {
+        toast.error("Anda tidak login!");
+        redirect("/dashboard/logout");
+      }
+
+      const userId = user.uid;
       setLoading(true);
       const mobileLegends = (await getMobileLegendsByUserId(userId)).map(comp => ({ ...comp, type: "Mobile Legends" }));
       const competitiveProgramming = (await getCompetitiveProgrammingByUserId(userId)).map(comp => ({ ...comp, type: "Competitive Programming" }));
@@ -44,8 +45,7 @@ export default function ActivitiesPage() {
 
     fetchData();
 
-  }, [userId]);
-
+  }, []);
 
   return (
     <section className="mt-16 overflow-hidden md:mt-40 lg:absolute lg:right-0 lg:top-28 lg:mt-0 lg:w-4/5 xl:top-40">

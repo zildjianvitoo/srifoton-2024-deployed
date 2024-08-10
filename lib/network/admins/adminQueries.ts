@@ -5,7 +5,6 @@ import { auth, db } from "../../firebase";
 import { Admin } from "../../types/adminTypes";
 import { createSession, removeSession } from "@/lib/session";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { create } from "domain";
 
 // Fetch all admins
 export const fetchAdmins = async (): Promise<Admin[]> => {
@@ -72,6 +71,14 @@ export const loginAdmin = async (email: string, password: string): Promise<boole
       password,
     );
     const user = userCredential.user;
+
+    const adminDocRef = doc(db, "admins", user.uid);
+    const adminDocSnap = await getDoc(adminDocRef);
+
+    if (!adminDocSnap.exists()) {
+      // console.log('Admin not found');
+      return false;
+    }
 
     // if (!user.emailVerified) {
     //   // console.log('Email not verified');

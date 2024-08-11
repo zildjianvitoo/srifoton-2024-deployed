@@ -24,7 +24,7 @@ export default function EmblaCarousel() {
             />
           </figure>
         </div>
-        <div className="embla__slide" style={{ flex: "0 0 25%" }}>
+        <div className="embla__slide">
           <figure>
             <Image
               src={"/img/gallery2.png"}

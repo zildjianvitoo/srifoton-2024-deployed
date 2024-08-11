@@ -42,10 +42,10 @@ export default function Talkshow({}: Props) {
       <div ref={workshopRef}>
         <Flashcards id="talkshow-option" title="talkshow options">
           <Flashcard
-            title="talkshow ticket"
+            title="talkshow offline ticket"
             previewTitle="offline ticket"
             href="talkshow/daftar"
-            price="40.000"
+            price="80.000"
             per="person"
           >
             <p>
@@ -55,20 +55,38 @@ export default function Talkshow({}: Props) {
             </p>
             <Benefits>
               <p>E-Sertifikat</p>
-              <p>Menambah relasi</p>
-              <p>Pengalaman pembuatan proyek</p>
+              <p>Menambah Relasi</p>
+              <p>Pengetahuan Baru</p>
               <p>Snack + Lunch</p>
+            </Benefits>
+          </Flashcard>
+          <Flashcard
+            title="talkshow online ticket"
+            previewTitle="online ticket"
+            href="talkshow/daftar"
+            price="50.000"
+            per="person"
+          >
+            <p>
+              Talkshow SRIFOTON &quot;Effective Ways to Build and Maintain a
+              Personal Brand in the Digital Era&quot; membahas membangun citra
+              positif di media sosial dan dampaknya pada kehidupan profesional.
+            </p>
+            <Benefits>
+              <p>E-Sertifikat</p>
+              <p>Menambah Relasi</p>
+              <p>Pengetahuan Baru</p>
             </Benefits>
           </Flashcard>
           <Flashcard
             title={
               <>
-                workshop online + <br /> talkshow
+                talkshow online + <br /> workshop
               </>
             }
             previewTitle="combo package 1"
             href="talkshow/daftar"
-            price="40.000"
+            price="80.000"
             per="person"
           >
             <p>
@@ -81,19 +99,19 @@ export default function Talkshow({}: Props) {
             <Benefits>
               <p>E-Sertifikat</p>
               <p>Menambah relasi</p>
-              <p>Pengalaman pembuatan proyek</p>
+              <p>Pengalaman Pembuatan Proyek</p>
               <p>Snack + Lunch</p>
             </Benefits>
           </Flashcard>
           <Flashcard
             title={
               <>
-                workshop offline + <br /> talkshow
+                talkshow offline + <br /> workshop
               </>
             }
             previewTitle="combo package 2"
             href="talkshow/daftar"
-            price="40.000"
+            price="80.000"
             per="person"
           >
             <p>
@@ -106,7 +124,7 @@ export default function Talkshow({}: Props) {
             <Benefits>
               <p>E-Sertifikat</p>
               <p>Menambah relasi</p>
-              <p>Pengalaman pembuatan proyek</p>
+              <p>Pengalaman Pembuatan Proyek</p>
               <p>Snack + Lunch</p>
             </Benefits>
           </Flashcard>

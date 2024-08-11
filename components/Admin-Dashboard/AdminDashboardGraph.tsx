@@ -2,6 +2,7 @@
 
 "use client";
 
+import useAuthOrNullRedirect from "@/hooks/useAuthOrNullRedirect";
 import React from "react";
 import {
     BarChart,
@@ -27,6 +28,8 @@ interface AdminDashboardGraphProps {
 }
 
 const AdminDashboardGraph: React.FC<AdminDashboardGraphProps> = ({ data }) => {
+    useAuthOrNullRedirect(true);
+
     return (
         <div style={{ width: '100%', height: '100%' }}>
             <ResponsiveContainer width="100%" height="100%">

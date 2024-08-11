@@ -13,6 +13,8 @@ import useMobileLegends from '@/hooks/useMobileLegends';
 import { Button } from '../ui/button';
 import ExportCSVButton from './ExportCSVButton';
 import ExportSubmissionButton from './ExportSubmissionButton';
+import useAuthOrNullRedirect from '@/hooks/useAuthOrNullRedirect';
+import useAdminPermissionDenied from '@/hooks/useAdminPermissionDenied';
 
 interface CompetitionEntry {
     id?: string;
@@ -33,6 +35,8 @@ const competitionCollections = [
 ];
 
 const CompetitionCollectionsTable: React.FC = () => {
+    useAuthOrNullRedirect(true);
+
     const [searchTerm, setSearchTerm] = useState('');
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
@@ -55,10 +59,12 @@ const CompetitionCollectionsTable: React.FC = () => {
 
     const itemsPerPage = 10;
 
-    const { competitions: cpCompetitions, loading: cpLoading } = useCompetitiveProgramming();
-    const { competitions: uiuxCompetitions, loading: uiuxLoading } = useUiUxDesign();
-    const { competitions: wdCompetitions, loading: wdLoading } = useWebDevelopment();
-    const { competitions: mlCompetitions, loading: mlLoading } = useMobileLegends();
+    const { competitions: cpCompetitions, loading: cpLoading, error: cpError } = useCompetitiveProgramming();
+    const { competitions: uiuxCompetitions, loading: uiuxLoading, error: uiuxError } = useUiUxDesign();
+    const { competitions: wdCompetitions, loading: wdLoading, error: wdError } = useWebDevelopment();
+    const { competitions: mlCompetitions, loading: mlLoading, error: mlError } = useMobileLegends();
+
+    useAdminPermissionDenied(cpError === 'permission-denied' || uiuxError === 'permission-denied' || wdError === 'permission-denied' || mlError === 'permission-denied');
 
     useEffect(() => {
         if (!loadedTabs[currentTab]) {

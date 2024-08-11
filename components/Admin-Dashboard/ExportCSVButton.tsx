@@ -12,6 +12,7 @@ import { MobileLegends } from "@/lib/types/competitions/mobileLegendsTypes";
 import { Talkshow } from "@/lib/types/talkshowTypes";
 import { Workshop } from "@/lib/types/workshopTypes";
 import { Timestamp } from "firebase/firestore";
+import useAuthOrNullRedirect from "@/hooks/useAuthOrNullRedirect";
 
 type CollectionType = CompetitiveProgramming | UiUxDesign | WebDevelopment | MobileLegends | Talkshow | Workshop;
 
@@ -21,6 +22,8 @@ interface ExportCSVButtonProps {
 }
 
 const ExportCSVButton: React.FC<ExportCSVButtonProps> = ({ data, collectionName }) => {
+    useAuthOrNullRedirect(true);
+
     const [loading, setLoading] = useState(false);
 
     const convertToCSV = (data: CollectionType[]) => {

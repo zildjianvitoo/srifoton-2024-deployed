@@ -10,10 +10,7 @@ import { getTalkshowsByUserId } from "@/lib/network/talkshows/talkshowQueries";
 import { getWorkshopsByUserId } from "@/lib/network/workshops/workshopQueries";
 import CardCrook from "@/components/Root/CardCrook.dasboard";
 import { auth } from "@/lib/firebase";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 import { onAuthStateChanged, UserInfo } from "firebase/auth";
-import { User } from "@/lib/types/userTypes";
 
 export default function ActivitiesPage() {
   const [competitions, setCompetitions] = useState<any[]>([]);
@@ -21,12 +18,11 @@ export default function ActivitiesPage() {
   const [talkshows, setTalkshows] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<UserInfo>();
-  const router = useRouter();
 
   useEffect(() => {
     onAuthStateChanged(auth, (userFirebase) => {
       if (userFirebase) {
-        console.log(userFirebase);
+        // console.log(userFirebase);
         setUser(userFirebase);
       }
     });

@@ -2,13 +2,15 @@
 
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, use } from 'react';
 import { doc, updateDoc } from "firebase/firestore";
 import { Timestamp } from "firebase/firestore";
 import { db } from '@/lib/firebase';
 import useTalkshow from '@/hooks/useTalkshow';
 import { Button } from '../ui/button';
 import ExportCSVButton from './ExportCSVButton';
+import useAuthOrNullRedirect from '@/hooks/useAuthOrNullRedirect';
+import useAdminPermissionDenied from '@/hooks/useAdminPermissionDenied';
 
 interface SingleEntry {
   id?: string;
@@ -21,6 +23,8 @@ interface SingleEntry {
 }
 
 const TalkshowCollectionTable: React.FC = () => {
+  useAuthOrNullRedirect(true);
+
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [currentData, setCurrentData] = useState<any[]>([]);
@@ -30,7 +34,9 @@ const TalkshowCollectionTable: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const itemsPerPage = 10;
-  const { talkshows, loading: tsLoading } = useTalkshow();
+  const { talkshows, loading: tsLoading, error: tsError } = useTalkshow();
+
+  useAdminPermissionDenied(tsError === 'permission-denied');
 
   const transformEntry = (entry: any): SingleEntry => ({
     id: entry.id,

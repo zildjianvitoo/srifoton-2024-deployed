@@ -9,6 +9,8 @@ import { db } from '@/lib/firebase';
 import useWorkshop from '@/hooks/useWorkshop';
 import { Button } from '../ui/button';
 import ExportCSVButton from './ExportCSVButton';
+import useAuthOrNullRedirect from '@/hooks/useAuthOrNullRedirect';
+import useAdminPermissionDenied from '@/hooks/useAdminPermissionDenied';
 
 interface SingleEntry {
   id?: string;
@@ -21,6 +23,8 @@ interface SingleEntry {
 }
 
 const WorkshopCollectionTable: React.FC = () => {
+  useAuthOrNullRedirect(true);
+
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [verifying, setVerifying] = useState<string | null>(null);
@@ -30,7 +34,9 @@ const WorkshopCollectionTable: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const itemsPerPage = 10;
-  const { workshops, loading: wsLoading } = useWorkshop();
+  const { workshops, loading: wsLoading, error: wsError } = useWorkshop();
+
+  useAdminPermissionDenied(wsError === 'permission-denied');
 
   const transformEntry = (entry: any): SingleEntry => ({
     id: entry.id,

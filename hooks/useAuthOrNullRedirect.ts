@@ -5,7 +5,7 @@ import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import { auth } from '../lib/firebase';
 
-const useAuthOrNullRedirect = () => {
+const useAuthOrNullRedirect = (isAdmin: boolean) => {
   const [user, setUser] = useState(auth.currentUser);
   const router = useRouter();
 
@@ -13,14 +13,14 @@ const useAuthOrNullRedirect = () => {
     const unsubscribe = auth.onAuthStateChanged((currentUser) => {
       if (!currentUser) {
         toast.error('Anda tidak login!');
-        router.push('/dashboard/logout');
+        router.push(isAdmin ? '/admin-dashboard/logout' : '/dashboard/logout');
       } else {
         setUser(currentUser);
       }
     });
 
     return () => unsubscribe();
-  }, [router]);
+  }, [isAdmin, router]);
 
   return user;
 };

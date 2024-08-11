@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { fetchAllSegmentsData } from "@/lib/network/segments/segmentQueries";
 import { SegmentData } from "@/lib/types/segmentDataTypes";
+import { FirebaseError } from "firebase/app";
 
 const useSegmentData = () => {
   const [data, setData] = useState<SegmentData | null>(null);
@@ -14,16 +15,24 @@ const useSegmentData = () => {
 
     const fetchData = async () => {
       try {
-        setLoading(true);  // Ensure loading state is true before fetching
+        setLoading(true);  
         const segmentData: SegmentData = await fetchAllSegmentsData();
         if (isMounted) {
           setData(segmentData);
         }
       } catch (error) {
-        // console.error("Error fetching segment data:", error);
         if (isMounted) {
-          setError("Failed to load data");
+          if (error instanceof FirebaseError) {
+            if (error.code === 'permission-denied') {
+              setError("permission-denied");
+            } else {
+              setError("Failed to load data");
+            }
+          } else {
+            setError("An unexpected error occurred.");
+          }
         }
+        console.error("Error fetching segment data:", error);
       } finally {
         if (isMounted) {
           setLoading(false);

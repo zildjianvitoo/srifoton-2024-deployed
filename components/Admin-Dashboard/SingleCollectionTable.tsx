@@ -9,6 +9,8 @@ import { db } from '@/lib/firebase';
 import useTalkshow from '@/hooks/useTalkshow';
 import useWorkshop from '@/hooks/useWorkshop';
 import { Button } from '../ui/button';
+import useAuthOrNullRedirect from '@/hooks/useAuthOrNullRedirect';
+import useAdminPermissionDenied from '@/hooks/useAdminPermissionDenied';
 
 interface SingleEntry {
   id?: string;
@@ -25,6 +27,8 @@ interface SingleCollectionTableProps {
 }
 
 const SingleCollectionTable: React.FC<SingleCollectionTableProps> = ({ collectionType }) => {
+  useAuthOrNullRedirect(true);
+
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [verifying, setVerifying] = useState<string | null>(null);
@@ -34,8 +38,10 @@ const SingleCollectionTable: React.FC<SingleCollectionTableProps> = ({ collectio
 
   const itemsPerPage = 10;
 
-  const { talkshows, loading: tsLoading } = useTalkshow();
-  const { workshops, loading: wsLoading } = useWorkshop();
+  const { talkshows, loading: tsLoading, error: tsError } = useTalkshow();
+  const { workshops, loading: wsLoading, error: wsError } = useWorkshop();
+
+  useAdminPermissionDenied(tsError === 'permission-denied' || wsError === 'permission-denied');
 
   const transformEntry = (entry: any): SingleEntry => ({
     id: entry.id,

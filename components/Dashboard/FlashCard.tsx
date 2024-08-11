@@ -35,7 +35,7 @@ export default function FlashCard({
   const [submissionUrl, setSubmissionUrl] = useState<string | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const user = useAuthOrNullRedirect();
+  const user = useAuthOrNullRedirect(false);
 
   useEffect(() => {
     const fetchSubmission = async () => {

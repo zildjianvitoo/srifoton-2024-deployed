@@ -6,9 +6,15 @@ import React, { useEffect } from "react";
 import SectionContent from "./SectionContent";
 import AdminDashboardGraph from "./AdminDashboardGraph";
 import useSegmentData from "@/hooks/useSegmentData";
+import useAuthOrNullRedirect from "@/hooks/useAuthOrNullRedirect";
+import useAdminPermissionDenied from "@/hooks/useAdminPermissionDenied";
 
 const CategorizedGraph = () => {
+    useAuthOrNullRedirect(true);
+
     const { data, loading, error } = useSegmentData();
+
+    useAdminPermissionDenied(error === "permission-denied");
 
     // useEffect(() => {
     //     console.log(data);

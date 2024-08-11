@@ -22,7 +22,7 @@ const formSchema = z.object({
 });
 
 export default function FormAccountData() {
-  const user = useAuthOrNullRedirect();
+  const user = useAuthOrNullRedirect(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [isGoogleUser, setIsGoogleUser] = useState(false);

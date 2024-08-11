@@ -8,6 +8,7 @@ import { saveAs } from 'file-saver';
 import { UiUxDesign } from '@/lib/types/competitions/uiUxDesignTypes';
 import { WebDevelopment } from '@/lib/types/competitions/webDevelopmentTypes';
 import { Button } from "../ui/button";
+import useAuthOrNullRedirect from "@/hooks/useAuthOrNullRedirect";
 
 type SubmissionType = UiUxDesign | WebDevelopment;
 
@@ -17,6 +18,8 @@ interface ExportSubmissionButtonProps {
 }
 
 const ExportSubmissionButton: React.FC<ExportSubmissionButtonProps> = ({ data, collectionName }) => {
+    useAuthOrNullRedirect(true);
+
     const [loading, setLoading] = useState(false);
 
     const handleExport = async () => {

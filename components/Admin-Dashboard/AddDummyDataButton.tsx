@@ -2,11 +2,14 @@
 
 "use client";
 
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { addDummyData, deleteAllDummyData } from "../../lib/network/dummy/addDummyData"; // Adjust the import according to your project structure
 import { Button } from "../ui/button";
+import useAuthOrNullRedirect from "@/hooks/useAuthOrNullRedirect";
 
 const AddDummyDataButton: React.FC = () => {
+    useAuthOrNullRedirect(true);
+
     const [loading, setLoading] = useState(false);
 
     const handleAddDummyData = async () => {

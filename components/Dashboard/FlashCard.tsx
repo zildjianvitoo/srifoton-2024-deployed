@@ -7,14 +7,13 @@ import { storage, auth, db } from "@/lib/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import {
   collection,
-  doc,
   getDocs,
   query,
   updateDoc,
   where,
 } from "firebase/firestore";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
+import useAuthOrNullRedirect from "@/hooks/useAuthOrNullRedirect";
 
 type Props = {
   title?: string;
@@ -36,16 +35,10 @@ export default function FlashCard({
   const [submissionUrl, setSubmissionUrl] = useState<string | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const router = useRouter();
+  const user = useAuthOrNullRedirect();
 
   useEffect(() => {
     const fetchSubmission = async () => {
-      const user = auth.currentUser;
-      if (!user) {
-        toast.error("Anda tidak login!");
-        router.push("/dashboard/logout");
-      }
-
       let collectionName;
       if (title === "UI/UX Design") {
         collectionName = "ui_ux_designs";
@@ -67,7 +60,7 @@ export default function FlashCard({
     };
 
     fetchSubmission();
-  }, [title]);
+  }, [title, user?.uid]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];

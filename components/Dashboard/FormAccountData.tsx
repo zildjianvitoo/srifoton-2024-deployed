@@ -13,6 +13,7 @@ import { auth } from "@/lib/firebase";
 import { updateUserPassword } from "@/lib/network/users/userQueries";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
+import useAuthOrNullRedirect from "@/hooks/useAuthOrNullRedirect";
 
 const formSchema = z.object({
   email: z.string().min(1).max(50).optional(),
@@ -21,7 +22,7 @@ const formSchema = z.object({
 });
 
 export default function FormAccountData() {
-  const user = auth.currentUser;
+  const user = useAuthOrNullRedirect();
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [isGoogleUser, setIsGoogleUser] = useState(false);

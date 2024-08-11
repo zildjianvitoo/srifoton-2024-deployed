@@ -71,7 +71,7 @@ export default function Competition({}: Props) {
             previewTitle="web development"
             href="competition/web-development/daftar"
             infoHref="competition/web-development"
-            price="80.000"
+            price="60.000"
             per="team"
           >
             <p>

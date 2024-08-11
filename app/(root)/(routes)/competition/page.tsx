@@ -105,8 +105,8 @@ export default function Competition({}: Props) {
               pertandingan. Babak <span className="font-poppins">8</span> besar
               diawasi oleh wasit. Pada babak semifinal, pertandingan berlanjut
               hingga satu tim meraih tiga kemenangan. Di babak final, tim yang
-              lolos bertanding dalam format best-of-five, dan tim pertama yang
-              meraih tiga kemenangan menjadi pemenang.
+              lolos bertanding dalam format best-of-three, dan tim pertama yang
+              meraih dua kemenangan menjadi pemenang.
             </p>
           </Flashcard>
         </Flashcards>

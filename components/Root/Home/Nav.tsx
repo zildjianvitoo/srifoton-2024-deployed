@@ -36,7 +36,7 @@ export default function Nav() {
   return (
     <nav
       id="navbar"
-      className="sticky top-0 z-50 flex items-center justify-between bg-background px-8 py-5 text-primary md:px-12 lg:px-20 xl:px-[7rem]"
+      className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between bg-background px-8 py-5 text-primary md:px-12 lg:px-20 xl:px-[7rem]"
     >
       <Link href="/" className="flex items-center">
         <div className="me-2 aspect-[90/56] w-[50px] md:me-3 md:w-[70px] lg:me-5 xl:me-7 xl:w-[90px]">
@@ -82,7 +82,9 @@ export default function Nav() {
                 </li>
                 <li className="my-5 text-left" key={5}>
                   <SheetClose asChild>
-                    <Link href={user ? "/dashboard/account-data" : "/login"}>{user ? "Dashboard" : "Login"}</Link>
+                    <Link href={user ? "/dashboard/account-data" : "/login"}>
+                      {user ? "Dashboard" : "Login"}
+                    </Link>
                   </SheetClose>
                 </li>
               </ul>

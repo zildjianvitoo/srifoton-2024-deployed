@@ -21,11 +21,14 @@ export default function WebDevelopmentInfo({}: Props) {
         card2title="Keterampilan Teknis"
         card2content="mengembangkan soft skills seperti manajemen waktu, komunikasi, dan presentasi."
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.
-        Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
-        mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis
-        tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non
-        suscipit magna interdum eu.
+        Web Development adalah cabang lomba dalam Srifoton yang diselenggarakan
+        oleh HMIF Universitas Sriwijaya. Lomba ini menguji kemampuan peserta
+        dalam berkreasi dan berinovasi melalui pembuatan website untuk
+        menyelesaikan masalah. Dengan tema "Future Web: Developing Sustainable
+        Digital Solutions," peserta diajak mengembangkan solusi digital yang
+        berkontribusi pada salah satu atau lebih dari 17 Tujuan Pembangunan
+        Berkelanjutan (SDG) PBB. Peserta diharapkan menciptakan inovasi web yang
+        membantu mengatasi tantangan global berdasarkan SDG tersebut.
       </InfoHero>
       <Timeline title="competition timeline">
         <TimelineCard span="23 Sept - 20 Augs">

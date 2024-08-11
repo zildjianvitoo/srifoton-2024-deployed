@@ -21,11 +21,14 @@ export default function ESportInfo({}: Props) {
         card2title="Pengalaman Kompetitif"
         card2content="Memberikan pengalaman menghadapi tekanan dan tantangan"
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.
-        Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
-        mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis
-        tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non
-        suscipit magna interdum eu.
+        Esport Competition adalah kompetisi Mobile Legends dengan tujuan utama
+        menghancurkan turret utama lawan untuk menang. Kompetisi ini terdiri
+        dari tiga babak. Pada babak penyisihan, 32 dan 16 besar berlangsung
+        tanpa wasit, dan kapten tim harus mengirimkan screenshot hasil
+        pertandingan. Babak 8 besar diawasi oleh wasit. Pada babak semifinal,
+        pertandingan berlanjut hingga satu tim meraih tiga kemenangan. Di babak
+        final, tim yang lolos bertanding dalam format best-of-three, dan tim
+        pertama yang meraih dua kemenangan menjadi pemenang.
       </InfoHero>
       <Timeline title="competition timeline">
         <TimelineCard span="23 Sept - 20 Augs">

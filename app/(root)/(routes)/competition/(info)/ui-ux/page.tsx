@@ -21,11 +21,15 @@ export default function UIUXInfo({}: Props) {
         card2title="Inovasi dan Kreativitas"
         card2content="Mengembangkan pola pikir yang inovatif dan kreatif"
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.
-        Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
-        mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis
-        tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non
-        suscipit magna interdum eu.
+        UI/UX Design adalah proses pembuatan antarmuka yang mengutamakan
+        keindahan dan pengalaman pengguna, bertujuan membuat situs web atau
+        aplikasi lebih menarik dan memuaskan. Kompetisi ini terdiri dari dua
+        babak: penyisihan, di mana peserta mengirimkan desain sesuai format yang
+        ditentukan, dan final, di mana peserta yang lolos seleksi juri
+        mempresentasikan desainnya melalui video conference. Tema kompetisi
+        UI/UX Design SRIFOTON 2024 adalah “Digital Innovation for a Sustainable
+        Future,” dengan fokus pada desain di bidang ekonomi, pendidikan, atau
+        lingkungan.
       </InfoHero>
       <Timeline title="competition timeline">
         <TimelineCard span="23 Sept - 20 Augs">

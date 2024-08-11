@@ -21,11 +21,15 @@ export default function CompetitiveProgrammingInfo({}: Props) {
         card2title="Problem Solving"
         card2content="Melatih kemampuan untuk memecahkan masalah secara efektif dan efisien"
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.
-        Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
-        mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis
-        tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non
-        suscipit magna interdum eu.
+        Competitive Programming adalah sebuah kompetisi yang menantang peserta
+        untuk memecahkan masalah-masalah kompleks menggunakan kemampuan
+        pemrograman mereka. Kompetisi ini biasanya mencakup serangkaian
+        tantangan yang memerlukan pemahaman struktur data, logika matematika,
+        dan kemampuan problem-solving yang efektif. Dalam lomba ini, peserta
+        bisa berpartisipasi secara individu atau dalam tim dan harus
+        menyelesaikan berbagai masalah dalam waktu yang telah ditentukan. Setiap
+        masalah memiliki tingkat kesulitan yang bervariasi dan menguji berbagai
+        aspek dari kemampuan pemrograman.
       </InfoHero>
       <Timeline title="competition timeline">
         <TimelineCard span="23 Sept - 20 Augs">

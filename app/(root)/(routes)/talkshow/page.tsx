@@ -6,11 +6,14 @@ import { Flashcard, Flashcards, Benefits } from "@/components/Root/Flashcards";
 import { QNA, SpeechBubble } from "@/components/Root/QNA";
 import { Timeline, TimelineCard } from "@/components/Root/Timeline";
 import { useRef } from "react";
+import useComingSoon from "@/hooks/useComingSoon";
 
 type Props = {};
 
 export default function Talkshow({}: Props) {
   const workshopRef = useRef<HTMLDivElement>(null);
+
+  useComingSoon(true);
 
   return (
     <div className="flex flex-col gap-[200px]">

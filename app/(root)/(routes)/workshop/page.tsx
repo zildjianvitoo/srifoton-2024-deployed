@@ -7,11 +7,14 @@ import { QNA, SpeechBubble } from "@/components/Root/QNA";
 import { Timeline, TimelineCard } from "@/components/Root/Timeline";
 import React from "react";
 import { useRef } from "react";
+import useComingSoon from "@/hooks/useComingSoon";
 
 type Props = {};
 
 export default function Workshop({}: Props) {
   const workshopRef = useRef<HTMLDivElement>(null);
+
+  useComingSoon(true);
 
   return (
     <>

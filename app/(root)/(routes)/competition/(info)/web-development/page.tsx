@@ -83,12 +83,12 @@ export default function WebDevelopmentInfo({}: Props) {
         WA1="0812-7114-8877"
         Line1="darrell.s"
         WaHref1="https://api.whatsapp.com/send?phone=6281271148877&text=Halo"
-        LineHref1=""
+        LineHref1="https://line.me/R/ti/p/darrell.s"
         contactPerson2="Muhammad Raffi Tri Ariady"
         WA2="0877-6193-2815"
         Line2="raffi3ariady"
         WaHref2="https://api.whatsapp.com/send?phone=6287761932815&text=Halo"
-        LineHref2=""
+        LineHref2="https://line.me/R/ti/p/raffi3ariady"
       />
     </>
   );

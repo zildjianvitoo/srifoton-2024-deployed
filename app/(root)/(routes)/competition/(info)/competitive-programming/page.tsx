@@ -76,7 +76,7 @@ export default function CompetitiveProgrammingInfo({}: Props) {
         </SpeechBubble>
       </QNA>
       <ContactPerson
-        contactPerson1="rakha abhirama"
+        contactPerson1="Rakha Abhirama"
         WA1="0882-8638-5975"
         Line1="rakha1604"
         WaHref1="https://api.whatsapp.com/send?phone=6288286385975&text=Halo"

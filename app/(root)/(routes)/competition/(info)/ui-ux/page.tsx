@@ -15,7 +15,7 @@ export default function UIUXInfo({}: Props) {
         subheader="srifoton 2024"
         src="/img/ui-ux.png"
         href="ui-ux/daftar"
-        guideHref="#"
+        guideHref="https://drive.google.com/file/d/1-6SXd7rOwtso1FWRVKWRBn6JA2C2Gckn/view?usp=sharing"
         card1title="Keterampilan Desain"
         card1content="Mengasah keterampilan desain, prinsip, estetika, fungsionalitas."
         card2title="Inovasi dan Kreativitas"

@@ -52,6 +52,8 @@ export default function ContactPerson({
               <FaWhatsapp className="text-lg sm:text-xl lg:text-2xl" />
               <a
                 href={WaHref1}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`${poppins.className} pb-2 text-start text-sm hover:border-b-2 sm:text-[1.823vw] lg:pt-[0.3125vw]`}
               >
                 {WA1}
@@ -61,6 +63,8 @@ export default function ContactPerson({
               <RiLineLine className="text-lg sm:text-xl lg:text-2xl" />
               <a
                 href={LineHref1}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`${poppins.className} pb-2 text-start text-sm hover:border-b-2 sm:text-[1.823vw] lg:pt-[0.3125vw]`}
               >
                 {Line1}
@@ -77,6 +81,8 @@ export default function ContactPerson({
               <FaWhatsapp className="text-lg sm:text-xl lg:text-2xl" />
               <a
                 href={WaHref2}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`${poppins.className} pb-2 text-start text-sm hover:border-b-2 sm:text-[1.823vw] lg:pt-[0.3125vw]`}
               >
                 {WA2}
@@ -86,6 +92,8 @@ export default function ContactPerson({
               <RiLineLine className="text-lg sm:text-xl lg:text-2xl" />
               <a
                 href={LineHref2}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`${poppins.className} pb-2 text-start text-sm hover:border-b-2 sm:text-[1.823vw] lg:pt-[0.3125vw]`}
               >
                 {Line2}

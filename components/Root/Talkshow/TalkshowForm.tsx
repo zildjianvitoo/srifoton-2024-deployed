@@ -39,6 +39,7 @@ import { Button } from "@/components/ui/button";
 import "@/lib/utils/zodCustomError";
 import useToastErrorNoUser from "@/hooks/useToastErrorNoUser";
 import { useState } from "react";
+import useComingSoon from "@/hooks/useComingSoon";
 
 export const talkshowRegistrationSchema = z.object({
   name: z.string().min(1).max(50),
@@ -58,6 +59,7 @@ export const talkshowRegistrationSchema = z.object({
 type Props = {};
 
 export default function TalkshowForm({ }: Props) {
+  useComingSoon(true);
   useToastErrorNoUser();
 
   const [isSuccess, setIsSuccess] = useState(false);

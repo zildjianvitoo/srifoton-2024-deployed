@@ -11,9 +11,9 @@ import useComingSoon from "@/hooks/useComingSoon";
 type Props = {};
 
 export default function Talkshow({}: Props) {
-  const workshopRef = useRef<HTMLDivElement>(null);
-
   useComingSoon(true);
+
+  const workshopRef = useRef<HTMLDivElement>(null);
 
   return (
     <div className="flex flex-col gap-[200px]">

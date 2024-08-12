@@ -24,11 +24,12 @@ export default function WebDevelopmentInfo({}: Props) {
         Web Development adalah cabang lomba dalam Srifoton yang diselenggarakan
         oleh HMIF Universitas Sriwijaya. Lomba ini menguji kemampuan peserta
         dalam berkreasi dan berinovasi melalui pembuatan website untuk
-        menyelesaikan masalah. Dengan tema "Future Web: Developing Sustainable
-        Digital Solutions," peserta diajak mengembangkan solusi digital yang
-        berkontribusi pada salah satu atau lebih dari 17 Tujuan Pembangunan
-        Berkelanjutan (SDG) PBB. Peserta diharapkan menciptakan inovasi web yang
-        membantu mengatasi tantangan global berdasarkan SDG tersebut.
+        menyelesaikan masalah. Dengan tema &quot;Future Web: Developing
+        Sustainable Digital Solutions,&quot; peserta diajak mengembangkan solusi
+        digital yang berkontribusi pada salah satu atau lebih dari 17 Tujuan
+        Pembangunan Berkelanjutan (SDG) PBB. Peserta diharapkan menciptakan
+        inovasi web yang membantu mengatasi tantangan global berdasarkan SDG
+        tersebut.
       </InfoHero>
       <Timeline title="competition timeline">
         <TimelineCard span="23 Sept - 20 Augs">

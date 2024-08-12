@@ -27,9 +27,9 @@ export default function UIUXInfo({}: Props) {
         babak: penyisihan, di mana peserta mengirimkan desain sesuai format yang
         ditentukan, dan final, di mana peserta yang lolos seleksi juri
         mempresentasikan desainnya melalui video conference. Tema kompetisi
-        UI/UX Design SRIFOTON 2024 adalah “Digital Innovation for a Sustainable
-        Future,” dengan fokus pada desain di bidang ekonomi, pendidikan, atau
-        lingkungan.
+        UI/UX Design SRIFOTON 2024 adalah &quot;Digital Innovation for a
+        Sustainable Future,&quot; dengan fokus pada desain di bidang ekonomi,
+        pendidikan, atau lingkungan.
       </InfoHero>
       <Timeline title="competition timeline">
         <TimelineCard span="23 Sept - 20 Augs">

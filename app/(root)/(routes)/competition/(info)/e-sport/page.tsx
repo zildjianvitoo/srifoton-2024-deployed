@@ -85,9 +85,13 @@ export default function ESportInfo({}: Props) {
         contactPerson1="Muhammad Alif Berri Rossi"
         WA1="0812-7325-8332"
         Line1="zenleo10"
+        WaHref1="https://api.whatsapp.com/send?phone=6281273258332&text=Halo"
+        LineHref1="https://line.me/R/ti/p/zenleo10"
         contactPerson2="M. Rajab Fadhly Hartawibawa"
         WA2="0812-2956-4138"
         Line2="muhammadrajabfadh"
+        WaHref2="https://api.whatsapp.com/send?phone=6281229564138&text=Halo"
+        LineHref2="https://line.me/R/ti/p/muhammadrajabfadh"
       />
     </>
   );

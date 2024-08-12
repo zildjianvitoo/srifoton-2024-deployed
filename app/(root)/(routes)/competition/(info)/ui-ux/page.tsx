@@ -82,9 +82,13 @@ export default function UIUXInfo({}: Props) {
         contactPerson1="kian fikram ayyubi"
         WA1="0878-9781-4879"
         Line1="fikramayyubi30"
+        WaHref1="https://api.whatsapp.com/send?phone=6287897814879&text=Halo"
+        LineHref1="https://line.me/R/ti/p/fikramayyubi30"
         contactPerson2="Nazwa Abelia Nabira"
         WA2="0853-8181-3122"
         Line2="nxabell"
+        WaHref2="https://api.whatsapp.com/send?phone=6285381813122&text=Halo"
+        LineHref2="https://line.me/R/ti/p/nxabell"
       />
     </>
   );

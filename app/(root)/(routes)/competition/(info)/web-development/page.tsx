@@ -32,30 +32,12 @@ export default function WebDevelopmentInfo({}: Props) {
         tersebut.
       </InfoHero>
       <Timeline title="competition timeline">
-        <TimelineCard span="23 Sept - 20 Augs">
-          Open Registration Competition
+        <TimelineCard span="10 Aug - 20 Oct">
+          Open Competition Registration
         </TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">
-          Open Registration Competition
-        </TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">
-          Open Registration Competition
-        </TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">
-          Open Registration Competition
-        </TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">
-          Open Registration Competition
-        </TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">
-          Open Registration Competition
-        </TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">
-          Open Registration Competition
-        </TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">
-          Open Registration Competition
-        </TimelineCard>
+        <TimelineCard span="14 Sep">Open Ceremony</TimelineCard>
+        <TimelineCard span="12 Oct">Workshop</TimelineCard>
+        <TimelineCard span="13 Oct">Talkshow & Closing Ceremony</TimelineCard>
       </Timeline>
       <QNA id="competition-qna" title="competition qna">
         <SpeechBubble

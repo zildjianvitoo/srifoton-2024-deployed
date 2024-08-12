@@ -17,15 +17,13 @@ export default function Home() {
       </div>
       <Gallery />
       <Mascot />
-      <Timeline title="event timeline" >
-        <TimelineCard span="23 Sept - 20 Augs">Open</TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">Open Registration</TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition for the</TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition for the given Competition</TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">Open Registration Competition</TimelineCard>
+      <Timeline title="event timeline">
+        <TimelineCard span="10 Aug - 20 Oct">
+          Open Competition Registration
+        </TimelineCard>
+        <TimelineCard span="14 Sep">Open Ceremony</TimelineCard>
+        <TimelineCard span="12 Oct">Workshop</TimelineCard>
+        <TimelineCard span="13 Oct">Talkshow & Closing Ceremony</TimelineCard>
       </Timeline>
       <Categories />
       <Benefits />

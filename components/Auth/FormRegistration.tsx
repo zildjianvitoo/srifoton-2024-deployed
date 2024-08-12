@@ -25,11 +25,13 @@ const formSchema = z
     email: z.string().email(),
     password: z
       .string()
-      .regex(/^.{8,20}$/)
-      .regex(/(?=.*[A-Z])/)
-      .regex(/(?=.*[a-z])/)
-      .regex(/(?=.*\d)/),
-    password1: z.string().min(1).max(20),
+      .min(8)
+      .regex(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/, {
+        message:
+          "Password harus setidaknya mengandung 1 huruf besar, 1 huruf kecil, dan 1 angka",
+      })
+      .max(50),
+    password1: z.string().min(1).max(50),
   })
   .refine(({ password, password1 }) => password === password1, {
     path: ["password1"],

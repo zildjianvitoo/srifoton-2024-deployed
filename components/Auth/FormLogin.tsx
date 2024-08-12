@@ -32,10 +32,12 @@ const formSchema = z.object({
   email: z.string().email(),
   password: z
     .string()
-    .regex(/^.{8,20}$/)
-    .regex(/(?=.*[A-Z])/)
-    .regex(/(?=.*[a-z])/)
-    .regex(/(?=.*\d)/),
+    .min(8)
+    .regex(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/, {
+      message:
+        "Password harus setidaknya mengandung 1 huruf besar, 1 huruf kecil, dan 1 angka",
+    })
+    .max(50),
 });
 
 export default function FormLogin() {

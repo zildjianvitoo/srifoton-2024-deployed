@@ -51,10 +51,19 @@ export const signInWithGoogle = async (): Promise<boolean> => {
     const result = await signInWithPopup(auth, googleProvider);
     const user = result.user;
     const userRef = doc(db, "users", user.uid);
-    await updateDoc(userRef, {
-      id: user.uid,
-      name: user.displayName,
-    });
+
+    try {
+      await updateDoc(userRef, {
+        id: user.uid,
+        name: user.displayName,
+      });
+    } catch (error) {
+      // console.error("Error updating user details: ", error);
+      await setDoc(userRef, {
+        id: user.uid,
+        name: user.displayName,
+      }); 
+    }
 
     const customToken = await user.getIdToken();
 
@@ -63,7 +72,7 @@ export const signInWithGoogle = async (): Promise<boolean> => {
     console.log("User signed in with Google successfully");
     return true;
   } catch (error) {
-    // console.error('Error signing in with Google: ', error);
+    console.error('Error signing in with Google: ', error);
     return false;
   }
 };

@@ -22,6 +22,7 @@ import { useEffect, useState } from "react";
 import "@/lib/utils/zodCustomError";
 
 import { getUserById, updateUser } from "@/lib/network/users/userQueries";
+import useAuthOrNullRedirect from "@/hooks/useAuthOrNullRedirect";
 
 const phoneRegex = new RegExp(
   /^(0|62|\+62)(8[1-35-9]\d{7,10}|2[124]\d{7,8}|619\d{8}|2(?:1(?:14|500)|2\d{3})\d{3}|61\d{5,8}|(?:2(?:[35][1-4]|6[0-8]|7[1-6]|8\d|9[1-8])|3(?:1|[25][1-8]|3[1-68]|4[1-3]|6[1-3568]|7[0-469]|8\d)|4(?:0[1-589]|1[01347-9]|2[0-36-8]|3[0-24-68]|43|5[1-378]|6[1-5]|7[134]|8[1245])|5(?:1[1-35-9]|2[25-8]|3[124-9]|4[1-3589]|5[1-46]|6[1-8])|6(?:[25]\d|3[1-69]|4[1-6])|7(?:02|[125][1-9]|[36]\d|4[1-8]|7[0-36-9])|9(?:0[12]|1[013-8]|2[0-479]|5[125-8]|6[23679]|7[159]|8[01346]))\d{5,8})/,
@@ -37,7 +38,7 @@ const formSchema = z.object({
 });
 
 export default function FormPersonalData() {
-  const user = auth.currentUser;
+  const user = useAuthOrNullRedirect(false);
   const userId = user?.uid ?? "";
 
   const [loading, setLoading] = useState(false);
@@ -56,15 +57,16 @@ export default function FormPersonalData() {
 
   useEffect(() => {
     async function fetchUserData() {
-      const user = await getUserById(userId);
-      if (user) {
+      
+      const userData = await getUserById(userId);
+      if (userData) {
         form.reset({
-          name: user.name,
-          college: user.college,
-          student_id: user.student_id,
-          phone_number: user.phone_number,
-          gender: user.gender === "female" ? "female" : "male",
-          instagram: user.instagram,
+          name: userData.name,
+          college: userData.college,
+          student_id: userData.student_id,
+          phone_number: userData.phone_number,
+          gender: userData.gender === "female" ? "female" : "male",
+          instagram: userData.instagram,
         });
       }
     }

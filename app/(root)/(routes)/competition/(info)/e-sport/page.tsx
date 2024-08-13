@@ -15,7 +15,7 @@ export default function ESportInfo({}: Props) {
         subheader="srifoton 2024"
         src="/img/e-sport.png"
         href="e-sport/daftar"
-        guideHref="https://drive.google.com/file/d/17Jwve5sXdMzItxY9BgreJMlsJ0K9mvrS/view?usp=sharing"
+        guideHref="https://drive.google.com/file/d/19BZXIaaomaVm6ZrnIrocg_29V4ctZesM/view?usp=sharing"
         card1title="Kerjasama Tim"
         card1content="Meningkatkan kemampuan komunikasi dan kolaborasi"
         card2title="Pengalaman Kompetitif"

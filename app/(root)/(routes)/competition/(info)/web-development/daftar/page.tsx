@@ -5,7 +5,7 @@ export default function WebDevtRegistration() {
     <>
       <CompetitionRegistration
         branch="web development"
-        guideBookLink="https://docs.google.com/document/d/1swBabXBRs5eXkvFAOq0wNT9opBVur_4-A4BgigDt-90/edit?usp=sharing"
+        guideBookLink="https://drive.google.com/file/d/1pldEDinNgPn8HB4LkxkwJ1XdSkkj3mkl/view?usp=sharing"
       />
     </>
   );

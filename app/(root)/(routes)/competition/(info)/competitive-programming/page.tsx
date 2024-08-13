@@ -15,7 +15,7 @@ export default function CompetitiveProgrammingInfo({}: Props) {
         subheader="srifoton 2024"
         src="/img/comp-programming.png"
         href="competitive-programming/daftar"
-        guideHref="https://drive.google.com/file/d/1lvrXiYS9WMqKfJYhk51wGU-4W-E6EbBc/view?usp=sharing"
+        guideHref="https://drive.google.com/file/d/1fSWiiTC6zMO_0Q-xtFQVI-zh1oQhO23V/view?usp=sharing"
         card1title="Algoritma dan Struktur Data"
         card1content="Memperdalam pengetahuan teknis dan keterampilan pemrograman"
         card2title="Problem Solving"

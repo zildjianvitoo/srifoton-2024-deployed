@@ -5,7 +5,7 @@ export default function UIUXtRegistration() {
     <>
       <CompetitionRegistration
         branch="ui/ux design"
-        guideBookLink="https://docs.google.com/document/d/1lK2H4Uk4oLfyTIiwnXfyDLzwlc3_Q3nCuU48bGWjlzs/edit?usp=drivesdk"
+        guideBookLink="https://drive.google.com/file/d/1k92r-cLo2EBWOBd_Ig1_IIe_uK6xs9w6/view?usp=sharing"
       />
     </>
   );

@@ -69,10 +69,10 @@ export const signInWithGoogle = async (): Promise<boolean> => {
 
     await createSession(user.uid, customToken, false);
 
-    console.log("User signed in with Google successfully");
+    // console.log("User signed in with Google successfully");
     return true;
   } catch (error) {
-    console.error('Error signing in with Google: ', error);
+    // console.error('Error signing in with Google: ', error);
     return false;
   }
 };

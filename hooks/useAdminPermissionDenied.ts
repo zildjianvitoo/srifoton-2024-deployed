@@ -9,7 +9,7 @@ const useAdminPermissionDenied = (isDenied: boolean) => {
 
     useEffect(() => {
         if (isDenied) {
-            toast.error("Pencurian cookies terdeteksi! Tidak semudah itu, kawan. Akses ditolak.");
+            toast.error("Pencurian cookies terdeteksi! Tidak semudah itu, Kawan. Akses ditolak.");
             router.push("/admin-dashboard/logout");
         } else {
             return;

@@ -28,7 +28,7 @@ export default function FormAccountData() {
   const [isGoogleUser, setIsGoogleUser] = useState(false);
 
   useEffect(() => {
-    console.log(user);
+    // console.log(user);
     if (user) {
       const isGoogle = user.providerData.some(
         (provider) => provider.providerId === "google.com",

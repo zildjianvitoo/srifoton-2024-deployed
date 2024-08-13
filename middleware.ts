@@ -67,6 +67,20 @@ export default async function middleware(request: NextRequest) {
   // console.log("Admin session:", adminSession);
   // console.log("Admin token:", adminToken);
 
+  if (request.nextUrl.pathname.startsWith("/dashboard") && (!userSession || !userToken)) {
+    const absoluteURL = new URL("/login", request.nextUrl.origin);
+    if (isValidRedirectionPath(absoluteURL.pathname)) {
+      return NextResponse.redirect(absoluteURL.toString());
+    }
+  }
+
+  if (request.nextUrl.pathname.startsWith("/admin-dashboard") && (!adminSession || !adminToken)) {
+    const absoluteURL = new URL("/admin-login", request.nextUrl.origin);
+    if (isValidRedirectionPath(absoluteURL.pathname)) {
+      return NextResponse.redirect(absoluteURL.toString());
+    }
+  }
+
   if (
     !userSession &&
     !adminSession &&

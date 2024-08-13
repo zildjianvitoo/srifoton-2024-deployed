@@ -3,7 +3,7 @@
 "use client";
 
 import React, { use, useState } from "react";
-import { addDummyData, deleteAllDummyData } from "../../lib/network/dummy/addDummyData"; // Adjust the import according to your project structure
+import { addDummyData, deleteAllDummyData } from "../../lib/network/dummy/addDummyData";
 import { Button } from "../ui/button";
 import useAuthOrNullRedirect from "@/hooks/useAuthOrNullRedirect";
 

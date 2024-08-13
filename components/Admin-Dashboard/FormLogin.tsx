@@ -7,15 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import FormInput from "@/components/FormInput";
 import { PasswordField } from "../Dashboard/PasswordField";
-import Image from "next/image";
 import Link from "next/link";
 import { Checkbox } from "../ui/checkbox";
-import {
-  signInWithEmail,
-  signInWithGoogle,
-} from "@/lib/network/users/userQueries";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import "@/lib/utils/zodCustomError";
 import { loginAdmin } from "@/lib/network/admins/adminQueries";
@@ -47,8 +41,6 @@ export default function FormLogin() {
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-
-  const router = useRouter();
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setLoading(true);
@@ -101,7 +93,7 @@ export default function FormLogin() {
                 Keep me signed in
               </label>
             </div>
-            <Link href={"/forgot-password"} className="text-xs text-[#737158]">
+            <Link href={"/admin-reset"} className="text-xs text-[#737158]">
               Forgot Password?
             </Link>
           </div>

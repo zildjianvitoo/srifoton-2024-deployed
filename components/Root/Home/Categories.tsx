@@ -37,7 +37,15 @@ export default function Categories() {
           WHAT WE PRESENT
         </h3>
         <div className="flex flex-col items-center gap-[5%] md:flex-row">
-          <div className="z-10 aspect-[585/518] w-2/5 min-w-[40%] bg-primary"></div>
+          <div className="z-10 aspect-[585/518] w-2/5 min-w-[40%] content-center">
+            <Image
+              src={"/img/competition-logo-2.jpg"}
+              alt="benefit-2"
+              width={1000}
+              height={1000}
+              className=""
+            />
+          </div>
           <SectionContent
             header="competititon"
             className="bg-black-300"

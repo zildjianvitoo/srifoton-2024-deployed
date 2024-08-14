@@ -1,3 +1,5 @@
+// Nav.tsx
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -16,22 +18,13 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { routes } from "@/lib/link";
 import Image from "next/image";
-import { auth } from "@/lib/firebase";
-import { User } from "firebase/auth";
+import useUserNav from "@/hooks/useUserNav";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Nav() {
   const pathname = usePathname();
-  const [user, setUser] = useState<User | null>(null);
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setUser(user);
-    });
-
-    return () => unsubscribe();
-  }, []);
+  const user = useUserNav();
 
   return (
     <nav

@@ -29,6 +29,7 @@ export async function createSession(uid: string, token: string, isAdmin: boolean
         cookies().set(ADMIN_SESSION_NAME, signedUid, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
+            expires: 60 * 60 * 24, // 1 day
             maxAge: 60 * 60 * 24, // 1 day
             path: "/",
         });
@@ -36,6 +37,7 @@ export async function createSession(uid: string, token: string, isAdmin: boolean
         cookies().set(ADMIN_COOKIE_NAME, signedToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
+            expires: 60 * 60 * 24, // 1 day
             maxAge: 60 * 60 * 24, // 1 day
             path: "/",
         });
@@ -43,6 +45,7 @@ export async function createSession(uid: string, token: string, isAdmin: boolean
         cookies().set(USER_SESSION_NAME, signedUid, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
+            expires: 60 * 60 * 24, // 1 day
             maxAge: 60 * 60 * 24, // 1 day
             path: "/",
         });
@@ -50,6 +53,7 @@ export async function createSession(uid: string, token: string, isAdmin: boolean
         cookies().set(AUTH_COOKIE_NAME, signedToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
+            expires: 60 * 60 * 24, // 1 day
             maxAge: 60 * 60 * 24, // 1 day
             path: "/",
         });

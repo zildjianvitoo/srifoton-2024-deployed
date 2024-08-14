@@ -1,5 +1,7 @@
 // lib/middleware.ts
 
+"use server";
+
 import { type NextRequest, NextResponse } from "next/server";
 import { unsignCookie } from "@/lib/cryptoUtils";
 
@@ -68,6 +70,11 @@ export default async function middleware(request: NextRequest) {
   // console.log("Admin token:", adminToken);
 
   if (request.nextUrl.pathname.startsWith("/dashboard") && (!userSession || !userToken)) {
+    // if (request.cookies.get(USER_SESSION_NAME)?.value || request.cookies.get(AUTH_COOKIE_NAME)?.value) {
+    //   deleteCookie(NextResponse.next(), USER_SESSION_NAME);
+    //   deleteCookie(NextResponse.next(), AUTH_COOKIE_NAME);
+    // }
+
     const absoluteURL = new URL("/login", request.nextUrl.origin);
     if (isValidRedirectionPath(absoluteURL.pathname)) {
       return NextResponse.redirect(absoluteURL.toString());
@@ -75,6 +82,11 @@ export default async function middleware(request: NextRequest) {
   }
 
   if (request.nextUrl.pathname.startsWith("/admin-dashboard") && (!adminSession || !adminToken)) {
+    // if (request.cookies.get(ADMIN_SESSION_NAME)?.value || request.cookies.get(ADMIN_COOKIE_NAME)?.value) {
+    //   deleteCookie(NextResponse.next(), ADMIN_SESSION_NAME);
+    //   deleteCookie(NextResponse.next(), ADMIN_COOKIE_NAME);
+    // }
+
     const absoluteURL = new URL("/admin-login", request.nextUrl.origin);
     if (isValidRedirectionPath(absoluteURL.pathname)) {
       return NextResponse.redirect(absoluteURL.toString());
@@ -131,6 +143,10 @@ export default async function middleware(request: NextRequest) {
     }
   }
 }
+
+// const deleteCookie = (response: NextResponse, key: string) => {
+//   response.cookies.set(key, "", { expires: new Date(Date.now()) });
+// };
 
 export const config = {
   matcher: [

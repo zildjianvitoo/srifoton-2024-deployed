@@ -32,12 +32,12 @@ export default function UIUXInfo({}: Props) {
         pendidikan, atau lingkungan.
       </InfoHero>
       <Timeline title="competition timeline">
-        <TimelineCard span="10 Aug - 20 Oct">
-          Open Competition Registration
-        </TimelineCard>
-        <TimelineCard span="14 Sep">Open Ceremony</TimelineCard>
-        <TimelineCard span="12 Oct">Workshop</TimelineCard>
-        <TimelineCard span="13 Oct">Talkshow & Closing Ceremony</TimelineCard>
+        <TimelineCard span="10 Aug - 14 Sep">Pendaftaran</TimelineCard>
+        <TimelineCard span="14 Sep">Technical Meeting</TimelineCard>
+        <TimelineCard span="16 Sep - 21 Sep">pengumuman Karya</TimelineCard>
+        <TimelineCard span="30 Sep">Pengumuman Finalis</TimelineCard>
+        <TimelineCard span="05 Oct">Presentasi Final</TimelineCard>
+        <TimelineCard span="12 Oct">Pengumuman </TimelineCard>
       </Timeline>
       <QNA id="competition-qna" title="competition qna">
         <SpeechBubble

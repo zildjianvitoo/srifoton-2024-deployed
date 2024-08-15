@@ -141,6 +141,14 @@ export default function CompetitionRegistration({
   const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
+    if (validBranch === "competitive-programming") {
+      form.unregister("nim_3");
+      form.unregister("name_3");
+      form.unregister("idcard_3");
+      form.unregister("instagram_3");
+      form.unregister("phone_number_3");
+    }
+
     if (validBranch !== "e-sport") {
       form.unregister("nim_4");
       form.unregister("name_4");
@@ -529,41 +537,46 @@ export default function CompetitionRegistration({
                     />
                   </div>
                 </div>
+
                 <div className="mt-8 flex w-full flex-col gap-8 lg:mt-12 lg:flex-row lg:gap-12">
-                  <div className="flex flex-col gap-4 lg:basis-1/2 lg:gap-6">
-                    <h4 className="text-center font-monument text-lg md:text-xl">
-                      Member 3
-                    </h4>
-                    <FormInput
-                      control={form.control}
-                      label={"Name"}
-                      name={"name_3"}
-                      placeholder={"Contoh: Nobita"}
-                    />
-                    <FormInput
-                      control={form.control}
-                      label={"Student ID"}
-                      name={"nim_3"}
-                      placeholder={"Contoh: 09021382227140"}
-                    />
-                    <FormInput
-                      control={form.control}
-                      label={"Phone Number"}
-                      name={"phone_number_3"}
-                      placeholder={"Contoh: 081234567890"}
-                    />
-                    <FormInput
-                      control={form.control}
-                      label={"Instagram"}
-                      name={"instagram_3"}
-                      placeholder={"Contoh: nobita_"}
-                    />
-                    <FormFile
-                      control={form.control}
-                      name={"idcard_3"}
-                      label={"Student Card"}
-                    />
-                  </div>
+                  {validBranch !== "competitive-programming" &&
+                    (
+                      <div className="flex flex-col gap-4 lg:basis-1/2 lg:gap-6">
+                        <h4 className="text-center font-monument text-lg md:text-xl">
+                          Member 3
+                        </h4>
+                        <FormInput
+                          control={form.control}
+                          label={"Name"}
+                          name={"name_3"}
+                          placeholder={"Contoh: Nobita"}
+                        />
+                        <FormInput
+                          control={form.control}
+                          label={"Student ID"}
+                          name={"nim_3"}
+                          placeholder={"Contoh: 09021382227140"}
+                        />
+                        <FormInput
+                          control={form.control}
+                          label={"Phone Number"}
+                          name={"phone_number_3"}
+                          placeholder={"Contoh: 081234567890"}
+                        />
+                        <FormInput
+                          control={form.control}
+                          label={"Instagram"}
+                          name={"instagram_3"}
+                          placeholder={"Contoh: nobita_"}
+                        />
+                        <FormFile
+                          control={form.control}
+                          name={"idcard_3"}
+                          label={"Student Card"}
+                        />
+                      </div>
+                    )
+                  }
 
                   {validBranch === "e-sport" ? (
                     <div className="flex flex-col gap-4 lg:basis-1/2 lg:gap-6">

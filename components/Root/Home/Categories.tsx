@@ -39,7 +39,7 @@ export default function Categories() {
         <div className="flex flex-col items-center gap-[5%] md:flex-row">
           <div className="z-10 aspect-[585/518] w-2/5 min-w-[40%] content-center">
             <Image
-              src={"/img/competition-logo-2.jpg"}
+              src={"/img/competition-logo-2.JPG"}
               alt="benefit-2"
               width={1000}
               height={1000}

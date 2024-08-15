@@ -155,7 +155,7 @@ export const updateUser = async (
 export const logoutUser = async (): Promise<boolean> => {
   try {
     await auth.signOut();
-    await removeSession(false);
+    await removeSession(false, true);
     // console.log('User logged out successfully');
     return true;
   } catch (error) {

@@ -100,7 +100,7 @@ export const loginAdmin = async (email: string, password: string): Promise<boole
 export const logoutAdmin = async (): Promise<boolean> => {
   try {
     await auth.signOut();
-    await removeSession(true);
+    await removeSession(true, true);
     // console.log('User logged out successfully');
     return true;
   } catch (error) {

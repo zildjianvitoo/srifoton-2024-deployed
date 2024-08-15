@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { auth } from "@/lib/firebase";
 import { User } from "firebase/auth";
 import { toast } from "sonner";
+import { removeSession } from "@/lib/session";
 
 const useUserNav = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -17,6 +18,8 @@ const useUserNav = () => {
             setUser(currentUser);
           } else {
             await auth.signOut();
+            await removeSession(true, false);
+            await removeSession(false, false);
             setUser(null);
             toast.error("Sesi Anda telah berakhir. Silakan login kembali.");
           }

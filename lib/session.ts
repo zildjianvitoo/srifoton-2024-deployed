@@ -65,7 +65,7 @@ export async function createSession(uid: string, token: string, isAdmin: boolean
     redirect(isAdmin ? "/admin-dashboard" : "/dashboard/account-data");
 }
 
-export async function removeSession(isAdmin: boolean) {
+export async function removeSession(isAdmin: boolean, isRedirect: boolean) {
     if (isAdmin) {
         cookies().delete(ADMIN_SESSION_NAME);
         cookies().delete(ADMIN_COOKIE_NAME);
@@ -74,5 +74,7 @@ export async function removeSession(isAdmin: boolean) {
         cookies().delete(AUTH_COOKIE_NAME);
     }
 
-    redirect(isAdmin ? "/admin-login" : "/login");
+    if (isRedirect) {
+        redirect(isAdmin ? "/admin-login" : "/login");
+    }
 }

@@ -49,7 +49,7 @@ export async function GET(request: NextRequest) {
     ADMIN_COOKIE_SIGNATURE_KEY_PREVIOUS,
   );
   
-  if ((!userSession && !userToken) && (!adminSession && !adminToken)) {
+  if ((!userSession || !userToken) && (!adminSession || !adminToken)) {
     return NextResponse.json({ error: "Invalid token" }, { status: 403 });
   }
 

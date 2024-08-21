@@ -60,11 +60,11 @@ const routes = [
 
 const waRoutes = [
   {
-    linkTo: "WEB DEVELOPMENT",
+    linkTo: "Web Development",
     address: "https://chat.whatsapp.com/HsAuNnrPenBBjlspHrymvl",
   },
   {
-    linkTo: "UI/UX DESIGN",
+    linkTo: "UI/UX Design",
     address: "https://chat.whatsapp.com/GeMZF1GUKNJ3Q2Ko541W2H",
   },
   {

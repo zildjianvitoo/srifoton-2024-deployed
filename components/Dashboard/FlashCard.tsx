@@ -147,6 +147,8 @@ export default function FlashCard({
     }
   };
 
+  const groupLink = waRoutes.find((route) => route.linkTo === title)?.address;
+
   return (
     <div className="relative flex flex-col space-y-6 overflow-x-hidden border-2 border-black px-4 py-4">
       <h4 className="text-lg text-[#868365]">{title}</h4>
@@ -208,47 +210,14 @@ export default function FlashCard({
             )}
           </div>
         )}
-        <Button className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base">
-          <FaWhatsapp />
-          {}
-          {title === "UI/UX DESIGN" ? (
-            <a
-              href="https://chat.whatsapp.com/GeMZF1GUKNJ3Q2Ko541W2H"
-              target="_blank"
-            >
+        {groupLink && (
+          <Button className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base">
+            <FaWhatsapp />
+            <a href={groupLink} target="_blank" rel="noopener noreferrer">
               Join Group
             </a>
-          ) : (
-            ""
-          )}
-          {title === "E-SPORT" ? (
-            <a
-              href="https://chat.whatsapp.com/C4dN5cSw3mO8vts6coc7Rq"
-              target="_blank"
-            >
-              Join Group
-            </a>
-          ) : (
-            ""
-          )}
-          {title === "WEB DEVELOPMENT" ? (
-            <a
-              href="hhttps://chat.whatsapp.com/HsAuNnrPenBBjlspHrymvl"
-              target="_blank"
-            >
-              Join Group
-            </a>
-          ) : (
-            ""
-          )}
-          {title === "COMPETITIVE PROGRAMMING" ? (
-            <a href="/" target="_blank">
-              Join Group
-            </a>
-          ) : (
-            ""
-          )}
-        </Button>
+          </Button>
+        )}
       </div>
     </div>
   );

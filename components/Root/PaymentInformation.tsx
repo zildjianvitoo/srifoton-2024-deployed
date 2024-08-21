@@ -21,9 +21,9 @@ export default function PaymentInformation() {
             </CopyToClipboard>
           </div>
           <div className="mt-1 flex items-center gap-1">
-            <p>ShopeePay : 085378872674 (a.n Aulia Salsabella)</p>
+            <p>ShopeePay : 085768537580 (a.n Aulia Salsabella)</p>
             <CopyToClipboard
-              text="085378872674"
+              text="085768537580"
               onCopy={() => toast.success("Berhasil copy")}
             >
               <Clipboard size={20} className="cursor-pointer" />

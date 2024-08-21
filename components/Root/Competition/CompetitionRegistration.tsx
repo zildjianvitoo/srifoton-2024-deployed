@@ -248,57 +248,16 @@ export default function CompetitionRegistration({
         return false;
       }
 
-      const [
-        uploadResultProof,
-        uploadResultIdCard1,
-        uploadResultIdCard2,
-        uploadResultIdCard3,
-        uploadResultIdCard4,
-        uploadResultIdCard5,
-      ] = await Promise.all([
-        uploadBytes(
-          ref(
-            storage,
-            `competitions/${validBranch}/${formValues.team_name}/${ulid()}`,
-          ),
-          formValues.proof,
-        ),
-        uploadBytes(
-          ref(
-            storage,
-            `competitions/${validBranch}/${formValues.team_name}/${ulid()}`,
-          ),
-          formValues.idcard_1,
-        ),
-        uploadBytes(
-          ref(
-            storage,
-            `competitions/${validBranch}/${formValues.team_name}/${ulid()}`,
-          ),
-          formValues.idcard_2,
-        ),
-        uploadBytes(
-          ref(
-            storage,
-            `competitions/${validBranch}/${formValues.team_name}/${ulid()}`,
-          ),
-          formValues.idcard_3,
-        ),
-        uploadBytes(
-          ref(
-            storage,
-            `competitions/${validBranch}/${formValues.team_name}/${ulid()}`,
-          ),
-          formValues.idcard_4,
-        ),
-        uploadBytes(
-          ref(
-            storage,
-            `competitions/${validBranch}/${formValues.team_name}/${ulid()}`,
-          ),
-          formValues.idcard_5,
-        ),
-      ]);
+      const uploadFiles = async (file: File | null) => {
+        if (file) {
+          const uploadResult = await uploadBytes(
+            ref(storage, `competitions/${validBranch}/${formValues.team_name}/${ulid()}`),
+            file
+          );
+          return getDownloadURL(uploadResult.ref);
+        }
+        return null;
+      };
 
       const [
         urlProof,
@@ -308,51 +267,67 @@ export default function CompetitionRegistration({
         urlIdCard4,
         urlIdCard5,
       ] = await Promise.all([
-        getDownloadURL(uploadResultProof.ref),
-        getDownloadURL(uploadResultIdCard1.ref),
-        getDownloadURL(uploadResultIdCard2.ref),
-        getDownloadURL(uploadResultIdCard3.ref),
-        getDownloadURL(uploadResultIdCard4.ref),
-        getDownloadURL(uploadResultIdCard5.ref),
+        uploadFiles(formValues.proof),
+        uploadFiles(formValues.idcard_1),
+        uploadFiles(formValues.idcard_2),
+        uploadFiles(formValues.idcard_3),
+        uploadFiles(formValues.idcard_4),
+        uploadFiles(formValues.idcard_5),
       ]);
 
       formValues.proof = urlProof;
       formValues.idcard_1 = urlIdCard1;
-      formValues.idcard_2 = urlIdCard2;
-      formValues.idcard_3 = urlIdCard3;
-      formValues.idcard_4 = urlIdCard4;
-      formValues.idcard_5 = urlIdCard5;
+      formValues.idcard_2 = urlIdCard2 || "";
+      formValues.idcard_3 = urlIdCard3 || "";
+      formValues.idcard_4 = urlIdCard4 || "";
+      formValues.idcard_5 = urlIdCard5 || "";
 
       // Add new document to the relevant collection
+      const { idcard_1, idcard_2, idcard_3, idcard_4, idcard_5, ...restFormValues } = formValues;
+
       if (validBranch === "competitive-programming") {
         await addNewCompetitiveProgramming({
-          ...formValues,
+          ...restFormValues,
           user_id,
           date,
           is_verified,
+          idcard_1,
+          idcard_2,
         });
       } else if (validBranch === "uiux-design") {
         await addNewUiUxDesign({
-          ...formValues,
+          ...restFormValues,
           user_id,
           date,
           is_verified,
+          idcard_1,
+          idcard_2,
+          idcard_3,
         });
       } else if (validBranch === "web-development") {
         await addNewWebDevelopment({
-          ...formValues,
+          ...restFormValues,
           user_id,
           date,
           is_verified,
+          idcard_1,
+          idcard_2,
+          idcard_3,
         });
       } else if (validBranch === "e-sport") {
         await addNewMobileLegends({
-          ...formValues,
+          ...restFormValues,
           user_id,
           date,
           is_verified,
+          idcard_1,
+          idcard_2,
+          idcard_3,
+          idcard_4,
+          idcard_5,
         });
       }
+
 
       toast.success("Berhasil mendaftar kompetisi " + competitionName + "!");
       window.scrollTo(0, 0);

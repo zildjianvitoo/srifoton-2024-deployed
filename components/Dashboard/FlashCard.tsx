@@ -14,6 +14,7 @@ import {
 } from "firebase/firestore";
 import { toast } from "sonner";
 import useAuthOrNullRedirect from "@/hooks/useAuthOrNullRedirect";
+import { waRoutes } from "@/lib/link";
 
 type Props = {
   title?: string;
@@ -209,9 +210,44 @@ export default function FlashCard({
         )}
         <Button className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base">
           <FaWhatsapp />
-          <a href={"/dashboard"} target="_blank">
-            Join Group
-          </a>
+          {}
+          {title === "UI/UX DESIGN" ? (
+            <a
+              href="https://chat.whatsapp.com/GeMZF1GUKNJ3Q2Ko541W2H"
+              target="_blank"
+            >
+              Join Group
+            </a>
+          ) : (
+            ""
+          )}
+          {title === "E-SPORT" ? (
+            <a
+              href="https://chat.whatsapp.com/C4dN5cSw3mO8vts6coc7Rq"
+              target="_blank"
+            >
+              Join Group
+            </a>
+          ) : (
+            ""
+          )}
+          {title === "WEB DEVELOPMENT" ? (
+            <a
+              href="hhttps://chat.whatsapp.com/HsAuNnrPenBBjlspHrymvl"
+              target="_blank"
+            >
+              Join Group
+            </a>
+          ) : (
+            ""
+          )}
+          {title === "COMPETITIVE PROGRAMMING" ? (
+            <a href="/" target="_blank">
+              Join Group
+            </a>
+          ) : (
+            ""
+          )}
         </Button>
       </div>
     </div>

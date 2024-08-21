@@ -58,6 +58,25 @@ const routes = [
   { linkTo: "Talkshow", address: "/talkshow" },
 ];
 
+const waRoutes = [
+  {
+    linkTo: "WEB DEVELOPMENT",
+    address: "https://chat.whatsapp.com/HsAuNnrPenBBjlspHrymvl",
+  },
+  {
+    linkTo: "UI/UX DESIGN",
+    address: "https://chat.whatsapp.com/GeMZF1GUKNJ3Q2Ko541W2H",
+  },
+  {
+    linkTo: "Mobile Legends",
+    address: "https://chat.whatsapp.com/C4dN5cSw3mO8vts6coc7Rq",
+  },
+  {
+    linkTo: "Competitive Programming",
+    address: "/",
+  },
+];
+
 const adminDashboardRoutes = [
   { linkTo: "Overview", address: "/admin-dashboard" },
   { linkTo: "Competition", address: "/admin-dashboard/competition" },
@@ -83,4 +102,11 @@ const dashboardRoutes = [
   },
 ];
 
-export { socials, contacts, routes, adminDashboardRoutes, dashboardRoutes };
+export {
+  socials,
+  contacts,
+  routes,
+  adminDashboardRoutes,
+  dashboardRoutes,
+  waRoutes,
+};

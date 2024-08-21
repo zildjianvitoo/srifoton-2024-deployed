@@ -211,12 +211,12 @@ export default function FlashCard({
           </div>
         )}
         {groupLink && (
-          <Button className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base">
-            <FaWhatsapp />
-            <a href={groupLink} target="_blank" rel="noopener noreferrer">
-              Join Group
-            </a>
-          </Button>
+          <a href={groupLink} target="_blank" rel="noopener noreferrer">
+            <Button className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base">
+              <FaWhatsapp />
+              <p>Join Group</p>
+            </Button>
+          </a>
         )}
       </div>
     </div>

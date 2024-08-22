@@ -208,7 +208,13 @@ const CompetitionCollectionsTable: React.FC = () => {
                                     <tr key={entry.id} className="border-b">
                                         <td className="p-2 text-center">{entry.team_name}</td>
                                         <td className="p-2 text-center">{entry.name_1}</td>
-                                        <td className="p-2 text-center"><a href={entry.proof} className="text-blue-500 underline">{entry.payment_method}</a></td>
+                                        <td className="p-2 text-center">
+                                            <a href={entry.proof}
+                                                className="text-blue-500 underline"
+                                                target="_blank"
+                                                rel="noopener noreferrer" >{entry.payment_method}
+                                            </a>
+                                        </td>
                                         {entry.submission && <td className="p-2 text-center">
                                             {entry.submission === "No Submission" ? (
                                                 <span className="text-gray-400">No Submission</span>

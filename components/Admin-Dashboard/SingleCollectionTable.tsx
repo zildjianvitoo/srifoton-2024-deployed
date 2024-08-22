@@ -130,7 +130,13 @@ const SingleCollectionTable: React.FC<SingleCollectionTableProps> = ({ collectio
                   <tr key={entry.id} className="border-b">
                     <td className="p-2 text-center">{entry.type}</td>
                     <td className="p-2 text-center">{entry.name}</td>
-                    <td className="p-2 text-center"><a href={entry.proof} className="text-blue-500 underline">{entry.payment_method}</a></td>
+                    <td className="p-2 text-center">
+                      <a href={entry.proof}
+                        className="text-blue-500 underline"
+                        target="_blank"
+                        rel="noopener noreferrer" >{entry.payment_method}
+                      </a>
+                    </td>
                     <td className="p-2 text-center">
                       {entry.date.toDate().toLocaleString()}
                     </td>

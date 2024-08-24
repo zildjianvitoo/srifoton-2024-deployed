@@ -73,7 +73,7 @@ const waRoutes = [
   },
   {
     linkTo: "Competitive Programming",
-    address: "/",
+    address: "https://chat.whatsapp.com/K7n6V6xI5tWLTivGzkZZsy",
   },
 ];
 

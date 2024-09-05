@@ -34,7 +34,7 @@ export default function UIUXInfo({}: Props) {
       <Timeline title="competition timeline">
         <TimelineCard span="10 Aug - 14 Sep">Pendaftaran</TimelineCard>
         <TimelineCard span="14 Sep">Technical Meeting</TimelineCard>
-        <TimelineCard span="16 Sep - 21 Sep">Pengumuman Karya</TimelineCard>
+        <TimelineCard span="16 Sep - 21 Sep">Pengumpulan Karya</TimelineCard>
         <TimelineCard span="30 Sep">Pengumuman Finalis</TimelineCard>
         <TimelineCard span="05 Oct">Presentasi Final</TimelineCard>
         <TimelineCard span="12 Oct">Pengumuman </TimelineCard>

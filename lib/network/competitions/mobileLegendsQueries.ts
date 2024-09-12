@@ -1,13 +1,22 @@
 // lib/network/competitions/mobileLegendsQueries.ts
 
-import { collection, doc, getDoc, getDocs, setDoc, updateDoc, query, where } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  setDoc,
+  updateDoc,
+  query,
+  where,
+} from "firebase/firestore";
 import { db } from "../../firebase";
 import { MobileLegends } from "../../types/competitions/mobileLegendsTypes";
 
 export const fetchMobileLegends = async (): Promise<MobileLegends[]> => {
   const querySnapshot = await getDocs(collection(db, "mobile_legends"));
   const competitions: MobileLegends[] = [];
-  
+
   querySnapshot.forEach((doc) => {
     const data = doc.data();
     const competition: MobileLegends = {
@@ -51,13 +60,17 @@ export const fetchMobileLegends = async (): Promise<MobileLegends[]> => {
   return competitions;
 };
 
-
 // Fetch by user_id
-export const getMobileLegendsByUserId = async (userId: string): Promise<MobileLegends[]> => {
-  const q = query(collection(db, "mobile_legends"), where("user_id", "==", userId));
+export const getMobileLegendsByUserId = async (
+  userId: string,
+): Promise<MobileLegends[]> => {
+  const q = query(
+    collection(db, "mobile_legends"),
+    where("user_id", "==", userId),
+  );
   const querySnapshot = await getDocs(q);
   const competitions: MobileLegends[] = [];
-  
+
   querySnapshot.forEach((doc) => {
     const data = doc.data();
     const competition: MobileLegends = {
@@ -102,7 +115,9 @@ export const getMobileLegendsByUserId = async (userId: string): Promise<MobileLe
 };
 
 // Fetch by document id (id)
-export const getMobileLegendById = async (id: string): Promise<MobileLegends | null> => {
+export const getMobileLegendById = async (
+  id: string,
+): Promise<MobileLegends | null> => {
   const docRef = doc(db, "mobile_legends", id);
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
@@ -151,7 +166,9 @@ export const getMobileLegendById = async (id: string): Promise<MobileLegends | n
 };
 
 // Add new document
-export const addNewMobileLegends = async (competition: MobileLegends): Promise<void> => {
+export const addNewMobileLegends = async (
+  competition: MobileLegends,
+): Promise<void> => {
   try {
     const newDocRef = doc(collection(db, "mobile_legends"));
     await setDoc(newDocRef, competition);
@@ -162,7 +179,10 @@ export const addNewMobileLegends = async (competition: MobileLegends): Promise<v
 };
 
 // Update document
-export const updateMobileLegends = async (id: string, updatedDetails: Partial<MobileLegends>): Promise<void> => {
+export const updateMobileLegends = async (
+  id: string,
+  updatedDetails: Partial<MobileLegends>,
+): Promise<void> => {
   try {
     const docRef = doc(db, "mobile_legends", id);
     await updateDoc(docRef, updatedDetails);

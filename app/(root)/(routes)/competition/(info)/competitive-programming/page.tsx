@@ -32,12 +32,12 @@ export default function CompetitiveProgrammingInfo({}: Props) {
         aspek dari kemampuan pemrograman.
       </InfoHero>
       <Timeline title="competition timeline">
-        <TimelineCard span="10 Aug - 13 Sep">Pendaftaran</TimelineCard>
-        <TimelineCard span="14 Sep">Technical Meeting</TimelineCard>
-        <TimelineCard span="15 Sep">Babak Penyisihan</TimelineCard>
-        <TimelineCard span="16 Sep">Pengumuman Finalis</TimelineCard>
-        <TimelineCard span="21 Sep">Babak Final</TimelineCard>
-        <TimelineCard span="12 Oct">Pengumuman </TimelineCard>
+        <TimelineCard span="10 Aug - 10 Oct">Pendaftaran</TimelineCard>
+        <TimelineCard span="11 Oct">Technical Meeting</TimelineCard>
+        <TimelineCard span="12 Oct">Babak Penyisihan</TimelineCard>
+        <TimelineCard span="13 Oct">Pengumuman Finalis</TimelineCard>
+        <TimelineCard span="19 Oct">Babak Final</TimelineCard>
+        <TimelineCard span="3 Nov">Pengumuman </TimelineCard>
       </Timeline>
       <QNA id="competition-qna" title="competition qna">
         <SpeechBubble

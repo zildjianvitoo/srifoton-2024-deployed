@@ -31,11 +31,11 @@ export default function ESportInfo({}: Props) {
         pertama yang meraih dua kemenangan menjadi pemenang.
       </InfoHero>
       <Timeline title="competition timeline">
-        <TimelineCard span="10 Aug - 26 Sep">Pendaftaran</TimelineCard>
-        <TimelineCard span="27 Sep">Technical Meeting</TimelineCard>
-        <TimelineCard span="28 Sep">Babak Penyisihan</TimelineCard>
-        <TimelineCard span="29 Sep">Semifinal & Final </TimelineCard>
-        <TimelineCard span="12 Oct">Pengumuman </TimelineCard>
+        <TimelineCard span="10 Aug - 10 Oct">Pendaftaran</TimelineCard>
+        <TimelineCard span="18 Oct">Technical Meeting</TimelineCard>
+        <TimelineCard span="19 Oct">Babak Penyisihan</TimelineCard>
+        <TimelineCard span="20 Oct">Semifinal & Final </TimelineCard>
+        <TimelineCard span="3 Nov">Pengumuman </TimelineCard>
       </Timeline>
       <QNA id="competition-qna" title="competition qna">
         <SpeechBubble

@@ -15,7 +15,7 @@ export default function WebDevelopmentInfo({}: Props) {
         subheader="srifoton 2024"
         src="/img/web-dev.png"
         href="web-development/daftar"
-        guideHref="https://drive.google.com/file/d/1pldEDinNgPn8HB4LkxkwJ1XdSkkj3mkl/view?usp=sharing"
+        guideHref="https://drive.google.com/file/d/15UDFqJCMATxb37RtiBtWk1WSIcgJr4EL/view?usp=sharing"
         card1title="Pengembangan Soft Skills"
         card1content="Meningkatkan keterampilan dalam berbagai teknologi web"
         card2title="Keterampilan Teknis"

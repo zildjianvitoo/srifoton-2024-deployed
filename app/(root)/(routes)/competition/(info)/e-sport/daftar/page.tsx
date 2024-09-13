@@ -7,7 +7,7 @@ export default function EsportRegistration() {
     <>
       <CompetitionRegistration
         branch="e-sport"
-        guideBookLink="https://drive.google.com/file/d/19BZXIaaomaVm6ZrnIrocg_29V4ctZesM/view?usp=sharing"
+        guideBookLink="https://drive.google.com/file/d/1zsyPt-Bhk5KBGGdFG77vE96fkFUFjQ-d/view?usp=sharing"
       />
     </>
   );

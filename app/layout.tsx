@@ -25,7 +25,8 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "SRIFOTON 2024",
-  description: "",
+  description:
+    "SRIFOTON 2024 adalah kompetisi IT nasional yang diselenggarakan oleh Himpunan Mahasiswa Informatika Unsri.",
   icons: {
     apple: "/img/logo-srifoton.png",
     icon: "/img/logo-srifoton.png",
@@ -40,7 +41,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head></head>
+      <head>
+        <meta property="og:title" content="SRIFOTON 2024" />
+        <meta
+          property="og:description"
+          content="SRIFOTON 2024 adalah kompetisi IT nasional yang diselenggarakan oleh Himpunan Mahasiswa Informatika Unsri."
+        />
+        <meta property="og:image" content="/img/logo-srifoton.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="SRIFOTON 2024" />
+        <meta
+          name="twitter:description"
+          content="SRIFOTON 2024 adalah kompetisi IT nasional yang diselenggarakan oleh Himpunan Mahasiswa Informatika Unsri."
+        />
+        <meta name="twitter:image" content="/img/logo-srifoton.png" />
+      </head>
       <body
         className={`${monument.variable} ${ponnala.variable} ${poppins.variable} overflow-x-hidden scroll-smooth`}
       >

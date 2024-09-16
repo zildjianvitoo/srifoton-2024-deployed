@@ -19,9 +19,9 @@ export default function Home() {
       <Mascot />
       <Timeline title="event timeline">
         <TimelineCard span="10 Aug">Open Competition Registration</TimelineCard>
-        <TimelineCard span="14 Sep">Open Ceremony</TimelineCard>
-        <TimelineCard span="12 Oct">Workshop</TimelineCard>
-        <TimelineCard span="13 Oct">Talkshow & Closing Ceremony</TimelineCard>
+        <TimelineCard span="4 Oct">Open Ceremony</TimelineCard>
+        <TimelineCard span="2 Nov">Workshop</TimelineCard>
+        <TimelineCard span="3 Nov">Talkshow & Closing Ceremony</TimelineCard>
       </Timeline>
       <Categories />
       <Benefits />

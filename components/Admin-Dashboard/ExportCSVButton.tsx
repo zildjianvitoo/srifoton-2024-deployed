@@ -33,9 +33,9 @@ const ExportCSVButton: React.FC<ExportCSVButtonProps> = ({ data, collectionName 
         const rows = data.map((item, index) => {
             const values = Object.values(item).map(value => {
                 if (value instanceof Timestamp) {
-                    return value.toDate().toLocaleString();
+                    return `"${value.toDate().toLocaleString()}"`;
                 }
-                return value;
+                return `"${value}"`;
             });
             return [index + 1, ...values];
         });

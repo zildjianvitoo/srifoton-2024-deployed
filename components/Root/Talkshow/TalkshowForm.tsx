@@ -102,7 +102,7 @@ export default function TalkshowForm({ }: Props) {
         is_verified,
       });
       window.scrollTo(0, 0);
-      toast.success("Berhasil daftar Talkshow");
+      toast.success("Berhasil daftar Talkshow!");
       setIsSuccess(true);
     } catch (error) {
       toast.error("Terjadi Kesalahan di sisi server");

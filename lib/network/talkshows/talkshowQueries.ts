@@ -3,6 +3,7 @@
 import { collection, doc, getDoc, getDocs, setDoc, updateDoc, query, where } from "firebase/firestore";
 import { db } from "../../firebase";
 import { Talkshow } from "../../types/talkshowTypes";
+import { generateTicketNumber } from "../utils/utils";
 
 // Fetch all talkshows
 export const fetchTalkshows = async (): Promise<Talkshow[]> => {
@@ -42,6 +43,7 @@ export const getTalkshowById = async (id: string): Promise<Talkshow | null> => {
 // Add new talkshow
 export const addNewTalkshow = async (talkshow: Talkshow): Promise<void> => {
   try {
+    talkshow.ticket_number = await generateTicketNumber("talkshow");
     const newDocRef = doc(collection(db, "talkshows"));
     await setDoc(newDocRef, talkshow);
     // console.log('New talkshow added successfully');

@@ -2,6 +2,7 @@
 
 export type Talkshow = {
   id?: string;
+  ticket_number?: string;
   user_id: string;
   name: string;
   email: string;
@@ -9,5 +10,5 @@ export type Talkshow = {
   proof?: string;
   payment_method: string;
   is_verified: boolean;
-  date: Date;
+  date?: Date;
 };

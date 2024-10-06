@@ -3,6 +3,7 @@
 import { collection, doc, getDoc, getDocs, setDoc, updateDoc, query, where } from "firebase/firestore";
 import { db } from "../../firebase";
 import { Workshop } from "../../types/workshopTypes";
+import { generateTicketNumber } from "../utils/utils";
 
 // Fetch all workshops
 export const fetchWorkshops = async (): Promise<Workshop[]> => {
@@ -42,6 +43,7 @@ export const getWorkshopById = async (id: string): Promise<Workshop | null> => {
 // Add new workshop
 export const addNewWorkshop = async (workshop: Workshop): Promise<void> => {
   try {
+    workshop.ticket_number = await generateTicketNumber("workshop");
     const newDocRef = doc(collection(db, "workshops"));
     await setDoc(newDocRef, workshop);
     // console.log('New workshop added successfully');

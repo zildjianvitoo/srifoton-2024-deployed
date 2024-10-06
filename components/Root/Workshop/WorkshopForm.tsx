@@ -102,7 +102,7 @@ export default function WorkshopForm({}: Props) {
         is_verified,
       });
       window.scrollTo(0, 0);
-      toast.success("Berhasil daftar Workshop");
+      toast.success("Berhasil daftar Workshop!");
       setIsSuccess(true);
     } catch (error) {
       toast.error("Terjadi Kesalahan di sisi server");

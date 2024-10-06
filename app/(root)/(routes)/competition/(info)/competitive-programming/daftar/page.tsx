@@ -7,7 +7,7 @@ export default function CPRegistration() {
     <>
       <CompetitionRegistration
         branch="competitive programming"
-        guideBookLink="https://drive.google.com/file/d/17X6PKH13AGZ9SVMiC9HANX-pVfIdvYxk/view?usp=sharing"
+        guideBookLink="https://drive.google.com/file/d/1g5H0oEY__iBdnKqHXIK58imSRC4_PnsM/view"
       />
     </>
   );

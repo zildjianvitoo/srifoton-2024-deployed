@@ -53,13 +53,15 @@ export const addNewWorkshop = async (workshop: Workshop): Promise<void> => {
 };
 
 // Generate workshop ticket number by ID and must be done by admin or else will be blocked by firestore rules
-export const generateWorkshopTicketNumberAndVerifyById = async (id: string): Promise<void> => {
+export const generateWorkshopTicketNumberAndVerifyById = async (id: string): Promise<string> => {
   try {
     const generatedTicketNumber = await generateTicketNumber('workshop');
     const docRef = doc(db, 'workshops', id);
     await updateDoc(docRef, { ticket_number: generatedTicketNumber, is_verified: true });
+    return generatedTicketNumber;
   } catch (error) {
     console.error('Error generating ticket number by ID: ', error);
+    return 'error';
   }
 }
 

@@ -19,6 +19,7 @@ interface SingleEntry {
   proof?: string;
   is_verified: boolean;
   payment_method: string;
+  ticket_number?: string;
   date: Timestamp;
 }
 
@@ -45,6 +46,7 @@ const TalkshowCollectionTable: React.FC = () => {
     proof: entry.proof,
     is_verified: entry.is_verified,
     payment_method: entry.payment_method,
+    ticket_number: entry.ticket_number,
     date: entry.date
   });
 
@@ -67,8 +69,10 @@ const TalkshowCollectionTable: React.FC = () => {
   const handleVerify = async (id: string) => {
     setVerifying(id);
 
+    let ticketNumber: string;
+
     try {
-      await generateTalkshowTicketNumberAndVerifyById(id);
+      ticketNumber = await generateTalkshowTicketNumberAndVerifyById(id);
     } catch (error) {
       toast.error("Gagal memverifikasi talkshow: " + error)
       setVerifying(null);
@@ -77,13 +81,13 @@ const TalkshowCollectionTable: React.FC = () => {
 
     setItems(prevItems =>
       prevItems.map(item =>
-        item.id === id ? { ...item, is_verified: true } : item
+        item.id === id ? { ...item, ticket_number: ticketNumber, is_verified: true } : item
       )
     );
 
     setCurrentData(prevItems =>
       prevItems.map(item =>
-        item.id === id ? { ...item, is_verified: true } : item
+        item.id === id ? { ...item, ticket_number: ticketNumber, is_verified: true } : item
       )
     );
 
@@ -133,6 +137,7 @@ const TalkshowCollectionTable: React.FC = () => {
               <thead>
                 <tr className="border-b">
                   <th className="p-2 text-center">Type</th>
+                  <th className="p-2 text-center">Ticket Number</th>
                   <th className="p-2 text-center">Name</th>
                   <th className="p-2 text-center">Proof</th>
                   <th className="p-2 text-center">Date</th>
@@ -143,6 +148,7 @@ const TalkshowCollectionTable: React.FC = () => {
                 {paginatedEntries.map((entry: SingleEntry) => (
                   <tr key={entry.id} className="border-b">
                     <td className="p-2 text-center">{entry.type}</td>
+                    <td className="p-2 text-center">{entry.ticket_number ?? "Not Verified"}</td>
                     <td className="p-2 text-center">{entry.name}</td>
                     <td className="p-2 text-center">
                       <a href={entry.proof}

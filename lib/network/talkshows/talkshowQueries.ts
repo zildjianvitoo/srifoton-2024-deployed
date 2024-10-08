@@ -53,13 +53,15 @@ export const addNewTalkshow = async (talkshow: Talkshow): Promise<void> => {
 };
 
 // Generate talkshow ticket number by ID and must be done by admin or else will be blocked by firestore rules
-export const generateTalkshowTicketNumberAndVerifyById = async (id: string): Promise<void> => {
+export const generateTalkshowTicketNumberAndVerifyById = async (id: string): Promise<string> => {
   try {
     const generatedTicketNumber = await generateTicketNumber('talkshow');
     const docRef = doc(db, 'talkshows', id);
     await updateDoc(docRef, { ticket_number: generatedTicketNumber, is_verified: true });
+    return generatedTicketNumber;
   } catch (error) {
     console.error('Error generating ticket number by ID: ', error);
+    return 'error';
   }
 }
 

@@ -19,10 +19,20 @@ import Link from "next/link";
 export default function ActivitiesPage() {
   const [competitions, setCompetitions] = useState<any[]>([]);
   const [workshops, setWorkshops] = useState<any[]>([
-    {id:"1234", name:"testinger", date:{seconds:"99999"}, is_verified:true}
+    {
+      id: "1234",
+      name: "testinger",
+      date: { seconds: "99999" },
+      is_verified: true,
+    },
   ]);
   const [talkshows, setTalkshows] = useState<any[]>([
-    {id:"1234", name:"testinger", date:{seconds:"99999"}, is_verified:true}
+    {
+      id: "1234",
+      name: "testinger",
+      date: { seconds: "99999" },
+      is_verified: true,
+    },
   ]);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<UserInfo>();
@@ -121,37 +131,52 @@ export default function ActivitiesPage() {
             ) : (
               talkshows.map((talkshow) => (
                 <>
-                <FlashCard
-                  key={talkshow.id}
-                  title="Talkshow"
-                  name={talkshow.name}
-                  date={new Date(
-                    talkshow.date.seconds * 1000,
-                  ).toLocaleDateString()}
-                  message={talkshow.is_verified ? "verified" : "waiting"}
-                  project={false}
-                />
-                <div>
-                <PDFViewer className="h-[200px]">
-                  <Ticket name={talkshow.name} noTicket={`SRIFOTON-${talkshow.id}`} isWorkshop={false}/>
-                </PDFViewer>
-                </div>
-                <div className="flex space-y-8 lg:space-x-4 lg:space-y-0">
-                {!loading ?
-                  <Button size={"sm"} variant={"srifoton"}>Loading Ticket...</Button>
-                  :
-
-                  <PDFDownloadLink
-                    document={<Ticket name={talkshow.name} noTicket={`SRIFOTON-${talkshow.id}`} isWorkshop={false}/>}
-                    fileName={`Ticket Talkshow SRIFOTON-${talkshow.id}.pdf`}
-                  >
-                    <Button size={"sm"} variant={"srifoton"}>Download Ticket</Button>
-                  </PDFDownloadLink>
-                }
-                  <Link href={"#"}>
-                    <Button size={"sm"} variant={"srifoton"}>Join Whatsapp Group</Button>
-                  </Link>
-                </div>
+                  <FlashCard
+                    key={talkshow.id}
+                    title="Talkshow"
+                    name={talkshow.name}
+                    date={new Date(
+                      talkshow.date.seconds * 1000,
+                    ).toLocaleDateString()}
+                    message={talkshow.is_verified ? "verified" : "waiting"}
+                    project={false}
+                  />
+                  <div>
+                    <PDFViewer>
+                      <Ticket
+                        name={talkshow.name}
+                        noTicket={`SRIFOTON-${talkshow.id}`}
+                        isWorkshop={false}
+                      />
+                    </PDFViewer>
+                  </div>
+                  <div className="flex space-y-8 lg:space-x-4 lg:space-y-0">
+                    {!loading ? (
+                      <Button size={"sm"} variant={"srifoton"}>
+                        Loading Ticket...
+                      </Button>
+                    ) : (
+                      <PDFDownloadLink
+                        document={
+                          <Ticket
+                            name={talkshow.name}
+                            noTicket={`SRIFOTON-${talkshow.id}`}
+                            isWorkshop={false}
+                          />
+                        }
+                        fileName={`Ticket Talkshow SRIFOTON-${talkshow.id}.pdf`}
+                      >
+                        <Button size={"sm"} variant={"srifoton"}>
+                          Download Ticket
+                        </Button>
+                      </PDFDownloadLink>
+                    )}
+                    <Link href={"#"}>
+                      <Button size={"sm"} variant={"srifoton"}>
+                        Join Whatsapp Group
+                      </Button>
+                    </Link>
+                  </div>
                 </>
               ))
             )}
@@ -173,19 +198,36 @@ export default function ActivitiesPage() {
                     message={workshop.is_verified ? "verified" : "waiting"}
                     project={false}
                   />
-                  <Ticket name={workshop.name} noTicket={`SRIFOTON-${workshop.id}`} isWorkshop={true}/>
-                  <div className="flex-col lg:flex space-y-4 lg:space-x-4 lg:space-y-0">
+                  <Ticket
+                    name={workshop.name}
+                    noTicket={`SRIFOTON-${workshop.id}`}
+                    isWorkshop={true}
+                  />
+                  <div className="flex-col space-y-4 lg:flex lg:space-x-4 lg:space-y-0">
                     <PDFDownloadLink
-                      document={<Ticket name={workshop.name} noTicket={`SRIFOTON-${workshop.id}`} isWorkshop={true}/>}
+                      document={
+                        <Ticket
+                          name={workshop.name}
+                          noTicket={`SRIFOTON-${workshop.id}`}
+                          isWorkshop={true}
+                        />
+                      }
                       fileName={`Ticket Talkshow SRIFOTON-${workshop.id}.pdf`}
                     >
-                      {!loading ?
-                        <Button size={"sm"} variant={"srifoton"}>Loading Ticket...</Button> :
-                        <Button size={"sm"} variant={"srifoton"}>Download Ticket</Button>
-                      }
+                      {!loading ? (
+                        <Button size={"sm"} variant={"srifoton"}>
+                          Loading Ticket...
+                        </Button>
+                      ) : (
+                        <Button size={"sm"} variant={"srifoton"}>
+                          Download Ticket
+                        </Button>
+                      )}
                     </PDFDownloadLink>
                     <Link href={"#"}>
-                      <Button size={"sm"} variant={"srifoton"} >Join Whatsapp Group</Button>
+                      <Button size={"sm"} variant={"srifoton"}>
+                        Join Whatsapp Group
+                      </Button>
                     </Link>
                   </div>
                 </>

@@ -15,25 +15,12 @@ import Ticket from "@/components/Ticket";
 import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { toast } from "sonner";
 
 export default function ActivitiesPage() {
   const [competitions, setCompetitions] = useState<any[]>([]);
-  const [workshops, setWorkshops] = useState<any[]>([
-    {
-      id: "1234",
-      name: "testinger",
-      date: { seconds: "99999" },
-      is_verified: true,
-    },
-  ]);
-  const [talkshows, setTalkshows] = useState<any[]>([
-    {
-      id: "1234",
-      name: "testinger",
-      date: { seconds: "99999" },
-      is_verified: true,
-    },
-  ]);
+  const [workshops, setWorkshops] = useState<any[]>([]);
+  const [talkshows, setTalkshows] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<UserInfo>();
 
@@ -45,6 +32,67 @@ export default function ActivitiesPage() {
       }
     });
   }, []);
+
+  useEffect(() => {
+    async function fetchData() {
+      const userId = user?.uid;
+      try {
+        const [
+          mobileLegends,
+          competitiveProgramming,
+          uiUxDesign,
+          webDevelopment,
+          workshops,
+          talkshows,
+        ] = await Promise.all([
+          getMobileLegendsByUserId(userId!).then((data) =>
+            data.map((comp) => ({ ...comp, type: "Mobile Legends" })),
+          ),
+          getCompetitiveProgrammingByUserId(userId!).then((data) =>
+            data.map((comp) => ({
+              ...comp,
+              type: "Competitive Programming",
+            })),
+          ),
+          getUiUxDesignByUserId(userId!).then((data) =>
+            data.map((comp) => ({ ...comp, type: "UI/UX Design" })),
+          ),
+          getWebDevelopmentByUserId(userId!).then((data) =>
+            data.map((comp) => ({ ...comp, type: "Web Development" })),
+          ),
+          getWorkshopsByUserId(userId!),
+          getTalkshowsByUserId(userId!),
+        ]);
+
+        setCompetitions([
+          ...mobileLegends,
+          ...competitiveProgramming,
+          ...uiUxDesign,
+          ...webDevelopment,
+        ]);
+        setWorkshops(workshops);
+        setTalkshows(talkshows);
+
+        const invalidWorkshops = workshops.filter(
+          (workshop) => workshop.is_verified && !workshop.ticket_number
+        );
+        const invalidTalkshows = talkshows.filter(
+          (talkshow) => talkshow.is_verified && !talkshow.ticket_number
+        );
+
+        if (invalidWorkshops.length > 0 || invalidTalkshows.length > 0) {
+          toast.error(
+            "Ada talkshow/workshop Anda yang tidak memiliki nomor tiket, harap hubungi Contact Person."
+          );
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, [user?.uid]);
 
   // useEffect(() => {
   //   async function fetchData() {
@@ -106,7 +154,7 @@ export default function ActivitiesPage() {
         <div className="mt-10 flex flex-col space-y-8">
           <div className="flex flex-col space-y-8">
             <h3 className="text-xl">Competitions</h3>
-            {!loading ? (
+            {loading ? (
               <div className="spinner-loading"></div>
             ) : (
               competitions.map((comp) => (
@@ -126,50 +174,51 @@ export default function ActivitiesPage() {
           </div>
           <div className="flex flex-col space-y-8">
             <h3 className="text-xl">Talkshow</h3>
-            {!loading ? (
+            {loading ? (
               <div className="spinner-loading"></div>
             ) : (
               talkshows.map((talkshow) => (
-                <>
+                <div key={talkshow.id}>
                   <FlashCard
-                    key={talkshow.id}
                     title="Talkshow"
                     name={talkshow.name}
-                    date={new Date(
-                      talkshow.date.seconds * 1000,
-                    ).toLocaleDateString()}
+                    date={new Date(talkshow.date.seconds * 1000).toLocaleDateString()}
                     message={talkshow.is_verified ? "verified" : "waiting"}
                     project={false}
                   />
-                  <div>
-                    <PDFViewer className="h-24">
-                      <Ticket
-                        name="M. ILHAM SYAFIK 8888888888888888888888"
-                        noTicket={`SRIFOTON-${talkshow.id}`}
-                        isWorkshop={false}
-                      />
-                    </PDFViewer>
-                  </div>
+                  {talkshow.is_verified && (
+                    <div>
+                      <PDFViewer className="h-24">
+                        <Ticket
+                          name={talkshow.name}
+                          noTicket={talkshow.ticket_number ?? ""}
+                          isWorkshop={false}
+                        />
+                      </PDFViewer>
+                    </div>
+                  )}
                   <div className="flex space-y-8 lg:space-x-4 lg:space-y-0">
-                    {!loading ? (
+                    {loading ? (
                       <Button size={"sm"} variant={"srifoton"}>
                         Loading Ticket...
                       </Button>
                     ) : (
-                      <PDFDownloadLink
-                        document={
-                          <Ticket
-                            name={talkshow.name}
-                            noTicket={`SRIFOTON-${talkshow.id}`}
-                            isWorkshop={false}
-                          />
-                        }
-                        fileName={`Ticket Talkshow SRIFOTON-${talkshow.id}.pdf`}
-                      >
-                        <Button size={"sm"} variant={"srifoton"}>
-                          Download Ticket
-                        </Button>
-                      </PDFDownloadLink>
+                      talkshow.is_verified && (
+                        <PDFDownloadLink
+                          document={
+                            <Ticket
+                              name={talkshow.name}
+                              noTicket={talkshow.ticket_number ?? ""}
+                              isWorkshop={false}
+                            />
+                          }
+                          fileName={`Ticket Talkshow ${talkshow.ticket_number ?? ""}.pdf`}
+                        >
+                          <Button size={"sm"} variant={"srifoton"}>
+                            Download Ticket
+                          </Button>
+                        </PDFDownloadLink>
+                      )
                     )}
                     <Link href={"#"}>
                       <Button size={"sm"} variant={"srifoton"}>
@@ -177,60 +226,65 @@ export default function ActivitiesPage() {
                       </Button>
                     </Link>
                   </div>
-                </>
+                </div>
               ))
             )}
           </div>
           <div className="flex flex-col space-y-8">
             <h3 className="text-xl">Workshop</h3>
-            {!loading ? (
+            {loading ? (
               <div className="spinner-loading"></div>
             ) : (
               workshops.map((workshop) => (
-                <>
+                <div key={workshop.id}>
                   <FlashCard
-                    key={workshop.id}
                     title="Workshop"
                     name={workshop.name}
-                    date={new Date(
-                      workshop.date.seconds * 1000,
-                    ).toLocaleDateString()}
+                    date={new Date(workshop.date.seconds * 1000).toLocaleDateString()}
                     message={workshop.is_verified ? "verified" : "waiting"}
                     project={false}
                   />
-                  <Ticket
-                    name={workshop.name}
-                    noTicket={`SRIFOTON-${workshop.id}`}
-                    isWorkshop={true}
-                  />
-                  <div className="flex-col space-y-4 lg:flex lg:space-x-4 lg:space-y-0">
-                    <PDFDownloadLink
-                      document={
+                  {workshop.is_verified && (
+                    <div>
+                      <PDFViewer className="h-24">
                         <Ticket
                           name={workshop.name}
-                          noTicket={`SRIFOTON-${workshop.id}`}
+                          noTicket={workshop.ticket_number ?? ""}
                           isWorkshop={true}
                         />
-                      }
-                      fileName={`Ticket Talkshow SRIFOTON-${workshop.id}.pdf`}
-                    >
-                      {!loading ? (
-                        <Button size={"sm"} variant={"srifoton"}>
-                          Loading Ticket...
-                        </Button>
-                      ) : (
-                        <Button size={"sm"} variant={"srifoton"}>
-                          Download Ticket
-                        </Button>
-                      )}
-                    </PDFDownloadLink>
+                      </PDFViewer>
+                    </div>
+                  )}
+                  <div className="flex space-y-8 lg:space-x-4 lg:space-y-0">
+                    {loading ? (
+                      <Button size={"sm"} variant={"srifoton"}>
+                        Loading Ticket...
+                      </Button>
+                    ) : (
+                      workshop.is_verified && (
+                        <PDFDownloadLink
+                          document={
+                            <Ticket
+                              name={workshop.name}
+                              noTicket={workshop.ticket_number ?? ""}
+                              isWorkshop={true}
+                            />
+                          }
+                          fileName={`Ticket Workshop ${workshop.ticket_number ?? ""}.pdf`}
+                        >
+                          <Button size={"sm"} variant={"srifoton"}>
+                            Download Ticket
+                          </Button>
+                        </PDFDownloadLink>
+                      )
+                    )}
                     <Link href={"#"}>
                       <Button size={"sm"} variant={"srifoton"}>
                         Join Whatsapp Group
                       </Button>
                     </Link>
                   </div>
-                </>
+                </div>
               ))
             )}
           </div>

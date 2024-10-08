@@ -3,14 +3,14 @@
 "use client";
 
 import React, { useState, useEffect, use } from 'react';
-import { doc, updateDoc } from "firebase/firestore";
 import { Timestamp } from "firebase/firestore";
-import { db } from '@/lib/firebase';
 import useTalkshow from '@/hooks/useTalkshow';
 import { Button } from '../ui/button';
 import ExportCSVButton from './ExportCSVButton';
 import useAuthOrNullRedirect from '@/hooks/useAuthOrNullRedirect';
 import useAdminPermissionDenied from '@/hooks/useAdminPermissionDenied';
+import { generateTalkshowTicketNumberAndVerifyById } from '@/lib/network/talkshows/talkshowQueries';
+import { toast } from 'sonner';
 
 interface SingleEntry {
   id?: string;
@@ -66,8 +66,14 @@ const TalkshowCollectionTable: React.FC = () => {
 
   const handleVerify = async (id: string) => {
     setVerifying(id);
-    const entryDoc = doc(db, 'talkshows', id);
-    await updateDoc(entryDoc, { is_verified: true });
+
+    try {
+      await generateTalkshowTicketNumberAndVerifyById(id);
+    } catch (error) {
+      toast.error("Gagal memverifikasi talkshow: " + error)
+      setVerifying(null);
+      return;
+    }
 
     setItems(prevItems =>
       prevItems.map(item =>
@@ -80,6 +86,8 @@ const TalkshowCollectionTable: React.FC = () => {
         item.id === id ? { ...item, is_verified: true } : item
       )
     );
+
+    toast.success("Berhasil memverifikasi talkshow!");
 
     setVerifying(null);
   };

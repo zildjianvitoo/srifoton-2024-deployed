@@ -1,4 +1,4 @@
-import SingleCollectionTable from "@/components/Admin-Dashboard/SingleCollectionTable";
+// import SingleCollectionTable from "@/components/Admin-Dashboard/SingleCollectionTable";
 import TalkshowCollectionTable from "@/components/Admin-Dashboard/TalkshowCollectionTable";
 import React from "react";
 

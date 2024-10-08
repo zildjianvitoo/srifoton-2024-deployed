@@ -3,14 +3,14 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { doc, updateDoc } from "firebase/firestore";
 import { Timestamp } from "firebase/firestore";
-import { db } from '@/lib/firebase';
 import useWorkshop from '@/hooks/useWorkshop';
 import { Button } from '../ui/button';
 import ExportCSVButton from './ExportCSVButton';
 import useAuthOrNullRedirect from '@/hooks/useAuthOrNullRedirect';
 import useAdminPermissionDenied from '@/hooks/useAdminPermissionDenied';
+import { toast } from 'sonner';
+import { generateWorkshopTicketNumberAndVerifyById } from '@/lib/network/workshops/workshopQueries';
 
 interface SingleEntry {
   id?: string;
@@ -50,8 +50,14 @@ const WorkshopCollectionTable: React.FC = () => {
 
   const handleVerify = async (id: string) => {
     setVerifying(id);
-    const entryDoc = doc(db, 'workshops', id);
-    await updateDoc(entryDoc, { is_verified: true });
+
+    try {
+      await generateWorkshopTicketNumberAndVerifyById(id);
+    } catch (error) {
+      toast.error("Gagal memverifikasi workshop: " + error)
+      setVerifying(null);
+      return;
+    }
 
     setItems(prevItems =>
       prevItems.map(item =>
@@ -64,6 +70,8 @@ const WorkshopCollectionTable: React.FC = () => {
         item.id === id ? { ...item, is_verified: true } : item
       )
     );
+
+    toast.success("Berhasil memverifikasi workshop!");
 
     setVerifying(null);
   };

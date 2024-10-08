@@ -15,6 +15,7 @@ import ExportCSVButton from './ExportCSVButton';
 import ExportSubmissionButton from './ExportSubmissionButton';
 import useAuthOrNullRedirect from '@/hooks/useAuthOrNullRedirect';
 import useAdminPermissionDenied from '@/hooks/useAdminPermissionDenied';
+import { toast } from 'sonner';
 
 interface CompetitionEntry {
     id?: string;
@@ -105,8 +106,15 @@ const CompetitionCollectionsTable: React.FC = () => {
 
     const handleVerify = async (id: string) => {
         setVerifying(id);
-        const entryDoc = doc(db, currentTab, id);
-        await updateDoc(entryDoc, { is_verified: true });
+        try {
+            const entryDoc = doc(db, currentTab, id);
+            await updateDoc(entryDoc, { is_verified: true });
+        } catch (error) {
+            toast.error('Gagal memverifikasi kompetisi: ' + error);
+            setVerifying(null);
+            return;
+        }
+
         setCompetitions(prev => {
             const updatedTabData = prev[currentTab].map(entry =>
                 entry.id === id ? { ...entry, is_verified: true } : entry
@@ -117,6 +125,9 @@ const CompetitionCollectionsTable: React.FC = () => {
                 [currentTab]: updatedTabData
             };
         });
+
+        toast.success('Berhasil memverifikasi kompetisi!');
+
         setVerifying(null);
     };
 

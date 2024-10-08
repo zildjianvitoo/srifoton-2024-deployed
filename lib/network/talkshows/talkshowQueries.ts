@@ -43,7 +43,7 @@ export const getTalkshowById = async (id: string): Promise<Talkshow | null> => {
 // Add new talkshow
 export const addNewTalkshow = async (talkshow: Talkshow): Promise<void> => {
   try {
-    talkshow.ticket_number = await generateTicketNumber("talkshow");
+    // talkshow.ticket_number = await generateTicketNumber("talkshow"); refactor to admin
     const newDocRef = doc(collection(db, "talkshows"));
     await setDoc(newDocRef, talkshow);
     // console.log('New talkshow added successfully');
@@ -51,6 +51,17 @@ export const addNewTalkshow = async (talkshow: Talkshow): Promise<void> => {
     // console.error('Error adding new talkshow: ', error);
   }
 };
+
+// Generate talkshow ticket number by ID and must be done by admin or else will be blocked by firestore rules
+export const generateTalkshowTicketNumberAndVerifyById = async (id: string): Promise<void> => {
+  try {
+    const generatedTicketNumber = await generateTicketNumber('talkshow');
+    const docRef = doc(db, 'talkshows', id);
+    await updateDoc(docRef, { ticket_number: generatedTicketNumber, is_verified: true });
+  } catch (error) {
+    console.error('Error generating ticket number by ID: ', error);
+  }
+}
 
 // Update talkshow
 export const updateTalkshow = async (id: string, updatedDetails: Partial<Talkshow>): Promise<void> => {

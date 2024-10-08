@@ -142,9 +142,9 @@ export default function ActivitiesPage() {
                     project={false}
                   />
                   <div>
-                    <PDFViewer>
+                    <PDFViewer className="h-24">
                       <Ticket
-                        name={talkshow.name}
+                        name="M. ILHAM SYAFIK 8888888888888888888888"
                         noTicket={`SRIFOTON-${talkshow.id}`}
                         isWorkshop={false}
                       />

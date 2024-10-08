@@ -17,15 +17,22 @@ const styles = StyleSheet.create({
   name: {
     fontFamily: "Mortend",
     position: "absolute",
-    left: "1915px",
-    top: "355px",
+    right: "30px",
+    bottom: "101px",
+    fontSize: "6pt",
+    textAlign: "left",
+    width: "130px",
   },
   noTicket: {
     fontFamily: "Mortend",
     position: "absolute",
-    left: "1978px",
-    top: "500px",
+    right: "30px",
+    bottom: "70px",
+    fontSize: "6pt",
+    textAlign: "left",
+    width: "120px",
   },
+  images: {},
 });
 
 type Props = {
@@ -35,19 +42,34 @@ type Props = {
 };
 
 export default function Ticket({ name, noTicket, isWorkshop }: Props) {
+  function handleName() {
+    if (name.length > 27) return name.slice(0, 27);
+
+    return name;
+  }
+
+  function handleNo() {
+    if (noTicket.length > 22) return noTicket.slice(0, 22);
+
+    return noTicket;
+  }
+
   return (
     <Document>
       <Page wrap={false}>
         <View>
+          <Image style={styles.images} src={workshopBackground.src} />
           <Text style={styles.name} fixed>
-            aaaa
+            {handleName()}
           </Text>
           <Text style={styles.noTicket} fixed>
-            {noTicket}
+            {handleNo()}
           </Text>
-          <Image style={styles.image} src={workshopBackground.src} />
         </View>
       </Page>
     </Document>
   );
+}
+function rotate(arg0: number, deg: any): any {
+  throw new Error("Function not implemented.");
 }

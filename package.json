@@ -21,6 +21,7 @@
     "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.0",
+    "@react-pdf/renderer": "^4.0.0",
     "@types/d3-shape": "^3.1.6",
     "@types/d3-timer": "^3.0.2",
     "@uidotdev/usehooks": "^2.4.1",

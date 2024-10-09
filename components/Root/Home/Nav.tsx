@@ -92,7 +92,9 @@ export default function Nav() {
               key={route.address}
               className={cn("mt-2", {
                 "border-b-2 border-whtc-200 text-whtc-200":
-                  pathname === route.address,
+                  pathname.length > 12
+                    ? pathname.slice(0, route.address.length) === route.address
+                    : pathname === route.address,
               })}
             >
               <Link href={route.address}>{route.linkTo}</Link>

@@ -219,68 +219,12 @@ export default function FlashCard({
             )}
           </div>
         )}
-        {talkshow && loading ? (
-          <Button
-            size={"sm"}
-            className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base"
-          >
-            Loading Ticket...
-          </Button>
-        ) : (
-          talkshow.is_verified && (
-            <PDFDownloadLink
-              document={
-                <Ticket
-                  name={talkshow.name}
-                  noTicket={talkshow.ticket_number ?? ""}
-                  isWorkshop={false}
-                />
-              }
-              fileName={`Ticket Talkshow ${talkshow.ticket_number ?? ""}.pdf`}
-            >
-              <Button
-                size={"sm"}
-                className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base"
-              >
-                Download Ticket
-              </Button>
-            </PDFDownloadLink>
-          )
-        )}
-        {workshop && loading ? (
-          <Button
-            size={"sm"}
-            className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base"
-          >
-            Loading Ticket...
-          </Button>
-        ) : (
-          workshop.is_verified && (
-            <PDFDownloadLink
-              document={
-                <Ticket
-                  name={workshop.name}
-                  noTicket={workshop.ticket_number ?? ""}
-                  isWorkshop={true}
-                />
-              }
-              fileName={`Ticket Workshop ${workshop.ticket_number ?? ""}.pdf`}
-            >
-              <Button
-                size={"sm"}
-                className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base"
-              >
-                Download Ticket
-              </Button>
-            </PDFDownloadLink>
-          )
-        )}
         <div className="flex flex-col items-end">
           {talkshow.is_verified && (
             <div className="mb-2">
               <PDFViewer
                 key={`${talkshow.id}-${talkshow.ticket_number}`}
-                className="h-24"
+                className="h-24 w-full"
               >
                 <Ticket
                   name={talkshow.name}
@@ -294,7 +238,7 @@ export default function FlashCard({
             <div className="mb-2">
               <PDFViewer
                 key={`${workshop.id}-${workshop.ticket_number}`}
-                className="h-24"
+                className="h-24 w-full"
               >
                 <Ticket
                   name={workshop.name}
@@ -304,14 +248,73 @@ export default function FlashCard({
               </PDFViewer>
             </div>
           )}
-          {groupLink && (
-            <a href={groupLink} target="_blank" rel="noopener noreferrer">
-              <Button className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base">
-                <FaWhatsapp />
-                <p>Join Group</p>
+          <div className="flex gap-2">
+            {talkshow && loading ? (
+              <Button
+                size={"sm"}
+                className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base"
+              >
+                Loading Ticket...
               </Button>
-            </a>
-          )}
+            ) : (
+              talkshow.is_verified && (
+                <PDFDownloadLink
+                  document={
+                    <Ticket
+                      name={talkshow.name}
+                      noTicket={talkshow.ticket_number ?? ""}
+                      isWorkshop={false}
+                    />
+                  }
+                  fileName={`Ticket Talkshow ${talkshow.ticket_number ?? ""}.pdf`}
+                >
+                  <Button
+                    size={"sm"}
+                    className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base"
+                  >
+                    Download Ticket
+                  </Button>
+                </PDFDownloadLink>
+              )
+            )}
+            {workshop && loading ? (
+              <Button
+                size={"sm"}
+                className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base"
+              >
+                Loading Ticket...
+              </Button>
+            ) : (
+              workshop.is_verified && (
+                <PDFDownloadLink
+                  document={
+                    <Ticket
+                      name={workshop.name}
+                      noTicket={workshop.ticket_number ?? ""}
+                      isWorkshop={true}
+                    />
+                  }
+                  fileName={`Ticket Workshop ${workshop.ticket_number ?? ""}.pdf`}
+                >
+                  <Button
+                    size={"sm"}
+                    className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base"
+                  >
+                    Download Ticket
+                  </Button>
+                </PDFDownloadLink>
+              )
+            )}
+
+            {groupLink && (
+              <a href={groupLink} target="_blank" rel="noopener noreferrer">
+                <Button className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base">
+                  <FaWhatsapp />
+                  <p>Join Group</p>
+                </Button>
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </div>

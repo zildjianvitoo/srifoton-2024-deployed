@@ -31,16 +31,14 @@ export default function Talkshow({}: Props) {
       </OverviewHero>
       <IDcard
         title="our speaker"
-        name="nama speaker"
-        src1="/img/gallery1.png"
-        src2="/img/gallery1.png"
+        name="Afra Moedya Abadi"
+        src1="/img/afra-moedya-abadi-cropped.png"
+        src2="/img/stamp.png"
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.
-        Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
-        mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis
-        tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non
-        suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus
-        ante fermentum sit amet. Pellentesque commodo lacus at sodales sodales
+        <p>Alumni of Universitas Indonesia, Chemical Engineering Former Student</p>
+        <br />
+        <h1 className="font-bold !text-xl">Work Experiences</h1>
+        <p>Chemistry Tutor in RuangGuru, HSE Process Engineer of Mondelez International, Production Engineer in PT. Pertamina. Receiving multiple awards since <span className="font-poppins">2021</span>.</p>
       </IDcard>
       <div ref={workshopRef}>
         <Flashcards id="talkshow-option" title="talkshow options">

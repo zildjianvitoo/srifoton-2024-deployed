@@ -48,7 +48,7 @@ export default function Workshop({}: Props) {
             title="workshop ticket"
             previewTitle="workshop ticket"
             href="workshop/daftar"
-            price="40.000"
+            price="25.000"
             per="person"
           >
             <p>
@@ -72,7 +72,7 @@ export default function Workshop({}: Props) {
             }
             previewTitle="combo package 1"
             href="workshop/daftar"
-            price="40.000"
+            price="25.000"
             per="person"
           >
             <p>
@@ -97,7 +97,7 @@ export default function Workshop({}: Props) {
             }
             previewTitle="combo package 2"
             href="workshop/daftar"
-            price="40.000"
+            price="25.000"
             per="person"
           >
             <p>

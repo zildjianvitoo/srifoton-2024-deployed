@@ -59,7 +59,7 @@ export const workshopRegistrationSchema = z.object({
 type Props = {};
 
 export default function WorkshopForm({}: Props) {
-  useComingSoon(true);
+  // useComingSoon(true);
   useToastErrorNoUser();
 
   const [isSuccess, setIsSuccess] = useState(false);

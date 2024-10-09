@@ -14,7 +14,7 @@ type Props = {};
 export default function Workshop({}: Props) {
   const workshopRef = useRef<HTMLDivElement>(null);
 
-  useComingSoon(true);
+  // useComingSoon(true);
 
   return (
     <>

@@ -11,7 +11,7 @@ import useComingSoon from "@/hooks/useComingSoon";
 type Props = {};
 
 export default function Talkshow({}: Props) {
-  useComingSoon(true);
+  // useComingSoon(true);
 
   const workshopRef = useRef<HTMLDivElement>(null);
 

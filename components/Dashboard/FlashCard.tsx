@@ -278,7 +278,10 @@ export default function FlashCard({
         <div className="flex flex-col items-end">
           {talkshow.is_verified && (
             <div className="mb-2">
-              <PDFViewer className="h-24">
+              <PDFViewer
+                key={`${talkshow.id}-${talkshow.ticket_number}`}
+                className="h-24"
+              >
                 <Ticket
                   name={talkshow.name}
                   noTicket={talkshow.ticket_number ?? ""}
@@ -289,7 +292,10 @@ export default function FlashCard({
           )}
           {workshop.is_verified && (
             <div className="mb-2">
-              <PDFViewer className="h-24">
+              <PDFViewer
+                key={`${workshop.id}-${workshop.ticket_number}`}
+                className="h-24"
+              >
                 <Ticket
                   name={workshop.name}
                   noTicket={workshop.ticket_number ?? ""}

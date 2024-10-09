@@ -58,7 +58,10 @@ export default function Ticket({ name, noTicket, isWorkshop }: Props) {
     <Document>
       <Page wrap={false}>
         <View>
-          <Image style={styles.images} src={workshopBackground.src} />
+          <Image
+            style={styles.images}
+            src={isWorkshop ? workshopBackground.src : talkshowBackground.src}
+          />
           <Text style={styles.name} fixed>
             {handleName()}
           </Text>

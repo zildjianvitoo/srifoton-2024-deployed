@@ -75,6 +75,14 @@ const waRoutes = [
     linkTo: "Competitive Programming",
     address: "https://chat.whatsapp.com/K7n6V6xI5tWLTivGzkZZsy",
   },
+  {
+    linkTo: "Talkshow",
+    address: "https://chat.whatsapp.com/IQoAqz1v2Ig45MQQwwdhfn",
+  },
+  {
+    linkTo: "Workshop",
+    address: "https://chat.whatsapp.com/F6oI8fxKCpsBk5NPjVa8HW",
+  },
 ];
 
 const adminDashboardRoutes = [

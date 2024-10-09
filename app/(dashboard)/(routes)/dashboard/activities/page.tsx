@@ -74,15 +74,15 @@ export default function ActivitiesPage() {
         setTalkshows(talkshows);
 
         const invalidWorkshops = workshops.filter(
-          (workshop) => workshop.is_verified && !workshop.ticket_number
+          (workshop) => workshop.is_verified && !workshop.ticket_number,
         );
         const invalidTalkshows = talkshows.filter(
-          (talkshow) => talkshow.is_verified && !talkshow.ticket_number
+          (talkshow) => talkshow.is_verified && !talkshow.ticket_number,
         );
 
         if (invalidWorkshops.length > 0 || invalidTalkshows.length > 0) {
           toast.error(
-            "Ada talkshow/workshop Anda yang tidak memiliki nomor tiket, harap hubungi Contact Person."
+            "Ada talkshow/workshop Anda yang tidak memiliki nomor tiket, harap hubungi Contact Person.",
           );
         }
       } catch (error) {
@@ -168,6 +168,9 @@ export default function ActivitiesPage() {
                     comp.type === "UI/UX Design" ||
                     comp.type === "Web Development"
                   }
+                  talkshow={false}
+                  workshop={false}
+                  loading={loading}
                 />
               ))
             )}
@@ -182,50 +185,15 @@ export default function ActivitiesPage() {
                   <FlashCard
                     title="Talkshow"
                     name={talkshow.name}
-                    date={new Date(talkshow.date.seconds * 1000).toLocaleDateString()}
+                    date={new Date(
+                      talkshow.date.seconds * 1000,
+                    ).toLocaleDateString()}
                     message={talkshow.is_verified ? "verified" : "waiting"}
                     project={false}
+                    talkshow={talkshow}
+                    workshop={false}
+                    loading={loading}
                   />
-                  {talkshow.is_verified && (
-                    <div>
-                      <PDFViewer className="h-24">
-                        <Ticket
-                          name={talkshow.name}
-                          noTicket={talkshow.ticket_number ?? ""}
-                          isWorkshop={false}
-                        />
-                      </PDFViewer>
-                    </div>
-                  )}
-                  <div className="flex space-y-8 lg:space-x-4 lg:space-y-0">
-                    {loading ? (
-                      <Button size={"sm"} variant={"srifoton"}>
-                        Loading Ticket...
-                      </Button>
-                    ) : (
-                      talkshow.is_verified && (
-                        <PDFDownloadLink
-                          document={
-                            <Ticket
-                              name={talkshow.name}
-                              noTicket={talkshow.ticket_number ?? ""}
-                              isWorkshop={false}
-                            />
-                          }
-                          fileName={`Ticket Talkshow ${talkshow.ticket_number ?? ""}.pdf`}
-                        >
-                          <Button size={"sm"} variant={"srifoton"}>
-                            Download Ticket
-                          </Button>
-                        </PDFDownloadLink>
-                      )
-                    )}
-                    <Link href={"#"}>
-                      <Button size={"sm"} variant={"srifoton"}>
-                        Join Whatsapp Group
-                      </Button>
-                    </Link>
-                  </div>
                 </div>
               ))
             )}
@@ -240,50 +208,15 @@ export default function ActivitiesPage() {
                   <FlashCard
                     title="Workshop"
                     name={workshop.name}
-                    date={new Date(workshop.date.seconds * 1000).toLocaleDateString()}
+                    date={new Date(
+                      workshop.date.seconds * 1000,
+                    ).toLocaleDateString()}
                     message={workshop.is_verified ? "verified" : "waiting"}
                     project={false}
+                    talkshow={false}
+                    workshop={workshop}
+                    loading={loading}
                   />
-                  {workshop.is_verified && (
-                    <div>
-                      <PDFViewer className="h-24">
-                        <Ticket
-                          name={workshop.name}
-                          noTicket={workshop.ticket_number ?? ""}
-                          isWorkshop={true}
-                        />
-                      </PDFViewer>
-                    </div>
-                  )}
-                  <div className="flex space-y-8 lg:space-x-4 lg:space-y-0">
-                    {loading ? (
-                      <Button size={"sm"} variant={"srifoton"}>
-                        Loading Ticket...
-                      </Button>
-                    ) : (
-                      workshop.is_verified && (
-                        <PDFDownloadLink
-                          document={
-                            <Ticket
-                              name={workshop.name}
-                              noTicket={workshop.ticket_number ?? ""}
-                              isWorkshop={true}
-                            />
-                          }
-                          fileName={`Ticket Workshop ${workshop.ticket_number ?? ""}.pdf`}
-                        >
-                          <Button size={"sm"} variant={"srifoton"}>
-                            Download Ticket
-                          </Button>
-                        </PDFDownloadLink>
-                      )
-                    )}
-                    <Link href={"#"}>
-                      <Button size={"sm"} variant={"srifoton"}>
-                        Join Whatsapp Group
-                      </Button>
-                    </Link>
-                  </div>
                 </div>
               ))
             )}

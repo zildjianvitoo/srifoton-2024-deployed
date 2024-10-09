@@ -15,6 +15,8 @@ import {
 import { toast } from "sonner";
 import useAuthOrNullRedirect from "@/hooks/useAuthOrNullRedirect";
 import { waRoutes } from "@/lib/link";
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
+import Ticket from "../Ticket";
 
 type Props = {
   title?: string;
@@ -22,6 +24,9 @@ type Props = {
   date: string;
   message: string;
   project: boolean;
+  talkshow: any;
+  workshop: any;
+  loading: boolean;
 };
 
 export default function FlashCard({
@@ -30,6 +35,9 @@ export default function FlashCard({
   date,
   message,
   project,
+  talkshow,
+  workshop,
+  loading,
 }: Props) {
   const [file, setFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
@@ -158,7 +166,8 @@ export default function FlashCard({
         <p className="content-center">{date}</p>
       </div>
       <Messages message={message} />
-      <div className="bottom-4 right-4 flex flex-wrap justify-end gap-2 md:absolute">
+
+      <div className="bottom-4 right-4 flex flex-wrap items-end gap-2 md:absolute">
         {project && (
           <div className="flex flex-col gap-2">
             {!submissionUrl ? (
@@ -210,14 +219,94 @@ export default function FlashCard({
             )}
           </div>
         )}
-        {groupLink && (
-          <a href={groupLink} target="_blank" rel="noopener noreferrer">
-            <Button className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base">
-              <FaWhatsapp />
-              <p>Join Group</p>
-            </Button>
-          </a>
+        {talkshow && loading ? (
+          <Button
+            size={"sm"}
+            className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base"
+          >
+            Loading Ticket...
+          </Button>
+        ) : (
+          talkshow.is_verified && (
+            <PDFDownloadLink
+              document={
+                <Ticket
+                  name={talkshow.name}
+                  noTicket={talkshow.ticket_number ?? ""}
+                  isWorkshop={false}
+                />
+              }
+              fileName={`Ticket Talkshow ${talkshow.ticket_number ?? ""}.pdf`}
+            >
+              <Button
+                size={"sm"}
+                className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base"
+              >
+                Download Ticket
+              </Button>
+            </PDFDownloadLink>
+          )
         )}
+        {workshop && loading ? (
+          <Button
+            size={"sm"}
+            className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base"
+          >
+            Loading Ticket...
+          </Button>
+        ) : (
+          workshop.is_verified && (
+            <PDFDownloadLink
+              document={
+                <Ticket
+                  name={workshop.name}
+                  noTicket={workshop.ticket_number ?? ""}
+                  isWorkshop={true}
+                />
+              }
+              fileName={`Ticket Workshop ${workshop.ticket_number ?? ""}.pdf`}
+            >
+              <Button
+                size={"sm"}
+                className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base"
+              >
+                Download Ticket
+              </Button>
+            </PDFDownloadLink>
+          )
+        )}
+        <div className="flex flex-col items-end">
+          {talkshow.is_verified && (
+            <div className="mb-2">
+              <PDFViewer className="h-24">
+                <Ticket
+                  name={talkshow.name}
+                  noTicket={talkshow.ticket_number ?? ""}
+                  isWorkshop={false}
+                />
+              </PDFViewer>
+            </div>
+          )}
+          {workshop.is_verified && (
+            <div className="mb-2">
+              <PDFViewer className="h-24">
+                <Ticket
+                  name={workshop.name}
+                  noTicket={workshop.ticket_number ?? ""}
+                  isWorkshop={true}
+                />
+              </PDFViewer>
+            </div>
+          )}
+          {groupLink && (
+            <a href={groupLink} target="_blank" rel="noopener noreferrer">
+              <Button className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base">
+                <FaWhatsapp />
+                <p>Join Group</p>
+              </Button>
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );

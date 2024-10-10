@@ -13,7 +13,7 @@ type Props = {};
 export default function Talkshow({}: Props) {
   // useComingSoon(true);
 
-  const workshopRef = useRef<HTMLDivElement>(null);
+  const talkshowRef = useRef<HTMLDivElement>(null);
 
   return (
     <div className="flex flex-col gap-[200px]">
@@ -23,7 +23,7 @@ export default function Talkshow({}: Props) {
         subheader="srifoton 2024"
         src="/img/talkshow-logo-2.png"
         onClick={() =>
-          workshopRef.current?.scrollIntoView({ behavior: "smooth" })
+          talkshowRef.current?.scrollIntoView({ behavior: "smooth" })
         }
       >
         “Effective Ways to Build and Maintain a Personal Brand in the Digital
@@ -40,13 +40,13 @@ export default function Talkshow({}: Props) {
         <h1 className="font-bold !text-xl">Work Experiences</h1>
         <p>Chemistry Tutor in RuangGuru, HSE Process Engineer of Mondelez International, Production Engineer in PT. Pertamina. Receiving multiple awards since <span className="font-poppins">2021</span>.</p>
       </IDcard>
-      <div ref={workshopRef}>
+      <div ref={talkshowRef}>
         <Flashcards id="talkshow-option" title="talkshow options">
           <Flashcard
             title="talkshow offline ticket"
             previewTitle="offline ticket"
             href="talkshow/daftar"
-            price="80.000"
+            price="40.000"
             per="person"
           >
             <p>
@@ -65,7 +65,7 @@ export default function Talkshow({}: Props) {
             title="talkshow online ticket"
             previewTitle="online ticket"
             href="talkshow/daftar"
-            price="50.000"
+            price="25.000"
             per="person"
           >
             <p>
@@ -79,15 +79,15 @@ export default function Talkshow({}: Props) {
               <p>Pengetahuan Baru</p>
             </Benefits>
           </Flashcard>
-          {/* <Flashcard
+          <Flashcard
             title={
               <>
-                talkshow online + <br /> workshop
+                talkshow offline + <br /> workshop
               </>
             }
             previewTitle="combo package 1"
             href="talkshow/daftar"
-            price="80.000"
+            price="60.000"
             per="person"
           >
             <p>
@@ -104,7 +104,7 @@ export default function Talkshow({}: Props) {
               <p>Snack + Lunch</p>
             </Benefits>
           </Flashcard>
-          <Flashcard
+          {/* <Flashcard
             title={
               <>
                 talkshow offline + <br /> workshop
@@ -157,7 +157,7 @@ export default function Talkshow({}: Props) {
           Open Registration Competition
         </TimelineCard>
       </Timeline>
-      <QNA id="workshop-qna" title="workshop qna">
+      <QNA id="talkshow-qna" title="talkshow qna">
         <SpeechBubble id="speech1" question="Bagaimana cara mendaftar?">
           Silakan klik tombol &quot;Register&quot; pada acara yang ingin Anda
           ikuti, kemudian ikuti langkah-langkah untuk menyelesaikan proses

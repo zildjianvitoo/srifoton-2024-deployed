@@ -79,7 +79,7 @@ export default function Talkshow({}: Props) {
               <p>Pengetahuan Baru</p>
             </Benefits>
           </Flashcard>
-          <Flashcard
+          {/* <Flashcard
             title={
               <>
                 talkshow online + <br /> workshop
@@ -128,7 +128,7 @@ export default function Talkshow({}: Props) {
               <p>Pengalaman Pembuatan Proyek</p>
               <p>Snack + Lunch</p>
             </Benefits>
-          </Flashcard>
+          </Flashcard> */}
         </Flashcards>
       </div>
       <Timeline title="talkshow timeline">

@@ -62,7 +62,7 @@ export default function Workshop({}: Props) {
               <p>Snack</p>
             </Benefits>
           </Flashcard>
-          <Flashcard
+          {/* <Flashcard
             title={
               <>
                 talkshow online + <br /> workshop
@@ -110,7 +110,7 @@ export default function Workshop({}: Props) {
               <p>Pengalaman pembuatan proyek</p>
               <p>Snack</p>
             </Benefits>
-          </Flashcard>
+          </Flashcard> */}
         </Flashcards>
       </div>
       <Timeline title="workshop timeline">

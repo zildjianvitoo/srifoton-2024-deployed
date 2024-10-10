@@ -31,16 +31,14 @@ export default function Workshop({}: Props) {
       </OverviewHero>
       <IDcard
         title="our speaker"
-        name="nama speaker"
-        src1="/img/gallery1.png"
-        src2="/img/gallery1.png"
+        name="Johan Kusuma W."
+        src1="/img/johan-kusuma.png"
+        src2="/img/stamp.png"
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.
-        Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
-        mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis
-        tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non
-        suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus
-        ante fermentum sit amet. Pellentesque commodo lacus at sodales sodales
+        <p>Dedicated in creating technology to improve human live</p>
+        <br />
+        <h1 className="font-bold !text-xl">Summary</h1>
+        <p>More than <span className="font-poppins">9</span> years of software and hardware engineering experience, with strong analytical, design and artificial intelligence skills, and a broad range of computer expertise.</p>
       </IDcard>
       <div ref={workshopRef}>
         <Flashcards id="workshop-option" title="workshop options">

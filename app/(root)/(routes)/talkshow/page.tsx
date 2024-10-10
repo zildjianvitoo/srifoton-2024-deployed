@@ -46,7 +46,7 @@ export default function Talkshow({}: Props) {
             title="talkshow offline ticket"
             previewTitle="offline ticket"
             href="talkshow/daftar"
-            price="80.000"
+            price="40.000"
             per="person"
           >
             <p>
@@ -65,7 +65,7 @@ export default function Talkshow({}: Props) {
             title="talkshow online ticket"
             previewTitle="online ticket"
             href="talkshow/daftar"
-            price="50.000"
+            price="25.000"
             per="person"
           >
             <p>
@@ -79,15 +79,15 @@ export default function Talkshow({}: Props) {
               <p>Pengetahuan Baru</p>
             </Benefits>
           </Flashcard>
-          {/* <Flashcard
+          <Flashcard
             title={
               <>
-                talkshow online + <br /> workshop
+                talkshow offline + <br /> workshop
               </>
             }
             previewTitle="combo package 1"
             href="talkshow/daftar"
-            price="80.000"
+            price="60.000"
             per="person"
           >
             <p>
@@ -104,7 +104,7 @@ export default function Talkshow({}: Props) {
               <p>Snack + Lunch</p>
             </Benefits>
           </Flashcard>
-          <Flashcard
+          {/* <Flashcard
             title={
               <>
                 talkshow offline + <br /> workshop

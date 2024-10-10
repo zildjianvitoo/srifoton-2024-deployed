@@ -114,7 +114,13 @@ export default function Workshop({}: Props) {
         </Flashcards>
       </div>
       <Timeline title="workshop timeline">
-        <TimelineCard span="23 Sept - 20 Augs">
+        <TimelineCard span="9 Okt - 1 Nov">
+          Open Registration Workshop
+        </TimelineCard>
+        <TimelineCard span="1 Nov">
+          Close Registration Workshop
+        </TimelineCard>
+        {/* <TimelineCard span="23 Sept - 20 Augs">
           Open Registration Competition
         </TimelineCard>
         <TimelineCard span="23 Sept - 20 Augs">
@@ -131,13 +137,7 @@ export default function Workshop({}: Props) {
         </TimelineCard>
         <TimelineCard span="23 Sept - 20 Augs">
           Open Registration Competition
-        </TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">
-          Open Registration Competition
-        </TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">
-          Open Registration Competition
-        </TimelineCard>
+        </TimelineCard> */}
       </Timeline>
       {/* <section className="flex flex-col gap-[30px] lg:hidden">
         <div className="px-11">

@@ -132,7 +132,13 @@ export default function Talkshow({}: Props) {
         </Flashcards>
       </div>
       <Timeline title="talkshow timeline">
-        <TimelineCard span="23 Sept - 20 Augs">
+        <TimelineCard span="9 Okt - 2 Nov">
+          Open Registration Talkshow
+        </TimelineCard>
+        <TimelineCard span="2 Nov">
+          Close Registration Talkshow
+        </TimelineCard>
+        {/* <TimelineCard span="23 Sept - 20 Augs">
           Open Registration Competition
         </TimelineCard>
         <TimelineCard span="23 Sept - 20 Augs">
@@ -149,13 +155,7 @@ export default function Talkshow({}: Props) {
         </TimelineCard>
         <TimelineCard span="23 Sept - 20 Augs">
           Open Registration Competition
-        </TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">
-          Open Registration Competition
-        </TimelineCard>
-        <TimelineCard span="23 Sept - 20 Augs">
-          Open Registration Competition
-        </TimelineCard>
+        </TimelineCard> */}
       </Timeline>
       <QNA id="talkshow-qna" title="talkshow qna">
         <SpeechBubble id="speech1" question="Bagaimana cara mendaftar?">

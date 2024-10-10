@@ -65,12 +65,12 @@ export default function Workshop({}: Props) {
           <Flashcard
             title={
               <>
-                talkshow online + <br /> workshop
+                talkshow offline + <br /> workshop
               </>
             }
             previewTitle="combo package 1"
             href="workshop/daftar"
-            price="25.000"
+            price="60.000"
             per="person"
           >
             <p>
@@ -87,7 +87,7 @@ export default function Workshop({}: Props) {
               <p>Snack + Lunch</p>
             </Benefits>
           </Flashcard>
-          <Flashcard
+          {/* <Flashcard
             title={
               <>
                 talkshow offline + <br /> workshop
@@ -110,7 +110,7 @@ export default function Workshop({}: Props) {
               <p>Pengalaman pembuatan proyek</p>
               <p>Snack</p>
             </Benefits>
-          </Flashcard>
+          </Flashcard> */}
         </Flashcards>
       </div>
       <Timeline title="workshop timeline">

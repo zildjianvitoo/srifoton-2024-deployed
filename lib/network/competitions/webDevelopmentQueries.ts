@@ -1,13 +1,22 @@
 // lib/network/competitions/webDevelopmentQueries.ts
 
-import { collection, doc, getDoc, getDocs, setDoc, updateDoc, query, where } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  setDoc,
+  updateDoc,
+  query,
+  where,
+} from "firebase/firestore";
 import { db } from "../../firebase";
 import { WebDevelopment } from "../../types/competitions/webDevelopmentTypes";
 
 export const fetchWebDevelopment = async (): Promise<WebDevelopment[]> => {
   const querySnapshot = await getDocs(collection(db, "web_developments"));
   const competitions: WebDevelopment[] = [];
-  
+
   querySnapshot.forEach((doc) => {
     const data = doc.data();
     const competition: WebDevelopment = {
@@ -43,11 +52,16 @@ export const fetchWebDevelopment = async (): Promise<WebDevelopment[]> => {
 };
 
 // Fetch by user_id
-export const getWebDevelopmentByUserId = async (userId: string): Promise<WebDevelopment[]> => {
-  const q = query(collection(db, "web_developments"), where("user_id", "==", userId));
+export const getWebDevelopmentByUserId = async (
+  userId: string,
+): Promise<WebDevelopment[]> => {
+  const q = query(
+    collection(db, "web_developments"),
+    where("user_id", "==", userId),
+  );
   const querySnapshot = await getDocs(q);
   const competitions: WebDevelopment[] = [];
-  
+
   querySnapshot.forEach((doc) => {
     const data = doc.data();
     const competition: WebDevelopment = {
@@ -83,7 +97,9 @@ export const getWebDevelopmentByUserId = async (userId: string): Promise<WebDeve
 };
 
 // Fetch by document id (id)
-export const getMobileLegendById = async (id: string): Promise<WebDevelopment | null> => {
+export const getWebDevelopmentById = async (
+  id: string,
+): Promise<WebDevelopment | null> => {
   const docRef = doc(db, "web_developments", id);
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
@@ -123,7 +139,9 @@ export const getMobileLegendById = async (id: string): Promise<WebDevelopment | 
 };
 
 // Add new document
-export const addNewWebDevelopment = async (competition: WebDevelopment): Promise<void> => {
+export const addNewWebDevelopment = async (
+  competition: WebDevelopment,
+): Promise<void> => {
   try {
     const newDocRef = doc(collection(db, "web_developments"));
     await setDoc(newDocRef, competition);
@@ -134,7 +152,10 @@ export const addNewWebDevelopment = async (competition: WebDevelopment): Promise
 };
 
 // Update document
-export const updateWebDevelopment = async (id: string, updatedDetails: Partial<WebDevelopment>): Promise<void> => {
+export const updateWebDevelopment = async (
+  id: string,
+  updatedDetails: Partial<WebDevelopment>,
+): Promise<void> => {
   try {
     const docRef = doc(db, "web_developments", id);
     await updateDoc(docRef, updatedDetails);

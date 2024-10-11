@@ -1,13 +1,22 @@
 // lib/network/competitions/uiUxDesignQueries.ts
 
-import { collection, doc, getDoc, getDocs, setDoc, updateDoc, query, where } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  setDoc,
+  updateDoc,
+  query,
+  where,
+} from "firebase/firestore";
 import { db } from "../../firebase";
 import { UiUxDesign } from "../../types/competitions/uiUxDesignTypes";
 
 export const fetchUiUxDesign = async (): Promise<UiUxDesign[]> => {
   const querySnapshot = await getDocs(collection(db, "ui_ux_designs"));
   const competitions: UiUxDesign[] = [];
-  
+
   querySnapshot.forEach((doc) => {
     const data = doc.data();
     const competition: UiUxDesign = {
@@ -43,11 +52,16 @@ export const fetchUiUxDesign = async (): Promise<UiUxDesign[]> => {
 };
 
 // Fetch by user_id
-export const getUiUxDesignByUserId = async (userId: string): Promise<UiUxDesign[]> => {
-  const q = query(collection(db, "ui_ux_designs"), where("user_id", "==", userId));
+export const getUiUxDesignByUserId = async (
+  userId: string,
+): Promise<UiUxDesign[]> => {
+  const q = query(
+    collection(db, "ui_ux_designs"),
+    where("user_id", "==", userId),
+  );
   const querySnapshot = await getDocs(q);
   const competitions: UiUxDesign[] = [];
-  
+
   querySnapshot.forEach((doc) => {
     const data = doc.data();
     const competition: UiUxDesign = {
@@ -83,7 +97,9 @@ export const getUiUxDesignByUserId = async (userId: string): Promise<UiUxDesign[
 };
 
 // Fetch by document id (id)
-export const getMobileLegendById = async (id: string): Promise<UiUxDesign | null> => {
+export const getUiUxDesignById = async (
+  id: string,
+): Promise<UiUxDesign | null> => {
   const docRef = doc(db, "ui_ux_designs", id);
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
@@ -123,7 +139,9 @@ export const getMobileLegendById = async (id: string): Promise<UiUxDesign | null
 };
 
 // Add new document
-export const addNewUiUxDesign = async (competition: UiUxDesign): Promise<void> => {
+export const addNewUiUxDesign = async (
+  competition: UiUxDesign,
+): Promise<void> => {
   try {
     const newDocRef = doc(collection(db, "ui_ux_designs"));
     await setDoc(newDocRef, competition);
@@ -134,7 +152,10 @@ export const addNewUiUxDesign = async (competition: UiUxDesign): Promise<void> =
 };
 
 // Update document
-export const updateUiUxDesign = async (id: string, updatedDetails: Partial<UiUxDesign>): Promise<void> => {
+export const updateUiUxDesign = async (
+  id: string,
+  updatedDetails: Partial<UiUxDesign>,
+): Promise<void> => {
   try {
     const docRef = doc(db, "ui_ux_designs", id);
     await updateDoc(docRef, updatedDetails);

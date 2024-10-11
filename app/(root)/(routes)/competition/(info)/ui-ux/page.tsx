@@ -1,12 +1,16 @@
+"use client";
+
 import InfoHero from "@/components/Root/InfoHero";
 import { QNA, SpeechBubble } from "@/components/Root/QNA";
 import { Timeline, TimelineCard } from "@/components/Root/Timeline";
 import React from "react";
 import ContactPerson from "@/components/Root/ContactPerson";
+import useClose from "@/hooks/useClose";
 
 type Props = {};
 
 export default function UIUXInfo({}: Props) {
+  useClose(true);
   return (
     <>
       <InfoHero

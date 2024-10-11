@@ -1,8 +1,10 @@
 "use client";
 
 import CompetitionRegistration from "@/components/Root/Competition/CompetitionRegistration";
+import useClose from "@/hooks/useClose";
 
 export default function CPRegistration() {
+  useClose(true);
   return (
     <>
       <CompetitionRegistration

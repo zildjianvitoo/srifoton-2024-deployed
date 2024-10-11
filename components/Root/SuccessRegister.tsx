@@ -37,7 +37,9 @@ export default function SuccessRegister({
         </p>
         {validBranch !== "workshop" && validBranch !== "talkshow" && (
           <div className="flex gap-4 lg:gap-6">
-            <Link href={`/competition/${validBranch === 'uiux-design' ? 'ui-ux' : validBranch}`}>
+            <Link
+              href={`/competition/${validBranch === "uiux-design" ? "ui-ux" : validBranch}`}
+            >
               <Button className="h-12 font-monument text-background">
                 Competition Info
               </Button>
@@ -52,16 +54,16 @@ export default function SuccessRegister({
         )}
 
         {validBranch === "workshop" && (
-          <Link href={"/workshop"}>
+          <Link href={"/dashboard/activities"}>
             <Button className="h-12 font-monument text-background">
-              Workshop Info
+              See Your Ticket
             </Button>
           </Link>
         )}
         {validBranch === "talkshow" && (
-          <Link href={"/talkshow"}>
+          <Link href={"/dashboard/activities"}>
             <Button className="h-12 font-monument text-background">
-              Talkshow Info
+              See Your Ticket
             </Button>
           </Link>
         )}

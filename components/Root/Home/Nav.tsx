@@ -26,6 +26,8 @@ export default function Nav() {
   const pathname = usePathname();
   const user = useUserNav();
 
+  console.log(pathname.slice(0, routes[1].address.length));
+
   return (
     <nav
       id="navbar"
@@ -92,7 +94,7 @@ export default function Nav() {
               key={route.address}
               className={cn("mt-2", {
                 "border-b-2 border-whtc-200 text-whtc-200":
-                  pathname.length > 12
+                  pathname.length > 12 && route.address !== "/"
                     ? pathname.slice(0, route.address.length) === route.address
                     : pathname === route.address,
               })}

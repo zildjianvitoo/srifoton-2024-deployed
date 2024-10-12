@@ -2,7 +2,9 @@ import CompetitionCollectionsTable from "@/components/Admin-Dashboard/Competitio
 import React from "react";
 
 export default function page() {
-  return <div>
-    <CompetitionCollectionsTable />
-  </div>;
+  return (
+    <div>
+      <CompetitionCollectionsTable />
+    </div>
+  );
 }

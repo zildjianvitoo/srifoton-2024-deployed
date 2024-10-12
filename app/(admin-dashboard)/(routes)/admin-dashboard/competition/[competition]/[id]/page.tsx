@@ -9,7 +9,7 @@ import { useParams } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { CompetitiveProgramming } from "@/lib/types/competitions/competitiveProgrammingTypes";
 
-export default function page() {
+export default function Page() {
   const params = useParams<{ competition: string; id: string }>();
   const [data, setData] = useState<any>(null);
   let comp: CompetitiveProgramming | null = null;

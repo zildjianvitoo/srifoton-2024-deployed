@@ -15,7 +15,7 @@ function DoubleDot() {
 
 export default function Countdown() {
   let { days, hours, minutes, seconds } = useCountdown({
-    targetTime: "10/11/2024 23:59:59",
+    targetTime: "11/3/2024 23:59:59",
   });
 
   return (
@@ -42,7 +42,7 @@ export default function Countdown() {
           />
           <div className="mx-auto mb-[12%] mt-[10%] flex flex-col items-center justify-center text-center">
             <h3 className="w-[90%] align-top text-xs text-text-300 sm:text-xl lg:text-3xl xl:text-[45px]">
-              OPENING CEREMONY
+              CLOSING CEREMONY
               <div className="mt-1 rounded-md border-2 border-[#868365] bg-[#868365] md:mt-3 md:h-1 lg:mt-4 xl:mt-5"></div>
             </h3>
             <div className="mx-auto mt-5 flex items-center justify-center md:mt-10 lg:mt-16 lg:gap-4 xl:mt-20">

@@ -44,11 +44,5 @@ export default function useCountdown({ targetTime }: Params) {
     return () => clearInterval(interval);
   }, [targetTime]);
 
-  if (days <= 0 || hours <= 0 || minutes <= 0 || seconds <= 0) {
-    setDays(0);
-    setHours(0);
-    setMinutes(0);
-    setSeconds(0);
-  }
   return { days, hours, minutes, seconds };
 }

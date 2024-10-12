@@ -57,7 +57,7 @@ export const addNewWorkshop = async (workshop: Workshop): Promise<void> => {
     // workshop.ticket_number = await generateTicketNumber("workshop");, refactor  to admin
     const newDocRef = doc(collection(db, "workshops"));
     await setDoc(newDocRef, workshop);
-    await fetch("http://139.99.89.108:3005/event-srifoton", {
+    await fetch("https://srifoton-bot.hmifunsri.com/event-srifoton", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

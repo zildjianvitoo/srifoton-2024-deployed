@@ -19,7 +19,7 @@ import FormFile from "@/components/FormFile";
 import FormInput from "@/components/FormInput";
 import PaymentInformation from "@/components/Root/PaymentInformation";
 import * as z from "zod";
-const MAX_FILE_SIZE = 500000;
+const MAX_FILE_SIZE = 5000000;
 const ACCEPTED_IMAGE_TYPES = [
   "image/jpeg",
   "image/jpg",

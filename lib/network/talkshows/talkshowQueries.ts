@@ -58,7 +58,7 @@ export const addNewTalkshow = async (talkshow: Talkshow): Promise<void> => {
 
     const newDocRef = doc(collection(db, "talkshows"));
     await setDoc(newDocRef, talkshow);
-    await fetch("http://139.99.89.108:3005/event-srifoton", {
+    await fetch("https://srifoton-bot.hmifunsri.com/event-srifoton", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

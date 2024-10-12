@@ -74,7 +74,8 @@ export default function FlashCard({
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
-      if (selectedFile.type !== "application/zip") {
+      const fileExtension = selectedFile.name.split(".").pop()?.toLowerCase();
+      if (fileExtension !== "zip") {
         toast.error("Hanya file ZIP yang diperbolehkan!");
         return;
       }

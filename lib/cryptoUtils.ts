@@ -12,7 +12,7 @@ function isValidBase64(base64: string): boolean {
 
 function base64ToArrayBuffer(base64: string): ArrayBuffer | null {
   if (!isValidBase64(base64)) {
-    // console.error("Invalid Base64 string:", base 64);
+    // console.error("Invalid Base64 string:", ba se 64);
     return null;
   }
 

@@ -1,4 +1,4 @@
-// hooks/useCountdown.ts
+// hooks/useCountdow n.ts
 
 import { useState, useEffect } from "react";
 

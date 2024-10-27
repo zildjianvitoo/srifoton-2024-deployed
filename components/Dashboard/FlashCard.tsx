@@ -89,7 +89,7 @@ export default function FlashCard({
 
   const handleSubmission = async () => {
     if (!file) {
-      toast.error("Mohon pilih file terlebih dahulu.");
+      toast.error("Mohon pilih file terlebih dahul u.");
       return;
     }
     try {

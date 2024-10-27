@@ -10,7 +10,7 @@ export default function Sponsor() {
         <div className="mx-auto mb-[3vw] w-[70%]">
           <SectionHeader text="sponsor" />
         </div>
-        <CardCrook outerClassName="mt-20 !w-full" innerClassName="h-96">
+        <CardCrook outerClassName="mt-20 !w-full" innerClassName="h-80 p-6">
           <figure>
             <Image
               src={"/img/magnifying-glass.png"}
@@ -18,6 +18,29 @@ export default function Sponsor() {
               width={1000}
               height={1000}
               className="absolute left-0 top-[-5vw] w-[17%] md:w-[12%] xl:top-[-60px] xl:w-[8%]"
+            />
+          </figure>
+          <figure className="flex items-center justify-center gap-12">
+            <Image
+              src={"/img/Sponsor/Dicoding Logo - White 1.png"}
+              alt="dangerline"
+              width={1000}
+              height={1000}
+              className="w-24 bg-background"
+            />
+            <Image
+              src={"/img/Sponsor/LOGO MONBEIKU-1.png"}
+              alt="dangerline"
+              width={1000}
+              height={1000}
+              className="w-24"
+            />
+            <Image
+              src={"/img/Sponsor/Logo_Cyborg_Itcenter.png"}
+              alt="dangerline"
+              width={1000}
+              height={1000}
+              className="w-24"
             />
           </figure>
         </CardCrook>

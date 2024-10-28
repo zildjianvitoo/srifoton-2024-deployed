@@ -20,7 +20,10 @@ export default function MediaPartner() {
         <div className="mx-auto mb-[3vw] w-[70%]">
           <SectionHeader text="media partner" />
         </div>
-        <CardCrook outerClassName="mt-20 !w-full" innerClassName="h-80 p-6">
+        <CardCrook
+          outerClassName="mt-20 !w-full"
+          innerClassName="h-80 p-6 overflow-x-hidden"
+        >
           <figure className="flex flex-col justify-between">
             <div className="flex items-center gap-4 overflow-x-auto">
               <Image

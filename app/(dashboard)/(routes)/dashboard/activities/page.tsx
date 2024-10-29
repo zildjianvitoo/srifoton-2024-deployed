@@ -168,8 +168,8 @@ export default function ActivitiesPage() {
                     comp.type === "UI/UX Design" ||
                     comp.type === "Web Development"
                   }
-                  talkshow={false}
-                  workshop={false}
+                  talkshow={undefined}
+                  workshop={undefined}
                   loading={loading}
                 />
               ))
@@ -191,7 +191,7 @@ export default function ActivitiesPage() {
                     message={talkshow.is_verified ? "verified" : "waiting"}
                     project={false}
                     talkshow={talkshow}
-                    workshop={false}
+                    workshop={undefined}
                     loading={loading}
                   />
                 </div>
@@ -213,7 +213,7 @@ export default function ActivitiesPage() {
                     ).toLocaleDateString()}
                     message={workshop.is_verified ? "verified" : "waiting"}
                     project={false}
-                    talkshow={false}
+                    talkshow={undefined}
                     workshop={workshop}
                     loading={loading}
                   />

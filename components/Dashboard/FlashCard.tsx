@@ -17,6 +17,8 @@ import useAuthOrNullRedirect from "@/hooks/useAuthOrNullRedirect";
 import { waRoutes } from "@/lib/link";
 import { PDFDownloadLink, PDFViewer, BlobProvider } from "@react-pdf/renderer";
 import Ticket from "../Ticket";
+import { Workshop } from "@/lib/types/workshopTypes";
+import { Talkshow } from "@/lib/types/talkshowTypes";
 
 type Props = {
   title?: string;
@@ -24,8 +26,8 @@ type Props = {
   date: string;
   message: string;
   project: boolean;
-  talkshow: any;
-  workshop: any;
+  talkshow?: Talkshow;
+  workshop?: Workshop;
   loading: boolean;
 };
 
@@ -221,29 +223,29 @@ export default function FlashCard({
           </div>
         )}
         <div className="flex flex-col items-end">
-          {talkshow.is_verified && (
+          {talkshow?.is_verified && (
             <div className="mb-2">
               <PDFViewer
-                key={`${talkshow.id}-${talkshow.ticket_number}`}
+                key={`${talkshow?.id}-${talkshow?.ticket_number}`}
                 className="h-24 w-full"
               >
                 <Ticket
-                  name={talkshow.name}
-                  noTicket={talkshow.ticket_number ?? ""}
+                  name={talkshow?.name}
+                  noTicket={talkshow?.ticket_number ?? ""}
                   isWorkshop={false}
                 />
               </PDFViewer>
             </div>
           )}
-          {workshop.is_verified && (
+          {workshop?.is_verified && (
             <div className="mb-2">
               <PDFViewer
-                key={`${workshop.id}-${workshop.ticket_number}`}
+                key={`${workshop?.id}-${workshop?.ticket_number}`}
                 className="h-24 w-full"
               >
                 <Ticket
-                  name={workshop.name}
-                  noTicket={workshop.ticket_number ?? ""}
+                  name={workshop?.name}
+                  noTicket={workshop?.ticket_number ?? ""}
                   isWorkshop={true}
                 />
               </PDFViewer>
@@ -264,7 +266,7 @@ export default function FlashCard({
                   <Button
                     size={"sm"}
                     className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base"
-                    disabled={loading || url === null}
+                    disabled={!talkshow.is_verified}
                     onClick={() => {
                       if (url) {
                         window.open(url);
@@ -291,7 +293,7 @@ export default function FlashCard({
                   <Button
                     size={"sm"}
                     className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base"
-                    disabled={loading || url === null}
+                    disabled={loading || url === null || !workshop.is_verified}
                     onClick={() => {
                       if (url) {
                         window.open(url);

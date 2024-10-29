@@ -37,8 +37,13 @@ export default function Workshop({}: Props) {
       >
         <p>Dedicated in creating technology to improve human live</p>
         <br />
-        <h1 className="font-bold !text-xl">Summary</h1>
-        <p>More than <span className="font-poppins">9</span> years of software and hardware engineering experience, with strong analytical, design and artificial intelligence skills, and a broad range of computer expertise.</p>
+        <h1 className="!text-xl font-bold">Summary</h1>
+        <p>
+          More than <span className="font-poppins">9</span> years of software
+          and hardware engineering experience, with strong analytical, design
+          and artificial intelligence skills, and a broad range of computer
+          expertise.
+        </p>
       </IDcard>
       <div ref={workshopRef}>
         <Flashcards id="workshop-option" title="workshop options">
@@ -69,7 +74,7 @@ export default function Workshop({}: Props) {
               </>
             }
             previewTitle="combo package 1"
-            href="workshop/daftar"
+            href="combo-package/daftar"
             price="60.000"
             per="person"
           >
@@ -117,9 +122,7 @@ export default function Workshop({}: Props) {
         <TimelineCard span="9 Okt - 1 Nov">
           Open Registration Workshop
         </TimelineCard>
-        <TimelineCard span="1 Nov">
-          Close Registration Workshop
-        </TimelineCard>
+        <TimelineCard span="1 Nov">Close Registration Workshop</TimelineCard>
         {/* <TimelineCard span="23 Sept - 20 Augs">
           Open Registration Competition
         </TimelineCard>

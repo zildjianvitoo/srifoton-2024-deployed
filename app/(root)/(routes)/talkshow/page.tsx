@@ -35,10 +35,16 @@ export default function Talkshow({}: Props) {
         src1="/img/afra-moedya-abadi-cropped.png"
         src2="/img/stamp.png"
       >
-        <p>Alumni of Universitas Indonesia, Chemical Engineering Former Student</p>
+        <p>
+          Alumni of Universitas Indonesia, Chemical Engineering Former Student
+        </p>
         <br />
-        <h1 className="font-bold !text-xl">Work Experiences</h1>
-        <p>Chemistry Tutor in RuangGuru, HSE Process Engineer of Mondelez International, Production Engineer in PT. Pertamina. Receiving multiple awards since <span className="font-poppins">2021</span>.</p>
+        <h1 className="!text-xl font-bold">Work Experiences</h1>
+        <p>
+          Chemistry Tutor in RuangGuru, HSE Process Engineer of Mondelez
+          International, Production Engineer in PT. Pertamina. Receiving
+          multiple awards since <span className="font-poppins">2021</span>.
+        </p>
       </IDcard>
       <div ref={talkshowRef}>
         <Flashcards id="talkshow-option" title="talkshow options">
@@ -86,7 +92,7 @@ export default function Talkshow({}: Props) {
               </>
             }
             previewTitle="combo package 1"
-            href="talkshow/daftar"
+            href="combo-package/daftar"
             price="60.000"
             per="person"
           >
@@ -135,9 +141,7 @@ export default function Talkshow({}: Props) {
         <TimelineCard span="9 Okt - 2 Nov">
           Open Registration Talkshow
         </TimelineCard>
-        <TimelineCard span="2 Nov">
-          Close Registration Talkshow
-        </TimelineCard>
+        <TimelineCard span="2 Nov">Close Registration Talkshow</TimelineCard>
         {/* <TimelineCard span="23 Sept - 20 Augs">
           Open Registration Competition
         </TimelineCard>

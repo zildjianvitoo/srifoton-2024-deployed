@@ -40,6 +40,7 @@ import { Button } from "@/components/ui/button";
 import useToastErrorNoUser from "@/hooks/useToastErrorNoUser";
 import { useState } from "react";
 import useComingSoon from "@/hooks/useComingSoon";
+import { useRouter } from "next/navigation";
 
 export const workshopRegistrationSchema = z.object({
   name: z.string().min(1).max(50),
@@ -61,6 +62,7 @@ type Props = {};
 export default function WorkshopForm({}: Props) {
   // useComingSoon(true);
   useToastErrorNoUser();
+  const router = useRouter();
 
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -101,18 +103,19 @@ export default function WorkshopForm({}: Props) {
         date,
         is_verified,
       });
-      window.scrollTo(0, 0);
+      // window.scrollTo(0, 0);
       toast.success("Berhasil daftar Workshop!");
-      setIsSuccess(true);
+      // setIsSuccess(true);
+      router.push("/dashboard/activities");
     } catch (error) {
       toast.error("Terjadi Kesalahan di sisi server");
       // console.log(error);
     }
   };
 
-  if (form.formState.isSubmitSuccessful && isSuccess) {
-    return <SuccessRegister branch={"workshop"} validBranch={"workshop"} />;
-  }
+  // if (form.formState.isSubmitSuccessful && isSuccess) {
+  //   return <SuccessRegister branch={"workshop"} validBranch={"workshop"} />;
+  // }
 
   return (
     <div className={"flex flex-col gap-14 lg:gap-20"}>

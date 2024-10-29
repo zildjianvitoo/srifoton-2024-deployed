@@ -20,7 +20,7 @@ export default function Sponsor() {
               className="absolute left-0 top-[-5vw] w-[17%] md:w-[12%] xl:top-[-60px] xl:w-[8%]"
             />
           </figure>
-          <figure className="flex items-center justify-center gap-12">
+          <figure className="flex items-center justify-center gap-12 overflow-x-auto">
             <Image
               src={"/img/Sponsor/Dicoding Logo - White 1.png"}
               alt="dangerline"

@@ -15,7 +15,7 @@ import {
 import { toast } from "sonner";
 import useAuthOrNullRedirect from "@/hooks/useAuthOrNullRedirect";
 import { waRoutes } from "@/lib/link";
-import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
+import { PDFDownloadLink, PDFViewer, BlobProvider } from "@react-pdf/renderer";
 import Ticket from "../Ticket";
 
 type Props = {
@@ -250,61 +250,58 @@ export default function FlashCard({
             </div>
           )}
           <div className="flex gap-2">
-            {talkshow && loading ? (
-              <Button
-                size={"sm"}
-                className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base"
+            {talkshow && (
+              <BlobProvider
+                document={
+                  <Ticket
+                    name={talkshow.name}
+                    noTicket={talkshow.ticket_number ?? ""}
+                    isWorkshop={false}
+                  />
+                }
               >
-                Loading Ticket...
-              </Button>
-            ) : (
-              talkshow.is_verified && (
-                <PDFDownloadLink
-                  document={
-                    <Ticket
-                      name={talkshow.name}
-                      noTicket={talkshow.ticket_number ?? ""}
-                      isWorkshop={false}
-                    />
-                  }
-                  fileName={`Ticket Talkshow ${talkshow.ticket_number ?? ""}.pdf`}
-                >
+                {({ url, loading }) => (
                   <Button
                     size={"sm"}
                     className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base"
+                    disabled={loading || url === null}
+                    onClick={() => {
+                      if (url) {
+                        window.open(url);
+                      }
+                    }}
                   >
-                    Download Ticket
+                    {loading ? "Loading Ticket..." : "Download Ticket"}
                   </Button>
-                </PDFDownloadLink>
-              )
+                )}
+              </BlobProvider>
             )}
-            {workshop && loading ? (
-              <Button
-                size={"sm"}
-                className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base"
+
+            {workshop && (
+              <BlobProvider
+                document={
+                  <Ticket
+                    name={workshop.name}
+                    noTicket={workshop.ticket_number ?? ""}
+                    isWorkshop={true}
+                  />
+                }
               >
-                Loading Ticket...
-              </Button>
-            ) : (
-              workshop.is_verified && (
-                <PDFDownloadLink
-                  document={
-                    <Ticket
-                      name={workshop.name}
-                      noTicket={workshop.ticket_number ?? ""}
-                      isWorkshop={true}
-                    />
-                  }
-                  fileName={`Ticket Workshop ${workshop.ticket_number ?? ""}.pdf`}
-                >
+                {({ url, loading }) => (
                   <Button
                     size={"sm"}
                     className="flex h-12 items-center justify-center gap-x-2 bg-background/90 font-monument text-xs text-white hover:bg-background disabled:opacity-60 md:text-base"
+                    disabled={loading || url === null}
+                    onClick={() => {
+                      if (url) {
+                        window.open(url);
+                      }
+                    }}
                   >
-                    Download Ticket
+                    {loading ? "Loading Ticket..." : "Download Ticket"}
                   </Button>
-                </PDFDownloadLink>
-              )
+                )}
+              </BlobProvider>
             )}
 
             {groupLink && (

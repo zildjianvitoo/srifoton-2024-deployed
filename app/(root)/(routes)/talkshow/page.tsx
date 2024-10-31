@@ -138,10 +138,10 @@ export default function Talkshow({}: Props) {
         </Flashcards>
       </div>
       <Timeline title="talkshow timeline">
-        <TimelineCard span="9 Okt - 2 Nov">
+        <TimelineCard span="9 Okt - 16 Nov">
           Open Registration Talkshow
         </TimelineCard>
-        <TimelineCard span="2 Nov">Close Registration Talkshow</TimelineCard>
+        <TimelineCard span="16 Nov">Close Registration Talkshow</TimelineCard>
         {/* <TimelineCard span="23 Sept - 20 Augs">
           Open Registration Competition
         </TimelineCard>

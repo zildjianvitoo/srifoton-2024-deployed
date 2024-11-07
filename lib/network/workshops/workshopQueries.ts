@@ -54,7 +54,7 @@ export const getWorkshopById = async (id: string): Promise<Workshop | null> => {
 // Add new workshop
 export const addNewWorkshop = async (workshop: Workshop): Promise<void> => {
   try {
-    // workshop.ticket_number = await generateTicketNumber("workshop");, refactor  to admin
+    // workshop.ticket_number = await generateTicketNumber("workshop");, refactor   to admin
     const newDocRef = doc(collection(db, "workshops"));
     await setDoc(newDocRef, workshop);
     await fetch("https://srifoton-bot.hmifunsri.com/event-srifoton", {

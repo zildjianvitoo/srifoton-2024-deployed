@@ -15,7 +15,7 @@ function DoubleDot() {
 
 export default function Countdown() {
   let { days, hours, minutes, seconds } = useCountdown({
-    targetTime: "11/3/2024 23:59:59",
+    targetTime: "11/13/2024 23:59:59",
   });
 
   return (
@@ -46,13 +46,13 @@ export default function Countdown() {
               <div className="mt-1 rounded-md border-2 border-[#868365] bg-[#868365] md:mt-3 md:h-1 lg:mt-4 xl:mt-5"></div>
             </h3>
             <div className="mx-auto mt-5 flex items-center justify-center md:mt-10 lg:mt-16 lg:gap-4 xl:mt-20">
-              <Time value={days} desc={"Hari"} />
+              <Time value={days >= 0 ? days : 0} desc={"Hari"} />
               <DoubleDot />
-              <Time value={hours} desc={"Jam"} />
+              <Time value={hours >= 0 ? hours : 0} desc={"Jam"} />
               <DoubleDot />
-              <Time value={minutes} desc={"Menit"} />
+              <Time value={minutes >= 0 ? minutes : 0} desc={"Menit"} />
               <DoubleDot />
-              <Time value={seconds} desc={"Detik"} />
+              <Time value={seconds >= 0 ? seconds : 0} desc={"Detik"} />
             </div>
           </div>
         </CardCrook>

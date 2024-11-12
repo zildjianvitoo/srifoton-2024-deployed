@@ -15,7 +15,7 @@ function DoubleDot() {
 
 export default function Countdown() {
   let { days, hours, minutes, seconds } = useCountdown({
-    targetTime: "11/13/2024 23:59:59",
+    targetTime: "11/16/2024 23:59:59",
   });
 
   return (

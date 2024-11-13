@@ -1,4 +1,4 @@
-// lib/middleware. ts
+// lib/middleware.ts
 
 "use server";
 

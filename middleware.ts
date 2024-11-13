@@ -1,4 +1,4 @@
-// lib/middleware.ts
+// lib/middleware. ts
 
 "use server";
 
@@ -14,17 +14,27 @@ const publicRoutes = [
   "/workshop",
   "/talkshow",
 ];
-const allowedRedirectionPaths = ["/", "/login", "/admin-dashboard", "/admin-login", "/dashboard/account-data"];
+const allowedRedirectionPaths = [
+  "/",
+  "/login",
+  "/admin-dashboard",
+  "/admin-login",
+  "/dashboard/account-data",
+];
 
 const USER_SESSION_NAME = process.env.USER_SESSION_NAME!;
 const AUTH_COOKIE_NAME = process.env.AUTH_COOKIE_NAME!;
-const AUTH_COOKIE_SIGNATURE_KEY_CURRENT = process.env.AUTH_COOKIE_SIGNATURE_KEY_CURRENT!;
-const AUTH_COOKIE_SIGNATURE_KEY_PREVIOUS = process.env.AUTH_COOKIE_SIGNATURE_KEY_PREVIOUS!;
+const AUTH_COOKIE_SIGNATURE_KEY_CURRENT =
+  process.env.AUTH_COOKIE_SIGNATURE_KEY_CURRENT!;
+const AUTH_COOKIE_SIGNATURE_KEY_PREVIOUS =
+  process.env.AUTH_COOKIE_SIGNATURE_KEY_PREVIOUS!;
 
 const ADMIN_SESSION_NAME = process.env.ADMIN_SESSION_NAME!;
 const ADMIN_COOKIE_NAME = process.env.ADMIN_COOKIE_NAME!;
-const ADMIN_COOKIE_SIGNATURE_KEY_CURRENT = process.env.ADMIN_COOKIE_SIGNATURE_KEY_CURRENT!;
-const ADMIN_COOKIE_SIGNATURE_KEY_PREVIOUS = process.env.ADMIN_COOKIE_SIGNATURE_KEY_PREVIOUS!;
+const ADMIN_COOKIE_SIGNATURE_KEY_CURRENT =
+  process.env.ADMIN_COOKIE_SIGNATURE_KEY_CURRENT!;
+const ADMIN_COOKIE_SIGNATURE_KEY_PREVIOUS =
+  process.env.ADMIN_COOKIE_SIGNATURE_KEY_PREVIOUS!;
 
 async function verifyCookie(
   value: string | undefined,
@@ -69,7 +79,10 @@ export default async function middleware(request: NextRequest) {
   // console.log("Admin session:", adminSession);
   // console.log("Admin token:", adminToken);
 
-  if (request.nextUrl.pathname.startsWith("/dashboard") && (!userSession || !userToken)) {
+  if (
+    request.nextUrl.pathname.startsWith("/dashboard") &&
+    (!userSession || !userToken)
+  ) {
     // if (request.cookies.get(USER_SESSION_NAME)?.value || request.cookies.get(AUTH_COOKIE_NAME)?.value) {
     //   deleteCookie(NextResponse.next(), USER_SESSION_NAME);
     //   deleteCookie(NextResponse.next(), AUTH_COOKIE_NAME);
@@ -81,7 +94,10 @@ export default async function middleware(request: NextRequest) {
     }
   }
 
-  if (request.nextUrl.pathname.startsWith("/admin-dashboard") && (!adminSession || !adminToken)) {
+  if (
+    request.nextUrl.pathname.startsWith("/admin-dashboard") &&
+    (!adminSession || !adminToken)
+  ) {
     // if (request.cookies.get(ADMIN_SESSION_NAME)?.value || request.cookies.get(ADMIN_COOKIE_NAME)?.value) {
     //   deleteCookie(NextResponse.next(), ADMIN_SESSION_NAME);
     //   deleteCookie(NextResponse.next(), ADMIN_COOKIE_NAME);
@@ -105,7 +121,11 @@ export default async function middleware(request: NextRequest) {
     }
   }
 
-  if (!(userSession && userToken) && !(adminSession && adminToken) && !publicRoutes.includes(request.nextUrl.pathname)) {
+  if (
+    !(userSession && userToken) &&
+    !(adminSession && adminToken) &&
+    !publicRoutes.includes(request.nextUrl.pathname)
+  ) {
     const absoluteURL = new URL("/", request.nextUrl.origin);
     // console.log("Redirecting to:", absoluteURL.toString());
     if (isValidRedirectionPath(absoluteURL.pathname)) {
@@ -116,14 +136,21 @@ export default async function middleware(request: NextRequest) {
   // console.log(userSession && userToken && request.nextUrl.pathname === "/login");
 
   if (userSession && userToken && request.nextUrl.pathname === "/login") {
-    const absoluteURL = new URL("/dashboard/account-data", request.nextUrl.origin);
+    const absoluteURL = new URL(
+      "/dashboard/account-data",
+      request.nextUrl.origin,
+    );
     // console.log("Redirecting to /dashboard/account-data:", absoluteURL.toString());
     if (isValidRedirectionPath(absoluteURL.pathname)) {
       return NextResponse.redirect(absoluteURL.toString());
     }
   }
 
-  if (adminSession && adminToken && request.nextUrl.pathname === "/admin-login") {
+  if (
+    adminSession &&
+    adminToken &&
+    request.nextUrl.pathname === "/admin-login"
+  ) {
     const absoluteURL = new URL("/admin-dashboard", request.nextUrl.origin);
     // console.log("Redirecting to /admin-dashboard:", absoluteURL.toString());
     if (isValidRedirectionPath(absoluteURL.pathname)) {
@@ -134,7 +161,8 @@ export default async function middleware(request: NextRequest) {
   if (
     request.nextUrl.pathname.startsWith("/admin-dashboard") &&
     request.nextUrl.pathname !== "/admin-login" &&
-    !adminToken && !adminSession
+    !adminToken &&
+    !adminSession
   ) {
     const absoluteURL = new URL("/admin-login", request.nextUrl.origin);
     // console.log("Redirecting to /admin-login:", absoluteURL.toString());
@@ -157,6 +185,6 @@ export const config = {
     "/dashboard",
     "/dashboard/(.*)",
     "/login",
-    "/admin-login"
+    "/admin-login",
   ],
 };

@@ -180,7 +180,7 @@ export default function TalkshowForm({}: Props) {
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            {/* <SelectItem value="offline">Offline</SelectItem> */}
+                            <SelectItem value="offline">Offline</SelectItem>
                             <SelectItem value="online">Online</SelectItem>
                           </SelectContent>
                         </Select>

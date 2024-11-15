@@ -38,7 +38,7 @@ import SuccessRegister from "../SuccessRegister";
 import { Button } from "@/components/ui/button";
 import "@/lib/utils/zodCustomError";
 import useToastErrorNoUser from "@/hooks/useToastErrorNoUser";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useComingSoon from "@/hooks/useComingSoon";
 import { useRouter } from "next/navigation";
 
@@ -61,6 +61,12 @@ type Props = {};
 
 export default function TalkshowForm({}: Props) {
   // useComingSoon(true);
+
+  useEffect(() => {
+    toast.info(
+      "Pendaftaran TALKSHOW SRIFOTON 2024 DITUTUP,SELAMAT BERTEMU KEMBALI TAHUN DEPAN!!",
+    );
+  }, []);
   useToastErrorNoUser();
   const router = useRouter();
 
@@ -87,7 +93,12 @@ export default function TalkshowForm({}: Props) {
       return;
     }
 
-    const user_id = user.uid;
+    toast.error(
+      "Pendaftaran TALKSHOW SRIFOTON 2024 DITUTUP,SELAMAT BERTEMU KEMBALI TAHUN DEPAN!!",
+    );
+    return;
+
+    const user_id = user?.uid;
     const date = new Date();
     const is_verified = false;
 
